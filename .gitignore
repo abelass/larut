@@ -3,3 +3,9 @@
 *.pyo
 .svn
 _svn
+IMG
+config/connect.php
+dump
+IMG
+local
+tmp

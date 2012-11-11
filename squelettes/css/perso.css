@@ -1,6 +1,28 @@
-.header, #hierarchie, #extra1, #extra2, .documents_portfolio h2, .formulaire_menu_lang,#footer {display:none}
+.formulaire_menu_lang,#hierarchie {display:none}
+body{background:#ffffff;margin:1em auto;}
+.page{box-shadow: none;border:none; width:94em;	
 
-.page{border-radius: 4em}
-.content { 
-width:100%;
+
+	min-height:120em;}
+#header{
+	background:url(images/background.png)no-repeat;
+	height:303px
 }
+	
+#container{position:relative;
+background:url(images/background_line.png)repeat -32px top;
+}
+.container{margin-top:0;height:100px;}
+.content { 
+width:40%;
+float:right;
+padding:0 1em;
+}
+
+#extra1{width:15%;float:left;}
+#extra2{
+	width:40%;
+	float:left; 
+	clear:none;
+
+	}
