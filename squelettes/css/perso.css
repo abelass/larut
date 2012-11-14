@@ -48,7 +48,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .hornav ul{
 	 -moz-transform:rotate(4.5deg);
-	 -o-transform:rotate(4.5deg);}
+	 -o-transform:rotate(4.5deg);
+	 -webkit-transform:rotate(4.5deg);
+	 -ms-transform:rotate(4.5deg);
+	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);
+	 }
 
 .hornav ul li{
 	display:inline;
