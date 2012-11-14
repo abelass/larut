@@ -2,6 +2,6 @@
     #SET{id_rubrique,#ID_RUBRIQUE}
     [(#LOGO_RUBRIQUE||image_reduire{*,200})]
     [(#REM) Gestion du portfolio et des documents ]
-    [(#ID_TRAD|=={1})#SET{id_rubrique,''}]
-    [(#INCLURE{fond=inclure/documents,id_rubrique=#GET{id_runrique}})]
+    [(#ID_TRAD|=={2}|oui)#SET{id_rubrique,''}]
+    [(#INCLURE{fond=inclure/documents,id_rubrique=#GET{id_rubrique}})]
 </BOUCLE_rub>
