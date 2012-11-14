@@ -26,12 +26,14 @@ body{
 	margin:1em auto;
 	font: 1em/1.5em "print_clearlyregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
 }
-.page{box-shadow: none;border:none; width: 1200px;;	
-
-
-	min-height:120em;}
+.page{	
+	background:url(images/background_se.png)no-repeat;
+	box-shadow: none;
+	border:none; width: 1200px;
+	behavior: url(/PIE.htc); 	
+}
 #header{
-	background:url(images/background.png)no-repeat;
+
 	height:303px
 }
 
@@ -44,7 +46,11 @@ body{
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-family: 'thinfont-thinregular','arial';
 }
-.hornav{background-color: transparent;border: none}
+
+p{font-size:1.2em;padding-right:1.5em}
+.hornav{
+	background-color: transparent;
+	border: none}
 
 .hornav ul{
 	 -moz-transform:rotate(4.5deg);
@@ -64,7 +70,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size:2em; 
 	color: #bdc815; 
 	font-weight:bold;
-	text-shadow:1px 1px #7f7f7f
+	text-shadow:1px 1px #7f7f7f;
+	behavior: url(/PIE.htc); 	
 	}
 	
 .hornav a:hover,.hornav a:active{
@@ -72,27 +79,30 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	text-decoration:none;
 	}
 	
-.accueil {position:absolute; top:156px;}
-
+.accueil {
+    position: absolute;
+    top: 91px;
+    left:17px;
+   }
 .accueil a:hover{
 	background-color:#7F7F7F;
-	opacity:1
+	opacity:0.6;
+	behavior: url(/PIE.htc); 	
+	
 	}
 .accueil .h1 {display:none}
 
-#container{position:relative;
-background:url(images/background_line.png)repeat -32px top;
-}
+
 .container{margin-top:0;}
 .content { 
-width:37%;
+width:38%;
 float:right;
-padding:0 1em;
+
 }
 
 #extra1{width:14%;float:left;}
 #extra2{
-	width:46%;
+	width:44%;
 	float:left; 
 	clear:none;
 text-align:center;
@@ -102,8 +112,16 @@ text-align:center;
 
 .liste-items .item:hover {background-color:transparent;}
 
+#documents_portfolio{width:98%}
+
+
+
 #documents_portfolio .spip_logos{
 	border-radius: 20px;
 	border:none;
-	box-shadow: 1px 1px 2px 2px #4d4d4d;}
-#documents_portfolio .spip_logos:hover{opacity:0.8;}
+	box-shadow: 1px 1px 2px 2px #4d4d4d;
+	margin:0.5em;
+	 behavior: url(/PIE.htc); 	}
+#documents_portfolio .spip_logos:hover{opacity:0.8; behavior: url(/PIE.htc); 	}
+
+#footer{background:#ffffff}
