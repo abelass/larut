@@ -24,27 +24,27 @@
 body{
 	background:#ffffff;
 	margin:1em auto;
-	font: 1em/1.5em "print_clearlyregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
+	font: 1em "print_clearlyregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
 	font-weight:normal;
 }
 .page{	
-	background:url(images/background_se_p.png)no-repeat;
-	background-size:100%;
+	/*background:url(images/background_se_p.png)no-repeat;
+	background-size:100%;*/
 	box-shadow: none;
-	border:none; width: 1200px;
-	behavior: url(/PIE.htc); 	
+	border:none;
+	max-width: 1200px;
+	min-width: 710px;
+	width:auto;
 	padding-bottom: 0;
 }
 #header{
-
-	height:303px
+	height:200px
 }
 
 #nav{
- position: absolute;
-    right: 0;
-    top: 265px;
-    width: 37%;
+	float:right;
+	padding-right:0.4em;
+    width: 35%;
     }
 
 
@@ -52,17 +52,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-family: 'thinfont-thinregular','arial';
 }
 
-p{font-size:1.2em;}
+p{
+	font-size:1.2em;
+	font-weight:normal;
+	}
 .hornav{
 	background-color: transparent;
-	border: none}
+	border: none;
+	padding-left: 0.5em;}
 
 .hornav ul{
-	 -moz-transform:rotate(4.5deg);
+	 /*-moz-transform:rotate(4.5deg);
 	 -o-transform:rotate(4.5deg);
 	 -webkit-transform:rotate(4.5deg);
 	 -ms-transform:rotate(4.5deg);
-	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);
+	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);*/
 	 }
 
 .hornav ul li{
@@ -72,8 +76,9 @@ p{font-size:1.2em;}
 
 .hornav a{
 	font-family: 'thinfont-thinregular','arial';
-	font-size:2em; 
-	color: #bdc815; 
+	font-size:1.2em; 
+	/*color: #bdc815; */
+	color:#983924;
 	font-weight:bold;
 	text-shadow:1px 1px #7f7f7f;
 	behavior: url(/PIE.htc); 	
@@ -87,7 +92,7 @@ p{font-size:1.2em;}
 .accueil {
  	left: 28px;
     position: absolute;
-    top: 103px;
+    top: 50px;
    }
 .accueil a:hover{
 	background-color:#7F7F7F;
@@ -124,10 +129,10 @@ text-align:center;
 #documents_portfolio .spip_logos{
 	border-radius: 20px;
 	border:none;
-	box-shadow: 1px 1px 2px 2px #4d4d4d;
+	/*box-shadow: 1px 1px 2px 2px #4d4d4d;*/
 	margin:0.5em;
 	 behavior: url(/PIE.htc); 	}
-#documents_portfolio .spip_logos:hover{opacity:0.8; behavior: url(/PIE.htc); 	}
+
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
 
@@ -135,3 +140,6 @@ span.sep {
     display: inline;
 }
 
+#cboxTitle { color: #983924;}
+
+#cboxSlideshow {color: #000000;}
