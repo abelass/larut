@@ -1,13 +1,12 @@
 [(#REM) Portfolio : album d'images ]
 <B_documents_portfolio>
 <div class="documents documents_portfolio" id="documents_portfolio">
-	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {par num titre, date}{vu=non}{0,#ENV{limite,100}}>[
-	<a href="(#FICHIER|image_reduire{1500,*}|extraire_attribut{src})"
+	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {par num titre, date}{vu=non}{0,#ENV{limite,100}} {par hasard}>[
+	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
 		 type="#MIME_TYPE"
 		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
-	[ title="(#TITRE|attribut_html|couper{80})"]>[(#FICHIER
-        |image_passe_partout{#ENV{width,100},#ENV{height,100}}
-        |image_recadre{#ENV{width,100},#ENV{height,100}}
+	[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>[(#FICHIER
+        |image_reduire{*,200}
 		|inserer_attribut{class,spip_logos}
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
 	]</BOUCLE_documents_portfolio>
