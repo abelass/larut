@@ -30,8 +30,6 @@ body{
 	font-weight:normal;
 }
 .page{	
-	/*background:url(images/background_se_p.png)no-repeat;
-	background-size:100%;*/
 	box-shadow: none;
 	border:none;
 	max-width: 1200px;
@@ -56,7 +54,8 @@ float:right;
 	width:48%;
 	float:left; 
 	clear:none;
-text-align:center;
+	text-align:center;
+	padding-top:1.9em
 	}
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
@@ -88,8 +87,15 @@ text-align:center;
 
 /*extra*/
 
-#extra2 .spip_logos{float:none}
+#extra2 .spip_logos{
+	float:none;
+	position:relative;
+	border-radius: 12px 12px 12px 12px;
+	behavior: url(/PIE.htc); 	
+	
+	}
 
+.logo{padding-left:2em}
 /*menus*/
 #nav{
 	float:right;
@@ -117,8 +123,7 @@ text-align:center;
 	/*color: #bdc815; */
 	color:#983924;
 	font-weight:bold;
-	text-shadow:1px 1px #7f7f7f;
-	behavior: url(/PIE.htc); 	
+
 	}
 	
 .hornav .on  a{color:#4d4d4d}
@@ -150,7 +155,11 @@ p{
 
 .liste-items .item:hover {background-color:transparent;}
 
-#documents_portfolio{width:98%}
+#documents_portfolio{
+	width:98%;    margin: 0 auto;
+    text-align: center;}
+
+
 
 span.sep {
     display: inline;
@@ -160,6 +169,7 @@ span.sep {
 
 #documents_portfolio .spip_logos{
 	border-radius: 20px;
+	position:relative;
 	border:none;
 	/*box-shadow: 1px 1px 2px 2px #4d4d4d;*/
 	margin:0.5em;
@@ -172,6 +182,10 @@ span.sep {
 #cboxTitle { color: #983924;}
 
 #cboxSlideshow {color: #000000;}
+
+#cboxOverlay {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
 
 /*Forms*/
 .formulaire_menu_lang,#hierarchie{display:none}
