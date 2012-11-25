@@ -100,7 +100,7 @@ float:right;
 #nav{
 	float:right;
 	padding-right:0.4em;
-    width: 35%;
+    width: 38%;
     }
 
 
@@ -179,7 +179,7 @@ span.sep {
 
 /*Mediabox*/
 
-#cboxTitle { color: #983924;}
+#cboxTitle { color: #983924; font-weight: 500;font-size:105%}
 
 #cboxSlideshow {color: #000000;}
 
