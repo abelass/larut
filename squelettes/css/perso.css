@@ -1,3 +1,5 @@
+/*Fonts*/
+
 @font-face {
     font-family: 'print_clearlyregular';
     src: url('princ___-webfont.eot');
@@ -20,10 +22,10 @@
     font-style: normal;
 
 }
-.formulaire_menu_lang,#hierarchie{display:none}
+/*blocs principales*/
 body{
 	background:#ffffff;
-	margin:1em auto;
+	margin:0 auto;
 	font: 1em "print_clearlyregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
 	font-weight:normal;
 }
@@ -35,59 +37,37 @@ body{
 	max-width: 1200px;
 	min-width: 710px;
 	width:auto;
-	padding-bottom: 0;
+	padding: 0;
+	margin:0 auto;
 }
 #header{
-	height:200px
+	height:170px
 }
 
-#nav{
-	float:right;
-	padding-right:0.4em;
-    width: 35%;
-    }
+.container{margin-top:0;}
+.content { 
+width:37%;
+float:right;
 
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-   font-family: 'thinfont-thinregular','arial';
 }
 
-p{
-	font-size:1.2em;
-	font-weight:normal;
+#extra1{width:14%;float:left;}
+#extra2{
+	width:48%;
+	float:left; 
+	clear:none;
+text-align:center;
 	}
+
+#footer{padding-top:1em;background:#ffffff; text-align:center}
+
+/*header*/
+
 .hornav{
 	background-color: transparent;
 	border: none;
 	padding-left: 0.5em;}
 
-.hornav ul{
-	 /*-moz-transform:rotate(4.5deg);
-	 -o-transform:rotate(4.5deg);
-	 -webkit-transform:rotate(4.5deg);
-	 -ms-transform:rotate(4.5deg);
-	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);*/
-	 }
-
-.hornav ul li{
-	display:inline;
-	margin: 0 0.2em;
-	}
-
-.hornav a{
-	font-family: 'thinfont-thinregular','arial';
-	font-size:1.2em; 
-	/*color: #bdc815; */
-	color:#983924;
-	font-weight:bold;
-	text-shadow:1px 1px #7f7f7f;
-	behavior: url(/PIE.htc); 	
-	}
-	
-.hornav a:hover,.hornav a:active{
-	color: #000000; 
-	text-decoration:none;
-	}
 	
 .accueil {
  	left: 28px;
@@ -102,29 +82,81 @@ p{
 	}
 .accueil .h1 {display:none}
 
+/*contenu principale*/
 
-.container{margin-top:0;}
-.content { 
-width:36%;
-float:right;
+.chapo{padding-right:10%}
 
-}
-
-#extra1{width:14%;float:left;}
-#extra2{
-	width:49%;
-	float:left; 
-	clear:none;
-text-align:center;
-	}
+/*extra*/
 
 #extra2 .spip_logos{float:none}
+
+/*menus*/
+#nav{
+	float:right;
+	padding-right:0.4em;
+    width: 35%;
+    }
+
+
+.hornav ul{
+	 /*-moz-transform:rotate(4.5deg);
+	 -o-transform:rotate(4.5deg);
+	 -webkit-transform:rotate(4.5deg);
+	 -ms-transform:rotate(4.5deg);
+	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);*/
+	 }
+
+.hornav ul li{
+	display:inline;
+	margin: 0 0.2em;
+	}
+
+.hornav .item a{
+	font-family: 'thinfont-thinregular','arial';
+	font-size:1.2em; 
+	/*color: #bdc815; */
+	color:#983924;
+	font-weight:bold;
+	text-shadow:1px 1px #7f7f7f;
+	behavior: url(/PIE.htc); 	
+	}
+	
+.hornav .on  a{color:#4d4d4d}
+.hornav .item a:hover,.hornav .item a:active{
+	color:#4d4d4d;
+	text-decoration:none;
+	background:none;
+	}
+
+/*defintions générales*/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+   font-family: 'thinfont-thinregular','arial';
+}
+
+
+
+p{
+	font-size:1.2em;
+	font-weight:normal;
+	}
+	
+.logo{width:400px}
+
+.spip_logos {margin: 0;}
+
+.copyright{text-align:right}
+   
+
 
 .liste-items .item:hover {background-color:transparent;}
 
 #documents_portfolio{width:98%}
 
+span.sep {
+    display: inline;
+}
 
+/* Portfolio*/
 
 #documents_portfolio .spip_logos{
 	border-radius: 20px;
@@ -134,12 +166,16 @@ text-align:center;
 	 behavior: url(/PIE.htc); 	}
 
 
-#footer{padding-top:1em;background:#ffffff; text-align:center}
 
-span.sep {
-    display: inline;
-}
+/*Mediabox*/
 
 #cboxTitle { color: #983924;}
 
 #cboxSlideshow {color: #000000;}
+
+/*Forms*/
+.formulaire_menu_lang,#hierarchie{display:none}
+
+a {color:#983924;}
+
+a:hover{color:#983924;}
