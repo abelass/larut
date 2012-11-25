@@ -1,7 +1,10 @@
+#CACHE{0}
+
 [(#REM) Portfolio : album d'images ]
 <B_documents_portfolio>
+
 <div class="documents documents_portfolio" id="documents_portfolio">
-	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {par num titre, date}{vu=non}{0,#ENV{limite,100}} {par hasard}>[
+	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {par num titre, date}{vu=non}{0,#ENV{limite,100}} {pagination #ENV{pagination,100}}{par #ENV{sort,hasard}}>[
 	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
 		 type="#MIME_TYPE"
 		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
@@ -10,6 +13,7 @@
 		|inserer_attribut{class,spip_logos}
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
 	]</BOUCLE_documents_portfolio>
+	[<p class="pagination">(#PAGINATION)</p>] 
 </div>
 </B_documents_portfolio>
 
