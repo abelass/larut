@@ -37,16 +37,16 @@ body{
 	width:auto;
 	padding: 0;
 	margin:0 auto;
+	position:relative;
 }
 #header{
 	height:170px
 }
 
-.container{margin-top:0;}
+.container{margin-top:4em;}
 .content { 
 width:37%;
 float:right;
-
 }
 
 #extra1{width:14%;float:left;}
@@ -55,7 +55,7 @@ float:right;
 	float:left; 
 	clear:none;
 	text-align:center;
-	padding-top:1.9em
+	padding-top:0
 	}
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
@@ -67,12 +67,12 @@ float:right;
 	border: none;
 	padding-left: 0.5em;}
 
-	
 .accueil {
- 	left: 28px;
+    left: 28px;
     position: absolute;
     top: 50px;
-   }
+}
+	
 .accueil a:hover{
 	background-color:#7F7F7F;
 	opacity:0.6;
@@ -98,31 +98,48 @@ float:right;
 .logo{padding-left:2em}
 /*menus*/
 #nav{
-	float:right;
+	/*float:right;*/
 	padding-right:0.4em;
-    width: 38%;
+
     }
+    
+    
+.hornav .menu {
+    float:right;
+}
 
 
-.hornav ul{
-	 /*-moz-transform:rotate(4.5deg);
-	 -o-transform:rotate(4.5deg);
-	 -webkit-transform:rotate(4.5deg);
-	 -ms-transform:rotate(4.5deg);
-	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.1);*/
-	 }
+.hornav .menu-items {
+    border: 0 none;
+    position: absolute;
+    left: 55%;
+    top: 1.7em;
+    float:none;
+    width:auto;
+}
+
+.hornav .menu-items .item {
+	padding:0 0.8em 0 0;
+}
 
 .hornav ul li{
 	display:inline;
 	margin: 0 0.2em;
 	}
-
+	
+.hornav ul li.accueil{
+	position:absolute;
+	left:0;
+	top:0;
+	
+	}
 .hornav .item a{
 	font-family: 'thinfont-thinregular','arial';
 	font-size:1.2em; 
 	/*color: #bdc815; */
 	color:#983924;
 	font-weight:bold;
+	padding:0
 
 	}
 	
@@ -138,11 +155,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-family: 'thinfont-thinregular','arial';
 }
 
+.cartouche .info-publi {
+    text-align: right;
+}
 
+abbr[title], acronym[title] {
+    border-bottom: none;
+	font-size:80%;
+}
 
 p{
 	font-size:1.2em;
 	font-weight:normal;
+	text-align: justify;
 	}
 	
 .logo{width:400px}
@@ -164,6 +189,21 @@ p{
 span.sep {
     display: inline;
 }
+
+/*Listes*/
+
+.sites .liste-items .item{
+   font-size:1.2em
+}
+
+.liste-items {
+    border-top: none;
+}
+
+h2.articles_recents{
+	border-bottom: 1px dotted;
+
+	}
 
 /* Portfolio*/
 
@@ -193,3 +233,9 @@ span.sep {
 a {color:#983924;}
 
 a:hover{color:#983924;}
+
+
+.container #outils {
+    background-color: transparent
+
+}

@@ -1,0 +1,13 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+
+
+<div class="contenu-principal">
+
+	[(#REM) Boite à outils]
+		[(#INCLURE{fond=inclure/outils,env})]
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+
+<INCLURE{fond=inclure/articles_recents,id_rubrique='',env,ajax,id_parent,rubriques_exclus=(#CONFIG{mcp1/cacher_rubrique_articles_recents}|picker_selected{rubrique})}/>
+
+</BOUCLE_contenu_rubrique>

@@ -1,7 +1,16 @@
 #CACHE{0}
 <BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>
-    [<div class="logo">(#LOGO_RUBRIQUE||image_reduire{400,*})
-    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+    #SET{logo,#LOGO_RUBRIQUE}
+    #SET{copyright,#COPYRIGHT}
+    <BOUCLE_art(ARTICLES){id_rubrique}{0,2}>
+    [(#TOTAL_BOUCLE|=={1}|oui)
+        #SET{logo,#LOGO_ARTICLE}
+        #SET{copyright,#COPYRIGHT|sinon{''}}
+        ]
+    </BOUCLE_art>
+    
+    [<div class="logo">(#GET{logo}||image_reduire{400,*})
+    <INCLURE{fond=inclure/copyright,id_auteur=#GET{copyright}}/>
         </div>]
     #SET{id_document,#ARRAY}
     [(#ENV{id_trad}|>{0}|?{

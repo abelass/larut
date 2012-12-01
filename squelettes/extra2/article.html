@@ -1,2 +1,20 @@
-    [(#REM) Gestion du portfolio et des documents ]
-    [(#INCLURE{fond=inclure/documents,id_article})]
+
+<BOUCLE_art(ARTICLES){id_article}{tout}>
+    [<div class="logo">(#LOGO_ARTICLE||image_reduire{400,*})
+    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+        </div>]
+    #SET{id_document,#ARRAY}
+    [(#ENV{id_trad}|>{0}|?{
+        #SET{id_trad,#ENV{id_trad}}
+        ,
+        #SET{id_trad,#ENV{id_article}}
+    })]
+    
+    <BOUCLE_documents_tableau(DOCUMENTS) {id_article}{mode?}{extension IN png,jpg,gif} {vu=non}{0,#ENV{limite,100}}{par #ENV{sort,hasard}}>
+        #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
+    </BOUCLE_documents_tableau>
+        <INCLURE{fond=inclure/galerie_home,id_document=#GET{id_document},pagination=6,ajax}/>
+    </B_documents_tableau>
+        <INCLURE{fond=inclure/documents,id_rubrique=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},ajax}/>
+    <//B_documents_tableau>
+</BOUCLE_art>

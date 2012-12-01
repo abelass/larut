@@ -4,7 +4,6 @@
 
 <article class="content-principal">
 	<header class="cartouche">
-		[(#LOGO_ARTICLE|image_reduire{200,200})]
 		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
@@ -12,6 +11,8 @@
 
 	</header>
 
+    [(#REM) Boite à outils]
+    [(#INCLURE{fond=inclure/outils,env,titre,introduction=#INTRODUCTION,url=#URL_ARTICLE})]
 	[<section class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,0})</section>]
 	[<section class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,0})</section>]
 	[<section class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></section>]

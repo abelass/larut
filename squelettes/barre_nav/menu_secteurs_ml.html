@@ -2,6 +2,9 @@
     <B_enfants>
         <div class="menu menu-container">
         <ul class="menu-liste menu-items">
+        [(#REM)<li class="item menu-entree accueil[ (#EXPOSE)]">
+            <a href="#URL_SITE_SPIP"><:accueil_site:></a>
+        </li>]
         <BOUCLE_enfants(RUBRIQUES){id_parent} {par num titre, titre}{tout}>
         <li class="item menu-entree[ (#EXPOSE)]">
             <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
