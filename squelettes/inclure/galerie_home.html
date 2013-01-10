@@ -1,9 +1,8 @@
 [(#REM) Portfolio : album d'images ]
 
 <B_documents_portfolio>
-
 <div class="documents documents_portfolio" id="documents_portfolio">
-	<BOUCLE_documents_portfolio(DOCUMENTS){id_document IN #ENV{id_document}}{mode?} {vu=non}{pagination #ENV{pagination,100}}>[
+	<BOUCLE_documents_portfolio(DOCUMENTS){id_document IN #ENV{id_document}}{pagination #ENV{pagination,100}}{tout}>[
 	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
 		 type="#MIME_TYPE"
 		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"

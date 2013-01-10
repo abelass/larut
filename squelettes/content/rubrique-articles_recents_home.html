@@ -8,6 +8,6 @@
 	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 </div>
 
-<INCLURE{fond=inclure/articles_recents,id_rubrique='',env,ajax,id_parent,rubriques_exclus=(#CONFIG{mcp1/cacher_rubrique_articles_recents}|picker_selected{rubrique})}/>
+<INCLURE{fond=inclure/articles_recents,id_rubrique='',env,ajax,id_parent,rubriques_exclus=(#CONFIG{mcp1/cacher_rubrique_articles_recents}|picker_selected{rubrique}),limit=1}/>
 
 </BOUCLE_contenu_rubrique>

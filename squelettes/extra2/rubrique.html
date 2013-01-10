@@ -8,8 +8,7 @@
         #SET{copyright,#COPYRIGHT|sinon{''}}
         ]
     </BOUCLE_art>
-    
-    [<div class="logo">(#GET{logo}||image_reduire{400,*})
+    [<div class="logo">(#GET{logo}|image_reduire{400,*})
     <INCLURE{fond=inclure/copyright,id_auteur=#GET{copyright}}/>
         </div>]
     #SET{id_document,#ARRAY}
@@ -18,12 +17,20 @@
         ,
         #SET{id_trad,#ENV{id_rubrique}}
     })]
-    
+  
     <BOUCLE_documents_tableau(DOCUMENTS) {si #GET{id_trad}|=={2}|oui}{mode?}{extension IN png,jpg,gif} {vu=non}{0,#ENV{limite,100}}{par #ENV{sort,hasard}}>
         #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
     </BOUCLE_documents_tableau>
-        <INCLURE{fond=inclure/galerie_home,id_document=#GET{id_document},pagination=6,ajax}/>
+        <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique=13,pagination=6,logo=oui}/>
     </B_documents_tableau>
-        <INCLURE{fond=inclure/documents,id_rubrique=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},ajax}/>
+        [(#COMPOSITION|=={creations}|oui)
+        <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui}/>
+        #SET{defaut,non}
+        ]
+        [(#COMPOSITION|=={sous_rubrique_creations}|oui)
+        <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui}/>
+        #SET{defaut,non}
+        ]        
+        [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/documents,id_parent=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},env}/>]
     <//B_documents_tableau>
 </BOUCLE_rub>
