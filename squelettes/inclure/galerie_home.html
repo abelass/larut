@@ -1,7 +1,6 @@
 [(#REM) Portfolio : album d'images ]
-
 <B_documents_portfolio>
-<div class="documents documents_portfolio" id="documents_portfolio">
+<section class="documents documents_portfolio" id="documents_portfolio">
 	<BOUCLE_documents_portfolio(DOCUMENTS){id_document IN #ENV{id_document}}{pagination #ENV{pagination,100}}{tout}>[
 	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
 		 type="#MIME_TYPE"
@@ -12,6 +11,6 @@
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
 	]</BOUCLE_documents_portfolio>
 	[<p class="pagination">(#PAGINATION)</p>] 
-</div>
+</section>
 </B_documents_portfolio>
 
