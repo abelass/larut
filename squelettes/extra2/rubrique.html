@@ -25,12 +25,12 @@
     </B_documents_tableau>
     [(#REM)Galerie pour la section création]
         [(#COMPOSITION|=={creations}|oui)
-        <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui}/>
+        <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui,width=180,height=180}/>
         #SET{defaut,non}
         ]
      [(#REM)Galerie pourles sous section création]   
         [(#COMPOSITION|=={sous_rubrique_creations}|oui)
-        <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui}/>
+        <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui,width=180,height=180}/>
         #SET{defaut,non}
         ]        
         [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/documents,id_parent=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},env}/>]
