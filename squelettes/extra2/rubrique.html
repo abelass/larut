@@ -17,16 +17,18 @@
         ,
         #SET{id_trad,#ENV{id_rubrique}}
     })]
-  
+    [(#REM)Galerie pour la home]
     <BOUCLE_documents_tableau(DOCUMENTS) {si #GET{id_trad}|=={2}|oui}{mode?}{extension IN png,jpg,gif} {vu=non}{0,#ENV{limite,100}}{par #ENV{sort,hasard}}>
         #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
     </BOUCLE_documents_tableau>
-        <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique=13,pagination=6,logo=oui}/>
+        <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique=13,pagination=6,logo=oui,width=320,height=320}/>
     </B_documents_tableau>
+    [(#REM)Galerie pour la section création]
         [(#COMPOSITION|=={creations}|oui)
         <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui}/>
         #SET{defaut,non}
         ]
+     [(#REM)Galerie pourles sous section création]   
         [(#COMPOSITION|=={sous_rubrique_creations}|oui)
         <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui}/>
         #SET{defaut,non}

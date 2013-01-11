@@ -9,8 +9,8 @@
             <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
             [(#ENV{afficher_titre}|oui)[<h3 class="mouseover_cache">(#GET{titre})</h3>]]
             [(#LOGO_ARTICLE
-            |image_passe_partout{160,160}
-            |image_recadre{160,160}
+            |image_passe_partout{#ENV{width,160},#ENV{height,160}}
+            |image_recadre{#ENV{width,160},#ENV{height,160}}
             |inserer_attribut{class,spip_logos mouseover_visible}
             |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
             </a>
@@ -22,8 +22,8 @@
             <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
             [(#ENV{afficher_titre}|oui)[<h3 class="mouseover_cache">(#GET{titre})</h3>]]
             [(#FICHIER
-            |image_passe_partout{160,160}
-            |image_recadre{160,160}
+            |image_passe_partout{#ENV{width,160},#ENV{height,160}}
+            |image_recadre{#ENV{width,160},#ENV{height,160}}
             |inserer_attribut{class,spip_logos mouseover_visible}
             |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
             </a>
