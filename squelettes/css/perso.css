@@ -138,6 +138,13 @@ float:right;
 	behavior: url(/PIE.htc); 	
 	
 	}
+	
+.documents_album_cdc img:active{
+	opacity: 0.5;
+	filter:alpha(opacity=50); /* For IE8 and earlier */	
+	background-color:transparent;
+	visibility: visible;
+	}	
 
 .logo{padding-left:2em}
 
@@ -254,7 +261,7 @@ span.sep {
 
 h2.articles_recents{
 	border-bottom: 1px dotted;
-
+	font-size: 2.5em;
 	}
 
 /* Portfolio*/
