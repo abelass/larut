@@ -21,7 +21,7 @@
     <BOUCLE_documents_tableau(DOCUMENTS) {si #GET{id_trad}|=={2}|oui}{mode?}{extension IN png,jpg,gif} {vu=non}{0,#ENV{limite,100}}{par #ENV{sort,hasard}}>
         #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
     </BOUCLE_documents_tableau>
-        <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique=13,pagination=6,logo=oui,width=320,height=320}/>
+        <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique=13,pagination=6,logo=oui,width=320,height=320,limit=2}/>
     </B_documents_tableau>
     [(#REM)Galerie pour la section création]
         [(#COMPOSITION|=={creations}|oui)
