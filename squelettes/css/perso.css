@@ -1,43 +1,4 @@
 /*Fonts*/
-
-@font-face {
-    font-family: 'print_clearlyregular';
-    src: url('princ___-webfont.eot');
-    src: url('princ___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('princ___-webfont.woff') format('woff'),
-         url('princ___-webfont.ttf') format('truetype'),
-         url('princ___-webfont.svg#print_clearlyregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'opificioregular';
-    src: url('thinfont-thin-webfont.eot');
-    src: url('thinfont-thin-webfont.eot?#iefix') format('embedded-opentype'),
-         url('thinfont-thin-webfont.woff') format('woff'),
-         url('thinfont-thin-webfont.ttf') format('truetype'),
-         url('thinfont-thin-webfont.svg#opificioregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'opificioregular';
-    src: url('la-chata-normal-webfont.eot');
-    src: url('la-chata-normal-webfont.eot?#iefix') format('embedded-opentype'),
-         url('la-chata-normal-webfont.woff') format('woff'),
-         url('la-chata-normal-webfont.ttf') format('truetype'),
-         url('la-chata-normal-webfont.svg#opificioregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
 @font-face {
     font-family: 'opificioregular';
     src: url('opificio-webfont.eot');
@@ -47,23 +8,8 @@
          url('opificio-webfont.svg#opificioregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
-
-
-
-@font-face {
-    font-family: 'majoramregular';
-    src: url('majoram-webfont.eot');
-    src: url('majoram-webfont.eot?#iefix') format('embedded-opentype'),
-         url('majoram-webfont.woff') format('woff'),
-         url('majoram-webfont.ttf') format('truetype'),
-         url('majoram-webfont.svg#majoramregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 /*blocs principales*/
 body{
@@ -94,6 +40,14 @@ float:right;
 }
 
 #extra1{width:14%;float:left;}
+
+.extra1 .menu { 
+background:  transparent;
+border: none;
+padding: 0;
+}
+
+
 #extra2{
 	width:48%;
 	float:left; 
@@ -112,7 +66,7 @@ float:right;
 	padding-left: 0.5em;}
 
 .accueil {
-    left: 28px;
+    left: 0;
     position: absolute;
     top: 50px;
 }
@@ -238,7 +192,7 @@ p{
    
 
 
-.liste-items .item:hover {background-color:transparent;}
+
 
 #documents_portfolio{
 	width:98%;    margin: 0 auto;
@@ -251,6 +205,7 @@ span.sep {
 }
 
 /*Listes*/
+.liste-items .item:hover {background-color:transparent;}
 
 .sites .liste-items .item{
    font-size:1.2em
@@ -258,6 +213,10 @@ span.sep {
 
 .liste-items {
     border-top: none;
+}
+
+.liste-items .item .introduction { 
+font-size: 1.2em;
 }
 
 h2.articles_recents{
