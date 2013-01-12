@@ -1,0 +1,14 @@
+<BOUCLE_extra_article(RUBRIQUES){id_rubrique}>
+    [(#REM) Articles dans la meme rubrique ]
+    <B_articles_rubrique>
+    <nav class="menu menu_articles">
+        <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+        <ul class="liste-items">
+            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par date}{inverse} {0,10}>
+            <li class="item"><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
+            </BOUCLE_articles_rubrique>
+        </ul>
+    </nav>
+</B_articles_rubrique>
+
+</BOUCLE_extra_article>

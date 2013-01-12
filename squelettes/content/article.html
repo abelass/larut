@@ -38,19 +38,6 @@ et pourquoi pas ajax
 NB : pour desactiver les forums de l'article, supprimez simplement la ligne ci-dessous ]
 <INCLURE{fond=inclure/forum,id_article,repondre_url=(#PARAMETRES_FORUM|url_reponse_forum),repondre_titre=<:repondre_article:>} />
 
-<BOUCLE_extra_article(RUBRIQUES){id_rubrique}>
-    [(#REM) Articles dans la meme rubrique ]
-    <B_articles_rubrique>
-    <nav class="menu menu_articles">
-        <h2>#TITRE</h2>
-        <ul class="liste-items">
-            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par date}{inverse} {0,10}>
-            <li class="item"><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
-            </BOUCLE_articles_rubrique>
-        </ul>
-    </nav>
-</B_articles_rubrique>
 
-</BOUCLE_extra_article>
 
 </BOUCLE_content>
