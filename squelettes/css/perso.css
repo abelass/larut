@@ -196,9 +196,6 @@ p{
 .copyright{text-align:right}
    
 
-
-
-
 #documents_portfolio{
 	width:98%;    margin: 0 auto;
     text-align: center;}
@@ -229,15 +226,20 @@ h2.articles_recents{
 	font-size: 2.5em;
 	}
 
+.liste.articles img.spip_logos{
+	float:left; 
+	margin:0 16px 4px 0;
+	border-radius: 5px;
+	behavior: url(/PIE.htc); 	
+	}
 /* Portfolio*/
 
 #documents_portfolio .spip_logos{
 	border-radius: 20px;
 	position:relative;
 	border:none;
-	/*box-shadow: 1px 1px 2px 2px #4d4d4d;*/
 	margin:0.5em;
-	 behavior: url(/PIE.htc); 	}
+}
 
 .art_rub li {float:left;margin-right:0.5em}
 
