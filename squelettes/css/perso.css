@@ -256,9 +256,15 @@ h2.articles_recents{
 /*Forms*/
 .formulaire_menu_lang,#hierarchie{display:none}
 
+/*Links*/
+
 a {color:#983924;}
 
 a:hover{color:#983924;}
+
+a[hreflang]:after {
+	content:none
+}
 
 
 .container #outils {
