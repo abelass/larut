@@ -169,6 +169,13 @@ padding: 0;
 	
 .hornav .menuder ul li a {color:#919191}	
 
+.formulaire_menu_lang{
+	position:absolute;	
+	right: 3.2em;
+	top: 6.5em;	
+}
+
+
 /*defintions générales*/
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-family: 'opificioregular','arial';
@@ -254,7 +261,7 @@ h2.articles_recents{
 }
 
 /*Forms*/
-.formulaire_menu_lang,#hierarchie{display:none}
+#hierarchie{display:none}
 
 /*Links*/
 
