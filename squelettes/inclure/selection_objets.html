@@ -1,0 +1,39 @@
+<B_selection_teste>
+    <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest ?} {objet_dest ?}{0,1}>
+    #SET{type,#TYPE_LIEN}
+
+    </BOUCLE_selection_teste>
+    </table>
+    </div>
+</B_selection_teste>
+
+<B_selection>
+    [(#GET{type}|=={galerie_photos}|oui)
+    <section class='documents documents_portfolio' id='documents_portfolio'>
+     #SET{fin,</section>}
+    ]
+    [(#GET{type}|=={une_photo}|oui)
+    <aside class='bloc clearfix documents_album_cdc' id='documents_album_#ENV{id_rubrique}'><ul>
+        #SET{fin,</aside>}
+    ]
+    [(#GET{type}|=={somme_produit}|oui)
+    <aside class='bloc clearfix documents_somme_produit' id='somme_produit'>
+        #SET{fin,</ul></aside>}
+    ]
+    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest ?} {objet_dest ?}>
+    #SET{modele,une_photo}
+    [(#CHEMIN{modeles_so/#TYPE_LIEN.html}|oui)#SET{modele,#TYPE_LIEN}]
+    [(#ID_OBJET|generer_modele{#OBJET,modeles_so/#GET{modele},#ARRAY{
+        id_selection_objet,#ID_SELECTION_OBJET,
+        langue,#ENV{lang},
+        objet_dest,#OBJET_DEST,
+        id_objet_dest,#ID_OBJET_DEST,
+        total_boucle,#TOTAL_BOUCLE,
+        id_selection_objet,#ID_SELECTION_OBJET,
+        titre,#TITRE,
+        compteur_boucle,#COMPTEUR_BOUCLE,
+        type_lien,#TYPE_LIEN,       
+        }})] 
+    </BOUCLE_selection>
+    #GET{fin}
+</B_selection>
