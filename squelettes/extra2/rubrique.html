@@ -17,13 +17,10 @@
         ,
         #SET{id_trad,#ENV{id_rubrique}}
     })]
-    [(#REM)Galerie pour la home]
-    <BOUCLE_documents_tableau(DOCUMENTS) {si #GET{id_trad}|=={2}|oui}{mode?}{extension IN png,jpg,gif} {vu=non}{0,#ENV{limite,100}}{par #ENV{sort,hasard}}>
-        #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
-    </BOUCLE_documents_tableau>
-        <INCLURE{fond=inclure/selection_objets,env,id_rubrique=13,pagination=6,logo=oui,width=430,height=430,limit=1}/>
-        
-    </B_documents_tableau>
+    [(#REM)Affichage des objets séléctionnées]
+    <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest=#ENV{id_rubrique}}{objet_dest =rubrique}{0,1}>
+        <INCLURE{fond=inclure/selection_objets,env,id_objet_dest=#ENV{id_rubrique},objet_dest=rubrique,logo=oui,type=#TYPE_LIEN,env}/>
+    </BOUCLE_selection_teste>
     [(#REM)Galerie pour la section création]
         [(#COMPOSITION|=={creations}|oui)
         <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui,width=180,height=180}/>
@@ -35,5 +32,5 @@
         #SET{defaut,non}
         ]        
         [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/documents,id_parent=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},env}/>]
-    <//B_documents_tableau>
+    <//B_selection_teste>
 </BOUCLE_rub>

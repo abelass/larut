@@ -239,6 +239,7 @@ h2.articles_recents{
 	border-radius: 5px;
 	behavior: url(/PIE.htc); 	
 	}
+	
 /* Portfolio*/
 
 #documents_portfolio .spip_logos{
@@ -260,6 +261,17 @@ h2.articles_recents{
     background: none repeat scroll 0 0 #FFFFFF;
 }
 
+/*Display somme*/
+
+#somme_produit .somme,#somme_produit .principal,#somme_produit .equal{float:left}
+
+#somme_produit .somme{}
+
+#somme_produit .equal{height:400px;width:150px;background:url(images/equal.png) no-repeat 50% 50%;}
+
+#somme_produit .plus{padding-botto:10px;height:120px;width:120px;background:url(images/plus.png) no-repeat 50% 50%;;}
+
+#somme_produit .principal{}
 /*Forms*/
 #hierarchie{display:none}
 
