@@ -4,8 +4,8 @@
      #SET{fin,</section>}
     ]
     [(#ENV{type}|=={une_photo}|oui)
-    <section class='bloc clearfix documents_album_cdc' id='documents_album_#ENV{id_rubrique}'><ul>
-        #SET{fin,</ul></section}
+    <section class='bloc clearfix documents_album_cdc' id='documents_album_#ENV{id_rubrique}'>
+        #SET{fin,</section>}
     ]
     [(#ENV{type}|=={somme_produit}|oui)
     <section class='bloc clearfix documents_somme_produit' id='somme_produit'>
@@ -17,7 +17,7 @@
     [(#ID_OBJET|generer_modele{#OBJET,modeles_so/#GET{modele},#ARRAY{
         id_selection_objet,#ID_SELECTION_OBJET,
         objet,#OBJET,
-        id_objet,#ID_OBJET
+        id_objet,#ID_OBJET,
         langue,#ENV{lang},
         objet_dest,#OBJET_DEST,
         id_objet_dest,#ID_OBJET_DEST,
@@ -25,7 +25,8 @@
         id_selection_objet,#ID_SELECTION_OBJET,
         titre,#TITRE,
         compteur_boucle,#COMPTEUR_BOUCLE,
-        type_lien,#TYPE_LIEN,       
+        type_lien,#TYPE_LIEN,  
+        url,#URL          
         }})] 
     </BOUCLE_selection>
     #GET{fin}

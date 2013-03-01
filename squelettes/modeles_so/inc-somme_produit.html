@@ -1,5 +1,5 @@
  <BOUCLE_documents_portfolio2(DOCUMENTS) {id_document} {mode ?}{extension IN png,jpg,gif} {tout}>
-            <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+            <a href="#URL" [ title="(#GET{titre}|attribut_html|couper{80})"]>
             [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
             [(#FICHIER
             |image_passe_partout{#ENV{width,430},#ENV{height,430}}
