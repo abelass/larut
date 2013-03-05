@@ -52,14 +52,14 @@ border: none;
 padding: 0;
 }
 
-
-#extra2{
-	width:48%;
-	float:left; 
-	clear:none;
-	text-align:center;
-	padding-top:0
-	}
+#extra2 {
+    clear: none;
+    float: left;
+    margin-left: 2%;
+    padding-top: 0;
+    text-align: center;
+    width: 46%;
+}
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
 

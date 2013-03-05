@@ -8,12 +8,13 @@
         #SET{fin,</section>}
     ]
     [(#ENV{type}|=={somme_produit}|oui)
-    <section class='bloc clearfix documents_somme_produit' id='somme_produit'>
+    <section class='bloc clearfix documents_somme_produit #ENV{type_lien}' id='somme_produit'>
         #SET{fin,</section>}
     ]
-    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest ?} {objet_dest ?}>
+    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest ?} {objet_dest ?}{0,1}>
+    #SET{type,#ENV{type,#TYPE_LIEN}}
     #SET{modele,une_photo}
-    [(#CHEMIN{modeles_so/#TYPE_LIEN.html}|oui)#SET{modele,#TYPE_LIEN}]
+    [(#CHEMIN{modeles_so/#GET{type}.html}|oui)#SET{modele,#GET{type}}]
     [(#ID_OBJET|generer_modele{#OBJET,modeles_so/#GET{modele},#ARRAY{
         id_selection_objet,#ID_SELECTION_OBJET,
         objet,#OBJET,
@@ -26,7 +27,8 @@
         titre,#TITRE,
         compteur_boucle,#COMPTEUR_BOUCLE,
         type_lien,#TYPE_LIEN,  
-        url,#URL          
+        url,#URL,
+        id_document,#ENV{id_document}          
         }})] 
     </BOUCLE_selection>
     #GET{fin}
