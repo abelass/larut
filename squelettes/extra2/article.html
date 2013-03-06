@@ -8,7 +8,8 @@
     })]    
     <BOUCLE_documents_tableau(DOCUMENTS) {id_article}{extension IN png,jpg,gif} {0,#ENV{limite,100}}{!par date}{tout}>
         <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{statut ?}{id_objet_dest=#ID_DOCUMENT}{objet_dest=document}{0,1}>
-            <INCLURE{fond=inclure/selection_objets,env,id_objet_dest,objet_dest=document,logo=oui,type=somme_produit,type_lien,id_document=#ID_OBJET_DEST,env}/>
+            [(#LARGEUR|>{#HAUTEUR}|oui)#SET{affichage,large}]
+            <INCLURE{fond=inclure/selection_objets,env,id_objet_dest,objet_dest=document,logo=oui,type=somme_produit,type_lien,id_document=#ID_OBJET_DEST,env,affichage=#GET{affichage}}/>
         </BOUCLE_selection_teste>
          #SET{defaut,non}
          </B_selection_teste>  

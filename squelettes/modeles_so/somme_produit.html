@@ -1,13 +1,15 @@
-
 #SET{height,400}
 #SET{width,250}
-<B_selection>
-    <div class="somme">
-    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest} {objet_dest}{'<div class="plus">&nbsp;</div>'}>
-        [(#TYPE_LIEN|=={large_bottom}|oui)
+
+ [(#ENV{affichage}|=={large}|oui)
         #SET{height,250}
         #SET{width,400}
         ]
+
+<B_selection>
+    <div class="somme">
+    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest} {objet_dest}{'<div class="plus">&nbsp;</div>'}>
+
         [<div class="item">(#ID_OBJET|generer_modele{#OBJET,modeles_so/inc-somme_produit,#ARRAY{
             id_selection_objet,#ID_SELECTION_OBJET,
             langue,#ENV{lang},
