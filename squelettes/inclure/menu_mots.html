@@ -1,0 +1,12 @@
+
+    [(#REM) Articles dans la meme rubrique ]
+    <B_mots>
+    <nav class="menu menu_mots liste sites">
+        <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+        <ul class="liste-items">
+            <BOUCLE_mots(MOTS){id_groupe=1}{par num titre,titre}>
+            <li class="item"><a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]"[ class="(#EXPOSE)"]>#TITRE</a></li>
+            </BOUCLE_mots>
+        </ul>
+    </nav>
+</B_mots>
