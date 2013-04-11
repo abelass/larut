@@ -1,11 +1,11 @@
 /*Fonts*/
 @font-face {
     font-family: 'opificioregular';
-    src: url('opificio-webfont.eot');
-    src: url('opificio-webfont.eot?#iefix') format('embedded-opentype'),
-         url('opificio-webfont.woff') format('woff'),
-         url('opificio-webfont.ttf') format('truetype'),
-         url('opificio-webfont.svg#opificioregular') format('svg');
+    src: url('fonts/opificio-webfont.eot');
+    src: url('fonts/opificio-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/opificio-webfont.woff') format('woff'),
+         url('fonts/opificio-webfont.ttf') format('truetype'),
+         url('fonts/opificio-webfont.svg#opificioregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -217,8 +217,14 @@ span.sep {
 
 .liste_sites {float:left;width:25em}
 
-.liste_sites .liste-items .item{
-   font-size:1.2em
+.contenu-principal .menu{
+	clear:none;
+	float:left;
+   font-size: 1.5em;
+   font-weight: bold;
+}
+.contenu-principal .menu .liste-items .item {
+   border:none;
 }
 
 .liste-items {
