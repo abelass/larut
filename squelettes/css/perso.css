@@ -215,7 +215,9 @@ span.sep {
 /*Listes*/
 .liste-items .item:hover {background-color:transparent;}
 
-.sites .liste-items .item{
+.liste_sites {float:left;width:25em}
+
+.liste_sites .liste-items .item{
    font-size:1.2em
 }
 
