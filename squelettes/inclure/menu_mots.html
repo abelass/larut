@@ -1,6 +1,6 @@
 
     [(#REM) Articles dans la meme rubrique ]
-    <B_mots>
+<B_mots>
     <nav class="menu menu_mots">
         <ul class="liste-items">
             <BOUCLE_mots(MOTS){id_groupe=1}{par num titre,titre}{si #ENV{id_mot}|ou{#ENV{defaut}|oui}}>
@@ -10,6 +10,7 @@
     </nav>
 </B_mots>
 
+
 <script type="text/javascript">
 $(function() { 
     $(".menu_mots a").click(function() {
@@ -17,8 +18,18 @@ $(function() {
         ajaxReload(
             'sites', 
                 {
-                 args:{
-                       id_mot:id_mot                        }
+                 callback:function(){
+                      ajaxReload(
+                            'menu_mots', 
+                                {
+                                 args:{
+                                       id_mot:id_mot,
+                                       }                
+                                  }
+                                 
+                        ); 
+                    },
+                 args:{id_mot:id_mot}
                  }
         );           
          return false;   
