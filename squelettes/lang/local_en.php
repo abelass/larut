@@ -13,16 +13,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'une_photo' => 'Une Photo', 
     
     //L
-    'lire_la_suite'=>'Lire la suite',
+    'lire_la_suite'=>'Read More',
     
     //N
-    'news' => 'Nouveau sur ce site',    
+    'news' => 'Just posted',   
     
     //S
     'somme_produit' => 'Suma',
     
     //V
-    'voir_plus' => 'Voir d\'autres',    
+    'voir_plus' => 'See more',        
 );
 
 ?>

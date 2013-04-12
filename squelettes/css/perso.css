@@ -248,6 +248,7 @@ h2.articles_recents{
 	behavior: url(/PIE.htc); 	
 	}
 	
+.resume{font-size: 1.2em; font-weight:bold}
 /* Portfolio*/
 
 #documents_portfolio .spip_logos{
