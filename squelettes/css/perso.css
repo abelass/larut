@@ -232,7 +232,7 @@ span.sep {
 /*Listes*/
 .liste-items .item:hover {background-color:transparent;}
 
-.liste_sites {float:left;width:25em}
+.liste_sites {float:left;width:70%}
 
 .contenu-principal .menu{
 	clear:none;
