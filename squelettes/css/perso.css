@@ -168,12 +168,29 @@ padding: 0;
 	
 .hornav .menuder ul li a {color:#919191}	
 
-.formulaire_menu_lang{
+aside.tools{
 	position:absolute;	
 	right: 3.2em;
-	top: 6.5em;	
+	top: 3.5em;	
+	text-align:right;
+	width:17em
 }
+.formulaire_menu_lang{}
 
+.formulaire_newsletter{
+	background:none;
+	padding:0;
+	border:none;
+	position:absolute;
+	top:6em;
+	width:100%
+	}
+
+.formulaire_newsletter input.text{float:left;width:80%;font-size:0.8em;}
+
+.formulaire_newsletter .editer{padding:0}
+.formulaire_newsletter .editer label{float:left;margin-right:0.5em;}
+.formulaire_newsletter .boutons{margin:0; font-size:0.8em;padding:0;float:right}
 
 /*defintions générales*/
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
