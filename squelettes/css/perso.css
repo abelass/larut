@@ -24,7 +24,7 @@ body{
 	max-width: 1200px;
 	min-width: 900px;
 	width:auto;
-	padding: 0;
+	padding: 0 0 0 1em;
 	margin:0 auto;
 	position:relative;
 }
@@ -70,7 +70,7 @@ padding: 0;
 	padding-left: 0.5em;}
 
 .accueil {
-    left: 0;
+    left: 1em;
     position: absolute;
     top: 50px;
 }
