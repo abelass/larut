@@ -17,6 +17,7 @@ body{
 	margin:0 auto;
 	font: 1em "opificioregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
 	font-weight:normal;
+		padding: 0 1em;
 }
 .page{	
 	box-shadow: none;
@@ -24,7 +25,6 @@ body{
 	max-width: 1200px;
 	min-width: 900px;
 	width:auto;
-	padding: 0 0 0 1em;
 	margin:0 auto;
 	position:relative;
 }
