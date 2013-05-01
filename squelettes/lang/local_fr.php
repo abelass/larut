@@ -13,7 +13,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'une_photo' => 'Une Photo', 
     
     //L
+    'label_a_lire_sur' => 'A lire sur',  
+    'label_inscrit_newsletter' => 'Vous êtes inscrit pour recevoir des nouvelles par mail de',  
     'lire_la_suite'=>'Lire la suite',
+    'label_publie' => 'Publié le :',    
     
     //N
     'news' => 'Nouveau sur ce site',    
