@@ -192,6 +192,13 @@ aside.tools{
 .formulaire_newsletter .editer label{float:left;margin-right:0.5em;}
 .formulaire_newsletter .boutons{margin:0; font-size:0.8em;padding:0;float:right}
 
+.formulaire_newsletter_subscribe .reponse_formulaire_ok, .formulaire_newsletter_subscribe .reponse_formulaire_error { 
+	position:absolute;
+	right: 0px;
+	top: -50px;
+	width: 100%;
+}
+
 /*defintions générales*/
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-family: 'opificioregular','arial';
