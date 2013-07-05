@@ -1,0 +1,37 @@
+[(#REM) Articles dans la meme rubrique ]
+<B_mots>
+    <nav class="menu menu_mots">
+        <ul class="liste-items">
+            <BOUCLE_mots(MOTS){id_groupe=1}{par num titre,titre}{si #ENV{id_mot}|ou{#ENV{defaut}|oui}}>
+            <li class="item"><a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]"[ class="(#EXPOSE)"] data-target="#ID_MOT">#TITRE</a></li>
+            </BOUCLE_mots>
+        </ul>
+    </nav>
+</B_mots>
+
+
+<script type="text/javascript">
+$(function() { 
+    $(".menu_mots a").click(function() {
+        var id_mot=$(this).attr('data-target');   
+        ajaxReload(
+            'sites', 
+                {
+                 callback:function(){
+                      ajaxReload(
+                            'menu_mots', 
+                                {
+                                 args:{
+                                       id_mot:id_mot,
+                                       }                
+                                  }
+                                 
+                        ); 
+                    },
+                 args:{id_mot:id_mot}
+                 }
+        );           
+         return false;   
+        });     
+ });
+</script>

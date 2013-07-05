@@ -1,0 +1,341 @@
+/*Fonts*/
+@font-face {
+    font-family: 'opificioregular';
+    src: url('fonts/opificio-webfont.eot');
+    src: url('fonts/opificio-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/opificio-webfont.woff') format('woff'),
+         url('fonts/opificio-webfont.ttf') format('truetype'),
+         url('fonts/opificio-webfont.svg#opificioregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*blocs principales*/
+body{
+	background:#ffffff;
+	margin:0 auto;
+	font: 1em "opificioregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
+	font-weight:normal;
+		padding: 0 1em;
+}
+.page{	
+	box-shadow: none;
+	border:none;
+	max-width: 1200px;
+	min-width: 900px;
+	width:auto;
+	margin:0 auto;
+	position:relative;
+}
+#header{
+	height:170px
+}
+
+.container{margin-top:4em;}
+.content { 
+width:37%;
+float:right;
+  font-size: 80%;
+}
+
+#extra1{width:14%;float:left;}
+
+#extra1 h2, #extra1 .h2 { 
+font-size: 1.3em;
+line-height: normal;
+}
+
+.extra1 .menu { 
+background:  transparent;
+border: none;
+padding: 0;
+}
+
+#extra2 {
+    clear: none;
+    float: left;
+    padding-top: 0;
+    text-align: center;
+    width: 48%;
+}
+
+#footer{padding-top:1em;background:#ffffff; text-align:center}
+
+/*header*/
+
+.hornav{
+	background-color: transparent;
+	border: none;
+	padding-left: 0.5em;}
+
+.accueil {
+    left: 1em;
+    position: absolute;
+    top: 50px;
+}
+	
+.accueil a:hover{
+	background-color:#7F7F7F;
+	opacity:0.6;
+	behavior: url(/PIE.htc); 	
+	
+	}
+.accueil .h1 {display:none}
+
+/*contenu principale*/
+
+.chapo{padding-right:1em;color:#000000}
+
+/*extra*/
+
+#extra2 .spip_logos{
+	float:none;
+	position:relative;
+	border-radius: 12px 12px 12px 12px;
+	behavior: url(/PIE.htc); 	
+	
+	}
+	
+.documents_album_cdc img:active{
+	opacity: 0.5;
+	filter:alpha(opacity=50); /* For IE8 and earlier */	
+	background-color:transparent;
+	visibility: visible;
+	}	
+
+.logo{padding-left:2em}
+
+
+.documents_portfolio a{background:transparent url(images/search_10.png) no-repeat bottom right}
+/*
+ * Menus
+ */
+
+
+#nav{
+	/*float:right;*/
+	padding-right:0.4em;
+
+    }
+    
+    
+.hornav .menu {
+    float:right;
+}
+
+
+.hornav .menu-items {
+    border: 0 none;
+    position: absolute;
+    right: 0;
+    top: 1.7em;
+    float:none;
+    width:auto;
+}
+
+.hornav .menu-items .item {
+	padding:0 0 0 0.8em;
+}
+
+.hornav ul li{
+	display:inline;
+	margin: 0 0.2em;
+	}
+	
+.hornav ul li.accueil{
+	position:absolute;
+	left:0;
+	top:0;
+	
+	}
+.hornav .item a{
+	font-family: 'opificioregular','arial';
+	font-size:1.2em; 
+	/*color: #bdc815; */
+	color:#983924;
+	font-weight:bold;
+	padding:0
+
+	}
+	
+.hornav .on  a{color:#4d4d4d}
+.hornav .item a:hover,.hornav .item a:active{
+	color:#4d4d4d;
+	text-decoration:none;
+	background:none;
+	}
+	
+.hornav .menuder ul li a {color:#919191}	
+
+aside.tools{
+	position:absolute;	
+	right: 0;
+	top: 3.5em;	
+	text-align:right;
+	width:17em
+}
+.formulaire_menu_lang{}
+
+.formulaire_newsletter{
+	background:none;
+	padding:0;
+	border:none;
+	position:absolute;
+	top:6em;
+	width:100%
+	}
+
+.formulaire_newsletter input.text{float:left;width:80%;font-size:0.8em;}
+
+.formulaire_newsletter .editer{padding:0}
+.formulaire_newsletter .editer label{float:left;margin-right:0.5em;}
+.formulaire_newsletter .boutons{margin:0; font-size:0.8em;padding:0;float:right}
+
+.formulaire_newsletter_subscribe .reponse_formulaire_ok, .formulaire_newsletter_subscribe .reponse_formulaire_error { 
+	position:absolute;
+	right: 0px;
+	top: -50px;
+	width: 100%;
+}
+
+/*defintions générales*/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+   font-family: 'opificioregular','arial';
+}
+
+.cartouche .info-publi {
+    text-align: right;
+}
+
+abbr[title], acronym[title] {
+    border-bottom: none;
+	font-size:80%;
+}
+
+p{
+	font-size:1.2em;
+	font-weight:normal;
+	text-align: justify;
+	}
+	
+.logo{width:400px}
+
+.spip_logos {margin: 0;}
+
+.copyright{text-align:right}
+   
+
+#documents_portfolio{
+	width:98%;    margin: 0 auto;
+    text-align: center;}
+
+
+
+span.sep {
+    display: inline;
+}
+
+/*Listes*/
+.liste-items .item:hover {background-color:transparent;}
+
+.liste_sites {float:left;width:70%}
+
+.contenu-principal .menu{
+	clear:none;
+	float:left;
+   font-size: 1.6em;
+   font-weight: bold;
+    margin-top: 2.2em;
+}
+.contenu-principal .menu .liste-items .item {
+   border:none;
+}
+
+.liste-items {
+    border-top: none;
+}
+
+.liste-items .item .introduction { 
+font-size: 1.2em;
+}
+
+h2.articles_recents{
+	border-bottom: 1px dotted;
+	font-size: 2.5em;
+	}
+
+.liste.articles img.spip_logos{
+	float:left; 
+	margin:0 16px 4px 0;
+	border-radius: 5px;
+	behavior: url(/PIE.htc); 	
+	}
+	
+.resume{font-size: 1.2em; font-weight:bold}
+
+.sommaire .resume p{font-size: 0.9em; font-weight:bold}
+/* Portfolio*/
+
+#documents_portfolio .spip_logos{
+	border-radius: 20px;
+	position:relative;
+	border:none;
+	margin:0.5em;
+}
+
+.art_rub li {float:left;margin-right:0.5em}
+
+/*Mediabox*/
+
+#cboxTitle { color: #983924; font-weight: 500;font-size:105%}
+
+#cboxSlideshow {color: #000000;}
+
+#cboxOverlay {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+
+/*Display somme*/
+
+.documents_somme_produit{padding-left:2%}
+
+.documents_somme_produit .somme,.documents_somme_produit .principal, .documents_somme_produit .equal{float:left}
+
+.documents_somme_produit .equal{background:url(images/equal.png) no-repeat 50% 50%;}
+
+.documents_somme_produit .plus{background:url(images/plus.png) no-repeat 50% 50%;}
+
+
+#somme_produit .equal{height:400px;width:150px}
+
+#somme_produit .plus{padding-bottom:10px;height:120px;width:120px;}
+
+#somme_produit_large .somme{width:100%; height:150px}
+
+#somme_produit_large .somme .item, #somme_produit_large .somme .plus{float:left;}
+
+#somme_produit_large .plus{padding-bottom:10px;height:120px;width:140px;}
+
+#somme_produit_large .principal{width:400px;clear:both} 
+
+#somme_produit_large .equal{width:400px;height:150px;clear:both} 
+
+/*Forms*/
+#hierarchie{display:none}
+
+/*Links*/
+
+a {color:#983924;}
+
+a:hover{color:#983924;}
+
+a[hreflang]:after {
+	content:none
+}
+
+
+.container #outils {
+    background-color: transparent
+
+}

@@ -1,0 +1,35 @@
+<BOUCLE_art(ARTICLES){id_article}{tout}>
+
+    #SET{id_document,#ARRAY}
+    [(#ENV{id_trad}|>{0}|?{
+        #SET{id_trad,#ENV{id_trad}}
+        ,
+        #SET{id_trad,#ENV{id_article}}
+    })]    
+    <BOUCLE_documents_tableau(DOCUMENTS) {id_article}{extension IN png,jpg,gif} {0,#ENV{limite,100}}{!par date}{tout}>
+        <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{statut ?}{id_objet_dest=#ID_DOCUMENT}{objet_dest=document}{0,1}>
+            [(#LARGEUR|>{#HAUTEUR}|oui)#SET{affichage,large}]
+            <INCLURE{fond=inclure/selection_objets,env,id_objet_dest,objet_dest=document,logo=oui,type=somme_produit,type_lien,id_document=#ID_OBJET_DEST,env,affichage=#GET{affichage}}/>
+        </BOUCLE_selection_teste>
+         #SET{defaut,non}
+         </B_selection_teste>  
+        #SET{id_document,#GET{id_document}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
+        <//B_selection_teste> 
+    </BOUCLE_documents_tableau>
+    [(#GET{defaut}|=={non}|non)
+        [(#INCLURE{fond=inclure/galerie_home,id_document=#GET{id_document},pagination=100,ajax}|sinon{
+                [<div class="logo">
+                    (#LOGO_ARTICLE||image_reduire{400,*})
+                    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+                </div>]}
+            )]
+           ]
+    </B_documents_tableau>
+        [(#INCLURE{fond=inclure/documents,id_rubrique=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},ajax}|sinon{
+                [<div class="logo">
+                    (#LOGO_ARTICLE||image_reduire{400,*})
+                    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+                 </div>]})
+                 ]
+    <//B_documents_tableau>
+</BOUCLE_art>

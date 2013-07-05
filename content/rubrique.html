@@ -1,0 +1,41 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+[(#REM) Fil d'Ariane ]
+
+[(#ID_RUBRIQUE|=={1}|oui)#SET{home,oui}]
+
+<article class="contenu-principal">
+	[<header class="cartouche">
+	    (#ID_TRAD|in_array{#LISTE{8,7,9}}|non)
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+	</header>]
+	
+	[(#REM) Boite à outils]
+	[(#INCLURE{fond=inclure/outils,env})]
+	
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+
+[(#REM) Sites de la rubrique ]
+<B_sites>
+<div class="liste sites">
+        <ul class="liste-items">
+                <BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
+                <li class="item">
+                   <strong><a href="#URL_SITE">#NOM_SITE</a></strong>
+                        <B_syndic>
+                        <ul>
+                                <BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+                                <li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
+                                </BOUCLE_syndic>
+                        </ul>
+                        </B_syndic>
+                </li>
+                </BOUCLE_sites>
+        </ul>
+</article>
+</B_sites>
+
+[<footer class="notes">
+    <aside class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</aside>
+ </footer>]
+</BOUCLE_contenu_rubrique>

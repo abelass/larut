@@ -1,0 +1,17 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+[(#REM) Fil d'Ariane ]
+
+
+<article class="contenu-principal">
+
+    <header class="cartouche">
+        <h1 class="h1 #EDIT{titre}">#TITRE</h1>
+    </header>
+
+    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</article>
+
+[<footer class="notes">
+    <aside class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</aside>
+ </footer>]
+</BOUCLE_contenu_rubrique>

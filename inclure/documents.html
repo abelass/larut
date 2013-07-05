@@ -1,0 +1,37 @@
+#CACHE{0}
+
+[(#REM) Portfolio : album d'images ]
+<B_documents_portfolio>
+
+<section class="documents documents_portfolio" id="documents_portfolio">
+	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {!par date}{vu=non}{0,#ENV{limite,100}} {pagination #ENV{pagination,100}}>[
+	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
+		 type="#MIME_TYPE"
+		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
+	[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>[(#FICHIER
+        |image_reduire{*,200}
+		|inserer_attribut{class,spip_logos}
+		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
+	]</BOUCLE_documents_portfolio>
+	[<p class="pagination">(#PAGINATION)</p>] 
+</section>
+</B_documents_portfolio>
+
+
+[(#REM)
+	Liste des autres documents joints
+]
+<B_documents_joints>
+	<section class="liste documents documents_joints">
+	<h2 class="h2"><:titre_documents_joints:></h2>
+	<ul class="liste-items">
+		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {id_produit ?} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>[
+		<li class="item">
+			<strong><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></strong>
+			<span class="small">(<span>#TYPE_DOCUMENT[ &ndash; (#TAILLE|taille_en_octets)]</span>)</span>
+			#DESCRIPTIF
+		]</li>
+		</BOUCLE_documents_joints>
+	</ul>
+	</section>
+</B_documents_joints>

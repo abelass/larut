@@ -1,0 +1,36 @@
+#CACHE{0}
+<BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>
+    #SET{logo,#LOGO_RUBRIQUE}
+    #SET{copyright,#COPYRIGHT}
+    <BOUCLE_art(ARTICLES){id_rubrique}{0,2}>
+    [(#TOTAL_BOUCLE|=={1}|oui)
+        #SET{logo,#LOGO_ARTICLE}
+        #SET{copyright,#COPYRIGHT|sinon{''}}
+        ]
+    </BOUCLE_art>
+    [<div class="logo">(#GET{logo}|image_reduire{400,*})
+    <INCLURE{fond=inclure/copyright,id_auteur=#GET{copyright}}/>
+        </div>]
+    #SET{id_document,#ARRAY}
+    [(#ENV{id_trad}|>{0}|?{
+        #SET{id_trad,#ENV{id_trad}}
+        ,
+        #SET{id_trad,#ENV{id_rubrique}}
+    })]
+    [(#REM)Affichage des objets séléctionnées]
+    <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest=#ENV{id_rubrique}}{objet_dest =rubrique}{0,1}>
+        <INCLURE{fond=inclure/selection_objets,env,id_objet_dest=#ENV{id_rubrique},objet_dest=rubrique,logo=oui,type=#TYPE_LIEN,env}/>
+    </BOUCLE_selection_teste>
+    [(#REM)Galerie pour la section création]
+        [(#COMPOSITION|=={creations}|oui)
+        <INCLURE{fond=inclure/galerie_articles_sousrubriques,id_rubrique,pagination=3,logo=oui,width=180,height=180}/>
+        #SET{defaut,non}
+        ]
+     [(#REM)Galerie pour les sous section création]   
+        [(#COMPOSITION|=={sous_rubrique_creations}|oui)
+        <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui,width=180,height=180}/>
+        #SET{defaut,non}
+        ]        
+        [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/documents,id_parent=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},env}/>]
+    <//B_selection_teste>
+</BOUCLE_rub>

@@ -1,0 +1,50 @@
+[(#REM) Portfolio : album d'images ]
+
+<B_articles>
+    <aside class="bloc clearfix documents_album_cdc" id="documents_album_#ENV{id_rubrique}">
+    <ul>
+    <BOUCLE_articles(ARTICLES){id_rubrique}{pagination #ENV{pagination,9}}{0,#ENV{limit,3}}{!par date}>#SET{titre,#TITRE}
+    #SET{logo,''}
+    [(#ENV{logo}|et{[(#LOGO_ARTICLE|!={''}|oui)]}|oui)#SET{logo,oui}]
+    [(#GET{logo}|oui)
+            <li[(#COMPTEUR_BOUCLE|modulo{4}|=={0}|oui) class="clear"]>
+            <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+            [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
+            [(#LOGO_ARTICLE
+            |image_passe_partout{#ENV{width,160},#ENV{height,160}}
+            |image_recadre{#ENV{width,160},#ENV{height,160}}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
+            </a>
+        </li>
+    ]
+    <B_documents_portfolio2>
+        <BOUCLE_documents_portfolio2(DOCUMENTS) {id_article} {mode ?}{extension IN png,jpg,gif} {!par date}{doublons}{tout}{0,1}{si #GET{logo}|non}>
+        <li[(#COMPTEUR_BOUCLE|modulo{4}|=={0}|oui) class="clear"]>        
+          <BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{id_objet=#ID_DOCUMENT}{objet_dest=document}{0,1}>
+            <BOUCLE_documents_pr(DOCUMENTS) {id_document=#ID_OBJET_DEST} {tout}>
+            <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+            [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
+            [(#FICHIER
+            |image_passe_partout{#ENV{width,160},#ENV{height,160}}
+            |image_recadre{#ENV{width,160},#ENV{height,160}}
+            |inserer_attribut{class,spip_logos}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})] 
+            </BOUCLE_documents_pr> 
+        </BOUCLE_selection_teste>
+            <a href="#URL_ARTICLE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+            [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
+            [(#FICHIER
+            |image_passe_partout{#ENV{width,160},#ENV{height,160}}
+            |image_recadre{#ENV{width,160},#ENV{height,160}}
+            |inserer_attribut{class,spip_logos}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
+            </a>
+          <//B_selection_teste>
+        </li>
+        </BOUCLE_documents_portfolio2>
+    </B_documents_portfolio2>
+    </BOUCLE_articles>
+    </ul>
+    [<p class="pagination">(#PAGINATION)</p>]
+</aside><!--#documents_album-->
+</B_articles>
