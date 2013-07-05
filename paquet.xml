@@ -7,37 +7,29 @@
 	logo="prive/themes/spip/images/larut-64.png"
 	documentation=""
 >
-	<!--
-		Paquet genere le 2013-07-05 17:20:00
-		(Vous pouvez bien entendu supprimer ces commentaires) 
-	-->
+
 
 	<nom>Larut</nom>
 
-	<!-- cette balise peut etre presente plusieurs fois s'il y a plusieurs auteurs --> 
 	<auteur lien='http://websimple.be'>Rainer Müller</auteur>
 
 	<licence>GNU/GPL</licence>
 
-	<!--
-		Exemple de commandes
-		* dependances
-		<necessite nom="saisies" compatibilite="[1.21.0;]" />
-		<utilise nom="saisies" compatibilite="[1.21.0;]" />
-		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
-		* pipelines
-		<pipeline nom="autoriser" inclure="larut_autorisations.php" />
-		<pipeline nom="insert_head" inclure="larut_pipelines.php" />
-		* declarer un pipeline 
-		<pipeline nom="mon_pipeline" action="" />
-		* parents de menus de SPIP :
-				menu_accueil (A eviter), menu_edition, menu_publication,
-				menu_activite, menu_squelette, menu_administration, menu_configuration 
-		<menu nom="larut" titre="larut:larut_titre" parent="menu_edition"  icone="images/larut-16.png" />
-		* parents d'onglets... configuration, plugins, statistiques, ... 
-		<onglet nom="larut" titre="larut:larut_titre" parent="configuration" icone="images/larut-24.png" />
-	-->
-
+	<necessite nom="wsps_html5" compatibilite="[1.0.0;]" /> 
+	<necessite nom="mcp_ml" compatibilite="[0.1.2;]" /> 	
+	<necessite nom="selection_objet" compatibilite="[1.5.7;]" />
+	<necessite nom="facteur" compatibilite="[2.3.1;]" />		
+	<necessite nom="seo" compatibilite="[1.8.1;]" />
+	<necessite nom="mailcrypt" compatibilite="[2.4.0;]" />		
+	<necessite nom="cextras" compatibilite="[3.2.5;[" />	
+	<necessite nom="iextras" compatibilite="[3.1.0;[" />
+	<necessite nom="basicone" compatibilite="[0.1.2;[" />	
+	<necessite nom="menuder" compatibilite="[2.2.0;]" />
+	<necessite nom="newsletters" compatibilite="[1.2.8;]" />
+	<necessite nom="notifications" compatibilite="[3.0.10;]" />
+	
+	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
+	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
 
 
 </paquet>
