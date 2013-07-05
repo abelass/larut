@@ -1,5 +1,0 @@
-<composition>
-        <nom>La rubrique inspirations</nom>
-        <description>Affiche la rubrique inspirations</description>
-         <branche type="rubrique" composition="inspirations_sr" />     
-</composition>
