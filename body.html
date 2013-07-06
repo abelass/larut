@@ -7,7 +7,7 @@
 			[<nav class="navbar navbar-inverse navbar-responsive" id="nav">
 				(#INCLURE{fond=inclure/nav,env}|navbar_responsive)
 			</nav>]
-    <section class="container" id="container" role="main">
+        <section class="container" id="container" role="main">
 
 				<section class="content span8 " id="content">
 					<INCLURE{fond=content/#ENV{type-page},env} />
@@ -22,5 +22,5 @@
 			<footer class="footer" id="footer">
 				<INCLURE{fond=footer/#ENV{type-page},env} />
 			</footer>
-	</div>
+	</section>
 </body>
