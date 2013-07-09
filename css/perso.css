@@ -35,7 +35,6 @@ body{
 	box-shadow: none;
 	border:none;
 	max-width: 1200px;
-	min-width: 900px;
 	width:auto;
 	margin:0 auto;
 	position:relative;
@@ -49,9 +48,12 @@ body{
 	width:37%;
 	float:right;
   font-size: 80%;
+  margin:0;padding:0
 }
 
-#extra1{width:14%;float:left;}
+#extra1{width:14%;float:left;padding:0}
+
+.extra1{margin: 0 0 1.5em 0;}
 
 #extra1 h2, #extra1 .h2 { 
 font-size: 1.3em;
@@ -70,6 +72,9 @@ padding: 0;
     padding-top: 0;
     text-align: center;
     width: 48%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
 }
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
@@ -85,6 +90,8 @@ padding: 0;
     left: 1em;
     position: absolute;
     top: 50px;
+    max-width: 300px;
+    width: auto;
 }
 	
 .accueil a:hover{
@@ -207,7 +214,7 @@ aside.tools{
 	border:none;
 	position:absolute;
 	top:2em;
-	width:100%
+	width:95%
 	}
 
 .formulaire_newsletter input.text{float:left;width:80%;font-size:0.8em;}
@@ -232,6 +239,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     text-align: right;
 }
 
+ul{list-style: none;margin-left:0}
 .liste-items .item .info-publi { 
 background: #DDDDDD;
 display: block;
@@ -252,7 +260,7 @@ p{
 	text-align: justify;
 	}
 	
-.logo{width:400px}
+
 
 .spip_logos {margin: 0;}
 
@@ -317,7 +325,7 @@ h2.articles_recents{
 	margin:0.5em;
 }
 
-.art_rub li {float:left;margin-right:0.5em}
+.art_rub li {float:left;margin:0 0.5em 0.5em 0}
 
 /*Mediabox*/
 
@@ -371,4 +379,88 @@ a[hreflang]:after {
 .container #outils {
     background-color: transparent
 
+}
+
+@media only screen and (max-width: 767px) {
+	body{margin:0;padding:0;font-size:0.8em}
+
+   	#nom_site_spip{  
+   		position:relative;
+    	bottom:0.1em;
+    	border:none
+    	}
+   
+   #header{top:0.1em;height:140px;overflow:hidden}
+	.page{padding:0;margin:0;border-radius: 0;width:100%}
+	.container{margin-left:0;width:100%}
+	.rubrique_home .container{width:100%}
+	
+.accueil {
+	float:left;
+	top:0;
+    position: relative;
+    width:50%
+
+}
+	
+	#nav{
+		position: absolute;
+		top:0em;
+		right:0;
+		z-index:500;
+		}
+		
+	aside.tools{
+		float:left;
+		position:relative;
+		text-align:right;
+		padding-right:0.2em;
+		width:49%
+		}
+		
+
+	.formulaire_menu_lang{text-align:left}
+	
+	.formulaire_menu_lang, .header .formulaire_menu_lang {
+    float: right;
+
+}
+	.formulaire_newsletter{ight:0}
+	.navbar-inverse .btn-navbar {
+	    display: block;
+		}
+
+	.menuder, .menuder ul{
+		background:transparent;
+		text-align:right;
+	}
+	.formulaire_menu_lang {
+	    text-align: right;
+	    
+	}
+
+	.formulaire_newsletter_subscribe.formulaire_spip form {
+	    float: right;
+	    margin-bottom: 0;
+	    width: 50%;
+	}
+	
+	.menuder li ul{position:relative;left:0}
+	input.submit:first-child {
+    font-size: 0.8em;
+    
+	}
+.formulaire_newsletter.formulaire_spip .boutons{display:none}
+}
+@media only screen and (max-width: 450px) {
+body {
+	font-size:0.65em;
+	}
+	#header{height:auto;}
+	.accueil {
+	float: none;
+    width:100%
+
+}
+   
 }
