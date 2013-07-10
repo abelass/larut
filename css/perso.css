@@ -131,7 +131,7 @@ padding: 0;
 	visibility: visible;
 	}	
 
-.logo{padding-left:2em}
+.logo{padding-left:2em;width:85%}
 
 
 .documents_portfolio a{background:transparent url(images/search_10.png) no-repeat bottom right}
@@ -276,7 +276,8 @@ p{
    
 
 #documents_portfolio{
-	width:98%;    margin: 0 auto;
+	max-width:435px;
+	width:100%;    margin: 0 auto;
     text-align: center;}
 
 
@@ -331,7 +332,11 @@ h2.articles_recents{
 	position:relative;
 	border:none;
 	margin:0.5em;
+	vertical-align:bottom;
 }
+
+.documents_album_cdc{width:98%}
+
 .art_rub{width:100%}
 
 .art_rub li {float:left;margin:0 0.5em 0.5em 0;width:30%}
@@ -354,7 +359,7 @@ h2.articles_recents{
 	position: relative;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 96%;
 	height: 100%;
 	padding-left:2%
 }
@@ -449,18 +454,18 @@ a[hreflang]:after {
     	}
    
    #header{top:0.1em;height:140px;overflow:hidden}
-	.page{padding:0;margin:0;border-radius: 0;width:100%}
+	.page{padding:0 2%;margin:0;border-radius: 0;width:96%}
 	.container{margin-left:0;width:100%}
 	.rubrique_home .container{width:100%}
 	
-.accueil {
-	float:left;
-	top:0;
-    position: relative;
-    width:50%
-
-}
+	.accueil {
+		float:left;
+		top:0;
+	    position: relative;
+	    width:50%
 	
+	}
+		
 	#nav{
 		position: absolute;
 		top:0em;
@@ -511,11 +516,13 @@ a[hreflang]:after {
     
 	}
 .formulaire_newsletter.formulaire_spip .boutons{display:none}
+
+.logo{padding-left:2em;width:80%}
 }
 @media only screen and (max-width: 450px) {
 	#header{height:auto;overflow:visible}
 	
-	.page{width:99%;padding-left:1%;overflow:hidden}
+	.page{overflow:hidden}
 	.accueil {
 		float: none;
 	    width:100%}
@@ -547,7 +554,9 @@ a[hreflang]:after {
 	.content,#extra2,#extra1{width:100%;float:none}
 	
 	.logo {
-    padding: 0.5em;
+		width:100%;
+    padding: 0;
+   }
 
 	
 }
