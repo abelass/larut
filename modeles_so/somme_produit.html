@@ -8,7 +8,7 @@
 
 <B_selection>
     <div class="somme">
-    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest} {objet_dest}{'<div class="plus">&nbsp;</div>'}>
+    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest} {objet_dest}>
 
         [<div class="item">(#ID_OBJET|generer_modele{#OBJET,modeles_so/inc-somme_produit,#ARRAY{
             id_selection_objet,#ID_SELECTION_OBJET,
@@ -24,10 +24,15 @@
             width,130,
             url,#URL|sinon{#ENV{url}}  
             }})</div>] 
+            [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)
+            <div class="plus"><img class="plus" src="#CHEMIN{css/images/plus.png}" alt="plus"/></div>
+            ]
     </BOUCLE_selection>
     </div>
 </B_selection>
 <div class="principal">
-    <div class="equal">&nbsp;</div>
+    <div class="equal"><img class="equal" src="#CHEMIN{css/images/equal.png}" alt="equal"/></div>
     <INCLURE{fond=modeles_so/inc-somme_produit,env,height=#GET{height},width=#GET{width}}/>
+    <br class="nettoyeur"/>
 </div>
+

@@ -24,6 +24,8 @@ margin-bottom: 1em;
 }
 
 /*blocs principales*/
+html, body {height:100%}
+
 body{
 	background:#ffffff;
 	margin:0 auto;
@@ -69,12 +71,14 @@ padding: 0;
 #extra2 {
     clear: none;
     float: left;
-    padding-top: 0;
     text-align: center;
     width: 48%;
     margin:0;
-    padding:0;
-    overflow:hidden;
+    padding:0 0 1% 0;
+   /* overflow:hidden;*/
+    position: relative;
+
+
 }
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
@@ -103,6 +107,10 @@ padding: 0;
 .accueil .h1 {display:none}
 
 /*contenu principale*/
+
+.contenu-principal {
+    padding-left: 2%;
+}
 
 .chapo{padding-right:1em;color:#000000}
 
@@ -212,7 +220,7 @@ aside.tools{
 	background:none;
 	padding:0;
 	border:none;
-	position:absolute;
+	position:relative;
 	top:2em;
 	width:95%
 	}
@@ -324,8 +332,11 @@ h2.articles_recents{
 	border:none;
 	margin:0.5em;
 }
+.art_rub{width:100%}
 
-.art_rub li {float:left;margin:0 0.5em 0.5em 0}
+.art_rub li {float:left;margin:0 0.5em 0.5em 0;width:30%}
+
+
 
 /*Mediabox*/
 
@@ -339,28 +350,75 @@ h2.articles_recents{
 
 /*Display somme*/
 
-.documents_somme_produit{padding-left:2%}
+.documents_somme_produit{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-left:2%
+}
+
+
 
 .documents_somme_produit .somme,.documents_somme_produit .principal, .documents_somme_produit .equal{float:left}
 
-.documents_somme_produit .equal{background:url(images/equal.png) no-repeat 50% 50%;}
+.documents_somme_produit .equal{
+	
+	}
 
-.documents_somme_produit .plus{background:url(images/plus.png) no-repeat 50% 50%;}
+.documents_somme_produit div.plus{
+	vertical-align:middle;
+	padding:0;
+	margin:0;	
+
+	}
 
 
-#somme_produit .equal{height:400px;width:150px}
+#somme_produit .somme {width:30%;position:absolute;height:100%}
+#somme_produit .principal {width:73%;margin-left:28%}
 
-#somme_produit .plus{padding-bottom:10px;height:120px;width:120px;}
+#somme_produit_large {width:95%;}
 
-#somme_produit_large .somme{width:100%; height:150px}
+#somme_produit .somme div{height:33%}
+
+#somme_produit_large .somme div{width:33%}
+
+#somme_produit div.equal{
+	width:20%;
+	height: 100%;
+    padding: 48% 0 51% 0;
+	}
+img.plus{
+ 	height: 45%;
+    margin-top: 20%;
+	}
+	
+img.equal{
+	width:100%;
+	}	
+	
+
+#extra2 #somme_produit .spip_logos{width:70%}
+
+#somme_produit div.plus{margin-bottom:0;width:100%;}
+
+#somme_produit_large .somme{width:100%; text-align:center}
 
 #somme_produit_large .somme .item, #somme_produit_large .somme .plus{float:left;}
 
-#somme_produit_large .plus{padding-bottom:10px;height:120px;width:140px;}
+#somme_produit_large div.plus{width:20%; padding: 4% 4% 0 10%;overflow:hidden}
 
-#somme_produit_large .principal{width:400px;clear:both} 
+#somme_produit_large .principal{width:100%;clear:both;margin-top:4%} 
 
-#somme_produit_large .equal{width:400px;height:150px;clear:both} 
+#somme_produit_large .equal{width:100%;height:100%;clear:both} 
+
+#somme_produit_large img.equal{
+	max-width:64px;
+	width:18%;
+	margin-left:43.2%
+
+	}
 
 /*Forms*/
 #hierarchie{display:none}
@@ -382,7 +440,7 @@ a[hreflang]:after {
 }
 
 @media only screen and (max-width: 767px) {
-	body{margin:0;padding:0;font-size:0.8em}
+	body{margin:0;padding:0;font-size:0.9em}
 
    	#nom_site_spip{  
    		position:relative;
@@ -412,10 +470,11 @@ a[hreflang]:after {
 		
 	aside.tools{
 		float:left;
-		position:relative;
+		position:absolute;
 		text-align:right;
 		padding-right:0.2em;
 		width:49%
+		right:0.2em
 		}
 		
 
@@ -425,10 +484,11 @@ a[hreflang]:after {
     float: right;
 
 }
-	.formulaire_newsletter{ight:0}
+	.formulaire_newsletter{right:0;top:0}
 	.navbar-inverse .btn-navbar {
 	    display: block;
 		}
+	input#session_email{width:60%}
 
 	.menuder, .menuder ul{
 		background:transparent;
@@ -453,14 +513,42 @@ a[hreflang]:after {
 .formulaire_newsletter.formulaire_spip .boutons{display:none}
 }
 @media only screen and (max-width: 450px) {
-body {
-	font-size:0.65em;
-	}
-	#header{height:auto;}
+	#header{height:auto;overflow:visible}
+	
+	.page{width:99%;padding-left:1%;overflow:hidden}
+	
 	.accueil {
-	float: none;
-    width:100%
+		float: none;
+	    width:100%}
+	aside.tools{
+		position:relative;
+		float:none;
+		top:0;
+		text-align:left;
+		width:100%;
+		overflow:hidden,
+		padding:0 0.5em
+		
+		}
+	   
+	 #outils {width:20%;}
+	aside.tools:after{clear:both}
+	.formulaire_newsletter{position:relative;top: 0;}
+	.formulaire_menu_lang, .header .formulaire_menu_lang {
+    float: left;
+    width:30%;
+    text-align:left;
+	}
+	.tools .ariaformprop{
+    	float: left;
+    	width:70%
+	} 
+	.formulaire_newsletter_subscribe.formulaire_spip ul{margin-bottom:0}
+	
+	.content,#extra1,#extra2{width:100%;float:none}
+	
+	.logo {
+    padding: 0.5em;
 
-}
-   
+	
 }
