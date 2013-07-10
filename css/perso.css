@@ -473,12 +473,16 @@ a[hreflang]:after {
 		z-index:500;
 		}
 		
+	#nav ul li { 
+		clear:both;
+		display:block;
+		}
 	aside.tools{
 		float:left;
 		position:absolute;
 		text-align:right;
 		padding-right:0.2em;
-		width:49%
+		width:49%;
 		right:0.2em
 		}
 		
@@ -515,9 +519,11 @@ a[hreflang]:after {
     font-size: 0.8em;
     
 	}
-.formulaire_newsletter.formulaire_spip .boutons{display:none}
-
-.logo{padding-left:2em;width:80%}
+	.formulaire_newsletter.formulaire_spip .boutons{display:none}
+	
+	#documents_portfolio {width: 90%;}
+	
+	.logo{padding-left:2em;width:80%}
 }
 @media only screen and (max-width: 450px) {
 	#header{height:auto;overflow:visible}
