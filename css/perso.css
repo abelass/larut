@@ -53,24 +53,24 @@ body{
   margin:0;padding:0
 }
 
-#extra1{width:14%;float:left;padding:0}
+#extra2{width:14%;float:right;padding:0}
 
-.extra1{margin: 0 0 1.5em 0;}
+.extra2{margin: 0 0 1.5em 0;}
 
-#extra1 h2, #extra1 .h2 { 
+#extra2 h2, #extra2 .h2 { 
 font-size: 1.3em;
 line-height: normal;
 }
 
-.extra1 .menu { 
+.extra2 .menu { 
 background:  transparent;
 border: none;
 padding: 0;
 }
 
-#extra2 {
+#extra1 {
     clear: none;
-    float: left;
+    float: right;
     text-align: center;
     width: 48%;
     margin:0;
@@ -116,7 +116,7 @@ padding: 0;
 
 /*extra*/
 
-#extra2 .spip_logos{
+#extra1 .spip_logos{
 	float:none;
 	position:relative;
 	border-radius: 12px 12px 12px 12px;
@@ -399,7 +399,7 @@ img.equal{
 	}	
 	
 
-#extra2 #somme_produit .spip_logos{width:70%}
+#extra1 #somme_produit .spip_logos{width:70%}
 
 #somme_produit div.plus{margin-bottom:0;width:100%;}
 
@@ -516,7 +516,6 @@ a[hreflang]:after {
 	#header{height:auto;overflow:visible}
 	
 	.page{width:99%;padding-left:1%;overflow:hidden}
-	
 	.accueil {
 		float: none;
 	    width:100%}
@@ -545,7 +544,7 @@ a[hreflang]:after {
 	} 
 	.formulaire_newsletter_subscribe.formulaire_spip ul{margin-bottom:0}
 	
-	.content,#extra1,#extra2{width:100%;float:none}
+	.content,#extra2,#extra1{width:100%;float:none}
 	
 	.logo {
     padding: 0.5em;
