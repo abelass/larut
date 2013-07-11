@@ -1,9 +1,9 @@
 <B_images>
 <div class="album">
     <h2><:larut:galerie:></h2>
-   <BOUCLE_images(DOCUMENTS){id_rubrique}{mode?}{extension IN jpg,png,gif}{0,1}{par hasard}{si #GET{defaut}|!={non}|oui}>
-   <a href="[(#URL_PAGE{galerie}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" title="<:larut:galerie:>" rel="nofollow" target="_blank"
-    onclick="if (jQuery.modalbox) {jQuery.modalbox('[(#URL_PAGE{galerie}|parametre_url{id_rubrique,#ID_RUBRIQUE}|parametre_url{var_zajax,content})]');return false;}">
+   <BOUCLE_images(DOCUMENTS){id_rubrique ?}{id_document ?IN #ENV{id_document}}{mode=document}{extension IN jpg,png,gif}{0,1}{par hasard}{vu=non}{doublons}{si #GET{defaut}|!={non}|oui}>
+   <a href="[(#URL_PAGE{galerie}|parametre_url{id_rubrique,#ID_RUBRIQUE}|parametre_url{id_article,#ENV{id_article}})]" title="<:larut:galerie:>" rel="nofollow" target="_blank"
+    onclick="if (jQuery.modalbox) {jQuery.modalbox('[(#URL_PAGE{galerie}|parametre_url{id_rubrique,#ENV{id_rubrique}}|parametre_url{id_article,#ENV{id_article}}|parametre_url{var_zajax,content})]');return false;}">
        [(#FICHIER
             |image_passe_partout{#ENV{width,160},#ENV{height,160}}
             |image_recadre{#ENV{width,160},#ENV{height,160}}

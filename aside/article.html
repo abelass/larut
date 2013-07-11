@@ -1,4 +1,11 @@
 <BOUCLE_art(ARTICLES){id_article}{tout}>
+    [(#COMPOSITION|=={creations}|non)
+        [<div class="logo">
+                    (#LOGO_ARTICLE||image_reduire{400,*})
+                    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+         </div>]
+        ]
+
 
     #SET{id_document,#ARRAY}
     [(#ENV{id_trad}|>{0}|?{
@@ -17,19 +24,9 @@
         <//B_selection_teste> 
     </BOUCLE_documents_tableau>
     [(#GET{defaut}|=={non}|non)
-        [(#INCLURE{fond=inclure/galerie_home,id_document=#GET{id_document},pagination=100,ajax}|sinon{
-                [<div class="logo">
-                    (#LOGO_ARTICLE||image_reduire{400,*})
-                    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
-                </div>]}
-            )]
+        [(#INCLURE{fond=inclure/galeries,id_document=#GET{id_document},id_article})]
            ]
     </B_documents_tableau>
-        [(#INCLURE{fond=inclure/documents,id_rubrique=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},ajax}|sinon{
-                [<div class="logo">
-                    (#LOGO_ARTICLE||image_reduire{400,*})
-                    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
-                 </div>]})
-                 ]
+
     <//B_documents_tableau>
 </BOUCLE_art>

@@ -1,5 +1,4 @@
 <composition>
-        <nom>La rubrique créations</nom>
+        <nom>L'article créations</nom>
         <description>Afficher les articles de la rubrique création</description>
-        <branche type="article" composition="creations" />     
 </composition>
