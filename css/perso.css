@@ -464,7 +464,7 @@ a[hreflang]:after {
 
 @media only screen and (max-width: 767px) {
 	body{margin:0;padding:0;font-size:0.9em}
-
+	.art_rub.galerie {width:100%}
    	#nom_site_spip{  
    		position:relative;
     	bottom:0.1em;
