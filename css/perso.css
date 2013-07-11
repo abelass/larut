@@ -348,11 +348,18 @@ h2.articles_recents{
 
 .art_rub, .page_galerie .art_rub.galerie {width:100%}
 
-.art_rub li {float:left;margin:0 0.5em 0.5em 0;width:30%}
+.art_rub li {
+	float:left;
+	margin:0 0.5em 0.5em 0;
+	width:30%;
+	display:block;
+	position:relative}
 
 .page_galerie .art_rub.galerie li {width:15%}
 
 .album{margin-top:1em}
+
+.album .titre{background:#FFFFFF;position:absolute;bottom:0;right:0;width:100%;opacity:0.7}
 
 /*Mediabox*/
 

@@ -20,7 +20,7 @@
             <h2>[(#GRAND_TOTAL|singulier_ou_pluriel{larut:galerie,larut:galeries})]</h2>
             <ul>
            <BOUCLE_docs_articles(ARTICLES documents documents_liens){id_rubrique}{documents.mode IN document, image}{documents.extension IN png,jpg,gif}>
-                <INCLURE{fond=inclure/inc-galeries_articles,id_article}/>
+                <INCLURE{fond=inclure/inc-galeries_articles,id_article,titre}/>
            </BOUCLE_docs_articles>
             </ul>
         </div>
