@@ -28,7 +28,8 @@
         <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui,width=180,height=180}/>
         #SET{defaut,non}
         ]
-        [(#REM)Sinon l'affichage par défait de documents]     
-        [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/documents,id_parent=#ENV{id_rubrique},limite=#GET{limite},pagination=#GET{pagination},env}/>]
+
+        [(#REM)Sinon l'affichage par defaut des images ou documents] 
+        [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/galeries,env}/>]
     <//B_selection_teste>
 </BOUCLE_rub>

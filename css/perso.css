@@ -57,6 +57,10 @@ body{
 
 .extra2{margin: 0 0 1.5em 0;}
 
+.page_galerie .content{width:100%}
+
+
+
 #extra2 h2, #extra2 .h2 { 
 font-size: 1.3em;
 line-height: normal;
@@ -77,9 +81,9 @@ padding: 0;
     padding:0 0 1% 0;
    /* overflow:hidden;*/
     position: relative;
-
-
 }
+
+.page_galerie #extra1, .page_galerie #extra1{width:0; display:none}
 
 #footer{padding-top:1em;background:#ffffff; text-align:center}
 
@@ -116,7 +120,7 @@ padding: 0;
 
 /*extra*/
 
-#extra1 .spip_logos{
+.spip_logos{
 	float:none;
 	position:relative;
 	border-radius: 12px 12px 12px 12px;
@@ -337,11 +341,17 @@ h2.articles_recents{
 
 .documents_album_cdc{width:98%}
 
-.art_rub{width:100%}
+.art_rub.galerie {width:650px}
+
+
+.art_rub, .page_galerie .art_rub.galerie {width:100%}
+
 
 .art_rub li {float:left;margin:0 0.5em 0.5em 0;width:30%}
 
+/*.art_rub.galerie li {width:10em}*/
 
+.page_galerie .art_rub.galerie li {width:15%}
 
 /*Mediabox*/
 
