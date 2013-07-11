@@ -6,8 +6,8 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
     //G
-    'galerie'=>'Galerie',
-    'galeries'=>'Galeries',    
+    'galerie'=>'Galerien d\'images',
+    'galeries'=>'Galeries  d\'images',    
 
 	// L
 	'larut_titre' => 'Larut',
