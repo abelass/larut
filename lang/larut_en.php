@@ -7,7 +7,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'larut_titre' => 'Larut',
-	'liens' => 'Liens',	
+	'liens' => 'Links',	
 	
 );
 
