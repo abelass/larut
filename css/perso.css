@@ -290,6 +290,9 @@ span.sep {
     display: inline;
 }
 
+input, button, select, textarea { 
+font-family: "opificioregular","Luxi sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
+}
 /*Listes*/
 .liste-items .item:hover {background-color:transparent;}
 
@@ -343,15 +346,13 @@ h2.articles_recents{
 
 .art_rub.galerie {width:650px}
 
-
 .art_rub, .page_galerie .art_rub.galerie {width:100%}
-
 
 .art_rub li {float:left;margin:0 0.5em 0.5em 0;width:30%}
 
-/*.art_rub.galerie li {width:10em}*/
-
 .page_galerie .art_rub.galerie li {width:15%}
+
+.album{margin-top:1em}
 
 /*Mediabox*/
 
@@ -548,9 +549,8 @@ a[hreflang]:after {
 		top:0;
 		text-align:left;
 		width:100%;
-		overflow:hidden,
-		padding:0 0.5em
-		
+		overflow:hidden;
+		padding:0 0.5em		
 		}
 	   
 	 #outils {width:20%;}
