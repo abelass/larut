@@ -16,7 +16,7 @@
 
 	<necessite nom="wsps_html5" compatibilite="[1.0.0;]" /> 
 	<necessite nom="mcp_ml" compatibilite="[0.1.2;]" /> 	
-	<necessite nom="selection_objet" compatibilite="[1.5.7;]" />
+	<necessite nom="selection_objet" compatibilite="[1.9.2;]" />
 	<necessite nom="facteur" compatibilite="[2.3.1;]" />		
 	<necessite nom="seo" compatibilite="[1.8.1;]" />
 	<necessite nom="mailcrypt" compatibilite="[2.4.0;]" />		
