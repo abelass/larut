@@ -18,8 +18,8 @@
    <B_evenements>   
    <p>
        <b>#TITRE</b> - [(#INTRODUCTION|textebrut)]
-        <BOUCLE_evenements(EVENEMENTS){id_article}{0,2}>
-            [(#TOTAL_BOUCLE|=={1}|oui)#SET{id_evenement,#ID_EVENEMENT} ok]
+        <BOUCLE_evenements(EVENEMENTS){id_article}{inscription=1}{0,2}>
+            [(#TOTAL_BOUCLE|=={1}|oui)#SET{id_evenement,#ID_EVENEMENT}]
         </BOUCLE_evenements>
         <a href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><:larut:inscription:></a>
    </p>            
