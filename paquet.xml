@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.1.0"
+	version="1.2.0"
 	etat="dev"
 	compatibilite="[3.0.10;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -26,6 +26,8 @@
 	<necessite nom="menuder" compatibilite="[2.2.0;]" />
 	<necessite nom="newsletters" compatibilite="[1.2.8;]" />
 	<necessite nom="notifications" compatibilite="[3.0.10;]" />
+	<necessite nom="agenda" compatibilite="[3.12.1;]" />
+	<necessite nom="reservation_evenement" compatibilite="[1.1.1;]" />		
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
