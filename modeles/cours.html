@@ -1,0 +1,33 @@
+#SET{id_article,#LISTE{#ENV{id_article}}}
+
+<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
+    #SET{url_reservation,#URL_RUBRIQUE}
+</BOUCLE_rub_res>
+
+
+<BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ENV{id_article}}{objet_dest=article}{objet=rubrique}>
+   <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
+        #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+   </BOUCLE_articles>
+</BOUCLE_rubs_lies>
+
+<B_articles_evenements>
+
+   <BOUCLE_articles_evenements(ARTICLES){id_article IN #GET{id_article}}{par num titre, titre}>
+   #SET{id_evenement,''}
+   <B_evenements>   
+   <p>
+       <b>#TITRE</b> - [(#INTRODUCTION|textebrut)]
+        <BOUCLE_evenements(EVENEMENTS){id_article}{0,2}>
+            [(#TOTAL_BOUCLE|=={1}|oui)#SET{id_evenement,#ID_EVENEMENT} ok]
+        </BOUCLE_evenements>
+        <a href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><:larut:inscription:></a>
+   </p>            
+        </B_evenements>  
+  
+   </BOUCLE_articles_evenements>
+
+
+
+
+

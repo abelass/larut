@@ -13,6 +13,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'larut_titre' => 'Larut',
 	'liens' => 'Links',	
 	
+        // S
+    'inscription'=>'Subscription',
 );
 
 ?>
