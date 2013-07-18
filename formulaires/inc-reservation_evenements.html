@@ -1,0 +1,58 @@
+
+<B_rub_ateliers>
+<li>
+   <BOUCLE_rub_ateliers(RUBRIQUES){id_trad=26}>
+    <B_articles_ateliers>
+    
+       <BOUCLE_articles_ateliers(ARTICLES){id_rubrique}>
+       [(#ID_TRAD|>{0}?{
+                     #SET{id_article,#LISTE{#ID_TRAD}}
+                    ,
+                      #SET{id_article,#LISTE{#ID_ARTICLE}}                 
+                })]
+       #SET{id_article,#LISTE{#ID_ARTICLE}}
+       #SET{titre,#TITRE}
+         <BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
+           <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
+                [(#ID_TRAD|>{0}?{
+                    #SET{id_article,#GET{id_article}|push{#ID_TRAD}}
+                    ,
+                     #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}                   
+                })]
+           </BOUCLE_articles>
+        </BOUCLE_rubs_lies>
+        
+       <B_art_or>
+       [<b>(#GET{titre})</b>]
+       <ul>          
+        <li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>
+            [<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_evenement})</div>]
+        <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}}>
+            [(#COMPTEUR_BOUCLE|!={1}|oui)</li><li>]
+            [(#ID_ARTICLE|unique|oui)
+                #SET{soustitre,#INFO_TITRE{article,#ID_ARTICLE}}
+                [<b>(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</b>]
+            ]
+            <div class="choix">
+                <input type="checkbox" name="id_evenement[#ID_EVENEMENT]" class="checkbox" id="id_evenement_#ID_EVENEMENT" value="#ID_EVENEMENT"[(#ID_EVENEMENT|in_array{#ENV{id_evenement}}|oui) checked="checked"]/>
+                <label for="id_evenement_#ID_EVENEMENT">
+                    <a href="#URL_ARTICLE">[(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]</a>
+            </label>
+            </div>
+        </BOUCLE_art_or>
+        </li>
+        </ul>  
+        </B_art_or>  
+    
+       </BOUCLE_articles_ateliers>
+    
+    </B_articles_ateliers>
+
+
+   </BOUCLE_rub_ateliers>
+</li>
+</B_rub_ateliers>
+
+
+
+
