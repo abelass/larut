@@ -12,6 +12,7 @@
                 })]
        #SET{id_article,#LISTE{#ID_ARTICLE}}
        #SET{titre,#TITRE}
+       #SET{url,#URL_ARTICLE}       
          <BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
            <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
                 [(#ID_TRAD|>{0}?{
@@ -36,7 +37,7 @@
             <div class="choix">
                 <input type="checkbox" name="id_evenement[#ID_EVENEMENT]" class="checkbox" id="id_evenement_#ID_EVENEMENT" value="#ID_EVENEMENT"[(#ID_EVENEMENT|in_array{#ENV{id_evenement}}|oui) checked="checked"]/>
                 <label for="id_evenement_#ID_EVENEMENT">
-                    <a href="#URL_ARTICLE">[(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]</a>
+                    <a href="#GET{url}">[(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]</a>
             </label>
             </div>
         </BOUCLE_art_or>
