@@ -1,9 +1,9 @@
-   <BOUCLE_article(ARTICLES){id_article}>
+<BOUCLE_article(ARTICLES){id_article}>
    #SET{id_article_env,#ID_ARTICLE}
-           <BOUCLE_article_or(ARTICLES){traduction}{origine_traduction}>
+       <BOUCLE_article_or(ARTICLES){traduction}{origine_traduction}>
             #SET{id_article_or,#ID_ARTICLE}
-           </BOUCLE_article_or>
-   </BOUCLE_article>
+       </BOUCLE_article_or>
+</BOUCLE_article>
 
 #SET{id_article,#LISTE{#GET{id_article_or}}}
 
