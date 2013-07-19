@@ -15,16 +15,18 @@
 
    <BOUCLE_articles_evenements(ARTICLES){id_article IN #GET{id_article}}{par num titre, titre}>
    #SET{id_evenement,''}
+   #SET{id_evenement,#ARRAY}
    <B_evenements>   
    <p>
        <b>#TITRE</b> - [(#TEXTE|textebrut)]<br/>
-        <BOUCLE_evenements(EVENEMENTS){id_article}{inscription=1}{0,2}>
-            [(#TOTAL_BOUCLE|=={1}|oui)#SET{id_evenement,#ID_EVENEMENT}]
+        <BOUCLE_evenements(EVENEMENTS){id_article}{inscription=1}>
+            #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
         </BOUCLE_evenements>
          <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"/><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
    </p>            
         </B_evenements>  
 </BOUCLE_articles_evenements>
+
 
 
 
