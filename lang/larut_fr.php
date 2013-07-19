@@ -4,10 +4,15 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
-
+    //C
+    'complet'=>'Complet',    
+    
     //G
     'galerie'=>'Galerie d\'images',
     'galeries'=>'Galeries  d\'images',    
+    
+    //I
+    'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
 
 	// L
 	'larut_titre' => 'Larut',
@@ -17,8 +22,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     //P
     'places_disponibles'=>'Places disponibles :',
     
-    //P
-    'complet'=>'Complet !',    
+    //R
+    'remerciement'=>'Nous vous remercion pour votre inscription<br/>Cordialment',    
+    'reservation_enregistre'=>'Votre Inscription a bien été enregistré.',
     
     // S
     'inscription'=>'Inscription',
