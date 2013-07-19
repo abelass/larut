@@ -4,6 +4,6 @@
     [(#GET{disponibles}|>{0}|?{
                             <:larut:places_disponibles:>[ (#GET{disponibles})]
                             ,
-                            <:larut:complet:>[ : (#GET{disponibles}|replace{'-',''}|>{0}|oui) <:reservation:texte_statut_attente:>]
+                            <:larut:complet:>[ : (#GET{disponibles}|<{0}|?{[(#GET{disponibles}|replace{-,''})] <:reservation:texte_statut_attente:>,<:larut:inscrire_liste_attente:>})]
                             })]
 </div>
