@@ -14,6 +14,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'liens' => 'Liens',	
 	
     
+    //P
+    'places_disponibles'=>'Places disponibles :',
+    
+    //P
+    'complet'=>'Complet !',    
+    
     // S
     'inscription'=>'Inscription',
 );

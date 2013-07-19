@@ -1,3 +1,44 @@
+/*Animations*/
+@-webkit-keyframes bling{
+	0%   {
+		color:#FF0000;
+	}
+	50%   {
+		color:#F5F5F5;
+	}
+	100%   {
+		color:#FF0000;
+	}	
+}    
+
+
+@-ms-keyframes bling{
+	0%   {
+		color:#FF0000;
+	}
+	50%   {
+		color:#F5F5F5;
+	}
+	100%   {
+		color:#FF0000;
+	}	
+}    
+
+
+
+ @keyframes bling{
+ 	
+	0%   {
+		color:#FF0000;
+	}
+	50%   {
+		color:#F5F5F5;
+	}
+	100%   {
+		color:#FF0000;
+	}	
+} 
+
 /*Fonts*/
 @font-face {
     font-family: 'opificioregular';
@@ -445,6 +486,18 @@ img.equal{
 
 /*Forms*/
 #hierarchie{display:none}
+
+.disponibles{font-weight:bold}
+
+.imminent{
+	color:#FF0000;
+	animation: bling 1s  1s infinite;  
+	-ms-animation: bling 5s  0s infinite; 	
+	-webkit-animation: bling 5s  0s infinite; 	
+	
+	}
+
+.complet{color: #FF0000}
 
 /*Links*/
 

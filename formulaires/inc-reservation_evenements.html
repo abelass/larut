@@ -38,7 +38,9 @@
             <div class="choix">
                 <input type="checkbox" name="id_evenement[#ID_EVENEMENT]" class="checkbox" id="id_evenement_#ID_EVENEMENT" value="#ID_EVENEMENT"[(#ID_EVENEMENT|in_array{#ENV{id_evenement}}|oui) checked="checked"]/>
                 <label for="id_evenement_#ID_EVENEMENT">
-                    [(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]<BOUCLE_mots2(MOTS){id_groupe=2}{id_evenement}>, #TITRE, [(#DESCRIPTIF|textebrut)]</BOUCLE_mots2>, #GET{lieu}<//B_mots2>
+                    [(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]<BOUCLE_mots2(MOTS){id_groupe=2}{id_evenement}>, #TITRE, [(#DESCRIPTIF|textebrut)]</BOUCLE_mots2>, #GET{lieu}<//B_mots2>[(#PLACES|>{0}|oui)
+                        <INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,id_evenement,places}/>
+                        ]
                 </label>
             </div>
         </BOUCLE_art_or>
