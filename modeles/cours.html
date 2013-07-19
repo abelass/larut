@@ -17,15 +17,14 @@
    #SET{id_evenement,''}
    <B_evenements>   
    <p>
-       <b>#TITRE</b> - [(#INTRODUCTION|textebrut)]
+       <b>#TITRE</b> - [(#TEXTE|textebrut)]<br/>
         <BOUCLE_evenements(EVENEMENTS){id_article}{inscription=1}{0,2}>
             [(#TOTAL_BOUCLE|=={1}|oui)#SET{id_evenement,#ID_EVENEMENT}]
         </BOUCLE_evenements>
-        <a href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><:larut:inscription:></a>
+         <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"/><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
    </p>            
         </B_evenements>  
-  
-   </BOUCLE_articles_evenements>
+</BOUCLE_articles_evenements>
 
 
 
