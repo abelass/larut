@@ -5,8 +5,9 @@
         (#ID_TRAD|in_array{#LISTE{8,7,9}}|non)
         <h1 class="h1 #EDIT{titre}">#TITRE</h1>
     </header>]
-    
-    #FORMULAIRE_RESERVATION
+    <div class="ajax">
+    #FORMULAIRE_RESERVATION{#ENV{id_evenement}}
+    </div>
     
     [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 </div>
