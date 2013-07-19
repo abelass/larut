@@ -19,6 +19,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'liens' => 'Liens',	
 	
     
+    //M
+    'modele_cours'=>'Resumé cours',
+    'modele_label_afficher_texte'=>'Afficher le texte',    
+    
     //P
     'places_disponibles'=>'Places disponibles :',
     

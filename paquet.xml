@@ -27,7 +27,8 @@
 	<necessite nom="newsletters" compatibilite="[1.2.8;]" />
 	<necessite nom="notifications" compatibilite="[3.0.10;]" />
 	<necessite nom="agenda" compatibilite="[3.12.1;]" />
-	<necessite nom="reservation_evenement" compatibilite="[1.1.1;]" />		
+	<necessite nom="reservation_evenement" compatibilite="[1.2.0;]" />	
+	<necessite nom="inserer_modeles" compatibilite="[1.1.10;]" />			
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
