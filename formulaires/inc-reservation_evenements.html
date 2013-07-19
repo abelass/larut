@@ -8,7 +8,10 @@
                       #SET{id_article,#LISTE{#ID_ARTICLE}}                 
                 })]
        #SET{id_article,#LISTE{#ID_ARTICLE}}
-       #SET{titre,#TITRE}
+       #SET{titre,#TITRE [#LANG]}
+       <BOUCLE_article_or_base(ARTICLES){traduction}{lang=#ENV{lang}}>
+             #SET{titre,#TITRE}
+       </BOUCLE_article_or_base>
        #SET{url,#URL_ARTICLE}     
        #SET{lieu,''}
        <BOUCLE_mots(MOTS){id_groupe=2}{id_article}>#SET{lieu,#TITRE|concat{','}|concat{ #DESCRIPTIF|textebrut}}</BOUCLE_mots>  
@@ -29,10 +32,16 @@
         <li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>
             [<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_evenement})</div>]
         <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
+            <BOUCLE_article(ARTICLES){id_article}>
+               #SET{id_article_or,#ID_ARTICLE}
+                   <BOUCLE_article_or(ARTICLES){traduction}{lang=#ENV{lang}}>
+                        #SET{id_article_env,#ID_ARTICLE}
+                   </BOUCLE_article_or>
+            </BOUCLE_article>
             
             [(#COMPTEUR_BOUCLE|!={1}|oui)</li><li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>]
-            [(#ID_ARTICLE|unique|oui)
-                #SET{soustitre,#INFO_TITRE{article,#ID_ARTICLE}}
+            [(#GET{id_article_env}|unique|oui)
+                #SET{soustitre,#INFO_TITRE{article,#GET{id_article_env}}}
                 [<b><a href="#GET{url}">(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</a></b>]
             ]
             <div class="choix">
