@@ -6,7 +6,7 @@
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
-		prix, #PRIX*,
+		prix, #PRIX_HT,
 		statut,#STATUT		
 	})]})]
 	</BOUCLE_reservation_details>
@@ -40,9 +40,10 @@
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
                <td class="description" style="padding:0 5px">[(#VALEUR|table_valeur{descriptif})]</td>
+               <td class="prix" style="padding:0 5px">[(#VALEUR|table_valeur{prix}|prix_formater)]</td>               
                <td class="statut" style="padding:0 5px">
                    [(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]
-                   </td>               
+               </td>               
             </tr>
             [(#SET{total,[(#GET{total}|plus{[(#VALEUR|table_valeur{prix})]})]})]
             </BOUCLE_details>
