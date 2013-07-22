@@ -3,18 +3,23 @@
    <BOUCLE_rub_ateliers(RUBRIQUES){id_trad=26}>
        <BOUCLE_articles_ateliers(ARTICLES){id_rubrique}>
        [(#ID_TRAD|>{0}?{
-                     #SET{id_article,#LISTE{#ID_TRAD}}
+                     #SET{id_article_base,#LISTE{#ID_TRAD}}
                     ,
-                      #SET{id_article,#LISTE{#ID_ARTICLE}}                 
+                      #SET{id_article_base,#LISTE{#ID_ARTICLE}}                 
                 })]
        #SET{id_article,#LISTE{#ID_ARTICLE}}
        #SET{titre,#TITRE [#LANG]}
        <BOUCLE_article_or_base(ARTICLES){traduction}{lang=#ENV{lang}}>
              #SET{titre,#TITRE}
        </BOUCLE_article_or_base>
-       #SET{url,#URL_ARTICLE}     
-       #SET{lieu,''}
-       <BOUCLE_mots(MOTS){id_groupe=2}{id_article}>#SET{lieu,#TITRE|concat{','}|concat{ #DESCRIPTIF|textebrut}}</BOUCLE_mots>  
+       #SET{url,#URL_ARTICLE} 
+
+          <BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
+                #SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
+          </BOUCLE_gis_art>
+
+       
+       
          <BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
            <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
                 [(#ID_TRAD|>{0}?{
@@ -32,6 +37,7 @@
         <li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>
             [<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_evenement})</div>]
         <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
+        
             <BOUCLE_article(ARTICLES){id_article}>
                #SET{id_article_or,#ID_ARTICLE}
                    <BOUCLE_article_or(ARTICLES){traduction}{lang=#ENV{lang}}>
@@ -47,7 +53,7 @@
             <div class="choix">
                 <input type="checkbox" name="id_evenement[#ID_EVENEMENT]" class="checkbox" id="id_evenement_#ID_EVENEMENT" value="#ID_EVENEMENT"[(#ID_EVENEMENT|in_array{#ENV{id_evenement}}|oui) checked="checked"]/>
                 <label for="id_evenement_#ID_EVENEMENT">
-                    [(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]<BOUCLE_mots2(MOTS){id_groupe=2}{id_evenement}>, #TITRE, [(#DESCRIPTIF|textebrut)]</BOUCLE_mots2>, #GET{lieu}<//B_mots2>[(#PLACES|>{0}|oui)
+                    [(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]<BOUCLE_gis_ev(GIS){id_evenement}>, #TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</BOUCLE_gis_ev>[, <a target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#GET{lieu}|textebrut)</a> ]<//B_gis_ev>[(#PLACES|>{0}|oui)
                         <INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,id_evenement,places}/>
                         ]
                 </label>

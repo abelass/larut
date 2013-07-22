@@ -87,6 +87,7 @@ body{
 }
 
 .container{margin-top:4em; width:100%}
+
 .content { 
 	width:37%;
 	float:right;
@@ -100,7 +101,9 @@ body{
 
 .page_galerie .content{width:100%}
 
+.page_gis #extra2, .page_gis #extra1,{width:0%}
 
+.page_gis .content{width:100%;position:relative}
 
 #extra2 h2, #extra2 .h2 { 
 font-size: 1.3em;
