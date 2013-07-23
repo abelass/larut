@@ -14,7 +14,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     //L   
     'label_a_lire_sur' => 'A lire sur',  
-    'label_enregistrer' => 'J\'aimerai que le site se souviens de moi',       
+    'label_enregistrer' => 'J\'aimerai que le site se souvienne de moi',       
     'label_inscrit_newsletter' => 'Vous êtes inscrit pour recevoir des nouvelles par mail de',  
     'lire_la_suite'=>'Lire la suite',
     'label_publie' => 'Publié le :',    
