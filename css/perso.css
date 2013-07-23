@@ -494,10 +494,7 @@ img.equal{
 .disponibles{font-weight:bold}
 
 .imminent{
-	color:#FF0000;
-	animation: bling 1s  1s infinite;  
-	-ms-animation: bling 5s  0s infinite; 	
-	-webkit-animation: bling 5s  0s infinite; 	
+	color:#FF0000;	
 	
 	}
 
