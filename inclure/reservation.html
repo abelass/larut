@@ -1,22 +1,61 @@
 [(#REM) On peut donner soit un id_reservation, soit un tableau contenant la reservation]
 <BOUCLE_reservation(RESERVATIONS){id_reservation=#ID_RESERVATION}{tout}>
 	[(#REM) Si on trouve une reservation on prend ça comme base ]
+	#SET{statut, #STATUT}
 	#SET{details, #ARRAY}
-	<BOUCLE_reservation_details(RESERVATIONS_DETAILS){id_reservation}{tout}>
+	#SET{articles,#ARRAY}
+    #SET{evenement,#ARRAY}   		
+	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{tout}>
+	    [(#GET{id_#ID_OBJET}|is_array|non)#SET{id_#ID_OBJET,#ARRAY}]
+	    
+
+		<BOUCLE_ev(EVENEMENTS){id_evenement}>
+	    [(#GET{id_#ID_ARTICLE}|is_array|non)#SET{id_#ID_ARTICLE,#ARRAY}]		
+		#SET{id_#ID_ARTICLE,#GET{id_#ID_ARTICLE}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_ARTICLE}}}
+		</BOUCLE_ev>
+
+	    #SET{evenement,#GET{evenement}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_EVENEMENT}}}  
+        #SET{articles,#GET{articles}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_OBJET}}}
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
 		prix, #PRIX_HT,
-		statut,#STATUT		
+		statut,#STATUT,
+		texte_email,#GET{texte_email},
+		id_declinaison,#ID_DECLINAISON,
+		id_article,#ID_OBJET,
+		id_reservations_detail,#ID_RESERVATIONS_DETAIL
 	})]})]
 	</BOUCLE_reservation_details>
 	#SET{reservation, #ARRAY{details, #GET{details}}}
 </BOUCLE_reservation>
 #SET{reservation,#ENV{reservation}}
-<//B_reservation>[
-(#REM) Affichage du detail dans une table si format html demande
+<//B_reservation>
 
-]<BOUCLE_test(CONDITION){si #GET{reservation}|et{#GET{reservation}|is_array|oui}}>[
+   <BOUCLE_articles(DATA){source tableau, #GET{articles}}>
+            <BOUCLE_sel_obj(SELECTION_OBJETS){id_objet_dest=#VALEUR)}{objet_dest=article}>
+               <BOUCLE_a(ARTICLES){id_rubrique=#ID_OBJET}> </BOUCLE_a>
+               #SET{rabais,#ARRAY{}}
+                    <BOUCLE_decl(PRIX_OBJETS declinaisons){id_declinaison IN 3,4}>
+                    #SET{rabais,#GET{rabais}|array_merge{#ARRAY{id_(#DESCRIPTIF**|trim),#PRIX*|div{#TOTAL_BOUCLE}}}}
+                    </BOUCLE_decl>
+
+                    
+                       <BOUCLE_e(EVENEMENTS){id_evenement=#GET{evenement}|table_valeur{#CLE}}>
+                        #SET{id_art,#ID_ARTICLE}
+                       </BOUCLE_e>
+                       #TOTAL_BOUCLE
+                    [(#GET{id_#GET{id_art}}|count)]
+                    [(#TOTAL_BOUCLE|<={#GET{id_#GET{id_art}}|count}|oui)ok#SET{prix_rabais,#ARRAY{#CLE,#GET{rabais}}}]
+            </B_a>
+            </BOUCLE_sel_obj>
+   </BOUCLE_articles>
+
+
+    
+    [(#REM) Affichage du detail dans une table si format html demande]
+
+<BOUCLE_test(CONDITION){si #GET{reservation}|et{#GET{reservation}|is_array|oui}}>[
 (#REM) Version texte
 
 ]<BOUCLE_test_format_texte(CONDITION){si #ENV{format_envoi}|=={plain}|oui}>[
@@ -28,32 +67,42 @@
 
 <:prix:label_total_ttc:> : [(#GET{total}|prix_formater)]
    </BOUCLE_test_format_texte>
+    #SET{declinaison,#ARRAY}   
       <table class="reservation" cellspacing="0">
          <thead>
             <tr>
                <th class="description"><:reservation:designation:></th>
-               <th class="statut"><:reservation:label_statut:></th>               
+               [(#GET{statut}|=={accepte}|non)<th class="prix"><:shopprix:prix_devises:></th>]                   
+               <th class="statut"><:reservation:label_statut:></th>             
             </tr>
          </thead>
+        
          <tbody>
             #SET{total,0}
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
+            #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}#GET{id_reservations_detail}
+
+            [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}})]
+            [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|?{
+                #SET{prix,#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}}},
+                #SET{prix,#VALEUR{prix}}
+            })]
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
                <td class="description" style="padding:0 5px">[(#VALEUR|table_valeur{descriptif})]</td>
-               <td class="prix" style="padding:0 5px">[(#VALEUR|table_valeur{prix}|prix_formater)]</td>               
+               [(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix}|prix_formater)]</td>]
                <td class="statut" style="padding:0 5px">
                    [(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]
-               </td>               
+               </td>           
             </tr>
-            [(#SET{total,[(#GET{total}|plus{[(#VALEUR|table_valeur{prix})]})]})]
+            [(#SET{total,[(#GET{total}|plus{[(#GET{prix})]})]})]
             </BOUCLE_details>
          </tbody>
-         <tfoot>
+         [(#GET{statut}|=={accepte}|non) <tfoot>
             <tr class="total_ttc">
                <td class="descriptif"><:prix:label_total_ttc:></td>
                <td class="montant">[(#GET{total}|prix_formater)]</td>
             </tr>
-         </tfoot>         
+         </tfoot>]         
       </table>
    <//B_test_format_texte>
 </BOUCLE_test>
