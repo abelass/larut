@@ -1,4 +1,5 @@
 nom: '<:larut:modele_cours:>'
+logo: 'prive/themes/spip/images/sewing-pin-24.png'
 icone_barre: 'cours.png'
 parametres:
   -
