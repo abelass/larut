@@ -31,26 +31,23 @@
 </BOUCLE_reservation>
 #SET{reservation,#ENV{reservation}}
 <//B_reservation>
-
+#SET{prix_rabais,#ARRAY{}
    <BOUCLE_articles(DATA){source tableau, #GET{articles}}>
             <BOUCLE_sel_obj(SELECTION_OBJETS){id_objet_dest=#VALEUR)}{objet_dest=article}>
                <BOUCLE_a(ARTICLES){id_rubrique=#ID_OBJET}> </BOUCLE_a>
-               #SET{rabais,#ARRAY{}}
-                    <BOUCLE_decl(PRIX_OBJETS declinaisons){id_declinaison IN 3,4}>
-                    #SET{rabais,#GET{rabais}|array_merge{#ARRAY{id_(#DESCRIPTIF**|trim),#PRIX*|div{#TOTAL_BOUCLE}}}}
-                    </BOUCLE_decl>
 
-                    
                        <BOUCLE_e(EVENEMENTS){id_evenement=#GET{evenement}|table_valeur{#CLE}}>
                         #SET{id_art,#ID_ARTICLE}
                        </BOUCLE_e>
-                       #TOTAL_BOUCLE
-                    [(#GET{id_#GET{id_art}}|count)]
-                    [(#TOTAL_BOUCLE|<={#GET{id_#GET{id_art}}|count}|oui)ok#SET{prix_rabais,#ARRAY{#CLE,#GET{rabais}}}]
+                    #SET{rabais,#ARRAY{}}   
+                    #SET{total,#TOTAL_BOUCLE}
+                    <BOUCLE_decl(PRIX_OBJETS declinaisons){id_declinaison IN 3,4}>
+                    #SET{rabais,#GET{rabais}|array_merge{#ARRAY{id_(#DESCRIPTIF**|trim),#PRIX*|div{#GET{total}}}}
+                    </BOUCLE_decl>
+                    [(#TOTAL_BOUCLE|<={#GET{id_#GET{id_art}}|count}|oui)#SET{prix_rabais,#GET{prix_rabais}|array_merge{#ARRAY{#CLE,#GET{rabais}}}}]
             </B_a>
             </BOUCLE_sel_obj>
    </BOUCLE_articles>
-
 
     
     [(#REM) Affichage du detail dans une table si format html demande]
@@ -80,9 +77,7 @@
          <tbody>
             #SET{total,0}
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
-            #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}#GET{id_reservations_detail}
-
-            [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}})]
+            #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
             [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|?{
                 #SET{prix,#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}}},
                 #SET{prix,#VALEUR{prix}}
