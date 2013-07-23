@@ -48,6 +48,12 @@
             [(#SET{total,[(#GET{total}|plus{[(#VALEUR|table_valeur{prix})]})]})]
             </BOUCLE_details>
          </tbody>
+         <tfoot>
+            <tr class="total_ttc">
+               <td class="descriptif"><:prix:label_total_ttc:></td>
+               <td class="montant">[(#GET{total}|prix_formater)]</td>
+            </tr>
+         </tfoot>         
       </table>
    <//B_test_format_texte>
 </BOUCLE_test>
