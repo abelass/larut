@@ -77,7 +77,7 @@
          <tbody>
             #SET{total,0}
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
-            [(#REM)Vois si un prix rabais s'apllique pour cet detai de réservation]
+            [(#REM)Vois si un prix rabais s'applique pour cet detai de réservation]
             #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
             [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|?{
                 #SET{prix,#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}}},
