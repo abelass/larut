@@ -36,9 +36,7 @@ Bruxelles en pièce jointe.</p>
 
 <p>Votre inscription est bien enregistré dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE02611635735040 avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
 
-<p>Dans le cas ou il n\'y a pas assez d\'inscriptions pour organiser l\'atelier on s\'engage à vous accommoder dans un autre atelier programmé pour une autre date.</p>
-
-<p>Excepte dans le cas de "force majeure" il n\'y a pas de remboursement possible une fois l’inscription est confirmée.</p>
+<p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
 
 <p>Je me réjouis de vous rencontrer bientôt pour partager la magie de la couture avec vous!</p>',    
     'modele_cours'=>'Resumé cours',
@@ -46,6 +44,7 @@ Bruxelles en pièce jointe.</p>
     
     //P
     'places_disponibles'=>'Places disponibles :',
+    'probleme_confirmation'=>'Cependant il y a un problème avec les cours suivants :',
     
     //R
     'remerciement'=>'Cordialement,',
