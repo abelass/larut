@@ -22,6 +22,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     //N
     'news' => 'Nouveau sur ce site',    
     
+    //R
+    'reservation_enregistre'=>'Votre Inscription a bien été enregistré.<br/> Vous recevrez un email de confirmation avec les détails du paiement. Si aucun mail ne vous est parvenu, verifiez dans votre dossier spam. En cas de problèm envoyez moi un email <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Merci',    
+    
     //S
     'somme_produit' => 'Suma',
     
