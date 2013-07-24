@@ -19,9 +19,12 @@
 <p><:reservation:bonjour:> #GET{nom_client}</p>
 [<p>(#VAL{larut:merci_de_votre_reservation_#STATUT}|_T{#ARRAY{reference,#REFERENCE}})</p>]
 
-]
+]#SET{id_evenement,#ARRAY}
  <BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{tout}{si #STATUT|=={accepte}|et{#ENV{qui}|=={client}}|oui}>
-   <BOUCLE_article(EVENEMENTS){id_evenement}>
+    #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
+ </BOUCLE_details>
+ 
+   <BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
        <BOUCLE_art_org(ARTICLES){id_article}>
          #SET{texte_email,#TEXTE_EMAIL|image_reduire{200}}
             <BOUCLE_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
@@ -33,7 +36,6 @@
         <br style="clear:both;"/>
     </div>]    
     </BOUCLE_article>
- </BOUCLE_details>
 
 [(#ENV{qui}|=={client}|et{#STATUT|=={accepte}}|oui)
 <p style="clear:both"><:larut:merci_de_votre_reservation_accepte_2:></p>
