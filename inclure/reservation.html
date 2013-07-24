@@ -3,25 +3,18 @@
 	[(#REM) Si on trouve une reservation on prend ça comme base ]
 	#SET{statut, #STATUT}
 	#SET{details, #ARRAY}
-	#SET{articles,#ARRAY}
-    #SET{evenement,#ARRAY}   		
+	#SET{articles,#ARRAY} 
+	#SET{evenements,#ARRAY} 			
 	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{tout}>
-	    [(#GET{id_#ID_OBJET}|is_array|non)#SET{id_#ID_OBJET,#ARRAY}]
-	    
-
-		<BOUCLE_ev(EVENEMENTS){id_evenement}>
-	    [(#GET{id_#ID_ARTICLE}|is_array|non)#SET{id_#ID_ARTICLE,#ARRAY}]		
-		#SET{id_#ID_ARTICLE,#GET{id_#ID_ARTICLE}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_ARTICLE}}}
-		</BOUCLE_ev>
-
-	    #SET{evenement,#GET{evenement}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_EVENEMENT}}}  
+	    [(#REM)Les articles principales]
         #SET{articles,#GET{articles}|array_merge{#ARRAY{id_#ID_RESERVATIONS_DETAIL,#ID_OBJET}}}
+        [(#REM)Les évenements choisis]
+        #SET{evenements,#GET{evenements}|push{#ID_EVENEMENT}}        
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
 		prix, #PRIX_HT,
 		statut,#STATUT,
-		texte_email,#GET{texte_email},
 		id_declinaison,#ID_DECLINAISON,
 		id_article,#ID_OBJET,
 		id_reservations_detail,#ID_RESERVATIONS_DETAIL
@@ -32,19 +25,26 @@
 #SET{reservation,#ENV{reservation}}
 <//B_reservation>
 #SET{prix_rabais,#ARRAY{}
+    [(#REM)Déterminer si un rabais pour un module complet s'applique- dçelection d'un évenement de chaque article de la rubrique attaché]
    <BOUCLE_articles(DATA){source tableau, #GET{articles}}>
+             #SET{articles_rubrique,#ARRAY}
+             [(#REM)Etablir la rubrique attaché]
             <BOUCLE_sel_obj(SELECTION_OBJETS){id_objet_dest=#VALEUR)}{objet_dest=article}>
-               <BOUCLE_a(ARTICLES){id_rubrique=#ID_OBJET}> </BOUCLE_a>
-
-                       <BOUCLE_e(EVENEMENTS){id_evenement=#GET{evenement}|table_valeur{#CLE}}>
-                        #SET{id_art,#ID_ARTICLE}
-                       </BOUCLE_e>
-                    #SET{rabais,#ARRAY{}}   
-                    #SET{total,#TOTAL_BOUCLE}
+                [(#REM)Etablir les articles de la rubrique attaché]
+               <BOUCLE_a(ARTICLES){id_rubrique=#ID_OBJET}>
+               [(#REM)Etablir les évenements sélectionés de ces articles]
+               <BOUCLE_ev(EVENEMENTS){id_article}{id_evenement IN #GET{evenements}}>
+                    #SET{articles_rubrique,#GET{articles_rubrique}|push{#ID_ARTICLE}} 
+               </BOUCLE_ev>
+               </BOUCLE_a>
+                    [(#REM)Déterminer les prix de rabais applicables - à ameliorer]
+                    #SET{rabais,#ARRAY{}} 
+                    #SET{total,#TOTAL_BOUCLE}  
                     <BOUCLE_decl(PRIX_OBJETS declinaisons){id_declinaison IN 3,4}>
                     #SET{rabais,#GET{rabais}|array_merge{#ARRAY{id_(#DESCRIPTIF**|trim),#PRIX*|div{#GET{total}}}}
                     </BOUCLE_decl>
-                    [(#TOTAL_BOUCLE|<={#GET{id_#GET{id_art}}|count}|oui)#SET{prix_rabais,#GET{prix_rabais}|array_merge{#ARRAY{#CLE,#GET{rabais}}}}]
+                    [(#REM)Si le nombre d'articles d'evenemnts choisis dans la même rubrique correspond au nombre total des article de cette rubrique, on aplique le rabais]
+                    [(#GET{total}|=={#GET{articles_rubrique}|count}|oui)#SET{prix_rabais,#GET{prix_rabais}|array_merge{#ARRAY{#CLE,#GET{rabais}}}}]
             </B_a>
             </BOUCLE_sel_obj>
    </BOUCLE_articles>
@@ -77,11 +77,12 @@
          <tbody>
             #SET{total,0}
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
+            [(#REM)Vois si un prix rabais s'apllique pour cet detai de réservation]
             #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
             [(#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|?{
                 #SET{prix,#GET{prix_rabais}|table_valeur{#GET{id_reservations_detail}}|table_valeur{#VAL{id_}|concat{#VALEUR{id_declinaison}}}},
                 #SET{prix,#VALEUR{prix}}
-            })]
+                })]
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
                <td class="description" style="padding:0 5px">[(#VALEUR|table_valeur{descriptif})]</td>
                [(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix}|prix_formater)]</td>]
