@@ -1,3 +1,4 @@
+#SET{reservations,''}}
 #SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env}}
 #SET{disponibles,#PLACES|moins{#GET{reservations}}}
 <div class="disponibles[ (#GET{disponibles}|=={1}|oui)imminent][ (#GET{disponibles}|<={0}|oui)complet]">
