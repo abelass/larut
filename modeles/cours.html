@@ -30,7 +30,7 @@
    <B_evenements>   
    <p>
        <BOUCLE_art_or_trad(ARTICLES){traduction}{lang=#ENV{lang}}{si #ENV{texte}=={oui}|oui}>
-        <b>#TITRE</b> - [(#TEXTE|textebrut)]
+        [(#ENV{texte}|=={oui}|oui)<b>#TITRE</b> - [(#TEXTE|textebrut)]]
        </BOUCLE_art_or_trad>
        [(#ENV{texte}|=={oui}|oui) <b>[(#TITRE)] [((#LANG))]</b> - [(#TEXTE|textebrut)]]
         <//B_art_or_trad>
