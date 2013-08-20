@@ -640,7 +640,7 @@ a[hreflang]:after {
 	
 	.content .comments{display:none}
 	
-	#extra2{background-color:#e5e5e5;padding:0.2em 0 0 0;margin-top:1em}
+	#extra2{background-color:#e5e5e5;padding:0;margin-top:1em}
 	#extra2 h2 {text-align:center}
 	#extra2 ul {margin-bottom:0; border-bottom:1px solid #bfbfbf;}
 	#extra2 li{border-top:1px solid #bfbfbf;padding:0.5em 0.5em 0.5em 0.2em;}
