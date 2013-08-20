@@ -5,7 +5,7 @@
         <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
         <ul class="liste-items">
             <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par date}{inverse}>
-            <li class="item"><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
+            <li class="item"><i class="icon-chevron-right"></i> <a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
             </BOUCLE_articles_rubrique>
         </ul>
     </nav>
@@ -15,7 +15,7 @@
         <nav class="menu menu_articles">
             <ul class="liste-items">
             <BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}>
-                <li class="item">
+                <li class="item"><i class="icon-chevron-right"></i>
                     <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
                  </li>
             </BOUCLE_rubriques>
@@ -29,7 +29,7 @@
             <nav class="menu menu_articles">
                 <ul class="liste-items">
                 <BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}>
-                    <li class="item">
+                    <li class="item"><i class="icon-chevron-right"></i>
                         <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
                      </li>
                 </BOUCLE_rubriques_soeurs>

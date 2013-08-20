@@ -3,7 +3,7 @@
     <nav class="menu menu_mots">
         <ul class="liste-items">
             <BOUCLE_mots(MOTS){id_groupe=1}{par num titre,titre}>
-            <li class="item"><a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]"[ class="(#EXPOSE)"] data-target="#ID_MOT">#TITRE</a></li>
+            <li class="item"><i class="icon-chevron-right"></i> <a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]"[ class="(#EXPOSE)"] data-target="#ID_MOT">#TITRE</a></li>
             </BOUCLE_mots>
         </ul>
     </nav>
