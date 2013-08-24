@@ -1,8 +1,12 @@
 <B_rub_ateliers>
 <li class="fieldset">
    <BOUCLE_rub_ateliers(RUBRIQUES){id_trad IN 26,38}>
-   #SET{titre_rub,#TITRE}
-       <BOUCLE_articles_ateliers(ARTICLES){id_rubrique}>
+
+   #SET{titre_rub,#TITRE [#LANG]}
+      <BOUCLE_rub_trad(RUBRIQUES){traduction}{lang=#ENV{lang}}{tout}>
+            #SET{titre_rub,#TITRE}
+    </BOUCLE_rub_trad>
+       <BOUCLE_articles_ateliers(ARTICLES){id_rubrique}{origine_traduction}>
        [(#ID_TRAD|>{0}?{
                      #SET{id_article_base,#ID_TRAD}
                     ,
@@ -19,7 +23,7 @@
                 #SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
           </BOUCLE_gis_art>
 
-       
+          #SET{so,''}
        
          <BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
            <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
@@ -30,7 +34,6 @@
                 })]
            </BOUCLE_articles>
         </BOUCLE_rubs_lies>
-        #SET{soustitre,#GET{titre}}
         #SET{titre,#GET{titre_rub}}
         #SET{so,non}
         <//B_rubs_lies>
@@ -44,15 +47,16 @@
         <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
          <B_prix>
             <BOUCLE_article(ARTICLES){id_article}>
-            #SET{soustitre,#TITRE}
+            #SET{soustitre,#TITRE [#LANG]}
+            #SET{id_article_env,#ID_ARTICLE}
                    <BOUCLE_article_or(ARTICLES){traduction}{lang=#ENV{lang}}>
                         #SET{id_article_env,#ID_ARTICLE}
                         #SET{soustitre,#TITRE}
                    </BOUCLE_article_or>
             </BOUCLE_article>
-            
+
             [(#COMPTEUR_BOUCLE|!={1}|oui)</li><li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>]
-            [(#GET{id_article_env}|unique|oui|ou{#GET{so}|non})
+            [(#GET{id_article_env}|unique|ou{#GET{so}}|oui)
                 [<b><a href="#GET{url}">(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</a></b>]
             ]
             <div class="choix">
