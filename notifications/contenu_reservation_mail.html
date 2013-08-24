@@ -1,0 +1,85 @@
+#HTTP_HEADER{Content-Type:text/html}
+#INCLURE{fond=emails/inc-haut}
+<BOUCLE_art(RESERVATIONS){id_reservation}{statut?}>
+#SET{nom_client,#NOM}
+#SET{extras,#DONNEES_AUTEUR|unserialize}
+ #SET{email,#EMAIL}
+<BOUCLE_contact(AUTEURS){id_auteur=#ID_AUTEUR}{si #ID_AUTEUR|!={0}|oui}{tout}>
+    #SET{nom_client,#NOM}
+    #SET{valeurs_extras,#ARRAY}
+    #SET{email,#EMAIL}
+    #SET{extras,#VAL|champs_extras_reservation}
+    <BOUCLE_extras(DATA){source tableau, #GET{extras}}>
+    #SET{valeurs_extras,#GET{valeurs_extras}|array_merge{#ARRAY{#VALEUR{options/label},#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}}}
+    </BOUCLE_extras>
+</BOUCLE_contact>
+#SET{extras,#GET{valeurs_extras}}
+</B_contact>
+[(#ENV{qui}|=={client}|oui)
+<p><:reservation:bonjour:> #GET{nom_client}</p>
+[<p>(#VAL{larut:merci_de_votre_reservation_#STATUT}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}})</p>]
+
+]#SET{id_evenement,#ARRAY} #SET{statut_reservation,#STATUT}#SET{erreurs_statuts,#ARRAY}
+ <BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{tout}{si #STATUT|=={accepte}|et{#ENV{qui}|=={client}}|oui}>
+    #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
+    [(#STATUT|!={#GET{statut_reservation}}|oui)
+        [(#SET{erreurs_statuts,#GET{erreurs_statuts}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{titre,#DESCRIPTIF*,statut,#STATUT}}}})]
+        ]
+ </BOUCLE_details>
+ 
+ <B_erreurs_statut>
+    <h3><:larut:probleme_confirmation:></h3>
+    <ul></ul>
+    <BOUCLE_erreurs_statut(DATA){source tableau, #GET{erreurs_statuts}}>
+        <li>#VALEUR{titre} : [<b>(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)</b>]</li>
+    </BOUCLE_erreurs_statut>
+    </ul>
+ </B_erreurs_statut>
+ 
+
+ 
+   <BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
+       <BOUCLE_art_org(ARTICLES){id_article}>
+         #SET{texte_email,#TEXTE_EMAIL|image_reduire{200}}
+            <BOUCLE_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
+             #SET{texte_email,#TEXTE_EMAIL|image_reduire{200}}
+            </BOUCLE_trad>
+        </BOUCLE_art_org>
+    [<div style="border-bottom: #888888 1px solid;clear:both;">
+        (#GET{texte_email})
+        <br style="clear:both;"/>
+    </div>]    
+    </BOUCLE_article>
+
+[(#ENV{qui}|=={client}|et{#STATUT|=={accepte}}|oui)
+<p style="clear:both"><:larut:merci_de_votre_reservation_accepte_2:></p>
+]
+
+
+[(#ENV{qui}|=={client}|non)
+<p><:reservation:une_reservation_de:> #GET{nom_client}</p>]
+
+<h3><:reservation:recapitulatif:></h3>
+
+<p><:reservation:reservation_numero:>#REFERENCE</p>
+<p><:reservation:reservation_date:>#DATE</p>
+<p><:reservation:label_email:> #GET{email}</p>
+<BOUCLE_champs_extras(DATA){source tableau, #GET{extras}}>
+<p>[(#CLE|extraire_multi|_T)] : #VALEUR</p>    
+</BOUCLE_champs_extras>
+
+
+
+<p><:reservation:details_reservation:></p>
+<INCLURE{fond=inclure/reservation,id_reservation,format_envoi=#ENV{format_envoi}}>
+
+
+<p><:larut:remerciement:></p>
+
+<p>Ruth</p>
+
+<hr />
+<p><a href="#URL_SITE_SPIP">#URL_SITE_SPIP</a></p>
+</BOUCLE_art>
+#FILTRE{filtrer_entites|url_absolue|trim}
+#INCLURE{fond=emails/inc-bas}

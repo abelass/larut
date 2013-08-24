@@ -1,0 +1,36 @@
+<B_selection>
+    [(#ENV{type}|=={galerie_photos}|oui)
+    <section class='documents documents_portfolio' id='documents_portfolio'>
+     #SET{fin,</section>}
+    ]
+    [(#ENV{type}|=={une_photo}|oui)
+    <section class='bloc clearfix documents_album_cdc' id='documents_album_#ENV{id_rubrique}'>
+        #SET{fin,</section>}
+    ]
+    [(#ENV{type}|=={somme_produit}|oui)
+    <section class='bloc clearfix documents_somme_produit' id='somme_produit[_(#ENV{affichage})]'>
+        #SET{fin,</section>}
+    ]
+    <BOUCLE_selection(SELECTION_OBJETS){par ordre,lang}{id_objet_dest ?} {objet_dest ?}{0,1}>
+    #SET{type,#ENV{type,#TYPE_LIEN}}
+    #SET{modele,une_photo}
+    [(#CHEMIN{modeles_so/#GET{type}.html}|oui)#SET{modele,#GET{type}}]
+    [(#ID_OBJET|generer_modele{#OBJET,modeles_so/#GET{modele},#ARRAY{
+        id_selection_objet,#ID_SELECTION_OBJET,
+        objet,#OBJET,
+        id_objet,#ID_OBJET,
+        langue,#ENV{lang},
+        objet_dest,#OBJET_DEST,
+        id_objet_dest,#ID_OBJET_DEST,
+        total_boucle,#TOTAL_BOUCLE,
+        id_selection_objet,#ID_SELECTION_OBJET,
+        titre,#TITRE,
+        compteur_boucle,#COMPTEUR_BOUCLE,
+        type_lien,#TYPE_LIEN,  
+        url,#URL,
+        id_document,#ENV{id_document},
+        affichage,#ENV{affichage}         
+        }})] 
+    </BOUCLE_selection>
+    #GET{fin}
+</B_selection>

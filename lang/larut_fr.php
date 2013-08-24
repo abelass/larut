@@ -1,0 +1,56 @@
+<?php
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+
+if (!defined('_ECRIRE_INC_VERSION')) return;
+
+$GLOBALS[$GLOBALS['idx_lang']] = array(
+    //C
+    'commentaire'=>'Commentaire',    
+    'complet'=>'Complet',   
+      
+    //G
+    'galerie'=>'Galerie d\'images',
+    'galeries'=>'Galeries  d\'images',    
+    
+    //I
+    'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
+
+	// L
+	'larut_titre' => 'Larut',
+	'liens' => 'Liens',	
+	
+    
+    //M
+    'merci_de_votre_reservation_accepte'=>'<p>Votre paiement s\'est bien effectué et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>', 
+       
+    'merci_de_votre_reservation_accepte_2'=>'
+    <p>N’hésitez pas à me contacter au si vous avez des questions.</p>
+    <ul>
+        <li>GSM 0495/102818</li>
+        <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
+    </ul>
+    <p>Je vous envoie une liste d\'endroits ou vous pouvez acheter vos tissus à
+Bruxelles en pièce jointe.</p>
+    ',       
+    'merci_de_votre_reservation_attente_paiement'=>'<p>Merci de votre intérêt pour nos ateliers de couture.</p>
+
+<p>Votre inscription est bien enregistré dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE02611635735040 avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
+
+<p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
+
+<p>Je me réjouis de vous rencontrer bientôt pour partager la magie de la couture avec vous!</p>',    
+    'modele_cours'=>'Resumé cours',
+    'modele_label_afficher_texte'=>'Afficher le texte',    
+    
+    //P
+    'places_disponibles'=>'Places disponibles :',
+    'probleme_confirmation'=>'Cependant il y a un problème avec les cours suivants :',
+    
+    //R
+    'remerciement'=>'Cordialement,',
+    
+    // S
+    'inscription'=>'Inscription',
+);
+
+?>

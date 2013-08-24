@@ -1,0 +1,10 @@
+#SET{reservations,''}
+#SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env}}
+#SET{disponibles,#PLACES|moins{#GET{reservations}}}
+<div class="disponibles[ (#GET{disponibles}|=={1}|oui)imminent][ (#GET{disponibles}|<={0}|oui)complet]">
+    [(#GET{disponibles}|>{0}|?{
+                            <:larut:places_disponibles:>[ (#GET{disponibles})]
+                            ,
+                            <:larut:complet:>[ : (#GET{disponibles}|<{0}|?{[(#GET{disponibles}|replace{-,''})] <:reservation:texte_statut_attente:>,<:larut:inscrire_liste_attente:>})]
+                            })]
+</div>
