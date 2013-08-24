@@ -1,6 +1,7 @@
 <B_rub_ateliers>
 <li class="fieldset">
    <BOUCLE_rub_ateliers(RUBRIQUES){id_trad IN 26,38}>
+   #SET{titre_rub,#TITRE}
        <BOUCLE_articles_ateliers(ARTICLES){id_rubrique}>
        [(#ID_TRAD|>{0}?{
                      #SET{id_article_base,#ID_TRAD}
@@ -29,6 +30,10 @@
                 })]
            </BOUCLE_articles>
         </BOUCLE_rubs_lies>
+        #SET{soustitre,#GET{titre}}
+        #SET{titre,#GET{titre_rub}}
+        #SET{so,non}
+        <//B_rubs_lies>
 
        <B_art_or>
        <fieldset>
@@ -47,7 +52,7 @@
             </BOUCLE_article>
             
             [(#COMPTEUR_BOUCLE|!={1}|oui)</li><li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>]
-            [(#GET{id_article_env}|unique|oui)
+            [(#GET{id_article_env}|unique|oui|ou{#GET{so}|non})
                 [<b><a href="#GET{url}">(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</a></b>]
             ]
             <div class="choix">
