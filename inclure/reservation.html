@@ -85,7 +85,7 @@
                 })]
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
                <td class="description" style="padding:0 5px">[(#VALEUR|table_valeur{descriptif})]</td>
-               [(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix}|prix_formater)]</td>]
+               [(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix})]</td>]
                <td class="statut" style="padding:0 5px">
                    [(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]
                </td>           
