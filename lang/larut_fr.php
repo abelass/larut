@@ -5,6 +5,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
     //C
+    'cordialement'=>'Cordialement',        
     'commentaire'=>'Commentaire',    
     'complet'=>'Complet',   
       
@@ -12,10 +13,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'galerie'=>'Galerie d\'images',
     'galeries'=>'Galeries  d\'images',    
     
+    //E
+    'explication_label_email_amies'=>'adresse(s) email, séparées par virgule(s)',
+    
     //I
+     'inscription'=>'Inscription',
     'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
 
 	// L
+	'label_email_amies' => 'J\'aimerai partager cette information avec mes amies',	
 	'larut_titre' => 'Larut',
 	'liens' => 'Liens',	
 	
@@ -38,7 +44,9 @@ Bruxelles en pièce jointe.</p>
 
 <p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
 
-<p>Je me réjouis de vous rencontrer bientôt pour partager la magie de la couture avec vous!</p>',    
+<p>Je me réjouis de vous rencontrer bientôt pour partager la magie de la couture avec vous!</p>', 
+    'message_partager_information'=>'@nom@ veut partager avec vous l’information sur le cours pour le quel elle/lui s\'est inscrit/e :',  
+    'message_partager_informations'=>'@nom@ veut partager avec vous l’information sur les cours pour les quels elle/lui s\'est inscrit/e :',       
     'modele_cours'=>'Resumé cours',
     'modele_label_afficher_texte'=>'Afficher le texte',    
     
@@ -50,7 +58,8 @@ Bruxelles en pièce jointe.</p>
     'remerciement'=>'Cordialement,',
     
     // S
-    'inscription'=>'Inscription',
+    'sujet_email_amies'=>'Partage d\'infos de @nom@',
+
 );
 
 ?>

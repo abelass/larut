@@ -502,6 +502,10 @@ img.equal{
 
 .complet{color: #FF0000}
 
+.formulaire_spip .explication {
+    font-size:0.9em;
+    font-style:italic;
+}
 /*Links*/
 
 a {color:#983924;}
@@ -511,6 +515,7 @@ a:hover{color:#983924;}
 a[hreflang]:after {
 	content:none
 }
+
 
 /*Divers*/
 
