@@ -17,8 +17,8 @@ function notifications_email_amies_dist($quoi,$id_reservation, $options) {
     //
     //
 
-    $o=array('html'=>$message);
-    $envoyer_mail($options['email'],$subject,$o);
+    $o=array('html'=>$message,'nom_envoyeur'=>$options['nom']);
+    $envoyer_mail($options['email'],$subject,$o,$options['from']);
 }
 
 ?>

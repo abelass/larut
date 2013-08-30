@@ -26,9 +26,12 @@ function larut_formulaire_charger($flux){
 function larut_formulaire_traiter($flux){
     $form = $flux['args']['form'];
     if ($form == 'reservation'){
-        $notifications = charger_fonction('notifications', 'inc', true);
-        $options=array('email'=>explode(',',_request('email_amies')),'evenements'=>_request('evenements'), 'nom'=>_request('nom'));
-        $notifications('email_amies', $data['id_reservation'], $options);
+        if($emails_amies=_request('email_amies')){
+             $notifications = charger_fonction('notifications', 'inc', true);
+            $options=array('from'=>_request('email'),'email'=>explode(',',$emails_amies),'evenements'=>_request('evenements'), 'nom'=>_request('nom'));
+            $notifications('email_amies', $data['id_reservation'], $options);
+        }
+
     }
     
     return $flux;
