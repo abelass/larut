@@ -87,29 +87,36 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
 function notifications_reservation_client($quoi,$id_reservation, $options) {
     include_spip('inc/config');
     $config = lire_config('reservation_evenement');
-
     $envoyer_mail = charger_fonction('envoyer_mail','inc');
-    
+    $o=array('html'=>$message);
     $options['id_reservation']=$id_reservation;  
     $options['qui']='client';     
     $subject=_T('reservation:votre_reservation_sur',array('nom'=>$GLOBALS['meta']['nom_site']));
 
     $message=recuperer_fond('notifications/contenu_reservation_mail',$options);
      
-    //
     // Envoyer les emails
-    //
-    //
-    //
-    $nom='TissusBruxelles.pdf';
-    $fichier=realpath(find_in_path('docs/'.$nom));
-    $o=array('html'=>$message);
-    if($options['statut']=='accepte')$o['pieces_jointes'] = array(
-               array('chemin' => $fichier,
-               'nom' => $nom,
-               'encodage' => 'base64',
-               'mime' => 'application/pdf')
-               );
+
+    /*Definir le document à attacher*/
+    
+    //Les articles concernés par la réservation
+    $sql=sql_select('id_article','spip_reservations_details RIGHT JOIN spip_evenements USING (id_evenement)','id_reservation='.$id_reservation);
+    
+    $id_article=array();
+    
+    while($data=sql_fetch($sql)) $id_article[] = $data['id_article']  ;
+    
+
+    //Les documents attachés à ces articles quin o0n un mot clés attaché correpondant au statut de la réservation
+    $sql=sql_select('*','spip_mots LEFT JOIN spip_mots_liens USING(id_mot) LEFT JOIN spip_documents ON spip_mots_liens.id_objet=spip_documents.id_document LEFT JOIN spip_documents_liens USING (id_document) LEFT JOIN spip_types_documents USING(extension)','spip_mots.titre ='.sql_quote($options['statut']).' AND spip_documents_liens.id_objet IN ('.implode(',',$id_article).') AND spip_documents_liens.objet="article"');
+    
+    
+    while($doc=sql_fetch($sql)){
+        $fichier=$doc['fichier'];
+        list($extension,$nom)=explode('/',$fichier);
+        $chemin=realpath(_DIR_IMG.$fichier);
+        $o['pieces_jointes'][] = array('chemin' => $chemin,'nom' => $nom,'encodage' => 'base64','mime' => $doc['mime_type']) ;
+        }
 
     $envoyer_mail($options['email'],$subject,$o);
 }

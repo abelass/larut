@@ -31,13 +31,15 @@
 	<necessite nom="inserer_modeles" compatibilite="[1.1.10;]" />
 	<necessite nom="gis" compatibilite="[4.9.0;]" />
 	<necessite nom="shop_declinaisons" compatibilite="[1.0.3;]" />	
+
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
 	
 	<pipeline nom="recuperer_fond" inclure="larut_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="larut_pipelines.php" />
-	<pipeline nom="formulaire_traiter" inclure="larut_pipelines.php" />		 	
+	<pipeline nom="formulaire_traiter" inclure="larut_pipelines.php" />
+	 	
 
 
 </paquet>
