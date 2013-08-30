@@ -15,8 +15,6 @@ function larut_recuperer_fond($flux){
 function larut_formulaire_charger($flux){
     $form = $flux['args']['form'];
     if ($form == 'reservation'){
-        include_spip("inc/nospam");
-        $jeton = creer_jeton($form);
         $flux['data']['email_amies'] .= "";
     }
     
