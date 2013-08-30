@@ -38,7 +38,8 @@
 	
 	<pipeline nom="recuperer_fond" inclure="larut_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="larut_pipelines.php" />
-	<pipeline nom="formulaire_traiter" inclure="larut_pipelines.php" />
+	<pipeline nom="formulaire_verifier" inclure="larut_pipelines.php" />	
+
 	 	
 
 
