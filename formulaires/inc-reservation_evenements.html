@@ -1,3 +1,9 @@
+<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}{si #ENV{id_evenement}|oui}>
+    #SET{url_reservation,#URL_RUBRIQUE}
+</BOUCLE_rub_res>
+
+
+
 <B_rub_ateliers>
 <li class="fieldset">
    <BOUCLE_rub_ateliers(RUBRIQUES){id_trad IN 26,38}>
@@ -82,10 +88,16 @@
          </B_prix>
         </BOUCLE_art_or>
         </li>
+   [(#ENV{id_evenement}|oui)
+    <li><a  class="btn btn-primary plusieurs"  href="#GET{url_reservation}"><i class="icon-arrow-right icon-white"></i> <:larut:voir_inscriptions_tous:></a></li>
+]
         </ul>  
         </fieldset>
         </B_art_or>      
        </BOUCLE_articles_ateliers>
    </BOUCLE_rub_ateliers>
+
+
 </li>
 </B_rub_ateliers>
+

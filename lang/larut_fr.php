@@ -59,6 +59,9 @@ Bruxelles en pièce jointe.</p>
     
     // S
     'sujet_email_amies'=>'Partage d\'infos de @nom@',
+    
+    // V
+    'voir_inscriptions_tous'=>'S\'inscrire pour plusieurs cours',    
 
 );
 
