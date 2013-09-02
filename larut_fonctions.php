@@ -85,16 +85,18 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
 
 // Surcharge de notifications_reservation_client_dist
 function notifications_reservation_client($quoi,$id_reservation, $options) {
+
+    
     include_spip('inc/config');
     $config = lire_config('reservation_evenement');
     $envoyer_mail = charger_fonction('envoyer_mail','inc');
-    $o=array('html'=>$message);
+
     $options['id_reservation']=$id_reservation;  
     $options['qui']='client';     
     $subject=_T('reservation:votre_reservation_sur',array('nom'=>$GLOBALS['meta']['nom_site']));
 
     $message=recuperer_fond('notifications/contenu_reservation_mail',$options);
-     
+    $o=array('html'=>$message);
     // Envoyer les emails
 
     /*Definir le document à attacher*/
