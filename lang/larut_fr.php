@@ -40,7 +40,7 @@ Bruxelles en pièce jointe.</p>
     ',       
     'merci_de_votre_reservation_attente_paiement'=>'<p>Merci de votre intérêt pour nos ateliers de couture.</p>
 
-<p>Votre inscription est bien enregistré dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE02611635735040 avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
+<p>Votre inscription est bien enregistrée dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE02611635735040 avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
 
 <p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
 
