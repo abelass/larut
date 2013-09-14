@@ -60,6 +60,9 @@ Bruxelles en pièce jointe.</p>
     // S
     'sujet_email_amies'=>'Partage d\'infos de @nom@',
     
+    // T
+    'texte_statut_archive'=>'archivé',
+    
     // V
     'voir_inscriptions_tous'=>'S\'inscrire pour plusieurs cours',    
 

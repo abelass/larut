@@ -25,8 +25,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
     //P
     'places_disponibles'=>'Remaining Places :',
+    
      // S
     'inscription'=>'Subscription',
+    
+    //T
+    'texte_statut_archive'=>'archivé',
     
     // V
     'voir_inscriptions_tous'=>'Sign up for several classes',    
