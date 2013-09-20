@@ -15,9 +15,17 @@
         <nav class="menu menu_articles">
             <ul class="liste-items">
             <BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}>
+               <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+                  <BOUCLE_test2(CONDITION){si #STATUT|=={publie}|oui}>
+                    <li class="item"><i class="icon-chevron-right"></i>
+                        <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+                     </li>
+                  </BOUCLE_test2>
+               </BOUCLE_test>
                 <li class="item"><i class="icon-chevron-right"></i>
-                    <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
+                    <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
                  </li>
+             <//B_test>
             </BOUCLE_rubriques>
             </ul>
         </nav>
@@ -29,9 +37,17 @@
             <nav class="menu menu_articles">
                 <ul class="liste-items">
                 <BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}>
+                   <BOUCLE_test2_2(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+                      <BOUCLE_test22(CONDITION){si #STATUT|=={publie}|oui}>
+                        <li class="item"><i class="icon-chevron-right"></i>
+                            <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+                         </li>
+                      </BOUCLE_test22>
+                   </BOUCLE_test2_2>
                     <li class="item"><i class="icon-chevron-right"></i>
-                        <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
+                        <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
                      </li>
+                 <//B_test2_2>
                 </BOUCLE_rubriques_soeurs>
                 </ul>
             </nav>
