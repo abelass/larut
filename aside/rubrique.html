@@ -2,9 +2,11 @@
 <BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>
 
     [(#REM) Le logo de la rubrique]
-    [<div class="logo">(#LOGO_RUBRIQUE|image_reduire{400,*})
-    <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
-        </div>]
+    [(#COMPOSITION|=={galerie}|non)
+        [<div class="logo">(#LOGO_RUBRIQUE|image_reduire{400,*})
+        <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
+            </div>]
+        ]
         
     [(#ENV{id_trad}|>{0}|?{
         #SET{id_trad,#ENV{id_trad}}
@@ -26,6 +28,12 @@
     [(#REM)Sinon, si on se trouve dans la sous section création, on affiche les thumbs des articles]          
         [(#COMPOSITION|=={sous_rubrique_creations}|oui)
         <INCLURE{fond=inclure/galerie_articles_rubrique,id_rubrique,pagination=1000,limit=1000,logo=oui,width=180,height=180}/>
+        #SET{defaut,non}
+        ]
+        
+    [(#REM)Sinon, si on se trouve dans la sous section galerie, on affiche les thumbs des articles archivés]          
+        [(#COMPOSITION|=={galerie}|oui)
+        <INCLURE{fond=inclure/galerie_plate,id_rubrique,id_parent,pagination=1000,limit=1000,width=180,height=180}/>
         #SET{defaut,non}
         ]
 
