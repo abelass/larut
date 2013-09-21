@@ -33,7 +33,10 @@
         
     [(#REM)Sinon, si on se trouve dans la sous section galerie, on affiche les thumbs des articles archivés]          
         [(#COMPOSITION|=={galerie}|oui)
-        <INCLURE{fond=inclure/galerie_plate,id_rubrique,id_parent,pagination=1000,limit=1000,width=180,height=180}/>
+        <section class="art_rub">
+            <INCLURE{fond=inclure/galerie_plate,id_rubrique=#ENV{id_rub},id_parent,env}/>
+        </section>
+        
         #SET{defaut,non}
         ]
 

@@ -1,5 +1,6 @@
 <composition>
         <nom>La rubrique ateliers</nom>
         <description>Afficher les articles de la rubrique ateliers</description>
-        <branche type="rubrique" composition="ateliers" />     
+        <branche type="rubrique" composition="ateliers" /> 
+        <branche type="article" composition="ateliers" />           
 </composition>

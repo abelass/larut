@@ -95,6 +95,8 @@ body{
   margin:0;padding:0
 }
 
+.rubrique_galerie .content{width:0}
+
 #extra2{width:14%;float:right;padding:0}
 
 .extra2{margin: 0 0 1.5em 0;}
@@ -128,6 +130,9 @@ padding: 0;
    /* overflow:hidden;*/
     position: relative;
 }
+
+.rubrique_galerie #extra1 {width:85%;}
+
 
 .page_galerie #extra1, .page_galerie #extra1{width:0; display:none}
 
@@ -401,8 +406,17 @@ h2.articles_recents{
 	width:30%;
 	display:block;
 	position:relative}
+	
+.rubrique_galerie #documents_portfolio{max-width:100%}
+
+.rubrique_galerie #documents_portfolio .spip_logos {margin:0.3em}
+
+.rubrique_galerie .art_rub ul{margin:1em}	
+	
+.rubrique_galerie .art_rub li{width:auto; margin:0}
 
 .page_galerie .art_rub.galerie li {width:15%}
+
 
 .album{margin-top:1em}
 
