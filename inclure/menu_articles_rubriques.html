@@ -4,7 +4,7 @@
     <nav class="menu menu_articles">
         <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
         <ul class="liste-items">
-            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par date}{inverse}>
+            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre,titre} {par date}{inverse}>
             <li class="item"><i class="icon-chevron-right"></i> <a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
             </BOUCLE_articles_rubrique>
         </ul>
@@ -14,7 +14,7 @@
     <B_rubriques>
         <nav class="menu menu_articles">
             <ul class="liste-items">
-            <BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}>
+            <BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}{par num titre,titre}>
                <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
                   <BOUCLE_test2(CONDITION){si #STATUT|=={publie}|oui}>
                     <li class="item"><i class="icon-chevron-right"></i>
@@ -31,12 +31,12 @@
         </nav>
     </B_rubriques>
         [(#REM) Sinon, si on n'est pas au premier niveau, les rubriques soeurs]
-        <BOUCLE_exclure(RUBRIQUES){id_rubrique=#ID_PARENT}{tout}{id_parent=0}>
+        <BOUCLE_exclure(RUBRIQUES){id_rubrique=#ID_PARENT}{tout}{id_parent=0}{par num titre,titre}>
         </BOUCLE_exclure>
             <B_rubriques_soeurs>
             <nav class="menu menu_articles">
                 <ul class="liste-items">
-                <BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}>
+                <BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}{par num titre,titre}>
                    <BOUCLE_test2_2(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
                       <BOUCLE_test22(CONDITION){si #STATUT|=={publie}|oui}>
                         <li class="item"><i class="icon-chevron-right"></i>
