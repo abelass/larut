@@ -64,7 +64,7 @@
                 [<b><a href="#GET{url}">(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</a></b>]
             ]
             <div class="choix">
-                <div>[(#DATE_DEBUT|affdate_court) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#DATE_FIN|affdate{Y-m-d}}|oui) - [ (#DATE_FIN|affdate_court), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]
+                <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#DATE_FIN|affdate{Y-m-d}}|oui) - [ (#DATE_FIN|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]
                 </div>
             <BOUCLE_gis_ev(GIS){id_evenement}><i class=" icon-hand-right"></i> <a class="lieu" target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</a></BOUCLE_gis_ev>[<i class=" icon-hand-right"></i> <a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#GET{lieu}|textebrut)</a> ]<//B_gis_ev>
             
