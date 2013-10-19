@@ -91,8 +91,8 @@ body{
 .content { 
 	width:37%;
 	float:right;
-  font-size: 80%;
-  margin:0;padding:0
+	font-size: 80%;
+	margin:0;padding:0
 }
 
 .rubrique_galerie .content{width:0}
@@ -219,9 +219,6 @@ padding: 0;
 
 #nav .menu-items{border: none;}
 
-
-
-
 #nav .menu-items .item {
 	padding:0 0 0 0.8em;
 }
@@ -303,6 +300,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 ul{list-style: none;margin-left:0}
+
+#content ul {margin-left: 50px;}
+
+#content .formulaire_spip ul {margin-left:0}
+
+
 .liste-items .item .info-publi { 
 background: #DDDDDD;
 display: block;
@@ -443,8 +446,6 @@ h2.articles_recents{
 	padding-left:2%
 }
 
-
-
 .documents_somme_produit .somme,.documents_somme_produit .principal, .documents_somme_produit .equal{float:left}
 
 .documents_somme_produit .equal{
@@ -458,8 +459,8 @@ h2.articles_recents{
 
 	}
 
-
 #somme_produit .somme {width:30%;position:absolute;height:100%}
+
 #somme_produit .principal {width:73%;margin-left:28%}
 
 #somme_produit_large {width:95%;}
@@ -505,6 +506,9 @@ img.equal{
 	}
 
 /*Forms*/
+
+li.fieldset {margin-left:25px}
+
 #hierarchie{display:none}
 
 .disponibles{font-weight:bold}
