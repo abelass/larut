@@ -4,7 +4,7 @@
 	#SET{statut, #STATUT}
 	#SET{details, #ARRAY}
 		
-	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{tout}>   
+	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{id_reservations_detail ?}{statut ?}>   
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,

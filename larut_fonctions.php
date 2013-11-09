@@ -3,7 +3,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 //Surcharge de inc_donnees_reservations_details_dist· du plugin reservation_evenements
 function inc_donnees_reservations_details($id_reservations_detail,$set) {
-
+	
     if(count($set)>0){
         include_spip('inc/filtres');
         $reservations_details=sql_fetsel('*','spip_reservations_details','id_reservations_detail='.$id_reservations_detail);
@@ -22,8 +22,7 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
                 $date=affdate($date_debut,'d/m/Y').','.affdate($date_debut,'G:i').'-'.affdate($date_fin,'G:i');
             }
             else {
-                $date=affdate($date_debut,'d/m/Y').'-'.affdate($date_fin,'d/m/Y').', '.affdate($date_debut,'nom_jour').' '.affdate($date_debut,'G:i').'-'.affdate($date_fin,'G:i'); 
-                
+                $date=affdate($date_debut,'d/m/Y').'-'.affdate($date_fin,'d/m/Y').', '.affdate($date_debut,'nom_jour').' '.affdate($date_debut,'G:i').'-'.affdate($date_fin,'G:i');     
                 }
             }
         else{
@@ -48,7 +47,7 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
              $articles=array();
              while($data=sql_fetch($sql)){
                  $articles[]=$data['id_article'];
-             }
+            	}
             $total_evenements=sql_countsel('spip_evenements','id_article IN ('.implode(',',$articles).') AND id_evenement IN ('.implode(',',$set['evenements']).')');
             
             if($total_articles==$total_evenements){
@@ -73,10 +72,8 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
                 $set['prix_ht']=$prix_ht; 
                 $set['taxe']=$taxe;  
                 $set['id_prix_objet']=$id_prix_objet;
-            }
-            
+            	}            
             if($p['id_declinaison']>0)$set['descriptif'].=' - '.supprimer_numero(sql_getfetsel('titre','spip_declinaisons','id_declinaison='.$p['id_declinaison']));
-
           }
        }
     return $set;
@@ -84,13 +81,12 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
 
 
 // Surcharge de notifications_reservation_client_dist
-function notifications_reservation_client($quoi,$id_reservation, $options) {
-
-    
+function notifications_reservation_client($quoi,$id_reservation, $options) {   
     include_spip('inc/config');
     $config = lire_config('reservation_evenement');
     $envoyer_mail = charger_fonction('envoyer_mail','inc');
-
+	$id_reservations_detail=$options['id_reservations_detail'];
+	
     $options['id_reservation']=$id_reservation;  
     $options['qui']='client';     
     $subject=_T('reservation:votre_reservation_sur',array('nom'=>$GLOBALS['meta']['nom_site']));
@@ -100,19 +96,19 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
     // Envoyer les emails
 
     /*Definir le document à attacher*/
-    
+    $where=array('id_reservation='.$id_reservation);
+	if($id_reservations_detail)$where[]='id_reservations_detail='.$id_reservations_detail;
+	
     //Les articles concernés par la réservation
-    $sql=sql_select('id_article','spip_reservations_details RIGHT JOIN spip_evenements USING (id_evenement)','id_reservation='.$id_reservation);
+    $sql=sql_select('id_article','spip_reservations_details RIGHT JOIN spip_evenements USING (id_evenement)',$where);
     
     $id_article=array();
     
-    while($data=sql_fetch($sql)) $id_article[] = $data['id_article']  ;
+    while($data=sql_fetch($sql)) $id_article[] = $data['id_article'];
     
-
-    //Les documents attachés à ces articles quin o0n un mot clés attaché correpondant au statut de la réservation
+    //Les documents attachés à ces articles quin on un mot clés attaché correpondant au statut de la réservation
     $sql=sql_select('*','spip_mots LEFT JOIN spip_mots_liens USING(id_mot) LEFT JOIN spip_documents ON spip_mots_liens.id_objet=spip_documents.id_document LEFT JOIN spip_documents_liens USING (id_document) LEFT JOIN spip_types_documents USING(extension)','spip_mots.titre ='.sql_quote($options['statut']).' AND spip_documents_liens.id_objet IN ('.implode(',',$id_article).') AND spip_documents_liens.objet="article"');
-    
-    
+      
     while($doc=sql_fetch($sql)){
         $fichier=$doc['fichier'];
         list($extension,$nom)=explode('/',$fichier);
