@@ -1,0 +1,5 @@
+#SET{reservations,#ARRAY}
+<BOUCLE_reservations(RESERVATIONS_DETAILS){id_evenement IN #ENV{id_evenement}}{statut IN attente_paiement,accepte}>
+    #SET{reservations,#GET{reservations}|push{#QUANTITE}}   
+</BOUCLE_reservations>
+[(#GET{reservations}|array_sum)]
