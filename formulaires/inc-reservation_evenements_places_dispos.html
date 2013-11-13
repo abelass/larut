@@ -1,6 +1,13 @@
 #SET{reservations,''}
-#SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env}}
-#SET{disponibles,#PLACES|moins{#GET{reservations}}}
+[(#REM)Toutes les résérvations]
+#SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env,multiple=oui}}
+[(#REM)Les totaux par statut]
+#SET{total_accepte,#GET{reservations}|table_valeur{accepte}}
+#SET{total_attente_paiement,#GET{reservations}|table_valeur{attente_paiement}}
+#SET{total,#GET{total_accepte}|plus{#GET{total_attente_paiement}}}
+[(#REM)Les disponibilités]
+#SET{disponibles,#PLACES|moins{#GET{total}}}
+
 <div class="disponibles[ (#GET{disponibles}|=={1}|oui)imminent][ (#GET{disponibles}|<={0}|oui)complet]">
     [(#GET{disponibles}|>{0}|?{
                             <:larut:places_disponibles:>[ (#GET{disponibles})]
