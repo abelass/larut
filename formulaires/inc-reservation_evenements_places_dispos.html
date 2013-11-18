@@ -1,6 +1,6 @@
 #SET{reservations,''}
 [(#REM)Toutes les résérvations]
-#SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env,multiple=oui}}
+#SET{reservations,#INCLURE{fond=inclure/compteur_reservations,env,multiple=oui,statut=''}}
 [(#REM)Les totaux par statut]
 #SET{total_accepte,#GET{reservations}|table_valeur{accepte}}
 #SET{total_attente_paiement,#GET{reservations}|table_valeur{attente_paiement}}
