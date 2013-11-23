@@ -105,7 +105,7 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
     $id_article=array();
     
     while($data=sql_fetch($sql)) $id_article[] = $data['id_article'];
-    
+
     //Les documents attachés à ces articles quin on un mot clés attaché correpondant au statut de la réservation
     $sql=sql_select('*','spip_mots LEFT JOIN spip_mots_liens USING(id_mot) LEFT JOIN spip_documents ON spip_mots_liens.id_objet=spip_documents.id_document LEFT JOIN spip_documents_liens USING (id_document) LEFT JOIN spip_types_documents USING(extension)','spip_mots.titre ='.sql_quote($options['statut']).' AND spip_documents_liens.id_objet IN ('.implode(',',$id_article).') AND spip_documents_liens.objet="article"');
       
