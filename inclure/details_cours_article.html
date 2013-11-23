@@ -1,0 +1,29 @@
+#SET{date,#ARRAY}
+#SET{horaire,#ARRAY}
+#SET{prix,#ARRAY}
+#SET{lieu,#ARRAY}
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}>
+    #SET{date,#GET{date}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|unique|affdate_debut_fin{#DATE_FIN,non}}}}
+    #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
+    [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
+    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_EVENEMENT|prix_evenement{#ID_ARTICLE}}}}    
+    #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#COMPTEUR_BOUCLE,#ID_EVENEMENT|lieu_evenement{#ID_ARTICLE,'titre,adresse,code_postal,ville'}}}}      
+</BOUCLE_evenement>
+
+#SET{prix_nettoye,#ARRAY}
+<BOUCLE_prix(DATA){source tableau,#GET{prix}}>
+[(#VALEUR|implode{'-'})]
+    #SET{p,#VALEUR**|implode{'-'}}
+    [(#GET{p}|serialize)]
+    [(#GET{p}|in_array{#GET{prix_nettoye}}|non)#SET{prix_nettoye,#GET{prix_nettoye}|push{#GET{p}}}]
+</BOUCLE_prix>
+    <ul>
+        <li><b><:reservation:label_date:></b>[ (#GET{date}|implode{' / '})]</li>
+        <li><b><:larut:label_horaire:></b>[ (#GET{horaire}|implode{' / '})]</li>
+         <li><b><:larut:label_prix:></b>[ (#GET{prix_nettoye}|implode{'/'})]</li>       
+    </ul>
+
+
+        larut:label_horraire   
+        larut:label_prix
+        agenda:info_lieu  

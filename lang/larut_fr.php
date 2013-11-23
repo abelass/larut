@@ -22,6 +22,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_email_amies' => 'J\'aimerai partager cette information avec mes amies',	
+	'label_horaire' => 'Horaire :',	
+    'label_prix' => 'Prix :',   		
 	'larut_titre' => 'Larut',
 	'liens' => 'Liens',	
 	
