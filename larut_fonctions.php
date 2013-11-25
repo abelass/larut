@@ -119,31 +119,3 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
     $envoyer_mail($options['email'],$subject,$o);
 }
 
-// établit le  prix applicable
-function prix_evenement($id_evenement,$id_article){
-    
-    $req=sql_select('prix','spip_prix_objets','id_objet='.$id_evenement.' AND objet="evenement"');
-
-    if(sql_count($req)==0)$req=sql_select('prix','spip_prix_objets','id_objet='.$id_article.' AND objet="article"');
-    
-    $prix=array();
-    
-    while($data=sql_fetch($req)){
-        $prix[$id_evenement][]=filtres_prix_formater($data['prix']);
-    }
-    
-
-    return $prix;    
-}
-
-// établit le  lieu applicable
-function lieu_evenement($id_evenement,$id_article,$champs='*'){
-    if(!$lieu=sql_fetsel($champs,'spip_gis_liens,spip_gis','spip_gis_liens.id_objet='.$id_evenement.'
-        AND spip_gis_liens.objet="evenement"')){          
-            $lieu=sql_fetsel($champs,'spip_gis_liens,spip_gis','
-            spip_gis_liens.id_objet='.$id_article.'
-            AND spip_gis_liens.objet="article"');
-        }
-    return $lieu;    
-}
-
