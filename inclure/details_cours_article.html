@@ -14,7 +14,7 @@
     </B_prix> 
     
     <BOUCLE_lieu(GIS){id_evenement}{0,1}>
-        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE}|concat{&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
+        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE}|concat{ -&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
         #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
     </BOUCLE_lieu>
    
@@ -25,7 +25,7 @@
 </BOUCLE_prix_art>
     
     <BOUCLE_lieu_art(GIS){id_article}{0,1}>
-        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE*}|concat{&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
+        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE*}|concat{ -&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
         #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
     </BOUCLE_lieu_art>
    
