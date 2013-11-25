@@ -118,4 +118,3 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
 
     $envoyer_mail($options['email'],$subject,$o);
 }
-
