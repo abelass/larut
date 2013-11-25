@@ -18,11 +18,25 @@
     <BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
          #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
     </BOUCLE_prix_art>
-    <ul>
-        <li><b><:reservation:label_date:></b>[ (#GET{date}|implode{' / '})]</li>
-        <li><b><:larut:label_horaire:></b>[ (#GET{horaire}|implode{' / '})]</li>
-         <li><b><:larut:label_prix:></b>[ (#GET{prix}|implode{/})]</li>       
-    </ul>
+    <table>
+        [<tr>
+            <td><:reservation:label_date:></td>
+            <td>(#GET{date}|implode{' / '})</td>
+        </tr>]
+        [<tr>
+            <td><:larut:label_horaire:></td>
+            <td>(#GET{horaire}|implode{' / '})</td>
+        </tr>]
+        [<tr>
+            <td><:larut:label_prix:></td>
+            <td>(#GET{prix}|implode{/})</td>
+        </tr>]  
+        [<tr>
+            <td><:agenda:info_lieu:></td>
+            <td>(#GET{lieu}|implode{/})</td>
+        </tr>]                                              
+    </table>
+
 
 
         larut:label_horraire   
