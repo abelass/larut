@@ -11,13 +11,24 @@
             #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
     </BOUCLE_prix>
     #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}}}} 
-    </B_prix>       
-    #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#COMPTEUR_BOUCLE,#ID_EVENEMENT}}}      
+    </B_prix> 
+    
+    <BOUCLE_lieu(GIS){id_evenement}{0,1}>
+        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE}|concat{&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
+        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
+    </BOUCLE_lieu>
+   
 </BOUCLE_evenement>
 
-    <BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
-         #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
-    </BOUCLE_prix_art>
+<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
+        #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+</BOUCLE_prix_art>
+    
+    <BOUCLE_lieu_art(GIS){id_article}{0,1}>
+        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE*}|concat{&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
+        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
+    </BOUCLE_lieu_art>
+   
     <table>
         [<tr>
             <td><:reservation:label_date:></td>
@@ -36,9 +47,3 @@
             <td>(#GET{lieu}|implode{/})</td>
         </tr>]                                              
     </table>
-
-
-
-        larut:label_horraire   
-        larut:label_prix
-        agenda:info_lieu  
