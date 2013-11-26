@@ -5,8 +5,9 @@
 #SET{id_prix_objet,#ARRAY}
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}>
-    #SET{date,#GET{date}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|unique|affdate_debut_fin{#DATE_FIN,non}}}}
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{!par date_debut}>
+
+    [(#DATE_DEBUT|unique|oui)#SET{date,#GET{date}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non}}}}]
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
