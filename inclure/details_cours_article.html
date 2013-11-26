@@ -2,33 +2,58 @@
 #SET{horaire,#ARRAY}
 #SET{prix,#ARRAY}
 #SET{lieu,#ARRAY}
+#SET{id_prix_objet,#ARRAY}
+#SET{id_gis,#ARRAY}
+#SET{prix_evenement,#ARRAY}
 <BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}>
     #SET{date,#GET{date}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|unique|affdate_debut_fin{#DATE_FIN,non}}}}
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
-    <BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}>
-            #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+    
+    <BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}{id_prix_objet !IN #GET{id_prix_objet}}>
+        #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
+        #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
     </BOUCLE_prix>
-    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}}}} 
+    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}|implode{' / '}}}} 
     </B_prix> 
     
-    <BOUCLE_lieu(GIS){id_evenement}{0,1}>
-        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE}|concat{ -&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
-        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
-    </BOUCLE_lieu>
-   
+    <BOUCLE_lieu(GIS){id_evenement}{id_gis !IN #GET{id_gis}}{0,1}>
+        #SET{id_gis,#GET{id_gis}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_GIS}}}    
+        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{
+            #COMPTEUR_BOUCLE,#ARRAY{
+                    titre,#TITRE,
+                    adresse,#ADRESSE,
+                    code_postal,#CODE_POSTAL,
+                    ville,#VILLE
+                    }
+                  }
+               }
+           }       
+    </BOUCLE_lieu> 
 </BOUCLE_evenement>
 
-<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
-        #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>#ID_PRIX_OBJET   
+        [(#ID_PRIX_OBJET|in_array{#GET{id_prix_objet}}|non)#SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+         ]
+         #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
 </BOUCLE_prix_art>
+    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}|implode{' / '}}}} 
+ </B_prix_art>
     
-    <BOUCLE_lieu_art(GIS){id_article}{0,1}>
-        #SET{lieu_evenement,(#TITRE|concat{&nbsp;- #ADRESSE*}|concat{ -&nbsp;#CODE_POSTAL}|concat{&nbsp;#VILLE})}
-        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{lieu_evenement}}}}         
+    <BOUCLE_lieu_art(GIS){id_article}{si #GET{lieu}|count|<{1}} {0,1}>
+        #SET{id_gis,#GET{id_gis}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_GIS}}}   
+        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{
+            #COMPTEUR_BOUCLE,#ARRAY{
+                    titre,#TITRE,
+                    adresse,#ADRESSE**,
+                    code_postal,#CODE_POSTAL,
+                    ville,#VILLE
+                    }
+                  }
+               }
+           }        
     </BOUCLE_lieu_art>
-   
     <table>
         [<tr>
             <td><:reservation:label_date:></td>
@@ -41,9 +66,21 @@
         [<tr>
             <td><:larut:label_prix:></td>
             <td>(#GET{prix}|implode{/})</td>
-        </tr>]  
-        [<tr>
-            <td><:agenda:info_lieu:></td>
-            <td>(#GET{lieu}|implode{/})</td>
-        </tr>]                                              
+        </tr>]
+        <B_lieu_resultat> 
+        <tr>
+           <td><:agenda:info_lieu:></td>
+           <td>
+            <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
+            <divclass="item">
+                [<div class="titre">(#TITRE)</div>]
+                [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
+                [<div>
+                    [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
+                </div>]
+            </div>
+           </BOUCLE_lieu_resultat> 
+          </td>    
+        </tr>     
+        </B_lieu_resultat>                                              
     </table>
