@@ -5,10 +5,8 @@
 #SET{id_prix_objet,#ARRAY}
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{par date_debut}{date_fin>#DATE}{id_evenement_source=0}>     
-    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}}
-               
-       
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{id_evenement_source=0}{par date_debut}>     
+    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}}                     
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
@@ -25,7 +23,7 @@
         #SET{lieu,#GET{lieu}|array_merge{#ARRAY{
             #COMPTEUR_BOUCLE,#ARRAY{
                     titre,#TITRE,
-                    adresse,#ADRESSE,
+                    adresse,#ADRESSE**,
                     code_postal,#CODE_POSTAL,
                     ville,#VILLE
                     }
@@ -68,16 +66,11 @@
             #SET{id,(#CLE|explode{_}|table_valeur{1})}
                 <B_evs_enfant>
                 <div class="dates secondaires">
-                     <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}>
+                     <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}{par date_debut}>
                           [<div>(#DATE_DEBUT|affdate_jourcourt)</div>]      
                      </BOUCLE_evs_enfant>
                 </div>             
-                </B_evs_enfant>
-            
-            [
-            [<div class="date_pricipale">(#DATES_SECONDAIRES{1}|affdate_debut_fin{#DATES_SECONDAIRES{[(#TOTAL_BOUCLE)]}})</div>]
-            <div class="dates_secondaires">(#DATES_SECONDAIRES|implode{' / '})</div>
-            ]
+               </B_evs_enfant>           
         </div>
         </BOUCLE_date_resultat>
         </td>
