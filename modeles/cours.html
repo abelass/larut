@@ -37,7 +37,7 @@
         <BOUCLE_evenements(EVENEMENTS){id_article}{inscription=1}>
             #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
         </BOUCLE_evenements><br/>
-         <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"/><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+         <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
    </p>            
         </B_evenements>  
 </BOUCLE_articles_evenements>
