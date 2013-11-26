@@ -5,9 +5,10 @@
 #SET{id_prix_objet,#ARRAY}
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{!par date_debut}>
-
-    [(#DATE_DEBUT|unique|oui)#SET{date,#GET{date}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non}}}}]
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{par date_debut}{date_fin>#DATE}{id_evenement_source=0}>     
+    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}}
+               
+       
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
@@ -31,10 +32,10 @@
                   }
                }
            }       
-    </BOUCLE_lieu> 
+    </BOUCLE_lieu>
 </BOUCLE_evenement>
 
-<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>#ID_PRIX_OBJET   
+<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
         [(#ID_PRIX_OBJET|in_array{#GET{id_prix_objet}}|non)#SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
          ]
          #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
@@ -42,46 +43,68 @@
     #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}|implode{' / '}}}} 
  </B_prix_art>
     
-    <BOUCLE_lieu_art(GIS){id_article}{si #GET{lieu}|count|<{1}} {0,1}>
-        #SET{id_gis,#GET{id_gis}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_GIS}}}   
-        #SET{lieu,#GET{lieu}|array_merge{#ARRAY{
-            #COMPTEUR_BOUCLE,#ARRAY{
-                    titre,#TITRE,
-                    adresse,#ADRESSE**,
-                    code_postal,#CODE_POSTAL,
-                    ville,#VILLE
-                    }
-                  }
-               }
-           }        
-    </BOUCLE_lieu_art>
-    <table>
-        [<tr>
-            <td><:reservation:label_date:></td>
-            <td>(#GET{date}|implode{' / '})</td>
-        </tr>]
-        [<tr>
-            <td><:larut:label_horaire:></td>
-            <td>(#GET{horaire}|implode{' / '})</td>
-        </tr>]
-        [<tr>
-            <td><:larut:label_prix:></td>
-            <td>(#GET{prix}|implode{/})</td>
-        </tr>]
-        <B_lieu_resultat> 
-        <tr>
-           <td><:agenda:info_lieu:></td>
-           <td>
-            <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
-            <divclass="item">
-                [<div class="titre">(#TITRE)</div>]
-                [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
-                [<div>
-                    [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
-                </div>]
-            </div>
-           </BOUCLE_lieu_resultat> 
-          </td>    
-        </tr>     
-        </B_lieu_resultat>                                              
-    </table>
+<BOUCLE_lieu_art(GIS){id_article}{si #GET{lieu}|count|<{1}} {0,1}>
+    #SET{id_gis,#GET{id_gis}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_GIS}}}   
+    #SET{lieu,#GET{lieu}|array_merge{#ARRAY{
+        #COMPTEUR_BOUCLE,#ARRAY{
+                titre,#TITRE,
+                adresse,#ADRESSE**,
+                code_postal,#CODE_POSTAL,
+                ville,#VILLE
+                }
+              }
+           }
+       }        
+</BOUCLE_lieu_art>
+
+<table>
+    <B_date_resultat>
+    <tr>
+        <td><:reservation:label_date:></td>
+        <td>
+        <BOUCLE_date_resultat(DATA){source tableau,#GET{date}}>
+        <div class="item">
+            [<div class="date_pricipale">(#VALEUR|affdate_jourcourt)</div>]
+            #SET{id,(#CLE|explode{_}|table_valeur{1})}
+                <B_evs_enfant>
+                <div class="dates secondaires">
+                     <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}>
+                          [<div>(#DATE_DEBUT|affdate_jourcourt)</div>]      
+                     </BOUCLE_evs_enfant>
+                </div>             
+                </B_evs_enfant>
+            
+            [
+            [<div class="date_pricipale">(#DATES_SECONDAIRES{1}|affdate_debut_fin{#DATES_SECONDAIRES{[(#TOTAL_BOUCLE)]}})</div>]
+            <div class="dates_secondaires">(#DATES_SECONDAIRES|implode{' / '})</div>
+            ]
+        </div>
+        </BOUCLE_date_resultat>
+        </td>
+    </tr>
+    </B_date_resultat>
+    [<tr>
+        <td><:larut:label_horaire:></td>
+        <td>(#GET{horaire}|implode{' / '})</td>
+    </tr>]
+    [<tr>
+        <td><:larut:label_prix:></td>
+        <td>(#GET{prix}|implode{/})</td>
+    </tr>]
+    <B_lieu_resultat> 
+    <tr>
+       <td><:agenda:info_lieu:></td>
+       <td>
+        <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
+        <div class="item">
+            [<div class="titre">(#TITRE)</div>]
+            [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
+            [<div>
+                [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
+            </div>]
+        </div>
+       </BOUCLE_lieu_resultat> 
+      </td>    
+    </tr>     
+    </B_lieu_resultat>                                              
+</table>
