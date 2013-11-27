@@ -5,8 +5,10 @@
 #SET{id_prix_objet,#ARRAY}
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
+#SET{id_evenement,#ARRAY}
 <BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{id_evenement_source=0}{par date_debut}>     
-    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}}                     
+    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}} 
+     #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}                        
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
@@ -55,49 +57,52 @@
        }        
 </BOUCLE_lieu_art>
 
-<table>
-    <B_date_resultat>
-    <tr>
-        <td><:reservation:label_date:></td>
-        <td>
-        <BOUCLE_date_resultat(DATA){source tableau,#GET{date}}>
-        <div class="item">
-            [<div class="date_pricipale">(#VALEUR|affdate_jourcourt)</div>]
-            #SET{id,(#CLE|explode{_}|table_valeur{1})}
-                <B_evs_enfant>
-                <div class="dates secondaires">
-                     <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}{par date_debut}>
-                          [<div>(#DATE_DEBUT|affdate_jourcourt)</div>]      
-                     </BOUCLE_evs_enfant>
-                </div>             
-               </B_evs_enfant>           
-        </div>
-        </BOUCLE_date_resultat>
-        </td>
-    </tr>
-    </B_date_resultat>
-    [<tr>
-        <td><:larut:label_horaire:></td>
-        <td>(#GET{horaire}|implode{' / '})</td>
-    </tr>]
-    [<tr>
-        <td><:larut:label_prix:></td>
-        <td>(#GET{prix}|implode{/})</td>
-    </tr>]
-    <B_lieu_resultat> 
-    <tr>
-       <td><:agenda:info_lieu:></td>
-       <td>
-        <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
-        <div class="item">
-            [<div class="titre">(#TITRE)</div>]
-            [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
-            [<div>
-                [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
-            </div>]
-        </div>
-       </BOUCLE_lieu_resultat> 
-      </td>    
-    </tr>     
-    </B_lieu_resultat>                                              
-</table>
+<div class="infos_cours">
+   <table> 
+        <B_date_resultat> 
+        <tr>
+            <td class="label"><:reservation:label_date:></td>
+            <td>
+            <BOUCLE_date_resultat(DATA){source tableau,#GET{date}}>
+            <div class="item">
+                [<div class="date_pricipale">(#VALEUR|affdate_jourcourt)</div>]
+                #SET{id,(#CLE|explode{_}|table_valeur{1})}
+                    <B_evs_enfant>
+                    <div class="dates secondaires">
+                         <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}{par date_debut}>
+                              [<div[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>(#DATE_DEBUT|affdate_jourcourt)</div>]      
+                         </BOUCLE_evs_enfant>
+                    </div>             
+                   </B_evs_enfant>           
+            </div>
+            </BOUCLE_date_resultat>
+            </td>
+        </tr>
+        </B_date_resultat>
+        [<tr>
+            <td class="label"><:larut:label_horaire:></td>
+            <td>(#GET{horaire}|implode{' / '})</td>
+        </tr>]
+        [<tr>
+            <td class="label"><:larut:label_prix:></td>
+            <td>(#GET{prix}|implode{/})</td>
+        </tr>]
+        <B_lieu_resultat> 
+        <tr>
+           <td class="label"><:agenda:info_lieu:></td>
+           <td>
+            <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
+            <div class="item">
+                [<div class="titre">(#TITRE)</div>]
+                [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
+                [<div>
+                    [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
+                </div>]
+            </div>
+           </BOUCLE_lieu_resultat> 
+          </td>    
+        </tr>     
+        </B_lieu_resultat>                                              
+    </table>
+             <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+</div>
