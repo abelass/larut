@@ -2,7 +2,7 @@
 <BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>
 
     [(#REM) Le logo de la rubrique]
-    [(#COMPOSITION|=={galerie}|non)
+    [(#COMPOSITION|in_array{#LISTE{galerie,agenda}}|non)
         [<div class="logo">(#LOGO_RUBRIQUE|image_reduire{400,*})
         <INCLURE{fond=inclure/copyright,id_auteur=#COPYRIGHT}/>
             </div>]
@@ -39,7 +39,13 @@
         
         #SET{defaut,non}
         ]
-
+        
+    [(#REM)Sinon, si on se trouve dans la sous section galerie, on affiche les thumbs des articles archivés]          
+        [(#COMPOSITION|=={agenda}|oui)
+            <INCLURE{fond=inclure/agenda,env}/>        
+        #SET{defaut,non}
+        ]
+        
         [(#REM)Sinon l'affichage par defaut des images ou documents] 
         [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/galeries,env}/>]
     <//B_selection_teste>
