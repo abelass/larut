@@ -15,9 +15,9 @@
     
     <BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}{id_prix_objet !IN #GET{id_prix_objet}}>
         #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
-        #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+        #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{prix,#PRIX,id_declinaison,#ID_DECLINAISON}}}}
     </BOUCLE_prix>
-    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}|implode{' / '}}}} 
+    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}}}} 
     </B_prix> 
     
     <BOUCLE_lieu(GIS){id_evenement}{id_gis !IN #GET{id_gis}}{0,1}>
@@ -35,12 +35,13 @@
     </BOUCLE_lieu>
 </BOUCLE_evenement>
 
-<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}}>
-        [(#ID_PRIX_OBJET|in_array{#GET{id_prix_objet}}|non)#SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#PRIX}}}
+<BOUCLE_prix_art(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}{si #GET{prix}|count|<{1}|oui}>
+        [(#ID_PRIX_OBJET|in_array{#GET{id_prix_objet}}|non)
+        #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{prix,#PRIX,id_declinaison,#ID_DECLINAISON}}}}
          ]
          #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
 </BOUCLE_prix_art>
-    #SET{prix,#GET{prix}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#GET{prix_evenement}|implode{' / '}}}} 
+    #SET{prix,#GET{prix_evenement}} 
  </B_prix_art>
     
 <BOUCLE_lieu_art(GIS){id_article}{si #GET{lieu}|count|<{1}} {0,1}>
@@ -83,10 +84,25 @@
             <td class="label"><:larut:label_horaire:></td>
             <td>(#GET{horaire}|implode{' / '})</td>
         </tr>]
-        [<tr>
+        <B_prix_res>
+        <tr>
             <td class="label"><:larut:label_prix:></td>
-            <td>(#GET{prix}|implode{/})</td>
-        </tr>]
+            <td>
+               <BOUCLE_prix_res(DATA){source tableau,#GET{prix}}>
+                <div>#VALEUR{prix}
+                    <B_decl>
+                    -
+                    <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
+                    #TITRE
+                    </BOUCLE_decl>                    
+                </div>
+               </BOUCLE_prix_res>
+             </td>
+        </B_prix_res>
+            
+             <//B_prix_res>
+           
+        </tr>
         <B_lieu_resultat> 
         <tr>
            <td class="label"><:agenda:info_lieu:></td>
