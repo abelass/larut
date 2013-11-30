@@ -6,6 +6,14 @@
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
 #SET{id_evenement,#ARRAY}
+<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
+    #SET{url_reservation,#URL_RUBRIQUE}
+</BOUCLE_rub_res>
+    <BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
+        #SET{url_reservation,#URL_RUBRIQUE}
+    </BOUCLE_rub_res_def>
+<//B_rub_res>
+
 <BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{par date_debut}>
     [(#ID_EVENEMENT_SOURCE|=={0}|?{
        #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}   
@@ -63,70 +71,73 @@
        }        
 </BOUCLE_lieu_art>
 
+
+<B_date_resultat> 
+#SET{resultat,oui}
 <div class="infos_cours">
-   <table> 
-        <B_date_resultat> 
-        <tr>
-            <td class="label"><:reservation:label_date:></td>
-            <td>
-            <ul>
-            <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
-            <li class="item">
-                #SET{compteur,#COMPTEUR_BOUCLE}                
-                    <B_evs_enfant>
-                    <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
-                    <ol>
-                         <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
-                         <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
-                         </BOUCLE_evs_enfant>
-                    </ol>           
-                   </B_evs_enfant>
-                       <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
-                        [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non,abbr})</div>]
-                       </BOUCLE_evs_enfant_alt>             
-                 <//B_evs_enfant>                             
-            </li>
-            </BOUCLE_date_resultat>
-            </ul>   
-            </td>
-        </tr>
-        </B_date_resultat>
-        [<tr>
-            <td class="label"><:larut:label_horaire:></td>
-            <td>(#GET{horaire}|implode{' / '})</td>
-        </tr>]
-        <B_prix_res>
-        <tr>
-            <td class="label"><:larut:label_prix:></td>
-            <td>
-               <BOUCLE_prix_res(DATA){source tableau,#GET{prix}}>
-                <div>#VALEUR{prix}
-                    <B_decl>
-                    -
-                    <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
-                    #TITRE
-                    </BOUCLE_decl>                    
-                </div>
-               </BOUCLE_prix_res>
-             </td>
-        </B_prix_res>
-        </tr>
-        <B_lieu_resultat> 
-        <tr>
-           <td class="label"><:agenda:info_lieu:></td>
-           <td>
-            <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
-            <div class="item">
-                [<div class="titre">(#TITRE)</div>]
-                [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
-                [<div>
-                    [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
-                </div>]
+    <table>    
+    <tr>
+        <td class="label"><:reservation:label_date:></td>
+        <td>
+        <ul>
+        <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
+        <li class="item">
+            #SET{compteur,#COMPTEUR_BOUCLE}                
+                <B_evs_enfant>
+                <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
+                <ol>
+                     <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
+                     <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
+                     </BOUCLE_evs_enfant>
+                </ol>           
+               </B_evs_enfant>
+                   <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
+                    [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non,abbr})</div>]
+                   </BOUCLE_evs_enfant_alt>             
+             <//B_evs_enfant>                             
+        </li>
+        </BOUCLE_date_resultat>
+        </ul>   
+        </td>
+    </tr>
+    </B_date_resultat>
+    [<tr>
+        <td class="label"><:larut:label_horaire:></td>
+        <td>(#GET{horaire}|implode{' / '})</td>
+    </tr>]
+    <B_prix_res>
+    <tr>
+        <td class="label"><:larut:label_prix:></td>
+        <td>
+           <BOUCLE_prix_res(DATA){source tableau,#GET{prix}}>
+            <div>#VALEUR{prix}
+                <B_decl>
+                -
+                <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
+                #TITRE
+                </BOUCLE_decl>                    
             </div>
-           </BOUCLE_lieu_resultat> 
-          </td>    
-        </tr>     
-        </B_lieu_resultat>                                              
+           </BOUCLE_prix_res>
+         </td>
+    </B_prix_res>
+    </tr>
+    <B_lieu_resultat> 
+    <tr>
+       <td class="label"><:agenda:info_lieu:></td>
+       <td>
+        <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
+        <div class="item">
+            [<div class="titre">(#TITRE)</div>]
+            [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
+            [<div>
+                [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
+            </div>]
+        </div>
+       </BOUCLE_lieu_resultat> 
+      </td>    
+    </tr>     
+    </B_lieu_resultat>
+[(#GET{resultat}|oui)                                                  
     </table>
-             <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
-</div>
+    <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+</div>]
