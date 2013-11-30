@@ -103,6 +103,8 @@ body{
 
 .page_galerie .content,.page_agenda .content{width:100%}
 
+.rubrique_ateliers .content{width:52%}
+
 .page_gis #extra2, .page_gis #extra1,{width:0%}
 
 .page_gis .content{width:100%;position:relative}
@@ -132,6 +134,10 @@ padding: 0;
 }
 
 .rubrique_galerie #extra1,.rubrique_agenda #extra1 {width:85%;}
+
+.rubrique_ateliers #extra1 {width:34%;}
+
+.rubrique_ateliers .clear{clear:none}
 
 .rubrique_agenda #extra1 #agenda{margin:1em 0 0 1em}
 
@@ -520,7 +526,7 @@ img.equal{
 	
 	p{margin:0}
 	ul{margin:0;padding:0;list-style:disc}
-  ol{margin-left:1em}
+  ul ul{margin-left:1em}
 	
 	.label,strong{
 	font-weight:bold;
@@ -529,9 +535,10 @@ img.equal{
 	font-size:1em;
 	}
   .multi{font-weight:bold}
-	
 	}
 
+ .fc-event-skin{
+   background-color:#a52a2a; border-color:#a52a2a}
 /*Forms*/
 
 li.fieldset {margin-left:25px}

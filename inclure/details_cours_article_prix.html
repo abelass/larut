@@ -1,0 +1,16 @@
+<B_prix_res>
+<tr>
+    <td class="label"><:larut:label_prix:></td>
+    <td>
+       <BOUCLE_prix_res(DATA){source tableau,#ENV{prix}}>
+        <div>#VALEUR{prix}
+            <B_decl>
+            -
+            <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
+            #TITRE
+            </BOUCLE_decl>                    
+        </div>
+       </BOUCLE_prix_res>
+     </td>
+</tr>     
+</B_prix_res>

@@ -13,12 +13,13 @@
         #SET{url_reservation,#URL_RUBRIQUE}
     </BOUCLE_rub_res_def>
 <//B_rub_res>
-
+#SET{multi,''}
 <BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{par date_debut}>
     [(#ID_EVENEMENT_SOURCE|=={0}|?{
        #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}   
         #SET{dates_#ID_EVENEMENT,#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}},
-         #SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}}        
+        #SET{multi,oui}
+        #SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}}        
     })]     
     
                        
@@ -72,72 +73,57 @@
 </BOUCLE_lieu_art>
 
 
-<B_date_resultat> 
-#SET{resultat,oui}
-<div class="infos_cours">
-    <table>    
-    <tr>
-        <td class="label"><:reservation:label_date:></td>
-        <td>
-        <ul>
-        <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
-        <li class="item">
-            #SET{compteur,#COMPTEUR_BOUCLE}                
-                <B_evs_enfant>
-                <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
-                <ol>
-                     <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
-                     <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
-                     </BOUCLE_evs_enfant>
-                </ol>           
+<B_date_resultat>
+
+<BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
+#SET{compteur,#COMPTEUR_BOUCLE}                
+            <B_evs_enfant>
+                <div class="infos_cours">
+                    <table> 
+                        <tbody> 
+                        <tr>
+                            <td class="label"><:reservation:label_date:></td>
+                            <td>
+                                <ul>                            
+                                     <li class="item">       
+                                            <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
+                                            <ul>
+                                                 <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
+                                                 <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
+                                                 </BOUCLE_evs_enfant>
+                                            </ul>
+                                      </li>              
+                                </ul>   
+                            </td>
+                        </tr> 
+                        <INCLURE{fond=inclure/details_cours_article_horaire,horaire=#GET{horaire}}/>
+                        <INCLURE{fond=inclure/details_cours_article_prix,prix=#GET{prix}}/>
+                        <INCLURE{fond=inclure/details_cours_article_lieu,lieu=#GET{lieu}}/>
+                        </tbody>                                                       
+                    </table>
+                    <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#VALEUR})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+                </div>                                          
                </B_evs_enfant>
-                   <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
-                    [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non,abbr})</div>]
-                   </BOUCLE_evs_enfant_alt>             
+               <div class="infos_cours">
+                <table> 
+                    <tbody> 
+                    <tr>
+                        <td class="label"><:reservation:label_date:></td>
+                        <td>
+                            <ul>               
+                               <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
+                                [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non})</div>]
+                               </BOUCLE_evs_enfant_alt>
+                                    </ul>   
+                        </td>
+                    </tr>                         
+                    <INCLURE{fond=inclure/details_cours_article_horaire,horaire=#GET{horaire}}/>
+                    <INCLURE{fond=inclure/details_cours_article_prix,prix=#GET{prix}}/>
+                    <INCLURE{fond=inclure/details_cours_article_lieu,lieu=#GET{lieu}}/>
+                   </tbody>                                             
+                </table> 
+               <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>          
              <//B_evs_enfant>                             
-        </li>
         </BOUCLE_date_resultat>
-        </ul>   
-        </td>
-    </tr>
-    </B_date_resultat>
-    [<tr>
-        <td class="label"><:larut:label_horaire:></td>
-        <td>(#GET{horaire}|implode{' / '})</td>
-    </tr>]
-    <B_prix_res>
-    <tr>
-        <td class="label"><:larut:label_prix:></td>
-        <td>
-           <BOUCLE_prix_res(DATA){source tableau,#GET{prix}}>
-            <div>#VALEUR{prix}
-                <B_decl>
-                -
-                <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
-                #TITRE
-                </BOUCLE_decl>                    
-            </div>
-           </BOUCLE_prix_res>
-         </td>
-    </B_prix_res>
-    </tr>
-    <B_lieu_resultat> 
-    <tr>
-       <td class="label"><:agenda:info_lieu:></td>
-       <td>
-        <BOUCLE_lieu_resultat(DATA){source tableau,#GET{lieu}}>
-        <div class="item">
-            [<div class="titre">(#TITRE)</div>]
-            [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
-            [<div>
-                [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
-            </div>]
-        </div>
-       </BOUCLE_lieu_resultat> 
-      </td>    
-    </tr>     
-    </B_lieu_resultat>
-[(#GET{resultat}|oui)                                                  
-    </table>
-    <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
-</div>]
+       </div>
+</B_date_resultat>
