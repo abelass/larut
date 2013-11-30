@@ -1,41 +1,97 @@
-<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+<script type="text/javascript">/*<![CDATA[*/
+    jQuery(document).ready(function() {            
+        $('#agenda').fullCalendar({
+                editable: false,
+                events: "[(#URL_PAGE{agenda.json})]",
+                header: {
+                    left: 'prevYear,prev,next,nextYear today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                firstDay: 1,
+                monthNames:['<:date_mois_1|attribut_html:>','<:date_mois_2|attribut_html:>','<:date_mois_3|attribut_html:>','<:date_mois_4|attribut_html:>','<:date_mois_5|attribut_html:>','<:date_mois_6|attribut_html:>','<:date_mois_7|attribut_html:>','<:date_mois_8|attribut_html:>','<:date_mois_9|attribut_html:>','<:date_mois_10|attribut_html:>','<:date_mois_11|attribut_html:>','<:date_mois_12|attribut_html:>'],
+                monthNamesShort:['<:date_mois_1_abbr|attribut_html:>','<:date_mois_2_abbr|attribut_html:>','<:date_mois_3_abbr|attribut_html:>','<:date_mois_4_abbr|attribut_html:>','<:date_mois_5_abbr|attribut_html:>','<:date_mois_6_abbr|attribut_html:>','<:date_mois_7_abbr|attribut_html:>','<:date_mois_8_abbr|attribut_html:>','<:date_mois_9_abbr|attribut_html:>','<:date_mois_10_abbr|attribut_html:>','<:date_mois_11_abbr|attribut_html:>','<:date_mois_12_abbr|attribut_html:>'],
+                dayNames:['<:date_jour_1|attribut_html:>','<:date_jour_2|attribut_html:>','<:date_jour_3|attribut_html:>','<:date_jour_4|attribut_html:>','<:date_jour_5|attribut_html:>','<:date_jour_6|attribut_html:>','<:date_jour_7|attribut_html:>'],
+                dayNamesShort:['<:date_jour_1_abbr|attribut_html:>','<:date_jour_2_abbr|attribut_html:>','<:date_jour_3_abbr|attribut_html:>','<:date_jour_4_abbr|attribut_html:>','<:date_jour_5_abbr|attribut_html:>','<:date_jour_6_abbr|attribut_html:>','<:date_jour_7_abbr|attribut_html:>'],
+                buttonText: {
+                        today: '<:date_aujourdhui|attribut_html:>',
+                        month: '<:organiseur:cal_par_mois|attribut_html:>',
+                        day: '<:organiseur:cal_par_jour|attribut_html:>',
+                        week: '<:organiseur:cal_par_semaine|attribut_html:>'
+                },
+                weekMode : 'liquid',
+                loading: function(bool) {
+                    if (bool) $('#calendrier-loading').show();
+                    else $('#calendrier-loading').hide();
+                },
+                timeFormat: {
+                    
+                    agenda: "H'h'mm{ - H'h'mm}", 
+                    
+                    '': "H'h'(mm)" 
+                },
+                axisFormat: "H'h'(mm)",
+                allDayText:'<:organiseur:cal_jour_entier|attribut_html:>',
+                columnFormat: {
+                    month: 'ddd',    
+                    week: 'ddd d/M', 
+                    day: 'dddd d/M'  
+                },
+                titleFormat: {
+                    month: 'MMMM yyyy',                             
+                    week: "d [ MMM] [ yyyy]{ '&#8212;' d MMM yyyy}", 
+                    day: 'dddd d MMM yyyy'                  
+                },
+                dayClick: function(date, allDay, jsEvent, view) {
+                    if(view.name=='month'){
+                        $('.fc-button-agendaWeek').click();
+                        $('#calendrier').fullCalendar( 'gotoDate', date );
+                    }
+                    else
+                        if(view.name=='agendaWeek'){
+                            $('.fc-button-agendaDay').click();
+                            $('#calendrier').fullCalendar( 'gotoDate', date );
+                        }
+                },
+                isRTL : [(#LANG_DIR|=={rtl}|?{true,false})]
+        })    
+    });
+/*]]>*/</script>
 
+<script type='text/javascript' src='#CHEMIN{lib/fullcalendar/fullcalendar.min.js}'></script>
+<div id="agenda"></div>
+<B_agenda>
 
-[(#ID_RUBRIQUE|=={1}|oui)#SET{home,oui}]
+<div id="calendrier-loading">
 
-<article class="contenu-principal">
-	[<header class="cartouche">
-	    (#ID_TRAD|in_array{#LISTE{8,7,9}}|non)
-		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
-	</header>]
-	
-	[(#REM) Boite à outils]
-	[(#INCLURE{fond=inclure/outils,env})]
-	
-	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+<p class="pagination">#PAGINATION</p>
+
+<BOUCLE_agenda(DATA){source json, #PRODUIRE{fond=agenda.json, start=0,end=2147483647,_=#REM|time}}{pagination 15}>
+
+    <dl>
+
+        [<dt><:agenda:evenement_titre:></dt>
+
+        <dd><a href="#VALEUR{url}">(#VALEUR{title})</a></dd>]
+
+ 
+
+        [<dt><:agenda:evenement_date:></dt>
+
+        <dd>(#VALEUR{start}|Agenda_affdate_debut_fin{#VALEUR{end},#VALEUR{allDay}|=={true}|?{non,oui}})</dd>]
+
+ 
+
+        [<dt><:agenda:evenement_descriptif:></dt>
+
+        <dd>(#VALEUR{description})</dd>]
+
+    </dl>
+
+</BOUCLE_agenda>
+
+<p class="pagination">#PAGINATION</p>
+
 </div>
 
-[(#REM) Sites de la rubrique ]
-<B_sites>
-<div class="liste sites">
-        <ul class="liste-items">
-                <BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
-                <li class="item">
-                   <strong><a href="#URL_SITE">#NOM_SITE</a></strong>
-                        <B_syndic>
-                        <ul>
-                                <BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
-                                <li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
-                                </BOUCLE_syndic>
-                        </ul>
-                        </B_syndic>
-                </li>
-                </BOUCLE_sites>
-        </ul>
-</article>
-</B_sites>
-
-[<footer class="notes">
-    <aside class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</aside>
- </footer>]
-</BOUCLE_contenu_rubrique>
+</B_agenda>
