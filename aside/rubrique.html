@@ -39,12 +39,7 @@
         
         #SET{defaut,non}
         ]
-        
-    [(#REM)Sinon, si on se trouve dans la sous section galerie, on affiche les thumbs des articles archivés]          
-        [(#COMPOSITION|=={agenda}|oui)
-            <INCLURE{fond=inclure/agenda,env}/>        
-        #SET{defaut,non}
-        ]
+
         
         [(#REM)Sinon l'affichage par defaut des images ou documents] 
         [(#GET{defaut}|!={non}|oui)<INCLURE{fond=inclure/galeries,env}/>]
