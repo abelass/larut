@@ -14,7 +14,7 @@ function inc_donnees_reservations_details($id_reservations_detail,$set) {
         $id_prix_objet=$set['id_prix_objet'];
         $evenement=sql_fetsel('*','spip_evenements','id_evenement='.$id_evenement);
         $date_debut=$evenement['date_debut'];
-        $date_fin=$evenement['date_fin'];
+        if(!$date_fin=sql_getfetsel('date_fin','spip_evenements','id_evenement_source='.$id_evenement,'','date_debut DESC'))$date_fin=$evenement['date_fin'];
 
         // On établit les dates        
         if($date_debut!=$date_fin){

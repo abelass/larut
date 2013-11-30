@@ -48,7 +48,7 @@
        <ul>          
         <li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
             [<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_objet_prix})</div>]
-        <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
+        <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}{id_evenement_source=0}>
          <B_prix>
             <BOUCLE_article(ARTICLES){id_article}>
             #SET{soustitre,#TITRE [#LANG]}
@@ -64,7 +64,11 @@
                 [<b><a href="#GET{url}">(#GET{soustitre}|!={#GET{titre}}|oui)#GET{soustitre}</a></b>]
             ]
             <div class="choix">
-                <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#DATE_FIN|affdate{Y-m-d}}|oui) - [ (#DATE_FIN|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#DATE_FIN|affdate{G:i})]}|oui)[ - (#DATE_FIN|affdate{G:i})]]
+                #SET{date_fin,#DATE_FIN}
+                <BOUCLE_ev_lies(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{!par date_debut}{0,1}>
+                #SET{date_fin,#DATE_FIN}
+                </BOUCLE_ev_lies>
+                <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#GET{date_fin}|affdate{Y-m-d}}|oui) - [ (#GET{date_fin}|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#GET{date_fin}|affdate{G:i})]}|oui)[ - (#GET{date_fin}|affdate{G:i})]]
                 </div>
             <BOUCLE_gis_ev(GIS){id_evenement}><i class=" icon-hand-right"></i> <a class="lieu" target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</a></BOUCLE_gis_ev>[<i class=" icon-hand-right"></i> <a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#GET{lieu}|textebrut)</a> ]<//B_gis_ev>
             
