@@ -6,14 +6,19 @@
 #SET{id_gis,#ARRAY}
 #SET{prix_evenement,#ARRAY}
 #SET{id_evenement,#ARRAY}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{id_evenement_source=0}{par date_debut}>     
-    #SET{date,#GET{date}|array_merge{#ARRAY{id_#ID_EVENEMENT,#DATE_DEBUT}}} 
-     #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}                        
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{par date_debut}>
+    [(#ID_EVENEMENT_SOURCE|=={0}|?{
+       #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}   
+        #SET{dates_#ID_EVENEMENT,#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}},
+         #SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}}        
+    })]     
+    
+                       
     #SET{h,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
     [(#GET{h}|in_array{#GET{horaire}}|non)#SET{horaire,#GET{horaire}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}}}]
     #SET{prix_evenement,#ARRAY}
     
-    <BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}{id_prix_objet !IN #GET{id_prix_objet}}>
+    <BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}{id_prix_objet !IN #GET{id_prix_objet}}{si #ID_EVENEMENT_SOURCE|=={0}|oui}>
         #SET{id_prix_objet,#GET{id_prix_objet}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_PRIX_OBJET}}}
         #SET{prix_evenement,#GET{prix_evenement}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{prix,#PRIX,id_declinaison,#ID_DECLINAISON}}}}
     </BOUCLE_prix>
@@ -64,19 +69,25 @@
         <tr>
             <td class="label"><:reservation:label_date:></td>
             <td>
-            <BOUCLE_date_resultat(DATA){source tableau,#GET{date}}>
-            <div class="item">
-                [<div class="date_pricipale">(#VALEUR|affdate_jourcourt)</div>]
-                #SET{id,(#CLE|explode{_}|table_valeur{1})}
+            <ul>
+            <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
+            <li class="item">
+                #SET{compteur,#COMPTEUR_BOUCLE}                
                     <B_evs_enfant>
-                    <div class="dates secondaires">
-                         <BOUCLE_evs_enfant(EVENEMENTS){id_evenement_source=#GET{id}}{par date_debut}>
-                              [<div[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>(#DATE_DEBUT|affdate_jourcourt)</div>]      
+                    <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
+                    <ol>
+                         <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
+                         <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
                          </BOUCLE_evs_enfant>
-                    </div>             
-                   </B_evs_enfant>           
-            </div>
+                    </ol>           
+                   </B_evs_enfant>
+                       <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
+                        [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non,abbr})</div>]
+                       </BOUCLE_evs_enfant_alt>             
+                 <//B_evs_enfant>                             
+            </li>
             </BOUCLE_date_resultat>
+            </ul>   
             </td>
         </tr>
         </B_date_resultat>
@@ -99,9 +110,6 @@
                </BOUCLE_prix_res>
              </td>
         </B_prix_res>
-            
-             <//B_prix_res>
-           
         </tr>
         <B_lieu_resultat> 
         <tr>

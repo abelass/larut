@@ -27,6 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'places_disponibles'=>'Remaining Places :',
     
      // S
+    'seance'=>'Session',       
     'inscription'=>'Subscription',
     
     //T

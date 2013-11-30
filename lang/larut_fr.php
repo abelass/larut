@@ -60,6 +60,7 @@ Bruxelles en pièce jointe.</p>
     'remerciement'=>'Cordialement,',
     
     // S
+    'seance'=>'Séance',    
     'sujet_email_amies'=>'Partage d\'infos de @nom@',
     
     // T
