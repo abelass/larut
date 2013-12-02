@@ -10,7 +10,7 @@
                 <B_sous_rubriques>
                 <ul>
                    
-                    <BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}{statut IN #GET{statut}}{id_trad!=32}>
+                    <BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}{statut IN #GET{statut}}{id_trad !IN 32,38}>
 
                     
                        <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
