@@ -79,23 +79,27 @@
 <B_date_resultat>
 
 <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
-#SET{compteur,#COMPTEUR_BOUCLE}                
+#SET{compteur,#COMPTEUR_BOUCLE}   
+#SET{cacher,''}             
             <B_evs_enfant>
+                [(#TOTAL_BOUCLE|>{3}|oui)#SET{cacher,'invisible'}]
                 <div class="infos_cours">
                     <table> 
                         <tbody> 
                         <tr>
                             <td class="label"><:reservation:label_date:></td>
                             <td>
-                                <ul>                            
-                                     <li class="item">       
-                                            <div class="entete multi"><:larut:seance:> #GET{compteur}</div>
-                                            <ul>
-                                                 <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
-                                                 <li[ (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)class="last"]>[(#DATE_DEBUT|affdate_jourcourt)]</li>      
-                                                 </BOUCLE_evs_enfant>
-                                            </ul>
-                                      </li>              
+                                <ul[(#GET{cacher}|oui) class="inline"]>                            
+                                 <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
+                                 #SET{separateur,''}
+                                    [(#TOTAL_BOUCLE|>{3}|oui)                                    
+                                    #SET{cacher,'invisible'}
+                                    [(#COMPTEUR_BOUCLE|=={1}|oui)#SET{cacher,''}]
+                                     [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)#SET{cacher,''}#SET{separateur,'-'}]  
+                                    ]
+                                 
+                                     <li class="date[ (#GET{cacher})]">#GET{separateur}[(#DATE_DEBUT|affdate_jourcourt)]</li>      
+                                 </BOUCLE_evs_enfant>            
                                 </ul>   
                             </td>
                         </tr> 
