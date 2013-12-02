@@ -103,7 +103,12 @@ body{
 
 .page_galerie .content,.page_agenda .content{width:100%}
 
-.rubrique_ateliers .content{width:52%}
+.rubrique_ateliers {
+  
+  .content{width:52%}
+  #extra1 {width:34%;}
+  .clear{clear:none}
+}
 
 .page_gis #extra2, .page_gis #extra1,{width:0%}
 
@@ -135,9 +140,6 @@ padding: 0;
 
 .rubrique_galerie #extra1,.rubrique_agenda #extra1 {width:85%;}
 
-.rubrique_ateliers #extra1 {width:34%;}
-
-.rubrique_ateliers .clear{clear:none}
 
 .rubrique_agenda #extra1 #agenda{margin:1em 0 0 1em}
 
@@ -692,6 +694,17 @@ a[hreflang]:after {
 	
 	.content,#extra2,#extra1{width:100%;float:none;clear:both}
 	
+	.rubrique_ateliers {
+  
+  .content{width:100%}
+  #extra1 {width:100%;}
+  .clear{clear:none}
+  }
+	.fc-header{
+	  font-size:90%;
+	  h2{font-size:1em}
+	}
+  
 	.logo {width:100%;padding: 0;}
 	
 	.liste_sites {float: none;}
