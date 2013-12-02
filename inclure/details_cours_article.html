@@ -18,8 +18,11 @@
     [(#ID_EVENEMENT_SOURCE|=={0}|?{
        #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}   
         #SET{dates_#ID_EVENEMENT,#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}},
-        #SET{multi,oui}
-        #SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}}        
+        [(#GET{dates_#ID_EVENEMENT_SOURCE}|is_array|?{
+            #SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}},
+            #SET{dates_#ID_EVENEMENT_SOURCE,#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{date_debut,#DATE_DEBUT,date_fin,#DATE_FIN}}}
+            #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT_SOURCE}}  
+        })]    
     })]     
     
                        
