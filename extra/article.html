@@ -4,7 +4,7 @@
     <nav class="menu menu_articles">
         <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
         <ul class="liste-items">
-            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par date}{inverse}>
+            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par num titre, titre}>
                 <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
                     <B_test2>
                         <li class="item"><i class="icon-chevron-right"></i> <a href="#URL_ARTICLE"[(#ID_ARTICLE|=={#ENV{id_article}}|oui) class="on"]>#TITRE</a></li>                
