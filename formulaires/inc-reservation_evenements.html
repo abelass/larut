@@ -74,7 +74,7 @@
             
                 [(#PLACES|>{0}|oui)<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,id_evenement,places,statut=accepte}/>]  
                         
-                <BOUCLE_prix(PRIX_OBJETS){id_objet=#GET{id_article_base}}{objet=article}{id_declinaison !IN 4,3}>
+                <BOUCLE_prix(PRIX_OBJETS){id_objet=#GET{id_article_base}}{objet=article}>
                     #SET{prix,#PRIX}
                     <BOUCLE_decl(DECLINAISONS){id_declinaison}{statut ?}{par num titre,titre}>
                          <div>
