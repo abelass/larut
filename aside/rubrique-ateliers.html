@@ -1,3 +1,8 @@
+#SET{id_article,#ARRAY}
+<BOUCLE_test2(EVENEMENTS){date_fin>#ENV{date}}{inscription=1}>
+    #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+</BOUCLE_test2>
+
 <section class="art_rub">
-<INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique,logo=oui,width=120,height=120,pagination=1000,limit=1000}/>
+    <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique,logo=oui,id_article=#GET{id_article},width=120,height=120,pagination=1000,limit=1000,par=titre,inverse=0} />
 </section>
