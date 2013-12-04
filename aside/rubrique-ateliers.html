@@ -1,5 +1,5 @@
 #SET{id_article,#ARRAY}
-<BOUCLE_test2(EVENEMENTS){date_fin>#ENV{date}}{inscription=1}>
+<BOUCLE_test2(EVENEMENTS){date_fin>#ENV{date}}>
     #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
 </BOUCLE_test2>
 
