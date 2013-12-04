@@ -85,7 +85,7 @@
            }
        }        
 </BOUCLE_lieu_art>
-<div class="infos_cours">
+
 
 <B_date_resultat>
 
@@ -94,6 +94,7 @@
 #SET{cacher,''}
 #SET{id_evenement,#VALEUR}               
             <B_evs_enfant>
+			<div class="infos_cours">
                 [(#TOTAL_BOUCLE|>{3}|oui)
                 #SET{cacher,'invisible'}
                 ]
@@ -123,7 +124,8 @@
                         <INCLURE{fond=inclure/details_cours_article_lieu,lieu=#GET{lieu}}/>
                         </tbody>                                                       
                     </table>
-                    <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{evenements}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>                                       
+                    <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{evenements}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+				</div>
                </B_evs_enfant>
                <div class="infos_cours">
                 <table> 
@@ -149,6 +151,7 @@
         </BOUCLE_date_resultat>
 
 </B_date_resultat>
+			<div class="infos_cours">
 <div class="cours_non"><:larut:pas_cours_programmee:></div>
-<a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+<a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a></div>
 <//B_date_resultat>
