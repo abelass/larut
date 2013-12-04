@@ -143,7 +143,8 @@
                     <INCLURE{fond=inclure/details_cours_article_lieu,lieu=#GET{lieu}}/>
                    </tbody>                                             
                 </table> 
-               <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>          
+               <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a> 
+			</div>	
              <//B_evs_enfant>                             
         </BOUCLE_date_resultat>
 
@@ -151,4 +152,3 @@
 <div class="cours_non"><:larut:pas_cours_programmee:></div>
 <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
 <//B_date_resultat>
-</div>
