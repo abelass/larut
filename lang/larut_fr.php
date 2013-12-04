@@ -54,6 +54,7 @@ Bruxelles en pièce jointe.</p>
     'modele_label_afficher_texte'=>'Afficher le texte',    
     
     //P
+    'pas_cours_programmee'=>'Ce cours n\'est pas programmÃ© actuellement, appuyez sur le bouton inscription pour voir le l\'offre actuelle de cours.',
     'places_disponibles'=>'Places disponibles :',
     'probleme_confirmation'=>'Cependant il y a un problème avec les cours suivants :',
     
