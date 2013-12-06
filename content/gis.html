@@ -1,4 +1,4 @@
-  <BOUCLE_gis(GIS){id_article ?}{id_evenement ?}>
+<BOUCLE_gis(GIS){id_gis?}>
     <article class="content-principal" style="">
         <header class="cartouche">
             <h1 class="h1 #EDIT{titre}">#TITRE</h1>
@@ -7,9 +7,6 @@
             [(#ADRESSE|textebrut)]<br />
             [(#CODE_POSTAL) ]#VILLE
         </p>
-        [(#INCLURE{fond=modeles/carte_gis, autocenterandzoom=non,centrer_auto = non,id_article=#ENV{id_article},id_evenement=#ENV{id_evenement}})]
+	  [(#INCLURE{fond=modeles/carte_gis, autocenterandzoom=non,centrer_auto = non,id_gis})]
     </article>
-   
-
-   </BOUCLE_gis>
-
+</BOUCLE_gis>
