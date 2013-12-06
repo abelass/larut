@@ -25,6 +25,7 @@
 
           <BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
                 #SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
+				#SET{id_gis,#ID_GIS}
           </BOUCLE_gis_art>
 
           #SET{so,''}
@@ -70,7 +71,7 @@
                 </BOUCLE_ev_lies>
                 <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#GET{date_fin}|affdate{Y-m-d}}|oui) - [ (#GET{date_fin}|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#GET{date_fin}|affdate{G:i})]}|oui)[ - (#GET{date_fin}|affdate{G:i})]]
                 </div>
-            <BOUCLE_gis_ev(GIS){id_evenement}><i class=" icon-hand-right"></i> <a class="lieu" target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</a></BOUCLE_gis_ev>[<i class=" icon-hand-right"></i> <a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_PAGE{gis}|parametre_url{id_article,#GET{id_article_base}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#GET{lieu}|textebrut)</a> ]<//B_gis_ev>
+            <BOUCLE_gis_ev(GIS){id_evenement}><i class=" icon-hand-right"></i> <a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</a></BOUCLE_gis_ev>[<i class=" icon-hand-right"></i> <a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#GET{id_gis}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#GET{lieu}|textebrut)</a> ]<//B_gis_ev>
             
                 [(#PLACES|>{0}|oui)<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,id_evenement,places,statut=accepte}/>]  
                         
