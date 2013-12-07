@@ -17,6 +17,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     //E
     'explication_label_email_amies'=>'adresse(s) email, séparées par virgule(s)',
     
+    //F
+    'fermer'=>'fermer',
+    
     //I
      'inscription'=>'Inscription',
     'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
