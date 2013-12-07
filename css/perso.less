@@ -1,44 +1,10 @@
-/*Animations*/
-@-webkit-keyframes bling{
-	0%   {
-		color:#FF0000;
-	}
-	50%   {
-		color:#F5F5F5;
-	}
-	100%   {
-		color:#FF0000;
-	}	
-}    
-
-
-@-ms-keyframes bling{
-	0%   {
-		color:#FF0000;
-	}
-	50%   {
-		color:#F5F5F5;
-	}
-	100%   {
-		color:#FF0000;
-	}	
-}    
-
-
-
- @keyframes bling{
- 	
-	0%   {
-		color:#FF0000;
-	}
-	50%   {
-		color:#F5F5F5;
-	}
-	100%   {
-		color:#FF0000;
-	}	
-} 
-
+.transition-show(@obj:all, @time:.5s, @easing:easeOut){
+  transition: @obj @time @easing;
+  -moz-transition: @obj @time @easing;
+  -ms-transition: @obj @time @easing;
+  -o-transition: @obj @time @easing;
+  -webkit-transition: @obj @time @easing;}
+  
 /*Fonts*/
 @font-face {
     font-family: 'opificioregular';
@@ -527,17 +493,37 @@ img.equal{
 	line-height: 1.5em;
 	
 	p{margin:0; font-size:1em}
+	
 	ul{margin:0;padding:0;list-style:disc}
-	.inline ul{list-style:none}
-	.inline li{display:inline;padding:0}	
-	 li.invisible{display:none}
+ 	
+	
+	ul.multi{
+	  cursor:pointer;
+	  list-style:none;
+	  li{
+	    display:inline;
+	    padding:0;
+	    .total_cours{color:#a52a2a}
+	    .total_cours:hover{background-color:#fde1d9}  
+	   }
+	  li.cache{display:none}	
+	  }
+
+   ul.multi.open{
+    list-style:disc !important;
+    li.cache{
+      display:block;
+      }
+    li span,.total_cours{display:none}    
+    }  
+    
 	.label,strong{
   	font-weight:bold;
   	background-color:transparent;
   	color:#000000;
   	font-size:1em;
   	}
-  .multi{font-weight:bold}
+  /*.multi{font-weight:bold}*/
   .total_cours{font-size:90%}
 	}
 

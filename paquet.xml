@@ -1,9 +1,9 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.7.0"
+	version="1.7.1"
 	etat="dev"
-	compatibilite="[3.0.10;3.0.*]"
+	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
 	documentation=""
 >
@@ -27,7 +27,7 @@
 	<necessite nom="newsletters" compatibilite="[1.2.8;]" />
 	<necessite nom="notifications" compatibilite="[3.0.10;]" />
 	<necessite nom="agenda" compatibilite="[3.12.1;]" />
-	<necessite nom="reservation_evenement" compatibilite="[1.2.0;]" />
+	<necessite nom="reservation_evenement" compatibilite="[1.6.3;]" />
 	<necessite nom="inserer_modeles" compatibilite="[1.1.10;]" />
 	<necessite nom="gis" compatibilite="[4.9.0;]" />
 	<necessite nom="declinaisons" compatibilite="[1.0.3;]" />	

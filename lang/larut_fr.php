@@ -69,7 +69,8 @@ Bruxelles en pièce jointe.</p>
     'texte_statut_archive'=>'archivé',
     
     // V
-    'voir_inscriptions_tous'=>'S\'inscrire pour plusieurs cours',    
+    'voir_inscriptions_tous'=>'S\'inscrire pour plusieurs cours',  
+     'voir_tous_cours'=>'Voir tous les cours',       
 
 );
 
