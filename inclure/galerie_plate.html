@@ -1,6 +1,6 @@
 [(#REM) Portfolio : album d'images ]
-#SET{id_rubrique,#ARRAY}
-   <BOUCLE_rub(RUBRIQUES){id_parent}{tout}{id_rubrique?}>
+#SET{id_rubrique,#LISTE{7,16}}
+   <BOUCLE_rub(RUBRIQUES){id_parent IN #GET{id_rubrique}}{tout}>
         <BOUCLE_trad(RUBRIQUES){traduction}{tout}>
                #SET{id_rubrique,#GET{id_rubrique}|push{#ID_RUBRIQUE}}
         </BOUCLE_trad>

@@ -10,11 +10,9 @@
     })]
         [(#REM) cSi c'est des articles atùeliers, en renvoie vers la galerie ]
         <BOUCLE_atelier(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-            <BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>
-                <BOUCLE_parent(RUBRIQUES){id_parent=#ID_PARENT}{composition=galerie}{tout}>
-                      <INCLURE{fond=structure,env,id_rubrique=#ID_RUBRIQUE,id_secteur=#ID_SECTEUR,type-page=rubrique,composition=#COMPOSITION,id_trad,id_article=#GET{id_trad}} />  
-                </BOUCLE_parent>
-            </BOUCLE_rub>
+		  <BOUCLE_parent(RUBRIQUES){composition=galerie}{tout}{lang}>
+                  <INCLURE{fond=structure,env,id_rubrique=#ID_RUBRIQUE,id_secteur=#ID_SECTEUR,type-page=rubrique,composition=#COMPOSITION,id_trad,id_article=#GET{id_trad}} />  
+            </BOUCLE_parent>
         </BOUCLE_atelier> 
     </BOUCLE_principale_article_archive>   
 <//B_principale_article>

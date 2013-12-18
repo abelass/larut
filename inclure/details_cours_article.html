@@ -101,7 +101,7 @@
 #SET{cacher,''}
 #SET{id_evenement,#VALEUR}               
             <B_evs_enfant>
-			<div class="infos_cours">
+            <div class="infos_cours">
                 [(#TOTAL_BOUCLE|>{3}|oui)
                 #SET{cacher,'invisible'}
                 ]
@@ -113,8 +113,8 @@
                                 <ul[(#GET{cacher}|oui) class="multi" title="<:larut:voir_tous_cours:>"]>  
                                              
                                  <BOUCLE_evs_enfant(DATA){source tableau,#GET{dates_#VALEUR}}{si #GET{dates_#VALEUR}|count|>{1}|oui}>
-									[(#ID_SOURCE|=={0}|oui)#SET{evenements,#GET{id_evenement}}]
-									#SET{separateur,''}
+                                    [(#ID_SOURCE|=={0}|oui)#SET{evenements,#GET{id_evenement}}]
+                                    #SET{separateur,''}
                                     [(#TOTAL_BOUCLE|>{3}|oui)                                    
                                     #SET{cacher,'cache'}
                                     [(#COMPTEUR_BOUCLE|=={1}|oui)#SET{cacher,''}]
@@ -132,7 +132,7 @@
                         </tbody>                                                       
                     </table>
                     <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{evenements}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
-				</div>
+                </div>
                </B_evs_enfant>
                <div class="infos_cours">
                 <table> 
@@ -153,12 +153,12 @@
                    </tbody>                                             
                 </table> 
                <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a> 
-			</div>	
+            </div>  
              <//B_evs_enfant>                             
         </BOUCLE_date_resultat>
 
 </B_date_resultat>
-			<div class="infos_cours">
+            <div class="infos_cours">
 <div class="cours_non"><:larut:pas_cours_programmee:></div>
 <a class="btn btn-primary" href="[(#GET{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a></div>
 <//B_date_resultat>
