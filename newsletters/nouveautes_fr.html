@@ -26,6 +26,7 @@
 	div.chapo,div.texte,div.ps,div.notes {margin-bottom: 2em;}
 	div.notes {font-size: 11px;}
 	#emailbody {max-width: 800px;text-align: left;}
+	.infos_cours{width:20%}
 	@media only screen and (max-width: 640px) {
 		#emailbody {width: auto !important;margin:0 1em !important;}
 		img {max-width: 100% !important;}
@@ -74,7 +75,7 @@
 					[
 					<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
 					]
-					[
+                	[
 					<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
 					]
 					[<br/>
@@ -86,6 +87,8 @@
 		</tr>
 		]
 		<BOUCLE_nouveautes(ARTICLES){date<=#DATE}{date>#DATE_REDAC}{par date}{lang=#GET{lang}}>
+		#SET{id_article,#ID_ARTICLE}
+        [(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
 		<tr xmlns="">
 			<td style="margin-bottom:0;line-height:1.4em;">
 
@@ -102,6 +105,13 @@
 				[
 				<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
 				]
+				[(#COMPOSITION|=={ateliers}|oui)
+    				[(#DETAILS_COURS|?{
+                            <div class="infos_cours">#DETAILS_COURS</div>,
+                            #INCLURE{fond=inclure/details_cours_article,id_article=#GET{id_article}}
+                            }
+                        )]
+                    ]
 				[
 				<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
 				]
