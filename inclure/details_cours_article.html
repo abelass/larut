@@ -139,12 +139,10 @@
                     <tbody> 
                     <tr>
                         <td class="label"><:reservation:label_date:></td>
-                        <td>
-                            <ul>               
+                        <td>              
                                <BOUCLE_evs_enfant_alt(DATA){source tableau,#GET{dates_#VALEUR}}>
                                 [<div class="entete">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,non})</div>]
                                </BOUCLE_evs_enfant_alt>
-                                    </ul>   
                         </td>
                     </tr>                         
                     <INCLURE{fond=inclure/details_cours_article_horaire,horaire=#GET{horaire}}/>
