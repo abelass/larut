@@ -88,13 +88,14 @@
 
 
 <B_date_resultat>
+[(#ENV{script}|!={non}|oui)
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul.multi').click(function(){
             $(this).toggleClass('open').attr('title',$(this).attr('title') == '<:larut:fermer:>' ? '<:larut:voir_tous_cours:>' : '<:larut:fermer:>');                        
         });  
     });
-</script>
+</script>]
 
 <BOUCLE_date_resultat(DATA){source tableau,#GET{id_evenement}}>
 #SET{compteur,#COMPTEUR_BOUCLE}   
