@@ -22,6 +22,7 @@
 	div#emailbody table#itemcontentlist tr td div blockquote {padding-left: 6px;border-left: 6px solid #dadada;margin-left: 1em;}
 	div#emailbody table#itemcontentlist tr td div li {margin-bottom: 1em;margin-left: 1em;}
 	table#itemcontentlist tr td a:link, table#itemcontentlist tr td a:visited, table#itemcontentlist tr td a:active, ul#summarylist li a {color: #983924;font-weight: bold;text-decoration: none;}
+	 div#emailbody table#itemcontentlist tr td div.infos_cours  td{vertical-align:top}   
 	img {border: none;}
 	div.chapo,div.texte,div.ps,div.notes {margin-bottom: 2em;}
 	div.notes {font-size: 11px;}
@@ -35,14 +36,14 @@
         line-height: 1.5em;
         margin: 0.5em 0 0.5em 1em;
         padding: 0.5em;
-        width:40%}
+        width:35%}
     .infos_cours strong {
         background-color: rgba(0, 0, 0, 0);
         color: #000000;
         font-size: 1em;
         font-weight: 700;}
 
-    .btn-primary {
+    table#itemcontentlist tr td a.btn-primary:link {
         background-color: #991400;
         background-image: linear-gradient(to bottom, #990000, #993300);
         background-repeat: repeat-x;
@@ -50,7 +51,7 @@
         color: #FFFFFF;
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         }        
-    .btn {
+    a.btn {
         border-radius: 4px;
         border-style: solid;
         border-width: 1px;
@@ -79,20 +80,29 @@
         vertical-align: text-top;
         width: 14px;
     } 
-    
- div#emailbody .infos_cours table tr td ul {
-    list-style-type: disc ;
+    div#emailbody table#itemcontentlist tr td div.infos_cours table ul {
+    list-style: disc ;
     margin: 0;
-    padding-left: 0;
+    padding: 0;
     }  
-      
-   .infos_cours .label, .infos_cours strong {
+    
+    div#emailbody table#itemcontentlist tr td div.infos_cours table ul.multi {list-style: none ;}
+    
+    div#emailbody table#itemcontentlist tr td .infos_cours ul.multi li {
+        display: inline;
+        padding: 0;
+        margin:0
+    } 
+    div#emailbody table#itemcontentlist tr td ul.multi li.cache {display: none;}         
+    .infos_cours  td{vertical-align:top}      
+   .infos_cours td.label{
         background-color: rgba(0, 0, 0, 0);
         color: #000000;
         font-size: 1em;
-        font-weight: 700;
-    }    
-    .label, {
+        font-weight: bold;
+    }
+   
+    .label {
         display: inline-block;
         line-height: 14px;
         padding: 2px 4px;
@@ -159,46 +169,49 @@
 			</td>
 		</tr>
 		]
-		<BOUCLE_nouveautes(ARTICLES){date<=#DATE}{date>#DATE_REDAC}{par date}{lang=#GET{lang}}>
-		#SET{id_article,#ID_ARTICLE}
-        [(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
-		<tr xmlns="">
-			<td style="margin-bottom:0;line-height:1.4em;">
 
-				<h3 style="margin:1em 0 3px 0;">
-					<a style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:16px;"
-					   href="#URL_ARTICLE" class="#EDIT{titre}">
-						[(#LOGO_ARTICLE|image_reduire{100,200}
-						|inserer_attribut{alt,''}
-						|inserer_attribut{border,'0'}
-						|inserer_attribut{style,'margin: 0;margin-left: 1em;margin-bottom: 1em;float:right;padding: 0;max-width:
-						100%;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;'}
-						|inserer_attribut{class,logo})]
-						#TITRE</a></h3>
-				[
-				<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
-				]
-				[(#COMPOSITION|=={ateliers}|oui)
-    				[(#DETAILS_COURS|?{
+	<BOUCLE_rub(RUBRIQUES){lang=#GET{lang}}{tout}{par num titre}>
+    <B_nouveautes>	
+	   <tr><td><h3>#TITRE</h3></td></tr>
+        <BOUCLE_nouveautes(ARTICLES){id_rubrique}{date<=#GET{date}}{date>#GET{date_redac}}{par date}{lang=#GET{lang}}>
+        #SET{id_article,#ID_ARTICLE}
+        [(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
+        <tr xmlns="">
+            <td style="margin-bottom:0;line-height:1.4em;">
+
+                <h3 style="margin:1em 0 3px 0;">
+                    <a style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:16px;"
+                       href="#URL_ARTICLE" class="#EDIT{titre}">
+                        [(#LOGO_ARTICLE|image_reduire{100,200}
+                        |inserer_attribut{alt,''}
+                        |inserer_attribut{border,'0'}
+                        |inserer_attribut{style,'margin: 0;margin-right: 1em;margin-bottom: 1em;float:left;padding: 0;max-width:
+                        100%;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;'}
+                        |inserer_attribut{class,logo})]
+                        #TITRE</a></h3>
+                [
+                <div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
+                ]
+                [(#COMPOSITION|=={ateliers}|oui)
+                    [(#DETAILS_COURS|?{
                             <div class="infos_cours">#DETAILS_COURS</div>,
                             #INCLURE{fond=inclure/details_cours_article,id_article=#GET{id_article},script=non}
                             }
                         )]
                     ]
-				[
-				<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
-				]
-				[
-				<div class='ps' style="margin-bottom: 2em;">(#PS)</div>
-				]
-				[<br/>
-				<hr/>
-				<div class="notes" style="margin-bottom: 2em;font-size: 11px">(#NOTES)</div>
-				]
-			</td>
-		</tr>
-		</BOUCLE_nouveautes>
-	<BOUCLE_rub(RUBRIQUES){id_trad=9}{lang=#GET{lang}}{tout}>
+                [
+                <div class='texte' style="margin-bottom: 2em;">(#TEXTE|replace{})</div>
+                ]
+                [
+                <div class='ps' style="margin-bottom: 2em;">(#PS)</div>
+                ]
+                [<br/>
+                <hr/>
+                <div class="notes" style="margin-bottom: 2em;font-size: 11px">(#NOTES)</div>
+                ]
+            </td>
+        </tr>
+        </BOUCLE_nouveautes>	
        <B_sites>	
         <tr><td><h3>#TITRE</h3></td></tr>
 		<BOUCLE_sites(SITES){id_rubrique=#ID_TRAD}{date<=#GET{date}}{date>#GET{date_redac}}{!par date}{0,5}>
