@@ -1,4 +1,6 @@
 <BOUCLE_content(ARTICLES){id_article}>
+#SET{id_article,#ID_ARTICLE}
+[(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
 <article class="content-principal">
 	<header class="cartouche">
 		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
@@ -18,6 +20,7 @@
 
 	
 	<footer>
+	    <INCLURE{fond=inclure/partenaires,id_article=#GET{id_article}}/>
 		[<aside class="notes"><h2><:info_notes:></h2>(#NOTES)</aside>]
 		[(#REM) inclure de partage RS ]
 		[(#REM) bloc precedent/suivant en guise de <nav></nav> ]

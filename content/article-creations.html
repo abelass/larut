@@ -1,4 +1,6 @@
 <BOUCLE_content(ARTICLES){id_article}>
+#SET{id_article,#ID_ARTICLE}
+[(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
 [(#REM) Fil d'Ariane ]
 <nav id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}><span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[<span class="sep"> &gt; </span><strong class="on">(#TITRE|couper{80})</strong>]</nav>
 
@@ -21,6 +23,7 @@
 
 	
 	<footer>
+        <INCLURE{fond=inclure/partenaires,id_article=#GET{id_article}}/>
 		[<aside class="notes"><h2><:info_notes:></h2>(#NOTES)</aside>]
 		[(#REM) inclure de partage RS ]
 		[(#REM) bloc precedent/suivant en guise de <nav></nav> ]

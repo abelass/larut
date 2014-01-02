@@ -66,6 +66,7 @@ Bruxelles en pièce jointe.</p>
     
     // S
     'seance'=>'Séance',    
+    'soutien'=>'Avec le soutien de',     
     'sujet_email_amies'=>'Partage d\'infos de @nom@',
     
     // T

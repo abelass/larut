@@ -19,6 +19,7 @@
     [<section class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></section>]
     [<section class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|image_reduire{500,0})</section>] 
     <footer>
+        <INCLURE{fond=inclure/partenaires,id_article=#GET{id_article}}/>
         [<aside class="notes"><h2><:info_notes:></h2>(#NOTES)</aside>]
         [(#REM) inclure de partage RS ]
         [(#REM) bloc precedent/suivant en guise de <nav></nav> ]
