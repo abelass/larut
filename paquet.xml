@@ -31,7 +31,7 @@
 	<necessite nom="inserer_modeles" compatibilite="[1.1.10;]" />
 	<necessite nom="gis" compatibilite="[4.9.0;]" />
 	<necessite nom="declinaisons" compatibilite="[1.0.3;]" />
-	<necessite nom="partenaires_objets" compatibilite="[1.0.0;]" />		
+	<necessite nom="partenaires" compatibilite="[1.5.0;]" />		
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
