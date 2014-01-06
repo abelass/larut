@@ -6,9 +6,6 @@
 #SET{date,#DATE}
 #SET{date_redac,#DATE_REDAC}
 #SET{nouveautes,''}
-<BOUCLE_hasnewarticles(ARTICLES){date<=#DATE}{date>#DATE_REDAC}{0,1}{lang=#GET{lang}}>#SET{nouveautes,' '}</BOUCLE_hasnewarticles>
-<BOUCLE_hasnewbreves(SITES){date<=#DATE}{date>#DATE_REDAC}{0,1}>#SET{nouveautes,' '}</BOUCLE_hasnewbreves>
-<BOUCLE_si(CONDITION){si #GET{nouveautes}}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
@@ -200,7 +197,7 @@
                         )]
                     ]
                 [
-                <div class='texte' style="margin-bottom: 2em;">(#TEXTE|replace{})</div>
+                <div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
                 ]
                 [
                 <div class='ps' style="margin-bottom: 2em;">(#PS)</div>
@@ -211,7 +208,9 @@
                 ]
             </td>
         </tr>
-        </BOUCLE_nouveautes>	
+        </BOUCLE_nouveautes>
+        <br style="display:none"/>
+        <//B_nouveautes>        	
        <B_sites>	
         <tr><td><h3>#TITRE</h3></td></tr>
 		<BOUCLE_sites(SITES){id_rubrique=#ID_TRAD}{date<=#GET{date}}{date>#GET{date_redac}}{!par date}{0,5}>
@@ -262,6 +261,5 @@
 </center>
 </body>
 </html>
-</BOUCLE_si>
 </BOUCLE_newsletter>
 #FILTRE{newsletters_liens_absolus}
