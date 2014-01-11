@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.8.1"
+	version="1.8.2"
 	etat="dev"
 	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -32,7 +32,8 @@
 	<necessite nom="gis" compatibilite="[4.9.0;]" />
 	<necessite nom="declinaisons" compatibilite="[1.0.3;]" />
 	<necessite nom="partenaires" compatibilite="[1.5.0;]" />		
-	<necessite nom="reservations_mailsubscribers" compatibilite="[1.0.0;]" />	
+	<necessite nom="reservations_mailsubscribers" compatibilite="[1.0.0;]" />
+	<necessite nom="notifications_archive" compatibilite="[1.0.1;]" />		
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />

@@ -108,13 +108,31 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
 
     //Les documents attachés à ces articles quin on un mot clés attaché correpondant au statut de la réservation
     $sql=sql_select('*','spip_mots LEFT JOIN spip_mots_liens USING(id_mot) LEFT JOIN spip_documents ON spip_mots_liens.id_objet=spip_documents.id_document LEFT JOIN spip_documents_liens USING (id_document) LEFT JOIN spip_types_documents USING(extension)','spip_mots.titre ='.sql_quote($options['statut']).' AND spip_documents_liens.id_objet IN ('.implode(',',$id_article).') AND spip_documents_liens.objet="article"');
-      
+    $id_document=array();
     while($doc=sql_fetch($sql)){
         $fichier=$doc['fichier'];
+         $id_document[]=$doc['id_document'];
         list($extension,$nom)=explode('/',$fichier);
         $chemin=realpath(_DIR_IMG.$fichier);
         $o['pieces_jointes'][] = array('chemin' => $chemin,'nom' => $nom,'encodage' => 'base64','mime' => $doc['mime_type']) ;
         }
 
     $envoyer_mail($options['email'],$subject,$o);
+    
+        if ($archiver = charger_fonction('archiver_notification','inc',true)) {
+                $envoi='reussi';
+                if(!$envoyer_mail)$envoi='echec';
+
+            $o=array(
+                'quoi'=>$quoi,
+                'texte'=>$message,
+                'html'=>'oui',
+                'id_objet'=>$id_reservation,
+                'objet'=>'reservation',
+                'envoi'=>$envoi,
+                'id_document'=>$id_document);
+            
+            
+        $archiver ($options['email'], $subject, $o);
+    } 
 }
