@@ -123,16 +123,17 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
                 $envoi='reussi';
                 if(!$envoyer_mail)$envoi='echec';
 
-            $o=array(
-                'quoi'=>$quoi,
+             $o=array(
+                'recipients'=>$email,                         
+                'sujet'=>$subject,
                 'texte'=>$message,
                 'html'=>'oui',
                 'id_objet'=>$id_reservation,
                 'objet'=>'reservation',
                 'envoi'=>$envoi,
-                'id_document'=>$id_document);
+                'id_document'=>$id_document,
+                 'type'=>$quoi);           
             
-            
-        $archiver ($options['email'], $subject, $o);
+        $archiver ($o);
     } 
 }
