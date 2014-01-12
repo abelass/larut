@@ -131,7 +131,7 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
                 'id_objet'=>$id_reservation,
                 'objet'=>'reservation',
                 'envoi'=>$envoi,
-                'id_document'=>$id_document,
+                //'id_document'=>$id_document,
                  'type'=>$quoi);           
             
         $archiver ($o);
