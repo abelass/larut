@@ -45,6 +45,4 @@
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/larut.php" />		
 
 	 	
-
-
 </paquet>
