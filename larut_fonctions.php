@@ -124,7 +124,7 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
                 if(!$envoyer_mail)$envoi='echec';
 
              $o=array(
-                'recipients'=>$email,                         
+                'recipients'=>$options['email'],                         
                 'sujet'=>$subject,
                 'texte'=>$message,
                 'html'=>'oui',
