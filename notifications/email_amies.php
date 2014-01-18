@@ -26,7 +26,7 @@ function notifications_email_amies_dist($quoi,$id_reservation, $options) {
             if(!$envoyer_mail)$envoi='echec';
 
             $o=array(
-                'recipients'=>$options['email'],                         
+                'recipients'=>implode(', ',$options['email']),                         
                 'sujet'=>$subject,
                 'texte'=>$message,
                 'html'=>'oui',
