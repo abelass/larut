@@ -34,3 +34,15 @@ function larut_formulaire_traiter($flux){
     
     return $flux;
 }
+
+// Définitions des notifications pour https://github.com/abelass/notifications_archive
+function larut_notifications_archive($flux){
+    $flux=array_merge($flux,array(
+    'email_amies'=>array(
+        'activer'=>'on',
+        'duree'=>'30'  
+        ),      
+    ));
+       
+    return $flux;   
+}

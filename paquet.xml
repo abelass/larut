@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.9.0"
+	version="1.10.0"
 	etat="dev"
 	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -41,6 +41,7 @@
 	<pipeline nom="formulaire_charger" inclure="larut_pipelines.php" />
 	<pipeline nom="formulaire_traiter" inclure="larut_pipelines.php" />	
 	<pipeline nom="affiche_enfants" inclure="larut_pipelines.php" />		
+	<pipeline nom="notifications_archive" inclure="larut_pipelines.php" /> 			
 	
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/larut.php" />		
 

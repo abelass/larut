@@ -19,6 +19,22 @@ function notifications_email_amies_dist($quoi,$id_reservation, $options) {
 
     $o=array('html'=>$message,'nom_envoyeur'=>$options['nom']);
     $envoyer_mail($options['email'],$subject,$o,$options['from']);
+    
+    // Si présent -  l'api de notifications_archive 
+    if ($archiver = charger_fonction('archiver_notification','inc',true)) {
+            $envoi='reussi';
+            if(!$envoyer_mail)$envoi='echec';
+
+            $o=array(
+                'recipients'=>$options['email'],                         
+                'sujet'=>$subject,
+                'texte'=>$message,
+                'html'=>'oui',
+                'envoi'=>$envoi,
+                 'type'=>$quoi);
+                     
+        $archiver ($o);
+    }  
 }
 
 ?>
