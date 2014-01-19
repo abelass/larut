@@ -2,7 +2,7 @@
 	prefix="larut"
 	categorie="squelette"
 	version="1.10.1"
-	etat="dev"
+	etat="stable"
 	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
 	documentation=""
