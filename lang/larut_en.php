@@ -5,36 +5,79 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
     //C
+    'cordialement'=>'Sincerely yours',  
     'commentaire'=>'Comment',    
     'complet'=>'Full', 
+    'cours'=>'class',   
     
     //G
     'galerie'=>'Image Gallery',
     'galeries'=>'Image Galleries',    
+
+    //E
+    'explication_label_email_amies'=>'email addresses seperated by a comma',
+    
+    //F
+    'fermer'=>'close',
     
     //I
-    'inscrire_liste_attente'=>'Choose another workshop or pout you in the waiting list',
-    
-    //M
-    'modele_cours'=>'Work shops',
-    'modele_label_afficher_texte'=>'Display the text',    
+    'inscription'=>'Registration',   
+    'inscrire_liste_attente'=>'Choose another workshop or register for the waiting list',
+  
     
 	// L
+    'label_email_amies' => 'I want to share this information with friends',  
+    'label_horaire' => 'Timetable:', 
+    'label_prix' => 'Price:',    
 	'larut_titre' => 'Larut',
 	'liens' => 'Links',	
+
+     //M
+        'merci_de_votre_reservation_accepte'=>'<p>Votre paiement s\'est bien effectué et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>', 
+       
+    'merci_de_votre_reservation_accepte_2'=>'
+    <p>N’hésitez pas à me contacter au si vous avez des questions.</p>
+    <ul>
+        <li>GSM 0495/102818</li>
+        <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
+    </ul>
+    <p>Je vous envoie une liste d\'endroits ou vous pouvez acheter vos tissus à
+Bruxelles en pièce jointe.</p>
+    ',       
+    'merci_de_votre_reservation_attente_paiement'=>'<p>Merci de votre intérêt pour nos ateliers de couture.</p>
+
+<p>Votre inscription est bien enregistrée dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE88 6116 3573 5141 avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
+
+<p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
+
+<p>Je me réjouis de vous rencontrer bientôt pour partager la magie de la couture avec vous!</p>', 
+    'message_partager_information'=>'@nom@ veut partager avec vous l’information sur le cours pour le quel elle/lui s\'est inscrit/e :',  
+    'message_partager_informations'=>'@nom@ veut partager avec vous l’information sur les cours pour les quels elle/lui s\'est inscrit/e :',
+    'modele_cours'=>'Work shops',
+    'modele_label_afficher_texte'=>'Display the text',     
 	
     //P
+   'pas_cours_programmee'=>'Ce cours n\'est pas programmé actuellement<br/> Appuyez sur le bouton inscription pour voir l\'offre actuelle de cours',    
     'places_disponibles'=>'Remaining Places :',
+    'probleme_confirmation'=>'Cependant il y a un problème avec les cours suivants :',
+
+    //R
+    'remerciement'=>'Cordialement,',
     
      // S
     'seance'=>'Session',       
-    'inscription'=>'Subscription',
+    'soutien'=>'Avec le soutien de',     
+    'sujet_email_amies'=>'Partage d\'infos de @nom@',
     
     //T
+    'texte_statut_bancaire'=>'Je vous invite à réaliser le virement dans le compte BE02611635735040 avec la référence : chèque cadeau et votre nom.',       
+    'texte_statut_merci'=>'Merci de votre commande d\'un chèque cadeau de Larut.',  
+    'texte_statut_reception'=>'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',       
     'texte_statut_archive'=>'archivé',
     
     // V
-    'voir_inscriptions_tous'=>'Sign up for several classes',    
+    'voir_inscriptions_tous'=>'Sign up for several classes',
+    'voir_tous_cours'=>'Voir tous les cours',       
 );
 
 ?>

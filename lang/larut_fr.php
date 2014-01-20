@@ -21,7 +21,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'fermer'=>'fermer',
     
     //I
-     'inscription'=>'Inscription',
+    'inscription'=>'Inscription',
     'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
 
 	// L
@@ -77,7 +77,7 @@ Bruxelles en pièce jointe.</p>
     
     // V
     'voir_inscriptions_tous'=>'S\'inscrire pour plusieurs cours',  
-     'voir_tous_cours'=>'Voir tous les cours',       
+    'voir_tous_cours'=>'Voir tous les cours',       
 
 );
 
