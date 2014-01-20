@@ -33,7 +33,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'liens' => 'Links',	
 
      //M
-    'merci_de_votre_reservation_accepte'=>'<p>Your payment has been validated and we are happy to confirm your registration for one of Larut\'workshops.</p>', 
+    'merci_de_votre_reservation_accepte'=>'<p>Your payment has been validated and we are happy to confirm your registration for one of Larut\'s workshops.</p>', 
        
     'merci_de_votre_reservation_accepte_2'=>'
     <p>Don\'t hesitate to contact me if you have any questions.</p>
@@ -45,9 +45,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     ',       
     'merci_de_votre_reservation_attente_paiement'=>'<p>Thank you for your interest in Larut\'s sewing workshops.</p>
 
-<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account : IBAN  - BE88 6116 3573 5141 / BIC – DEUTBEBEXXX . Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
+<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account: IBAN  - BE88 6116 3573 5141 / BIC – DEUTBEBEXXX . Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
 
-<p>For more information please visit the<a href="@url_cg@">Terms ans Conditions</a>.</p>
+<p>For more information please visit the <a href="@url_cg@">Terms ans Conditions</a>.</p>
 
 <p>I look forward to meeting you soon and to share the magic of sewing with you!</p>', 
     'message_partager_information'=>'@nom@ wants to share with you the information about the workshop in which she/he will participate:',  
