@@ -6,9 +6,6 @@
 #SET{date,#DATE}
 #SET{date_redac,#DATE_REDAC}
 #SET{nouveautes,''}
-<BOUCLE_hasnewarticles(ARTICLES){date<=#DATE}{date>#DATE_REDAC}{0,1}{lang=#GET{lang}}>#SET{nouveautes,' '}</BOUCLE_hasnewarticles>
-<BOUCLE_hasnewbreves(SITES){date<=#DATE}{date>#DATE_REDAC}{0,1}>#SET{nouveautes,' '}</BOUCLE_hasnewbreves>
-<BOUCLE_si(CONDITION){si #GET{nouveautes}}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
@@ -22,11 +19,95 @@
 	div#emailbody table#itemcontentlist tr td div blockquote {padding-left: 6px;border-left: 6px solid #dadada;margin-left: 1em;}
 	div#emailbody table#itemcontentlist tr td div li {margin-bottom: 1em;margin-left: 1em;}
 	table#itemcontentlist tr td a:link, table#itemcontentlist tr td a:visited, table#itemcontentlist tr td a:active, ul#summarylist li a {color: #983924;font-weight: bold;text-decoration: none;}
+	 div#emailbody table#itemcontentlist tr td div.infos_cours  td{vertical-align:top}   
 	img {border: none;}
 	div.chapo,div.texte,div.ps,div.notes {margin-bottom: 2em;}
 	div.notes {font-size: 11px;}
 	#emailbody {max-width: 800px;text-align: left;}
-	@media only screen and (max-width: 640px) {
+	.infos_cours{
+        border: 4px solid #983924;
+        border-radius: 0.4em;
+        box-shadow: 1px 2px 10px #983924;
+        clear: right;
+        float: right;
+        line-height: 1.5em;
+        margin: 0.5em 0 0.5em 1em;
+        padding: 0.5em;
+        width:35%}
+    .infos_cours strong {
+        background-color: rgba(0, 0, 0, 0);
+        color: #000000;
+        font-size: 1em;
+        font-weight: 700;}
+
+    table#itemcontentlist tr td a.btn-primary:link {
+        background-color: #991400;
+        background-image: linear-gradient(to bottom, #990000, #993300);
+        background-repeat: repeat-x;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        color: #FFFFFF;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        }        
+    a.btn {
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+        padding: 4px 12px;
+        text-align: center;
+        vertical-align: middle;
+    }   
+    .icon-arrow-right {
+        background-position: -264px -96px;
+    } 
+    .icon-white, .nav-pills > .active > a > [class^="icon-"], .nav-pills > .active > a > [class*=" icon-"], .nav-list > .active > a > [class^="icon-"], .nav-list > .active > a > [class*=" icon-"], .navbar-inverse .nav > .active > a > [class^="icon-"], .navbar-inverse .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:focus > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > li > a:focus > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"], .dropdown-submenu:hover > a > [class^="icon-"], .dropdown-submenu:focus > a > [class^="icon-"], .dropdown-submenu:hover > a > [class*=" icon-"], .dropdown-submenu:focus > a > [class*=" icon-"]{
+      background-image: url("http://larut/plugins/auto/bootstrap/v1.5.8/bootstrap/img/glyphicons-halflings-white.png");  
+    }   
+    [class^="icon-"], [class*=" icon-"] {
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: 14px;
+        line-height: 14px;
+        margin-top: 1px;
+        vertical-align: text-top;
+        width: 14px;
+    } 
+    div#emailbody table#itemcontentlist tr td div.infos_cours table ul {
+    list-style: disc ;
+    margin: 0;
+    padding: 0;
+    }  
+    
+    div#emailbody table#itemcontentlist tr td div.infos_cours table ul.multi {list-style: none ;}
+    
+    div#emailbody table#itemcontentlist tr td .infos_cours ul.multi li {
+        display: inline;
+        padding: 0;
+        margin:0
+    } 
+    div#emailbody table#itemcontentlist tr td ul.multi li.cache {display: none;}         
+    .infos_cours  td{vertical-align:top}      
+   .infos_cours td.label{
+        background-color: rgba(0, 0, 0, 0);
+        color: #000000;
+        font-size: 1em;
+        font-weight: bold;
+    }
+   
+    .label {
+        display: inline-block;
+        line-height: 14px;
+        padding: 2px 4px;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        vertical-align: baseline;
+        white-space: nowrap;
+    }                
+    	@media only screen and (max-width: 640px) {
 		#emailbody {width: auto !important;margin:0 1em !important;}
 		img {max-width: 100% !important;}
 	}
@@ -74,7 +155,7 @@
 					[
 					<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
 					]
-					[
+                	[
 					<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
 					]
 					[<br/>
@@ -85,40 +166,52 @@
 			</td>
 		</tr>
 		]
-		<BOUCLE_nouveautes(ARTICLES){date<=#DATE}{date>#DATE_REDAC}{par date}{lang=#GET{lang}}>
-		<tr xmlns="">
-			<td style="margin-bottom:0;line-height:1.4em;">
 
-				<h3 style="margin:1em 0 3px 0;">
-					<a style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:16px;"
-					   href="#URL_ARTICLE" class="#EDIT{titre}">
-						[(#LOGO_ARTICLE|image_reduire{100,200}
-						|inserer_attribut{alt,''}
-						|inserer_attribut{border,'0'}
-						|inserer_attribut{style,'margin: 0;margin-left: 1em;margin-bottom: 1em;float:right;padding: 0;max-width:
-						100%;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;'}
-						|inserer_attribut{class,logo})]
-						#TITRE</a></h3>
-				<p
-					style="font-size:14px;color:#555;margin:9px 0 3px 0;font-family:Georgia,Helvetica,Arial,Sans-Serif;line-height:140%;font-size:14px;">
-					<span><:newsletter:label_publie:></span> [(#DATE|affdate)]</p>
-				[
-				<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
-				]
-				[
-				<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
-				]
-				[
-				<div class='ps' style="margin-bottom: 2em;">(#PS)</div>
-				]
-				[<br/>
-				<hr/>
-				<div class="notes" style="margin-bottom: 2em;font-size: 11px">(#NOTES)</div>
-				]
-			</td>
-		</tr>
-		</BOUCLE_nouveautes>
-	<BOUCLE_rub(RUBRIQUES){id_trad=9}{lang=#GET{lang}}{tout}>
+	<BOUCLE_rub(RUBRIQUES){lang=#GET{lang}}{tout}{par num titre}>
+    <B_nouveautes>	
+	   <tr><td><h3>#TITRE</h3></td></tr>
+        <BOUCLE_nouveautes(ARTICLES){id_rubrique}{date<=#GET{date}}{date>#GET{date_redac}}{par date}{lang=#GET{lang}}>
+        #SET{id_article,#ID_ARTICLE}
+        [(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
+        <tr xmlns="">
+            <td style="margin-bottom:0;line-height:1.4em;">
+
+                <h3 style="margin:1em 0 3px 0;">
+                    <a style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:16px;"
+                       href="#URL_ARTICLE" class="#EDIT{titre}">
+                        [(#LOGO_ARTICLE|image_reduire{100,200}
+                        |inserer_attribut{alt,''}
+                        |inserer_attribut{border,'0'}
+                        |inserer_attribut{style,'margin: 0;margin-right: 1em;margin-bottom: 1em;float:left;padding: 0;max-width:
+                        100%;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;'}
+                        |inserer_attribut{class,logo})]
+                        #TITRE</a></h3>
+                [
+                <div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
+                ]
+                [(#COMPOSITION|=={ateliers}|oui)
+                    [(#DETAILS_COURS|?{
+                            <div class="infos_cours">#DETAILS_COURS</div>,
+                            #INCLURE{fond=inclure/details_cours_article,id_article=#GET{id_article},script=non}
+                            }
+                        )]
+                    ]
+                [
+                <div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
+                ]
+                [
+                <div class='ps' style="margin-bottom: 2em;">(#PS)</div>
+                ]
+                [<br/>
+                <hr/>
+                <div class="notes" style="margin-bottom: 2em;font-size: 11px">(#NOTES)</div>
+                ]
+            </td>
+        </tr>
+        </BOUCLE_nouveautes>
+        <br style="display:none"/>
+        <//B_nouveautes>        	
+       <B_sites>	
         <tr><td><h3>#TITRE</h3></td></tr>
 		<BOUCLE_sites(SITES){id_rubrique=#ID_TRAD}{date<=#GET{date}}{date>#GET{date_redac}}{!par date}{0,5}>
 		<tr xmlns="">
@@ -168,6 +261,5 @@
 </center>
 </body>
 </html>
-</BOUCLE_si>
 </BOUCLE_newsletter>
 #FILTRE{newsletters_liens_absolus}
