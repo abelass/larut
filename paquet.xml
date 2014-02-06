@@ -6,6 +6,7 @@
 	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
 	documentation=""
+	schema="1.0.0" 
 >
 
 	<nom>Larut</nom>
@@ -41,8 +42,9 @@
 	<pipeline nom="formulaire_charger" inclure="larut_pipelines.php" />
 	<pipeline nom="formulaire_traiter" inclure="larut_pipelines.php" />	
 	<pipeline nom="affiche_enfants" inclure="larut_pipelines.php" />		
-	<pipeline nom="notifications_archive" inclure="larut_pipelines.php" /> 			
-	
+	<pipeline nom="notifications_archive" inclure="larut_pipelines.php" />
+	 
+	<pipeline nom="declarer_champs_extras" inclure="base/larut.php" />				
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/larut.php" />		
 
 	 	

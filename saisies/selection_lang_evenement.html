@@ -1,0 +1,37 @@
+[(#REM) 
+
+  ### /!\ boucle POUR (spip Bonux) ###
+	
+  Parametres :
+  - ** datas : tableau de donnees
+               liste simple : cle=>valeur
+               liste avec groupes :  cle=> tableau (cle=>valeur)
+  - option_intro : chaine de langue de la premiere ligne vide ? (defaut:"")
+  - cacher_option_intro : pas de premier option vide  (defaut:"")
+  - class : classe(s) css ajoutes au select
+  - defaut : valeur par defaut si pas présente dans l'environnement
+  - valeur_forcee : valeur utilisee meme si une valeur est dans l'environnement
+  
+  Exemples d'appels
+  pour une liste simple :
+	[(#SAISIE{selection,produits,
+		label=<:plugin:info_produits:>})]
+  pour une liste avec groupes :
+]
+
+<BOUCLE_evmt(EVENEMENTS){id_evenement}>
+	#SET{valeur,#LANG}
+	<BOUCLE_article(ARTICLES){id_article}{si #GET{valeur}|non}>
+	#SET{valeur,#LANG}
+	</BOUCLE_article>	
+</BOUCLE_evmt>
+	<BOUCLE_article_alt(ARTICLES){id_article}>
+	#SET{valeur,#LANG}
+	</BOUCLE_article_alt>	
+<//B_evmt>
+<select name="#ENV{nom}" id="champ_[(#ENV{id,#ENV{nom}}|saisie_nom2classe)]"[ class="(#ENV{class})"][ disabled="(#ENV{disable})"][ size="(#ENV{size})"][ (#ENV*{attributs})]>
+[(#ENV{cacher_option_intro}|non)<option value="">[(#ENV{option_intro})]</option>]
+<BOUCLE_langues(DATA){source tableau, #CONFIG{langues_utilisees}|explode{','}}>
+	<option value="#VALEUR"[(#VALEUR|=={#GET{valeur}}|oui)selected="selected"]>[(#VALEUR|traduire_nom_langue)]</option>
+</BOUCLE_langues>
+</select>

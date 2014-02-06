@@ -41,4 +41,28 @@ function larut_declarer_tables_objets_sql($tables) {
     
     return $tables;
 }
+
+// Ajout de champs extras
+function larut_declarer_champs_extras($champs = array()) {
+
+	$champs['spip_evenements']['lang'] = array(
+
+			'saisie' => 'selection_lang_evenement',//Type du champ (voir plugin Saisies)
+
+			'options' => array(
+					'nom' => 'lang',
+					'label' => _T('reservation:label_lang'),
+					'sql' => "varchar(30) NOT NULL DEFAULT ''",
+					'defaut' => '',// Valeur par défaut
+					'id_evenement'=>_request('id_evenement'),
+					'id_article'=>_request('id_article'),					
+					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
+							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
+				),
+
+	);
+
+	return $champs;
+
+}
 ?>
