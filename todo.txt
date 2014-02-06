@@ -1,0 +1,20 @@
+Adaptations traductions
+
+Intro
+Faire en sorte que quand on traduit un article l'evenement à l'article soit pris en compte, actuellement ce n'est que lévenement de
+l'article d'origine qui est pris en compte.
+
+Impacte
+
+- Affichage details article
+--  inclure/details_cours_article.html
+
+- Formulaire Reservations
+-- formulaires/inc-reservation_evenements_declinaisons.html
+-- larut_fonctions.php/ function inc_donnees_reservations_details l5
+
+- Notifications
+-- notifications/contenu_reservation_mail.html
+
+- Newsletter
+- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html
