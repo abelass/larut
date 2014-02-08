@@ -16,9 +16,10 @@
         [(#REM)Les variables de la traductions de l'article correpondant à la langue del environnement]       	
        <BOUCLE_article_base(ARTICLES){traduction}{!origine_traduction}>
             [(#LANG|=={#ENV{lang}}|oui)
- 			#SET{id_article_base,#ID_ARTICLE}
- 			#SET{titre,#TITRE}   
- 			#SET{url,#URL_ARTICLE}]
+ 			    #SET{id_article_base,#ID_ARTICLE}
+ 			    #SET{titre,#TITRE}   
+ 			    #SET{url,#URL_ARTICLE}
+ 			    ]
  			#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}                        
        </BOUCLE_article_base>
       
@@ -57,7 +58,7 @@
         [(#REM)Les détails de la réservation]
         #SET{langue,#LANG**}
         [(#GET{langue}|non)
-        #SET{langue,#ID_ARTICLE|generer_info_entite{article,lang}}
+            #SET{langue,#ID_ARTICLE|generer_info_entite{article,lang}}
         ]
 
 		<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#GET{id_article_base},titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},env}/>
