@@ -20,7 +20,7 @@
                 #SET{url_reservation,#URL_RUBRIQUE}
             </BOUCLE_rub_res_def>
         <//B_rub_res>    
-          [(#INCLURE{fond=inclure/details_cours_article,id_article=#ID_ARTICLE,url_reservation=#GET{url_reservation}}
+          [(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation}}
           |sinon{
             #INCLURE{fond=inclure/details_cours_article,id_article=#ID_TRAD,url_reservation=#GET{url_reservation}}
             }
@@ -39,7 +39,9 @@
     [<section class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></section>]
     [<section class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|image_reduire{500,0})</section>] 
     <footer>
-        <INCLURE{fond=inclure/partenaires,id_article=#GET{id_article}}/>
+        [(#INCLURE{fond=inclure/partenaires,id_article}
+            |sinon{#INCLURE{fond=inclure/partenaires,id_article=#GET{id_trad}}}
+            )]
         [<aside class="notes"><h2><:info_notes:></h2>(#NOTES)</aside>]
         [(#REM) inclure de partage RS ]
         [(#REM) bloc precedent/suivant en guise de <nav></nav> ]
