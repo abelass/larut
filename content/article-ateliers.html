@@ -1,6 +1,6 @@
 <BOUCLE_content(ARTICLES){id_article}>
-#SET{id_article,#ID_ARTICLE}
-[(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
+#SET{id_trad,#ID_ARTICLE}
+[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
 <article class="content-principal">
     <header class="cartouche">
         [<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
@@ -10,11 +10,27 @@
     [(#REM) Boite à outils]
     [(#INCLURE{fond=inclure/outils,env,titre,introduction=#INTRODUCTION,url=#URL_ARTICLE})]
     [<section class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,0})</section>]
-    [(#DETAILS_COURS|?{
-        <div class="infos_cours">#DETAILS_COURS</div>,
-        #INCLURE{fond=inclure/details_cours_article,id_article=#GET{id_article}}
-        }
-     )]    
+    <BOUCLE_test(CONDITION){si #DETAILS_COURS|oui}>
+        <div class="infos_cours">#DETAILS_COURS</div>
+    </BOUCLE_test>
+        <BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
+            #SET{url_reservation,#URL_RUBRIQUE}
+        </BOUCLE_rub_res>
+            <BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
+                #SET{url_reservation,#URL_RUBRIQUE}
+            </BOUCLE_rub_res_def>
+        <//B_rub_res>    
+          [(#INCLURE{fond=inclure/details_cours_article,id_article=#ID_ARTICLE,url_reservation=#GET{url_reservation}}|sinon{
+            #INCLURE{fond=inclure/details_cours_article,id_article=#ID_TRAD,url_reservation=#GET{url_reservation}}}|sinon{
+            <div class="infos_cours">
+                <div class="cours_non"><:larut:pas_cours_programmee:></div>
+                <a class="btn btn-primary" href="[(#GET{url_reservation})]">
+                    <i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
+                </a>
+            </div>
+})]  
+     <//B_test>   
+   
     [<section class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,0})</section>]
     [<section class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></section>]
     [<section class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|image_reduire{500,0})</section>] 
