@@ -1,5 +1,4 @@
 <B_prix>	
-	[(#COMPTEUR_BOUCLE|!={1}|oui)</li><li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_evenement}|oui)erreur]'>]
 	[(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
 	    <strong>[(#TITRE)][(#ENV{langue}|!={#ENV{lang}}|oui)[ - (#ENV{langue}|traduire_nom_langue)]]</strong>
 	]	
