@@ -1,5 +1,5 @@
 <BOUCLE_test(CONDITION){si #DETAILS_COURS|oui}>
-    <aside class="infos_cours">#DETAILS_COURS</aside>
+    <aside class="infos_cours">[(#DETAILS_COURS|propre)]</aside>
 </BOUCLE_test>
     <BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
         #SET{url_reservation,#URL_RUBRIQUE}
