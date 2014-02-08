@@ -16,7 +16,7 @@ Impacte
 -- notifications/contenu_reservation_mail.html //Pas besoin d'adapter
 
 - Newsletter
--- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html
+-- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html // faite et testé
 
 -Agenda
 -- agenda.json.html
