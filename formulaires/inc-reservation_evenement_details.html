@@ -1,8 +1,8 @@
 <B_prix>	
-	[(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
-	    <strong>[(#TITRE)][(#ENV{langue}|!={#ENV{lang}}|oui)[ - (#ENV{langue}|traduire_nom_langue)]]</strong>
-	]	
 	<div class="choix">
+        [(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
+            <strong>[(#TITRE)][(#ENV{langue}|!={#ENV{lang}}|oui)[ - (#ENV{langue}|traduire_nom_langue)]]</strong>
+        ]   	    
 	    #SET{date_fin,#DATE_FIN}
 	    <BOUCLE_ev_lies(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{!par date_debut}{0,1}>
 	    #SET{date_fin,#DATE_FIN}
