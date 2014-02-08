@@ -17,7 +17,10 @@ Impacte
 -- notifications/contenu_reservation_mail.html
 
 - Newsletter
-- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html
+-- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html
+
+-Agenda
+-- agenda.json.html
 
 
 
