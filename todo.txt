@@ -19,7 +19,7 @@ Impacte
 -- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html // faite et testé
 
 -Agenda
--- agenda.json.html
+-- agenda.json.html //pas nécessaire
 
 
 
