@@ -20,15 +20,19 @@
                 #SET{url_reservation,#URL_RUBRIQUE}
             </BOUCLE_rub_res_def>
         <//B_rub_res>    
-          [(#INCLURE{fond=inclure/details_cours_article,id_article=#ID_ARTICLE,url_reservation=#GET{url_reservation}}|sinon{
-            #INCLURE{fond=inclure/details_cours_article,id_article=#ID_TRAD,url_reservation=#GET{url_reservation}}}|sinon{
-            <div class="infos_cours">
-                <div class="cours_non"><:larut:pas_cours_programmee:></div>
-                <a class="btn btn-primary" href="[(#GET{url_reservation})]">
-                    <i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
-                </a>
-            </div>
-})]  
+          [(#INCLURE{fond=inclure/details_cours_article,id_article=#ID_ARTICLE,url_reservation=#GET{url_reservation}}
+          |sinon{
+            #INCLURE{fond=inclure/details_cours_article,id_article=#ID_TRAD,url_reservation=#GET{url_reservation}}
+            }
+            |sinon{
+                <div class="infos_cours">
+                    <div class="cours_non"><:larut:pas_cours_programmee:></div>
+                    <a class="btn btn-primary" href="[(#GET{url_reservation})]">
+                        <i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
+                    </a>
+                </div>
+                }
+            )]  
      <//B_test>   
    
     [<section class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,0})</section>]
