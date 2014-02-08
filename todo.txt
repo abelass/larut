@@ -7,14 +7,13 @@ l'article d'origine qui est pris en compte.
 Impacte
 
 - Affichage details article
---  inclure/details_cours_article.html // fait à tester
-
+--  inclure/details_cours_article.html //fait et testé
 - Formulaire Reservations
--- formulaires/inc-reservation_evenements_declinaisons.html
--- larut_fonctions.php/ function inc_donnees_reservations_details l5
+-- formulaires/inc-reservation_evenements_declinaisons.html // fait et testé
+-- larut_fonctions.php/ function inc_donnees_reservations_details l5 // Pas besoin d'adapter
 
 - Notifications
--- notifications/contenu_reservation_mail.html
+-- notifications/contenu_reservation_mail.html //Pas besoin d'adapter
 
 - Newsletter
 -- newsletters/nouveautes_en.html et newsletters/nouveautes_en.html
