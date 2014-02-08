@@ -101,7 +101,7 @@
 #SET{cacher,''}
 #SET{id_evenement,#VALEUR}               
             <B_evs_enfant>
-            <div class="infos_cours">
+            <aside class="infos_cours">
                 [(#TOTAL_BOUCLE|>{3}|oui)
                 #SET{cacher,'invisible'}
                 ]
@@ -135,9 +135,9 @@
                         </tbody>                                                       
                     </table>
                     <a class="btn btn-primary" href="[(#ENV{url_reservation}|parametre_url{id_evenement,#GET{evenements}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
-                </div>
+                </aside>
                </B_evs_enfant>
-               <div class="infos_cours">
+               <aside class="infos_cours">
                 <table> 
                     <tbody> 
                     <tr>
@@ -155,7 +155,7 @@
                    </tbody>                                             
                 </table> 
                <a class="btn btn-primary" href="[(#ENV{url_reservation}|parametre_url{id_evenement,#GET{id_evenement}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a> 
-            </div>  
-             <//B_evs_enfant>                             
+            </aside>  
+            <//B_evs_enfant>                             
         </BOUCLE_date_resultat>
 

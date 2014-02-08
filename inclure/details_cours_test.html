@@ -1,0 +1,24 @@
+<BOUCLE_test(CONDITION){si #DETAILS_COURS|oui}>
+    <aside class="infos_cours">#DETAILS_COURS</aside>
+</BOUCLE_test>
+    <BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
+        #SET{url_reservation,#URL_RUBRIQUE}
+    </BOUCLE_rub_res>
+        <BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
+            #SET{url_reservation,#URL_RUBRIQUE}
+        </BOUCLE_rub_res_def>
+    <//B_rub_res>    
+      [(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation}}
+      |sinon{
+        #INCLURE{fond=inclure/details_cours_article,id_article=#ENV{id_trad},url_reservation=#GET{url_reservation}}
+        }
+        |sinon{
+            <aside class="infos_cours">
+                <div class="cours_non"><:larut:pas_cours_programmee:></div>
+                <a class="btn btn-primary" href="[(#GET{url_reservation})]">
+                    <i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
+                </a>
+            </aside>
+            }
+        )]  
+ <//B_test> 
