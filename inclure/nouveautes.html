@@ -38,7 +38,7 @@
         color: #000000;
         font-size: 1em;
         font-weight: 700;}
-
+    .infos_cours ul,.infos_cours li{padding-left:0;margin-left:0}
     table#itemcontentlist tr td a.btn-primary:link {
         background-color: #991400;
         background-image: linear-gradient(to bottom, #990000, #993300);
@@ -170,8 +170,8 @@
     <B_nouveautes>  
        <tr><td><h3>#TITRE</h3></td></tr>
         <BOUCLE_nouveautes(ARTICLES){id_rubrique}{date<=#GET{date}}{date>#GET{date_redac}}{par date}{lang=#ENV{lang}}>
-        #SET{id_article,#ID_ARTICLE}
-        [(#ID_TRAD|>{0}|oui)#SET{id_article,#ID_TRAD}]
+        #SET{id_trad,#ID_ARTICLE}
+        [(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
         <tr xmlns="">
             <td style="margin-bottom:0;line-height:1.4em;">
 
@@ -189,11 +189,7 @@
                 <div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
                 ]
                 [(#COMPOSITION|=={ateliers}|oui)
-                    [(#DETAILS_COURS|?{
-                            <div class="infos_cours">#DETAILS_COURS</div>,
-                            #INCLURE{fond=inclure/details_cours_article,id_article=#GET{id_article},script=non}
-                            }
-                        )]
+                    <INCLURE{fond=inclure/details_cours_test,id_article,id_trad=#GET{id_trad},env,details_cours} /> 
                     ]
                 [
                 <div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
