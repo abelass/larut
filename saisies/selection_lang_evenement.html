@@ -20,7 +20,7 @@
 ]
 
 <BOUCLE_evmt(EVENEMENTS){id_evenement}>
-	#SET{valeur,#LANG}
+	#SET{valeur,#LANG**}
 	<BOUCLE_article(ARTICLES){id_article}{si #GET{valeur}|non}>
 	#SET{valeur,#LANG}
 	</BOUCLE_article>	
