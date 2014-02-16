@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'news' => 'New on this site',    
     
     //R
-    'reservation_enregistre'=>'Your registration has been recorded. <br/> You are going to receive a confimation email with the payment details. Please check you spam folder, if you don\'t receive any email. Don\'t hesitate to send me an email if you have any problems <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Thank you',    
+    'reservation_enregistre'=>'Your registration has been recorded. <br/> You are going to receive a confimation email with the payment details. Please check you spam folder, if you don\'t receive any email. Don\'t hesitate to send me an email if you encounter any problems <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Thank you',    
     
     //S
     'somme_produit' => 'Total',
