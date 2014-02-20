@@ -46,15 +46,11 @@
  
    <BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
        <BOUCLE_art_org(ARTICLES){id_article}>
-         #SET{texte_email,#TEXTE_EMAIL|image_reduire{200}}
-            <BOUCLE_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
-             #SET{texte_email,#TEXTE_EMAIL|image_reduire{200}}
-            </BOUCLE_trad>
-        </BOUCLE_art_org>
-    [<div style="border-bottom: #888888 1px solid;clear:both;">
-        (#GET{texte_email})
-        <br style="clear:both;"/>
-    </div>]    
+	    [<div style="border-bottom: #888888 1px solid;clear:both;">
+	        (#TEXTE_EMAIL|image_reduire{200})
+	        <br style="clear:both;"/>
+	    </div>]  
+        </BOUCLE_art_org>  
     </BOUCLE_article>
 
 [(#ENV{qui}|=={client}|et{#ENV{statut}|=={accepte}}|oui)
