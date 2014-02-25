@@ -56,7 +56,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'modele_label_afficher_texte'=>'Display the text',     
 	
     //P
-   'pas_cours_programmee'=>'This workshop is not scheduled for the time being. <br/> Please clik on the Registration button to view the current offer.',    
+   'pas_cours_programmee'=>'This workshop is not scheduled for the time being. <br/> Please clik on the Registration button to view the current offer.',
+    'places'=>'Spots:',       
     'places_disponibles'=>'Remaining Spots:',
     'probleme_confirmation'=>'However there is a problem with the following workshop:',
 

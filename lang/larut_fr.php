@@ -58,6 +58,7 @@ Bruxelles en pièce jointe.</p>
     
     //P
     'pas_cours_programmee'=>'Ce cours n\'est pas programmé actuellement<br/> Appuyez sur le bouton inscription pour voir l\'offre actuelle de cours.',
+    'places'=>'Places :',   
     'places_disponibles'=>'Places disponibles :',
     'probleme_confirmation'=>'Cependant il y a un problème avec les cours suivants :',
     

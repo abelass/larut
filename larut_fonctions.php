@@ -58,3 +58,10 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
         $archiver ($o);
     } 
 }
+
+//retourne les statuts qui définissent si un événement est complet
+function statuts_complet(){
+	$statuts_complets=charger_fonction('complet','inc/statuts');
+	$statuts=$statuts_complets();
+	return $statuts;
+}
