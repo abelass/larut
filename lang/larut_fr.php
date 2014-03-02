@@ -33,10 +33,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
     
     //M
-    'merci_de_votre_reservation_accepte'=>'<p>Votre paiement s\'est bien effectué et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>', 
+    'merci_de_votre_reservation_accepte'=>'<p>Votre paiement a bien été reçu et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>', 
        
     'merci_de_votre_reservation_accepte_2'=>'
-    <p>N’hésitez pas à me contacter au si vous avez des questions.</p>
+    <p>N’hésitez pas à me contacter si vous avez des questions.</p>
     <ul>
         <li>GSM 0495/102818</li>
         <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
