@@ -28,6 +28,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     //S
     'somme_produit' => 'Suma',
     
+	//T
+	'telephone'=>'Téléphone',
+    
     //V
     'voir_plus' => 'Voir d\'autres',    
 );
