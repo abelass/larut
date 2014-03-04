@@ -284,9 +284,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 ul{list-style: none;margin-left:0}
 
-#content ul {margin-left: 50px;}
 
-#content .formulaire_spip ul {margin-left:0}
 
 
 .liste-items .item .info-publi { 
@@ -489,51 +487,60 @@ img.equal{
 	}
 	
 /*Cours*/
-#content .infos_cours{
-	float:right;
-	width:50%;
-	clear:right;
-	box-shadow: 1px 2px 10px #983924;
-	border:#983924 4px solid;
-	border-radius:0.4em;
-	margin:0.5em 0 0.5em 1em;
-	padding:0.5em;
-	line-height: 1.5em;
-	
-	p{margin:0; font-size:1em}
-	
-	ul{margin:0;padding:0;list-style:disc}
- 	
-	
-	ul.multi{
-	  cursor:pointer;
-	  list-style:none;
-	  li{
-	    display:inline;
-	    padding:0;
-	    .total_cours{color:#a52a2a}
-	    .total_cours:hover{background-color:#fde1d9}  
-	   }
-	  li.cache{display:none}	
-	  }
+#content {
+  
+  ul {margin-left: 50px;}
 
-   ul.multi.open{
-    list-style:disc !important;
-    li.cache{
-      display:block;
-      }
-    li span,.total_cours{display:none}    
-    }  
+  .formulaire_spip ul {margin-left:0} 
+   
+  .infos_cours{
+    float:right;
+    width:50%;
+    clear:right;
+    box-shadow: 1px 2px 10px #983924;
+    border:#983924 4px solid;
+    border-radius:0.4em;
+    margin:0.5em 0 0.5em 1em;
+    padding:0.5em;
+    line-height: 1.5em;
     
-	.label,strong{
-  	font-weight:bold;
-  	background-color:transparent;
-  	color:#000000;
-  	font-size:1em;
-  	}
-  /*.multi{font-weight:bold}*/
-  .total_cours{font-size:90%}
-	}
+    p{margin:0; font-size:1em}
+    
+    ul{
+      margin: 0 0 0 1em;
+      padding:0;
+      list-style:disc}
+     
+    ul.multi{
+      cursor:pointer;
+      list-style:none;
+      li{
+        display:inline;
+        padding:0;
+        .total_cours{color:#a52a2a}
+        .total_cours:hover{background-color:#fde1d9}  
+       }
+      li.cache{display:none}  
+      }
+  
+     ul.multi.open{
+      list-style:disc !important;
+      li.cache{
+        display:block;
+        }
+      li span,.total_cours{display:none}    
+      }  
+      
+    .label,strong{
+      font-weight:bold;
+      background-color:transparent;
+      color:#000000;
+      font-size:1em;
+      }
+    /*.multi{font-weight:bold}*/
+    .total_cours{font-size:90%}
+  }  
+}
 
 .fc-event-skin, .fc-event {
    background-color:#a52a2a; 
