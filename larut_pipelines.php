@@ -3,10 +3,12 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function larut_recuperer_fond($flux){
     $fond=$flux['args']['fond'];
-    if ($fond == 'inclure/champs_listes'){
+    //if ($fond == 'inclure/champs_listes'){
+    if ($fond == 'formulaires/reservation'){	
         $champs_amis=recuperer_fond('formulaires/inc-reservation_amies',$flux['data']);
         $login = pipeline('social_login_links', '');
-        $flux['data']['texte'] .= $champs_amis;
+		$flux['data']['texte'] = str_replace('<!--extra-->', '<!--extra-->' .  $champs_amis, $flux['data']['texte']);
+        //$flux['data']['texte'] .= $champs_amis;
     }
     
     return $flux;
