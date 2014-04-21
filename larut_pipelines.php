@@ -8,6 +8,7 @@ function larut_recuperer_fond($flux){
         $champs_amis=recuperer_fond('formulaires/inc-reservation_amies',$flux['data']);
         $login = pipeline('social_login_links', '');
 		$flux['data']['texte'] = str_replace('<!--extra-->', '<!--extra-->' .  $champs_amis, $flux['data']['texte']);
+		$flux['data']['texte'] .= recuperer_fond('formulaires/inc-reservation_js_cacher');		
         //$flux['data']['texte'] .= $champs_amis;
     }
     
