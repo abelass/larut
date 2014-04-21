@@ -18,3 +18,26 @@
     <aside class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</aside>
  </footer>]
 </BOUCLE_contenu_rubrique>
+
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(document).ready(function(){
+        check_fields_res();
+        });
+    $('.evenements input').click(function() {
+        check_fields_res();     
+	}); 
+	function check_fields_res(){
+        if (!$('.evenements input').is(':checked')) {
+            $('.identifiants').parent().hide('slow'); 
+            $('.amies').hide('slow');
+            $('.formulaire_reservation p.boutons').hide('slow');            
+            }
+        else{
+         	$('.identifiants').parent().show('slow');
+        	$('.amies').show('slow');
+        	$('.formulaire_reservation p.boutons').show('slow');          	
+        	} 		
+		}  
+//]]>
+</script>
