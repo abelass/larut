@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.11.7"
+	version="1.12.0"
 	etat="stable"
 	compatibilite="[3.0.13;3.0.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -16,7 +16,7 @@
 	<licence>GNU/GPL</licence>
 
 	<necessite nom="wsps_html5" compatibilite="[1.0.0;]" /> 
-	<necessite nom="mcp_ml" compatibilite="[0.1.2;]" /> 	
+	<necessite nom="wsp_ml" compatibilite="[0.2.2;]" /> 	
 	<necessite nom="selection_objet" compatibilite="[1.9.2;]" />
 	<necessite nom="facteur" compatibilite="[2.3.1;]" />		
 	<necessite nom="seo" compatibilite="[1.8.1;]" />
