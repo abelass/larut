@@ -16,6 +16,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     //E
     'explication_label_email_amies'=>'adresse(s) email, séparées par virgule(s)',
+    'explication_mailinglists'=>'Vous seriez automatiquement inscrit à la mailinglist interne mais vous pouvez vous inscrire à d\'autres listes',    
     
     //F
     'fermer'=>'fermer',

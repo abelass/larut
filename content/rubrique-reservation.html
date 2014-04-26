@@ -30,11 +30,13 @@
 	function check_fields_res(){
         if (!$('.evenements input').is(':checked')) {
             $('.identifiants').parent().hide('slow'); 
+            $('.mailing_lists').parent().hide('slow');            
             $('.amies').hide('slow');
             $('.formulaire_reservation p.boutons').hide('slow');            
             }
         else{
          	$('.identifiants').parent().show('slow');
+          	$('.mailing_lists').parent().show('slow');        	
         	$('.amies').show('slow');
         	$('.formulaire_reservation p.boutons').show('slow');          	
         	} 		
