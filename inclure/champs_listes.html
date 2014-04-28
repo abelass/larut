@@ -1,6 +1,10 @@
 <fieldset>
     <ul class="mailing_lists">
-        [(#SAISIE{checkbox, newsletter,label=<:reservations_mailsubscribers:inscription_newsletters:>,datas=#ARRAY{oui,<:reservations_mailsubscribers:label_oui:>},explication=<:larut:explication_mailinglists:>})]  
+                [(#SAISIE{checkbox, newsletter,label=<:reservations_mailsubscribers:inscription_newsletters:>,datas=#ARRAY{oui,<:reservations_mailsubscribers:label_oui:>}})]
+  
+        [(#REM)
+        [(#SAISIE{checkbox, newsletter,label=<:reservations_mailsubscribers:inscription_newsletters:>,datas=#ARRAY{oui,<:reservations_mailsubscribers:label_oui:>},explication=<:larut:explication_mailinglists:>})]
+        ]  
         <li class="listes">  
             <ul>
             <BOUCLE_champs(DATA){source tableau,#CONFIG{mailsubscribers/lists}}>
