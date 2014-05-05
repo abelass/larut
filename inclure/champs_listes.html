@@ -1,3 +1,4 @@
+<BOUCLE_champs>
 <fieldset>
     <ul class="mailing_lists">
                 [(#SAISIE{checkbox, newsletter,label=<:reservations_mailsubscribers:inscription_newsletters:>,datas=#ARRAY{oui,<:reservations_mailsubscribers:label_oui:>}})]
@@ -7,7 +8,7 @@
         ]  
         <li class="listes">  
             <ul>
-            <BOUCLE_champs(DATA){source tableau,#CONFIG{mailsubscribers/lists}}>
+            <BOUCLE_champs(DATA){source tableau,#CONFIG{mailsubscribers/lists}}{0,0}>
                  [(#ID_BAK|in_array{#CONFIG{reservations_mailsubscribers/listes_checkbox,#ARRAY}}|oui)
                    [(#SAISIE{checkbox, listes,label='',datas=#ARRAY{#ID_BAK,#TITRE}})]
                    ] 
@@ -29,3 +30,4 @@
         });
 });   
 </script>
+</BOUCLE_champs>
