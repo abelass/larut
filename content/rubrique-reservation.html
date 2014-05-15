@@ -38,7 +38,9 @@
          	$('.identifiants').parent().show('slow');
           	$('.mailing_lists').parent().show('slow');        	
         	$('.amies').show('slow');
-        	$('.formulaire_reservation p.boutons').show('slow');          	
+        	$('.formulaire_reservation p.boutons').show('slow'); 
+        	$('html, body').animate({
+        	scrollTop: $(".identifiants").offset().top}, 2000);         	
         	} 		
 		}  
 //]]>
