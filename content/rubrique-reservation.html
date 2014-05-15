@@ -25,7 +25,13 @@
         check_fields_res();
         });
     $('.evenements input').click(function() {
-        check_fields_res();     
+    	
+    	check_fields_res();   
+
+    	if ($('.evenements input:checked').length === 1){
+	    	$('html, body').animate({scrollTop: $(".identifiants").offset().top}, 2000);         		        	
+	       }
+          
 	}); 
 	function check_fields_res(){
         if (!$('.evenements input').is(':checked')) {
@@ -38,10 +44,8 @@
          	$('.identifiants').parent().show('slow');
           	$('.mailing_lists').parent().show('slow');        	
         	$('.amies').show('slow');
-        	$('.formulaire_reservation p.boutons').show('slow'); 
-        	$('html, body').animate({
-        	scrollTop: $(".identifiants").offset().top}, 2000);         	
-        	} 		
-		}  
+        	$('.formulaire_reservation p.boutons').show('slow');  		
+		}
+	}  
 //]]>
 </script>
