@@ -11,6 +11,17 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
     $options['id_reservation']=$id_reservation;  
     $options['qui']='client';     
     $subject=_T('reservation:votre_reservation_sur',array('nom'=>$GLOBALS['meta']['nom_site']));
+	
+    /*Chercher des chaines de langues spécifiques pour les différents statuts*/	
+    $lang=$options['lang'];
+   
+ 
+    $var_reservation = 'i18n_reservation_'.$lang;
+    $chaine_statut='sujet_votre_reservation_'.$options['statut'];
+
+    if(isset($GLOBALS[$var_reservation][$chaine_statut]))$subject=_T('reservation:'.$chaine_statut,array('nom'=>$GLOBALS['meta']['nom_site']));  
+
+    spip_log($GLOBALS[$var_reservation],'teste');	
 
     $message=recuperer_fond('notifications/contenu_reservation_mail',$options);
     $o=array('html'=>$message);

@@ -27,6 +27,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     //S
     'somme_produit' => 'Total',
+	'sujet_une_reservation_accepte' => 'Confirmed participant @ @nom@', 
+	'sujet_votre_reservation_accepte' => '@nom@: participation confirmed',   
     
     //V
     'voir_plus' => 'See more',
