@@ -7,7 +7,7 @@
 #SET{prix_evenement,#ARRAY}
 #SET{id_evenement,#ARRAY}
 #SET{multi,''}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{par date_debut}>
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_debut>#DATE}{par date_debut}>
     [(#ID_EVENEMENT_SOURCE|=={0}|?{
        #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}} 
        #SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
@@ -19,26 +19,18 @@
 			places,#PLACES            
             }}}
         ,
-        [(#GET{horaire}|non)
-	    	[(#SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}})]
-	    	]
-    	[(#GET{dates_#ID_EVENEMENT_SOURCE}|is_array|?{
+    	[(#GET{dates_#ID_EVENEMENT_SOURCE}|is_array|oui)
+	        [(#GET{horaire}|non)
+		    	[(#SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}})]
+		    	]    	
         	#SET{dates_#ID_EVENEMENT_SOURCE,#GET{dates_#ID_EVENEMENT_SOURCE}|array_merge{#ARRAY{
             #COMPTEUR_BOUCLE,#ARRAY{
                 date_debut,#DATE_DEBUT,
                 date_fin,#DATE_FIN,
                 horaire,#GET{horaire},
                 id_source,#ID_EVENEMENT_SOURCE}}}}
-        	,
-        	#SET{dates_#ID_EVENEMENT_SOURCE,#ARRAY{#COMPTEUR_BOUCLE,
-            #ARRAY{
-                date_debut,#DATE_DEBUT,
-                date_fin,#DATE_FIN,
-                horaire,#GET{horaire},
-                id_source,#ID_EVENEMENT_SOURCE}}}
-        	#SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT_SOURCE}}  
-    	})]    
-    })]     
+                ]    
+    	})]     
            
     #SET{prix_evenement,#ARRAY}
     
