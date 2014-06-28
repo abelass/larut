@@ -59,6 +59,13 @@
 /*]]>*/</script>
 
 <script type='text/javascript' src='#CHEMIN{lib/fullcalendar/fullcalendar.min.js}'></script>
+
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+[<div class="contenu-principal">
+    <div class="#EDIT{texte} chapo">(#TEXTE)</div>
+</div>]
+</BOUCLE_contenu_rubrique>
+
 <div id="agenda"></div>
 <B_agenda>
 

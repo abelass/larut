@@ -1,15 +1,13 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
 
 <article class="contenu-principal">
-    [<header class="cartouche">
-        (#ID_TRAD|in_array{#LISTE{8,7,9}}|non)
+    <header class="cartouche">
         <h1 class="h1 #EDIT{titre}">#TITRE</h1>
-    </header>]
+    </header>
+    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
     <div class="ajax">
     #FORMULAIRE_RESERVATION{#ENV**{id_evenement}}
     </div>
-    
-    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 </article>
 
 
