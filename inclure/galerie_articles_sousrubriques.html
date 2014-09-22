@@ -1,0 +1,6 @@
+<BOUCLE_rubriques(RUBRIQUES){id_parent=#ENV{id_rubrique}}{par num titre,titre}>
+    [<section class="art_rub">
+        <h3><a href="#URL_RUBRIQUE">#TITRE</a></h3>
+        (#INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique,pagination=1000,env})
+    </section>]
+</BOUCLE_rubriques>

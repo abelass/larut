@@ -1,0 +1,18 @@
+nom: '<:larut:modele_cours:>'
+logo: 'prive/themes/spip/images/sewing-pin-24.png'
+icone_barre: 'cours.png'
+parametres:
+  -
+    saisie: 'hidden'
+    options:
+      nom: 'modele'
+      defaut: 'cours'
+  -
+    saisie: 'radio'
+    options:
+      nom: 'texte'
+      label: '<:larut:modele_label_afficher_texte:>'
+      cacher_option_intro: 'oui'
+      datas: 
+        oui: 'Oui'
+        non: 'Non'

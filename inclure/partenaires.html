@@ -1,0 +1,12 @@
+<B_partenaires>
+<aside class="partenaires">
+    <div class="title"><:larut:soutien:></div>
+    <BOUCLE_partenaires(PARTENAIRES spip_partenaires_liens){id_article}>
+        <div class="partenaire[ (#TOTAL_BOUCLE|>{1}|oui)left]">
+            <a href="#URL_SITE" title="#NOM">
+                [(#LOGO_PARTENAIRE|image_reduire{200})]
+            </a>
+        </div>
+    </BOUCLE_partenaires>
+</aside>
+</B_partenaires>

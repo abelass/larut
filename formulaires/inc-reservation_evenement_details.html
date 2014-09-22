@@ -1,0 +1,35 @@
+<B_prix>	
+	<div class="choix">
+	    #SET{langue,#VAL{'['}|concat{#ENV{langue}}|concat{#VAL{']'}}
+	    [(#ENV{langue}|!={#ENV{lang}}|non)#SET{langue,''}]
+        [(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
+            <strong>[(#TITRE)]</strong>
+        ]   	    
+	    #SET{date_fin,#DATE_FIN}
+	    <BOUCLE_ev_lies(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{!par date_debut}{0,1}>
+	    #SET{date_fin,#DATE_FIN}
+	    </BOUCLE_ev_lies>
+	    <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#GET{date_fin}|affdate{Y-m-d}}|oui) - [ (#GET{date_fin}|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#GET{date_fin}|affdate{G:i})]}|oui)[ - (#GET{date_fin}|affdate{G:i})]][ <strong>(#GET{langue})</strong>]
+	    </div>
+	<BOUCLE_gis_ev(GIS){id_evenement}><i class=" icon-hand-right"></i> <a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE</a></BOUCLE_gis_ev>[<i class=" icon-hand-right"></i> <a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#ENV{id_gis}})]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">(#ENV**{lieu}|textebrut)</a> ]<//B_gis_ev>
+	
+	    [(#PLACES|>{0}|oui)<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,id_evenement,places,statut=#VAL|statuts_complet}/>]  
+
+	    <BOUCLE_prix(PRIX_OBJETS){id_objet=#ENV{id_article_base}}{objet=article}>
+	        #SET{prix,#PRIX}
+	        <BOUCLE_decl(DECLINAISONS){id_declinaison}{tout}{par num titre,titre}>
+	             <div>
+	                   <input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox declinaison" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/>   
+	                    <label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
+	                    	#TITRE[ : <b data-prix="#ID_PRIX_OBJET">(#GET{prix})</b>]
+	                    </label>    
+	             </div>  
+	        </BOUCLE_decl>
+	          <input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/> 
+	           <label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
+	            [ <b data-prix="#ID_PRIX_OBJET">(#GET{prix})</b>]
+	            </label>
+	           <//B_decl>
+	   </BOUCLE_prix>
+	</div>
+</B_prix>

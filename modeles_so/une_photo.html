@@ -1,0 +1,12 @@
+[(#REM) Portfolio : album d'images ]
+        <BOUCLE_documents_portfolio2(DOCUMENTS) {id_document} {mode ?}{extension IN png,jpg,gif} {tout}>
+            <a href="#ENV{url}" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+            [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
+            [(#FICHIER
+            |image_passe_partout{#ENV{width,430},#ENV{height,430}}
+            |image_recadre{#ENV{width,430},#ENV{height,430}}
+            |inserer_attribut{class,spip_logos}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
+            </a>
+        </BOUCLE_documents_portfolio2>
+    </B_documents_portfolio2>

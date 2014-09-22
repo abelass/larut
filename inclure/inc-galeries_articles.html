@@ -1,0 +1,9 @@
+<BOUCLE_doc(DOCUMENTS){id_article}{0,1}{mode?}{extension IN png,jpg,gif}>
+    <li>
+       <a href="[(#URL_PAGE{galerie}|parametre_url{id_article,#ID_ARTICLE})]" title="<:larut:galerie:>" rel="nofollow" target="_blank"
+    onclick="if (jQuery.modalbox) {jQuery.modalbox('[(#URL_PAGE{galerie}|parametre_url{id_article,#ID_ARTICLE}|parametre_url{var_zajax,content})]');return false;}" >
+       [(#FICHIER|image_passe_partout{#ENV{width,160},#ENV{height,160}}|image_recadre{#ENV{width,160},#ENV{height,160}}|inserer_attribut{class,spip_logos}|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+        </a>
+        [<div class="titre">(#ENV{titre}|supprimer_numero)</div>]
+    </li>
+</BOUCLE_doc>

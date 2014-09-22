@@ -1,0 +1,18 @@
+<BOUCLE_principale_article(ARTICLES){id_article}>
+<INCLURE{fond=structure,env,id_rubrique=#ENV{id_rubrique,#ID_RUBRIQUE},id_secteur=#ID_SECTEUR,type-page=article,composition=#COMPOSITION,id_trad} />
+</BOUCLE_principale_article>
+    [(#REM) cas spéciale pour les articles archivés]
+    <BOUCLE_principale_article_archive(ARTICLES){statut=archive}{id_article}>#SET{id_trad,#ID_TRAD}
+        [(#ID_TRAD|>{0}|?{
+        #SET{id_trad,#ID_TRAD}
+        ,
+        #SET{id_trad,#ID_ARTICLE}
+    })]
+        [(#REM) cSi c'est des articles atùeliers, en renvoie vers la galerie ]
+        <BOUCLE_atelier(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+		  <BOUCLE_parent(RUBRIQUES){composition=galerie}{tout}{lang}>
+                  <INCLURE{fond=structure,env,id_rubrique=#ID_RUBRIQUE,id_secteur=#ID_SECTEUR,type-page=rubrique,composition=#COMPOSITION,id_trad,id_article=#GET{id_trad}} />  
+            </BOUCLE_parent>
+        </BOUCLE_atelier> 
+    </BOUCLE_principale_article_archive>   
+<//B_principale_article>

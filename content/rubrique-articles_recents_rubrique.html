@@ -1,0 +1,17 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
+
+[(#REM) Fil d'Ariane ]
+
+<INCLURE{fond=inclure/file_ariane,id_rubrique,titre=#TITRE,id_parent,imprimer}/>
+
+<div class="contenu-principal">
+
+	
+	[(#REM) Boite à outils]
+	[(#INCLURE{fond=inclure/outils,env})]
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+[(#CONFIG{mcp1/affichage_clever_articles_recent}|oui)#SET{clever,_clever}]
+<INCLURE{fond=inclure/articles_recents#GET{clever},id_rubrique='',env,ajax,id_parent,rubriques_exclus=''}/>
+
+</BOUCLE_contenu_rubrique>

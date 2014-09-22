@@ -1,0 +1,16 @@
+<B_lieu_resultat> 
+<tr>
+   <td class="label"><:agenda:info_lieu:></td>
+   <td>
+    <BOUCLE_lieu_resultat(DATA){source tableau,#ENV{lieu}}>
+    <div class="item">
+        [<div class="titre">(#TITRE)</div>]
+        [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
+        [<div>
+            [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
+        </div>]
+    </div>
+   </BOUCLE_lieu_resultat> 
+  </td>    
+</tr>     
+</B_lieu_resultat>
