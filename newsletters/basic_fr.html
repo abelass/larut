@@ -1,0 +1,5 @@
+<BOUCLE_rem(CONDITION){si #REM}>
+<!-- titre=<multi>[fr]Basic fr[en]Basic fr</multi> -->
+</BOUCLE_rem>
+#SET{lang,#VAL{fr}|lang_select}
+#INCLURE{fond=inclure/basics,env,lang=#GET{lang}}
