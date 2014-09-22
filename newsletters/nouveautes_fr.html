@@ -1,2 +1,5 @@
+<BOUCLE_rem(CONDITION){si #REM}>
+<!-- titre=<multi>[fr]Nouveautes en français[en]New Stories in french</multi> -->
+</BOUCLE_rem>
 #SET{lang,#VAL{fr}|lang_select}
 #INCLURE{fond=inclure/nouveautes,env,lang=#GET{lang}}
