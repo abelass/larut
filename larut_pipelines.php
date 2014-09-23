@@ -46,7 +46,9 @@ function larut_formulaire_charger($flux){
     return $flux;
 }
 
-function larut_formulaire_verifier($flux){
+/*
+ * deactivated untill i know what it is about
+ * function larut_formulaire_verifier($flux){
     $form = $flux['args']['form'];
 	//Formulaire reservations
 	
@@ -58,7 +60,7 @@ function larut_formulaire_verifier($flux){
     
     
     return $flux;
-}
+}*/
 
 
 function larut_formulaire_traiter($flux){
