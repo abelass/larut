@@ -51,8 +51,9 @@ function larut_formulaire_verifier($flux){
 	//Formulaire reservations
 	
     if ($form == 'newsletter_subscribe'){
-
-		$flux['data']['choix_listes'] = mailsubscribers_listes();
+    	include_spip('inc/mailsubscribers');
+		
+		if(function_exists('mailsubscribers_listes'))$flux['data']['choix_listes'] = mailsubscribers_listes();
     }
     
     
