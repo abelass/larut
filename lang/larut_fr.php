@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     //I
     'inscription'=>'Inscription',
-    'inscrire_liste_attente'=>'Choissisez un autre cour ou inscrivez vous dans la liste d\'attente',
+    'inscrire_liste_attente'=>'Choissisez un autre cours ou inscrivez vous dans la liste d\'attente',
 
 	// L
 	'label_email_amies' => 'J\'aimerai partager cette information avec mes amies',	
