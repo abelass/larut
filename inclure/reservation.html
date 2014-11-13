@@ -8,11 +8,11 @@
 	#SET{dates,<ul>}
 	<BOUCLE_evenement(EVENEMENTS){id_evenement}>
 	#SET{horaires,[(#DATE_DEBUT|affdate{G:i})-][(#DATE_FIN|affdate{G:i})-]}
-	[(#SET{dates,#GET{horaires}|concat{<li>[(#DATE_DEBUT|jour)]),][(#DATE_DEBUT|affdate{d/m/D})]}})]
+	[(#SET{dates,#GET{horaires}|concat{<li>[(#DATE_DEBUT|jour),][(#DATE_DEBUT|affdate{d/m/Y})]}})]
 		<B_ev_lies>
-		[(#SET{dates,#GET{dates[ : (#GET{horaires})]</li>
+		[(#SET{dates,#GET{dates}|concat{[ : (#GET{horaires})]</li>})]
 		<BOUCLE_ev_lies(EVENEMENTS)	{id_evenement_source=#ID_EVENEMENT}>
-			<li></li>
+			<li>[(#SET{dates,#GET{dates}|concat{[(#DATE_DEBUT|jour),][(#DATE_DEBUT|affdate{d/m/Y})]}})]})]</li>
 		
 		</BOUCLE_ev_lies>
 	</BOUCLE_evenement>   
