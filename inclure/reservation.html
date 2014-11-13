@@ -4,7 +4,18 @@
 	#SET{statut, #ENV{statut}
 	#SET{details, #ARRAY}
 		
-	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{id_reservations_detail ?}{tout}>   
+	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{id_reservations_detail ?}{tout}>
+	#SET{dates,<ul>}
+	<BOUCLE_evenement(EVENEMENTS){id_evenement}>
+	#SET{horaires,[(#DATE_DEBUT|affdate{G:i})-][(#DATE_FIN|affdate{G:i})-]}
+	[(#SET{dates,#GET{horaires}|concat{<li>[(#DATE_DEBUT|jour)]),][(#DATE_DEBUT|affdate{d/m/D})]}})]
+		<B_ev_lies>
+		[(#SET{dates,#GET{dates[ : (#GET{horaires})]</li>
+		<BOUCLE_ev_lies(EVENEMENTS)	{id_evenement_source=#ID_EVENEMENT}>
+			<li></li>
+		
+		</BOUCLE_ev_lies>
+	</BOUCLE_evenement>   
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
@@ -48,7 +59,6 @@
          <tbody>
             #SET{total,0}
             <BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
-            [(#REM)Vois si un prix rabais s'applique pour cet detai de réservation]
             #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
             #SET{prix,#VALEUR{prix}}
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
