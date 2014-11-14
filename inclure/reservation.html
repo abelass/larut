@@ -5,16 +5,6 @@
 	#SET{details, #ARRAY}
 		
 	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{id_reservations_detail ?}{tout}>
-	#SET{dates,<ul>}
-	<BOUCLE_evenement(EVENEMENTS){id_evenement}>
-	#SET{horaires,[(#DATE_DEBUT|affdate{G:i})-][(#DATE_FIN|affdate{G:i})-]}
-	[(#SET{dates,#GET{horaires}|concat{<li>[(#DATE_DEBUT|jour),][(#DATE_DEBUT|affdate{d/m/Y})]}})]		<B_ev_lies>
-		[(#SET{dates,#GET{dates}|concat{[ : (#GET{horaires})]</li>})]
-		<BOUCLE_ev_lies(EVENEMENTS)	{id_evenement_source=#ID_EVENEMENT}>
-			<li>[(#SET{dates,#GET{dates}|concat{[(#DATE_DEBUT|jour),][(#DATE_DEBUT|affdate{d/m/Y})]}})]})]</li>
-		
-		</BOUCLE_ev_lies>
-	</BOUCLE_evenement>   
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
@@ -22,7 +12,8 @@
 		statut,#STATUT,
 		id_declinaison,#ID_DECLINAISON,
 		id_article,#ID_OBJET,
-		id_reservations_detail,#ID_RESERVATIONS_DETAIL
+		id_reservations_detail,#ID_RESERVATIONS_DETAIL,
+		id_evenement,#ID_EVENEMENT		
 	})]})]
 	</BOUCLE_reservation_details>
 	#SET{reservation, #ARRAY{details, #GET{details}}}
@@ -61,7 +52,24 @@
             #SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
             #SET{prix,#VALEUR{prix}}
             <tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
-               <td class="description" style="padding:0 5px">[(#VALEUR|table_valeur{descriptif})]</td>
+               <td class="description" style="padding:0 5px">
+               	[<strong>(#VALEUR|table_valeur{descriptif})</strong>]
+               	<B_evenement>
+               		<ul style="list-style: square; padding-left:20px">
+					<BOUCLE_evenement(EVENEMENTS){id_evenement=#VALEUR|table_valeur{id_evenement}}>
+					#SET{date_debut,#DATE_DEBUT|affdate{d/m/Y}}
+					<li>[ (#GET{date_debut})]
+						<B_ev_lies>
+						</li>
+						<BOUCLE_ev_lies(EVENEMENTS)	{id_evenement_source=#ID_EVENEMENT}>
+							<li>[(#DATE_DEBUT|affdate{d/m/Y})]</li>		
+						</BOUCLE_ev_lies>
+						[(#GET{date_debut}|!={#DATE_FIN|affdate{d/m/Y}}|sinon{''})]</li>
+						<//B_ev_lies>						
+					</BOUCLE_evenement>
+					</ul>
+				</B_evenement>  
+               	</td>
                [(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix}|prix_formater)]</td>]
                <td class="statut" style="padding:0 5px">
                    [(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]
@@ -74,7 +82,7 @@
             <tr class="total_ttc">
                <td class="descriptif"><:prix:label_total_ttc:></td>
                <td class="montant">[(#GET{total}|replace{.01,.00}|prix_formater)] </td>
-              
+              <td> </td>
             </tr>
          </tfoot>]         
       </table>
