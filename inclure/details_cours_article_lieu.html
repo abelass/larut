@@ -4,11 +4,12 @@
    <td>
     <BOUCLE_lieu_resultat(DATA){source tableau,#ENV{lieu}}>
     <div class="item">
-        [<div class="titre">(#TITRE)</div>]
-        [<div class="adresse">(#ADRESSE|extraire_multi)</div>]
-        [<div>
-            [<span >(#CODE_POSTAL)</span>] <span>(#VILLE)</span>
-        </div>]
+    	<div class="adresse">
+    		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">
+    			#TITRE
+    			[<br /> (#ADRESSE|extraire_multi|textebrut)][<br /> (#CODE_POSTAL) ]#VILLE</a>
+    	</div>
+
     </div>
    </BOUCLE_lieu_resultat> 
   </td>    
