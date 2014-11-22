@@ -17,7 +17,27 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'label_enregistrer' => 'I want the system to remember me',       
     'label_inscrit_newsletter' => 'You are registered to receive the newsletter from',  
     'lire_la_suite'=>'Read more',
-    'label_publie' => 'Published on:',    
+    'label_publie' => 'Published on:',  
+    
+	//M
+	'message_evenement_cloture' => '<p>Thank you for having participated in one of Larut\'s sewing workshops. If you liked sewing with Larut, don\'t hesitate to circulate the information about my activities around! </p>
+
+<p>You can:</p>
+
+<ul>
+	<li>Send your friends and colleagues the link to my website </li>
+	<li>Post about your experience in your Facebook account making a link to my facebook site or my website</li>
+	<li>Offer or ask to be offered a Larut gift card </li>
+	<li>Like Larut Facebook site: <a href="https://www.facebook.com/laruteu">https://www.facebook.com/laruteu</a></li>
+	<li>Join my Facebook sewing group (tutorials, new workshops, share the images of your sewing projects, fabric sales...): Café-couture - <a href="https://www.facebook.com/groups/663772380353032">https://www.facebook.com/groups/663772380353032</a></li>
+	<li>Vcome back for any other of the programmed workshops in the coming months: <a href="http://www.larut.eu/fr/ateliers">http://www.larut.eu/fr/ateliers</a></li>
+	<li>Do you know that I organised children\'s birthday parties as well <a href="http://www.larut.eu/fr/ateliers/anniversaires">http://www.larut.eu/fr/ateliers/anniversaires</a></li>
+</ul>
+
+<p>If you want to continue sewing and want to try your newly acquired skills I recommend you to visit  <a href="http://www.pinterest.com">www.Pinterest.com</a>. Une quantité illimité des idées et chouettes tutoriels ! An unlimited amount of tutorials and ideas! I have a few useful walls: <a href="http://www.pinterest.com/larutbxl">http://www.pinterest.com/larutbxl</a></p>
+
+<p>Bonne couture ! :-)</p>
+',
     
     //N
     'news' => 'New on this site',    
