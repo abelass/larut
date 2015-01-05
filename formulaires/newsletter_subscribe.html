@@ -31,8 +31,9 @@
 				#SET{name,listes}#SET{defaut,''}
 				<li class="editer editer_[(#GET{name})]">
 					<label>[(#GET{fl}|concat{':label_',#GET{name}}|_T)]</label>
-					<INCLURE{fond=formulaires/inc-check-subscribinglists,name=#GET{name},choix_listes=#ENV{_listes_dispo},status=open,env} >
-						</INCLURE>
+				</li>
+				<INCLURE{fond=formulaires/inc-check-subscribinglists_public,name=#GET{name},choix_listes=#ENV{_listes_dispo},status=open,env} />
+
 				</li>
 
 			</ul>
