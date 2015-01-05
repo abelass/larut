@@ -16,16 +16,26 @@ include_spip('inc/mailsubscribers');
  - ajout nom, listes et listes_dispo
  */
 function formulaires_newsletter_subscribe_charger_dist() {
-	$valeurs = array(
+	
+	if (isset($GLOBALS['visiteur_session']['email']))
+		$session_email = $GLOBALS['visiteur_session']['email'];
+	elseif (isset($GLOBALS['visiteur_session']['session_email']))
+		$session_email = $GLOBALS['visiteur_session']['session_email'];
+	
+	if($session_email){
+		$valeurs=sql_fetsel('*','spip_mailsubscribers','email='.sql_quote($session_email));
+		$valeurs ['session_email']=$session_email;
+	}
+	if(!isset($valeurs)){
+		$valeurs = array(
 		'session_email' => '',
 		'nom' => '',
 		'listes' => ''
-	);
-
-	if (isset($GLOBALS['visiteur_session']['email']))
-		$valeurs['session_email'] = $GLOBALS['visiteur_session']['email'];
-	elseif (isset($GLOBALS['visiteur_session']['session_email']))
-		$valeurs['session_email'] = $GLOBALS['visiteur_session']['session_email'];
+		);
+	}
+	
+	
+	$valeurs['listes'] = explode(',',$valeurs['listes']);
 
 	$valeurs['_listes_dispo'] = mailsubscribers_listes();
 

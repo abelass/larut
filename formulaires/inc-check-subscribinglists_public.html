@@ -1,4 +1,4 @@
-#SET{name,#ENV{name}}#SET{defaut,''}
+#SET{name,#ENV{name}}#SET{defaut,#ENV{defaut}}
 <BOUCLE_listes(DATA){source tableau, #ENV{choix_listes}}>
 	#SET{val,#CLE}
 	[(#ENV{status,''}|non

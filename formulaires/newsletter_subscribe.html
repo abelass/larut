@@ -28,11 +28,11 @@
 				</li>
 
 				[(#REM) ajout des listes - morceau de code pris dans editer_ mailscrubscriber.html]
-				#SET{name,listes}#SET{defaut,''}
+				#SET{name,listes}#SET{defaut,#ENV{listes}}
 				<li class="editer editer_[(#GET{name})]">
 					<label>[(#GET{fl}|concat{':label_',#GET{name}}|_T)]</label>
 				</li>
-				<INCLURE{fond=formulaires/inc-check-subscribinglists_public,name=#GET{name},choix_listes=#ENV{_listes_dispo},status=open,env} />
+				<INCLURE{fond=formulaires/inc-check-subscribinglists_public,name=#GET{name},choix_listes=#ENV{_listes_dispo},status=open,defaut=#ENV{listes},env} />
 
 				</li>
 
