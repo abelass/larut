@@ -21,7 +21,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'fermer'=>'close',
     
     //I
-    'inscription'=>'Registration',   
+    'inscription'=>'Registration',
+    'inscription_newsletter'=>'Newsletter subscription',     
     'inscrire_liste_attente'=>'Choose another workshop or register for the waiting list',
   
     

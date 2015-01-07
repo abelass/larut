@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     //I
     'inscription'=>'Inscription',
+    'inscription_newsletter'=>'Inscription Newsletter',  
     'inscrire_liste_attente'=>'Choissisez un autre cours ou inscrivez vous dans la liste d\'attente',
 
 	// L
@@ -55,7 +56,10 @@ Bruxelles en pièce jointe.</p>
     'message_partager_information'=>'@nom@ veut partager avec vous l’information sur le cours pour le quel elle/lui s\'est inscrit/e :',  
     'message_partager_informations'=>'@nom@ veut partager avec vous l’information sur les cours pour les quels elle/lui s\'est inscrit/e :',       
     'modele_cours'=>'Resumé cours',
-    'modele_label_afficher_texte'=>'Afficher le texte',    
+    'modele_label_afficher_texte'=>'Afficher le texte',   
+
+	//N
+	'inscription_newsletter'=>'Inscription Newsletter',
     
     //P
     'pas_cours_programmee'=>'Ce cours n\'est pas programmé actuellement<br/> Appuyez sur le bouton inscription pour voir l\'offre actuelle de cours.',
