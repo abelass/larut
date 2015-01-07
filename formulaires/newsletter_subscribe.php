@@ -23,10 +23,18 @@ function formulaires_newsletter_subscribe_charger_dist() {
 		$session_email = $GLOBALS['visiteur_session']['session_email'];
 	
 	if($session_email){
-		$valeurs=sql_fetsel('*','spip_mailsubscribers','email='.sql_quote($session_email));
-		$valeurs ['session_email']=$session_email;
+		if($valeurs=sql_fetsel('*','spip_mailsubscribers','email='.sql_quote($session_email))){
+			$valeurs ['session_email']=$session_email;
+		}
+		else{
+			$valeurs = array(
+				'session_email' => '',
+				'nom' => '',
+				'listes' => ''
+				);
+		}
 	}
-	if(!isset($valeurs)){
+	if(!$valeurs){
 		$valeurs = array(
 		'session_email' => '',
 		'nom' => '',
@@ -34,9 +42,7 @@ function formulaires_newsletter_subscribe_charger_dist() {
 		);
 	}
 	
-	
 	$valeurs['listes'] = explode(',',$valeurs['listes']);
-
 	$valeurs['_listes_dispo'] = mailsubscribers_listes();
 
 	return $valeurs;
@@ -55,6 +61,10 @@ function formulaires_newsletter_subscribe_verifier_dist() {
 		if (!email_valide($email))
 			$erreurs['session_email'] = _T('info_email_invalide');
 	}
+	
+	if (!_request('listes')) {
+		$erreurs['listes'] = _T('info_obligatoire');
+	} 
 	return $erreurs;
 }
 
