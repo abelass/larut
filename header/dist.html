@@ -7,7 +7,7 @@
 <aside class="tools">
    <INCLURE{fond=inclure/menu_langues#GET{select},env}/>
    [(#REM)<div class="shop"><a href="#">Shop</a></div>]
-   <div class="lien_newsletter"><a href="#URL_PAGE{abonnement}"><:larut:inscription_newsletter:></a></div>
+   <div class="lien_newsletter"><a rel="nofollow" href="[(#URL_PAGE{abonnement}|parametre_url{lang,#LANG})]"><i class="icon-envelope"></i> <:larut:inscription_newsletter:></a></div>
 </aside>
 
 
