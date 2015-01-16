@@ -1,0 +1,46 @@
+[(#HTTP_HEADER{Content-type: text/xml[; charset=(#CHARSET)]})]<?xml 
+version="1.0"[ encoding="(#CHARSET)"]?>
+<rss version="2.0" [(#REM) rss 2.0.9)]
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+>
+
+<channel[ xml:lang="(#LANG)"]>
+	<title>[(#NOM_SITE_SPIP|textebrut|texte_backend)]</title>
+	<link>#URL_SITE_SPIP/</link>
+	<description>[(#DESCRIPTIF_SITE_SPIP|supprimer_tags|texte_backend)]</description>
+	<language>#LANG</language>
+	<generator>SPIP - www.spip.net</generator>
+
+[	<image>
+		<title>[(#NOM_SITE_SPIP|texte_backend)]</title>
+		<url>(#LOGO_SITE_SPIP|image_reduire{144,400}|extraire_attribut{src}|url_absolue|texte_backend)</url>
+		<link>#URL_SITE_SPIP/</link>
+		[<height>(#LOGO_SITE_SPIP|image_reduire{144,400}|extraire_attribut{height})</height>]
+		[<width>(#LOGO_SITE_SPIP|image_reduire{144,400}|extraire_attribut{width})</width>]
+	</image>
+]
+
+<BOUCLE_10recents(SYNDIC) {branche ?}{id_mot ?} {par date}{inverse}{0,10}{unique}>
+<item[ xml:lang="(#ENV{lang})"]>
+		<title>[(#NOM_SITE|supprimer_tags|texte_backend)]</title>
+		<link>[(#URL_SITE|url_absolue)]</link>
+		[<guid isPermaLink="true">(#URL_SITE|url_absolue)</guid>]
+		[<dc:date>(#DATE|date_iso)</dc:date>]
+		<dc:format>text/html</dc:format>
+		[<dc:language>(#ENV{lang})</dc:language>]
+		[(#REM)
+			Le bloc qui suit diffuse diffuse les mots-cles a la mode RSS
+		]<BOUCLE_mots_rss(MOTS){id_syndic}>[
+<dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_mots_rss>
+
+		<description>[(#DESCRIPTIF|texte_backend)]
+
+		</description>
+	</item>
+</BOUCLE_10recents>
+
+
+</channel>
+
+</rss>
