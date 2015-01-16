@@ -12,6 +12,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'galerie_photos' => 'Galerie photos',
     'une_photo' => 'Une Photo', 
     
+	//I
+	'inscription_newsletters'=>'avec l’inscription à un/plusieurs ateliers de Larut vous êtes automatiquement inscrit(e) à la liste d’envoi générale de Larut (Désinscription possible à tout moment). Mais vous pouvez choisir aussi de vous inscrire à :',
+    
     //L   
     'label_a_lire_sur' => 'A lire sur',  
     'label_enregistrer' => 'J\'aimerai que le site se souvienne de moi',       
