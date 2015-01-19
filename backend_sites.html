@@ -35,6 +35,12 @@ version="1.0"[ encoding="(#CHARSET)"]?>
 <dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_mots_rss>
 
 		<description>[(#DESCRIPTIF|texte_backend)]
+			
+			<BOUCLE_rubrique_mf(RUBRIQUES){id_rubrique}>-
+[&lt;a href="[(#URL_RUBRIQUE|url_absolue)]" rel="directory"&gt;(#TITRE|supprimer_tags|texte_backend)&lt;/a&gt;]
+</BOUCLE_rubrique_mf><B_mots_mf>
+/ <BOUCLE_mots_mf(MOTS){id_syndic}{", "}>
+[&lt;a href="[(#URL_MOT|url_absolue)]" rel="tag"&gt;(#TITRE|texte_backend)&lt;/a&gt;]</BOUCLE_mots_mf>
 
 		</description>
 	</item>
