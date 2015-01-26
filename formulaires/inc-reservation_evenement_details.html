@@ -1,5 +1,5 @@
 <B_prix>	
-	<div class="choix">
+	<div class="choix" id="evenement_#ID_EVENEMENT">
 	    #SET{langue,#VAL{'['}|concat{#ENV{langue}}|concat{#VAL{']'}}
 	    [(#ENV{langue}|!={#ENV{lang}}|non)#SET{langue,''}]
         [(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
