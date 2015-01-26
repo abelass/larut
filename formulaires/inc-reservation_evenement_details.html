@@ -21,13 +21,13 @@
 	             <div>
 	                   <input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox declinaison" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/>   
 	                    <label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
-	                    	#TITRE[ : <b data-prix="#ID_PRIX_OBJET">(#GET{prix})</b>]
+	                    	#TITRE[ : <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong]
 	                    </label>    
 	             </div>  
 	        </BOUCLE_decl>
 	          <input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/> 
 	           <label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
-	            [ <b data-prix="#ID_PRIX_OBJET">(#GET{prix})</b>]
+	            [ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
 	            </label>
 	           <//B_decl>
 	   </BOUCLE_prix>
