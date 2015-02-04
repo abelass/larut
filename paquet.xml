@@ -43,6 +43,7 @@
 	
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
+	<utilise nom="mailshot" compatibilite="[1.8.1;]" /	>
 	
 	<pipeline nom="recuperer_fond" inclure="larut_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="larut_pipelines.php" />
