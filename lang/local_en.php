@@ -13,7 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'une_photo' => 'A Picture', 
     
 	//I
-	'inscription_newsletters'=>'text in English : When registering for a sewing workshop you are automatically added to my general mailinglist (You can unscrubscribe at any moment). You can also choose to receive information in French about:',
+	'inscription_newsletters'=>'When registering for a sewing workshop you are automatically added to my general mailinglist (You can unscrubscribe at any moment). You can also choose to receive information in French about:',
     
     //L   
     'label_a_lire_sur' => 'To read on',  
