@@ -1,0 +1,6 @@
+<composition>
+        <nom>Article pour courscouture</nom>
+        <description>Affichage des articles de la home pour le sousdomaine courscouture</description>
+        <branche type="rubrique" composition="home_courscouture" /> 
+        <branche type="article" composition="home_courscouture" />  
+</composition>

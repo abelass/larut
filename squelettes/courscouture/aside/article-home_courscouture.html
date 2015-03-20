@@ -1,12 +1,15 @@
+<BOUCLE_mots(MOTS){id_article}>
+#SET{id_article,#ARRAY}
+<BOUCLE_article(ARTICLES){id_mot}> #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}} </BOUCLE_article>
 <script type="text/javascript">/*<![CDATA[*/
     jQuery(document).ready(function() {            
         $('#agenda').fullCalendar({
                 editable: false,
-                events: "[(#URL_PAGE{agenda.json})]",
+                events: "[(#URL_PAGE{agenda.json}|parametre_url{date_fin,#DATE,&}|parametre_url{id_article,[(#GET{id_article})],&})]",
                 header: {
-                    left: 'next,nextYear today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
+                    left: 'prevYear,prev,next,nextYear today',
+					center: 'title',
+				right: 'month,agendaWeek,agendaDay'
                 },
                 firstDay: 1,
                 monthNames:['<:date_mois_1|attribut_html:>','<:date_mois_2|attribut_html:>','<:date_mois_3|attribut_html:>','<:date_mois_4|attribut_html:>','<:date_mois_5|attribut_html:>','<:date_mois_6|attribut_html:>','<:date_mois_7|attribut_html:>','<:date_mois_8|attribut_html:>','<:date_mois_9|attribut_html:>','<:date_mois_10|attribut_html:>','<:date_mois_11|attribut_html:>','<:date_mois_12|attribut_html:>'],
@@ -57,6 +60,8 @@
         })    
     });
 /*]]>*/</script>
+</BOUCLE_mots>
+
 <link rel='stylesheet' type='text/css' href='#CHEMIN{lib/fullcalendar/fullcalendar.css}' />
 <script type='text/javascript' src='#CHEMIN{lib/fullcalendar/fullcalendar.min.js}'></script>
 <div id="agenda"></div>
