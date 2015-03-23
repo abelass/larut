@@ -1,1 +1,3 @@
-<INCLURE{fond=inclure/calendrier,env,ajax}/>
+<BOUCLE_mots(MOTS){id_article}>#SET{id_mot,#ID_MOT} </BOUCLE_mots>
+
+<INCLURE{fond=inclure/calendrier,env,id_mot=#GET{id_mot},ajax}/>

@@ -13,12 +13,8 @@
 </div>
 </B_type_cours>
 
-
-<BOUCLE_mots(MOTS){id_article}>#SET{id_mot,#ID_MOT} </BOUCLE_mots>
-
-#SET{id_mot,#ENV{id_mot,#GET{id_mot}}}
 #SET{id_article,#ARRAY}
-<BOUCLE_article(ARTICLES){id_mot=#GET{id_mot}}> #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}} </BOUCLE_article>
+<BOUCLE_article(ARTICLES){id_mot}> #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}} </BOUCLE_article>
 
 <script type="text/javascript">/*<![CDATA[*/
     jQuery(document).ready(function() {            
