@@ -8,7 +8,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'cordialement'=>'Sincerely yours',  
     'commentaire'=>'Comment',    
     'complet'=>'Full', 
-    'cours'=>'class',   
+    'cours'=>'lesson', 
+    'cours_tous'=>'All lessons',        
     
     //G
     'galerie'=>'Image Gallery',

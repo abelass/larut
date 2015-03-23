@@ -1,3 +1,19 @@
+<B_type_cours>
+<div class="type_cours">	
+	<ul class="nav nav-tabs">
+		<li[(#ENV{id_mot}|non) class="active"]>
+			<a href="[(#SELF|parametre_url{id_mot,''})]" class="ajax"><:larut:cours_tous:></a>
+		</li[(#ENV{id_mot}|non)>
+	<BOUCLE_type_cours(MOTS){id_groupe=6}{si #COMPOSITION|=={ateliers}|oui}>
+		<li[(#ENV{id_mot}|=={#ID_MOT}|oui) class="active"]>
+			<a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]" class="ajax">#TITRE</a>
+		</li>
+	</BOUCLE_type_cours>
+	</ul>
+</div>
+</B_type_cours>
+
+
 <BOUCLE_mots(MOTS){id_article}>#SET{id_mot,#ID_MOT} </BOUCLE_mots>
 
 #SET{id_mot,#ENV{id_mot,#GET{id_mot}}}
