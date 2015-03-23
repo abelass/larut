@@ -2,7 +2,7 @@
 <div class="type_cours">	
 	<ul class="nav nav-tabs">
 		<li[(#ENV{id_mot}|non) class="active"]>
-			<a href="[(#SELF|parametre_url{id_mot,''})]" class="ajax"><:larut:cours_tous:></a>
+			<a href="[(#SELF|parametre_url{id_mot,''})]" class="ajax"><:larut:ateliers_tous:></a>
 		</li[(#ENV{id_mot}|non)>
 	<BOUCLE_type_cours(MOTS){id_groupe=6}{si #COMPOSITION|=={ateliers}|oui}>
 		<li[(#ENV{id_mot}|=={#ID_MOT}|oui) class="active"]>
