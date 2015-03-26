@@ -1,0 +1,30 @@
+#CACHE{0}
+[(#REM) Si on est dans le contexte d'un article, on affiche les langues des articles]
+<BOUCLE_article(ARTICLES){id_article}>
+<B_traductions>
+<div class="traductions formulaire_menu_lang">
+	<BOUCLE_traductions(ARTICLES) {traduction} {par lang}{'|'}>[(#TOTAL_BOUCLE|>{1}|?{' '})
+	<span lang="#LANG" xml:lang="#LANG" dir="#LANG_DIR"[ class="(#EXPOSE)"]>
+		[(#EXPOSE{'',<a href="#URL_ARTICLE_ABSOLU" rel="alternate" hreflang="#LANG"[ title="(#TITRE|attribut_html|couper{80})"]>})]
+		[(#LANG)]#EXPOSE{'',</a>}</span>
+	]</BOUCLE_traductions>
+</div>
+</B_traductions>
+</BOUCLE_article>
+	[(#REM) Sinon, si on est dans le contexte d'une rubrique, on affiche les langues des rubriques]
+	<B_rubrique>
+		<div class="traductions formulaire_menu_lang">
+	   <BOUCLE_rubrique(RUBRIQUES){id_rubrique}{tout}>
+		   <BOUCLE_traductions_rub(RUBRIQUES) {traduction} {par lang}{'|'}{tout}>
+	        <span lang="#LANG" xml:lang="#LANG" dir="#LANG_DIR"[ class="(#EXPOSE)"]>
+	        	[(#ENV{lang}|=={#LANG}|non)
+					<a href="#URL_RUBRIQUE_ABSOLU" rel="alternate" hreflang="#LANG"[ title="(#TITRE|attribut_html|couper{80})"]>[(#LANG)]
+					</a>]
+	        	[(#ENV{lang}|=={#LANG}|oui)[(#LANG)]]
+	        </span>
+			</BOUCLE_traductions_rub>
+       </BOUCLE_rubrique>
+		</div>
+	</B_rubrique>
+<//B_article>	 
+

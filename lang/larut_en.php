@@ -4,11 +4,14 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
+	//A
+		'ateliers_tous'=>'All workshops', 
+
     //C
     'cordialement'=>'Sincerely yours',  
     'commentaire'=>'Comment',    
     'complet'=>'Full', 
-    'cours'=>'class',   
+    'cours'=>'lesson',      
     
     //G
     'galerie'=>'Image Gallery',

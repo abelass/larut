@@ -50,7 +50,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     //S
     'somme_produit' => 'Suma',
 	'sujet_une_reservation_accepte' => 'Confirmation de participation @ @nom@', 
-	'sujet_votre_reservation_accepte' => '@nom@ : confirmation de votre participation',   	   
+	'sujet_votre_reservation_accepte' => '@nom@ : confirmation de votre participation',  
+	'sujet_votre_reservation_cloture' => '@nom@ : clôture du cours', 	   
     
 	//T
 	'telephone'=>'Téléphone',
