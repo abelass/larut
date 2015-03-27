@@ -20,9 +20,13 @@ function larut_formulaire_charger($flux){
         $flux['data']['email_amies'] = "";
     }
 	
-
-    
-    
+    if ($form == 'editer_evenement'){
+    	//Charger la valeur par dégfaut, hérité de l'article	
+		if(!$flux['data']['multilingue']){
+			list($objet,$id_article)=explode('|',$flux['data']['parents_id'][0]);
+			$flux['data']['multilingue']=sql_getfetsel('multilingue','spip_articles','id_article='.$id_article);
+		}
+    }
     return $flux;
 }
 

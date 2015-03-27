@@ -47,9 +47,7 @@ function larut_declarer_champs_extras($champs = array()) {
 
 	$champs['spip_evenements']=array(
 		'lang' => array(
-
 			'saisie' => 'selection_lang_evenement',//Type du champ (voir plugin Saisies)
-
 			'options' => array(
 					'nom' => 'lang',
 					'label' => _T('reservation:label_lang'),
@@ -62,7 +60,35 @@ function larut_declarer_champs_extras($champs = array()) {
 				),
 				
 			),
-			
+		'multilingue' => array(
+			'saisie' => 'radio',//Type du champ (voir plugin Saisies)
+			'options' => array(
+					'nom' => 'multilingue',
+					'label' => _T('larut:label_multilingue'),
+					'sql' => "varchar(3) NOT NULL DEFAULT ''",
+					'datas'=>array('on'=>_T('item_oui'),'off'=>_T('item_non')),
+					'defaut' => '',// Valeur par défaut				
+					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
+							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
+				),
+				
+			),			
+		);
+		
+	$champs['spip_articles']=array(
+		'multilingue' => array(
+			'saisie' => 'radio',//Type du champ (voir plugin Saisies)
+			'options' => array(
+					'nom' => 'multilingue',
+					'label' => _T('larut:label_multilingue'),
+					'sql' => "varchar(3) NOT NULL DEFAULT ''",
+					'datas'=>array('on'=>_T('item_oui'),'off'=>_T('item_non')),
+					'defaut' => '',// Valeur par défaut				
+					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
+							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
+				),
+				
+			),			
 		);
 
 	return $champs;
