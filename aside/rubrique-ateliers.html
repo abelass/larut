@@ -1,6 +1,8 @@
 #SET{id_article,#ARRAY}
 <BOUCLE_test2(EVENEMENTS){date_fin>#ENV{date}}>
-    #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+	<BOUCLE_trads(ARTICLES){id_trad=#ID_ARTICLE}>
+		 #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+	</BOUCLE_trads>
 </BOUCLE_test2>
 
 <section class="art_rub">
