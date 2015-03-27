@@ -81,7 +81,7 @@ function notifications_reservation_client($quoi,$id_reservation, $options) {
 }
 
 //retourne les statuts qui définissent si un événement est complet
-if(!function_exists('statuts_complet'){
+if(!function_exists('statuts_complet')){
 	function statuts_complet(){
 		$statuts_complets=charger_fonction('complet','inc/statuts');
 		$statuts=$statuts_complets();
