@@ -57,10 +57,13 @@
         [(#GET{titre}|!={#TITRE}|oui)#SET{t,#TITRE}]
         [(#REM)Les détails de la réservation]
         #SET{langue,#LANG**}
-        [(#GET{langue}|non)
-            #SET{langue,#ID_ARTICLE|generer_info_entite{article,lang}}
+        
+        [(#REM) pas sur si utile désactivé 15/03/27
+	        [(#GET{langue}|non)
+	            #SET{langue,#ID_ARTICLE|generer_info_entite{article,lang}}
+	        ]
         ]
-		<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},env}/>
+		<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env}/>
         </BOUCLE_art_or>
         </li>
    [(#ENV{id_evenement}|oui)
