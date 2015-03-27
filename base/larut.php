@@ -45,7 +45,8 @@ function larut_declarer_tables_objets_sql($tables) {
 // Ajout de champs extras
 function larut_declarer_champs_extras($champs = array()) {
 
-	$champs['spip_evenements']['lang'] = array(
+	$champs['spip_evenements']=array(
+		'lang' => array(
 
 			'saisie' => 'selection_lang_evenement',//Type du champ (voir plugin Saisies)
 
@@ -59,8 +60,10 @@ function larut_declarer_champs_extras($champs = array()) {
 					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
 							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
 				),
-
-	);
+				
+			),
+			
+		);
 
 	return $champs;
 
