@@ -2,7 +2,7 @@
 <B_articles>
     <aside class="bloc clearfix documents_album_cdc" id="documents_album_#ENV{id_rubrique}">
     <ul>
-    <BOUCLE_articles(ARTICLES){id_rubrique}{id_article ?IN #ENV{id_article}}{pagination #ENV{pagination,9}}{0,#ENV{limit,3}}{par #ENV{par,date}}{inverse #ENV{inverse,1}}>#SET{titre,#TITRE}
+    <BOUCLE_articles(ARTICLES){id_rubrique ?}{id_article ?IN #ENV{id_article}}{pagination #ENV{pagination,9}}{0,#ENV{limit,3}}{par #ENV{par,date}}{inverse #ENV{inverse,1}}>#SET{titre,#TITRE}
     #SET{logo,''}
     [(#ENV{logo}|et{[(#LOGO_ARTICLE|!={''}|oui)]}|oui)#SET{logo,oui}]
     [(#GET{logo}|oui)
