@@ -1,0 +1,20 @@
+<div class="infos_cour">
+	<table> 
+		<tbody> 
+			<tr>
+	        	<td class="label"><:reservation:label_date:></td>
+	           	<td>    
+					<INCLURE{fond=inclure/details_cours_article_dates,env}/>
+	           	</td>
+			</tr>
+			<INCLURE{fond=inclure/details_cours_article_horaire,horaire}/>
+	   		<INCLURE{fond=inclure/details_cours_article_prix,id_evenement,id_article}/>
+	    	<INCLURE{fond=inclure/details_cours_article_lieu,id_evenement,id_article}/>
+	    	[(#PLACES|>{0}|oui)
+				<INCLURE{fond=inclure/details_cours_article_places_dispos,env} />
+			]
+	    </tbody>                                                       
+	</table>
+    <a class="btn btn-primary" href="[(#ENV{url_reservation}|parametre_url{id_evenement,#GET{evenements}})]"><i class="icon-arrow-right icon-white"></i> <:larut:inscription:></a>
+</div>   	
+

@@ -2,7 +2,7 @@
 <tr>
    <td class="label"><:agenda:info_lieu:></td>
    <td>
-    <BOUCLE_lieu_resultat(DATA){source tableau,#ENV{lieu}}>
+    <BOUCLE_lieu_resultat(GIS){id_evenement}{0,1}>
     <div class="item">
     	<div class="adresse">
     		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">
@@ -15,3 +15,21 @@
   </td>    
 </tr>     
 </B_lieu_resultat>
+	<B_lieu_resultat_article> 
+	<tr>
+	   <td class="label"><:agenda:info_lieu:></td>
+	   <td>
+	    <BOUCLE_lieu_resultat_article(GIS){id_article}{0,1}>
+	    <div class="item">
+	    	<div class="adresse">
+	    		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" onclick="window.open(this.href, 'gis', 'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">
+	    			#TITRE
+	    			[<br /> (#ADRESSE|extraire_multi|textebrut)][<br /> (#CODE_POSTAL) ]#VILLE</a>
+	    	</div>
+	
+	    </div>
+	   </BOUCLE_lieu_resultat_article> 
+	  </td>    
+	</tr>     
+	</B_lieu_resultat_article>
+<//B_lieu_resultat>

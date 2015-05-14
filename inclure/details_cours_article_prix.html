@@ -1,16 +1,33 @@
-<B_prix_res>
+<B_prix>
 <tr>
     <td class="label"><:larut:label_prix:></td>
     <td>
-       <BOUCLE_prix_res(DATA){source tableau,#ENV{prix}}>
-        <div>#VALEUR{prix}
+<BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}>
+        <div>#PRIX
             <B_decl>
             -
-            <BOUCLE_decl(DECLINAISONS){id_declinaison=#ID_DECLINAISON}{id_declinaison!=0}>
+            <BOUCLE_decl(DECLINAISONS){id_declinaison}>
             #TITRE
             </BOUCLE_decl>                    
         </div>
-       </BOUCLE_prix_res>
+	    </BOUCLE_prix>
      </td>
-</tr>     
-</B_prix_res>
+</tr>        
+</B_prix>
+	<B_prix_article>
+	<tr>
+	    <td class="label"><:larut:label_prix:></td>
+	    <td>
+	<BOUCLE_prix_article(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}>
+	        <div>#PRIX
+	            <B_decl_article>
+	            -
+	            <BOUCLE_decl_article(DECLINAISONS){id_declinaison}>
+	            #TITRE
+	            </BOUCLE_decl_article>                    
+	        </div>
+		    </BOUCLE_prix_article>
+	     </td>
+	</tr>        
+	</B_prix_article>
+<//B_prix>
