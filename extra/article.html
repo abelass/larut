@@ -4,18 +4,21 @@
     <nav class="menu menu_articles">
         <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
         <ul class="liste-items">
-            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par num titre, titre}>
-            	#SET{id_trad,#ID_ARTICLE}
-				[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
-                <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-                    <B_test2>
-                        <li class="item"><i class="icon-chevron-right"></i> <a href="#URL_ARTICLE"[(#ID_ARTICLE|=={#ENV{id_article}}|oui) class="on"]>#TITRE</a></li>                
-                          <BOUCLE_test2(EVENEMENTS){id_article=#ID_TRAD}{fusion id_article}{date_fin>#ENV{date}}>
-                          </BOUCLE_test2>
-                </BOUCLE_test>
+    <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par num titre, titre}>
+        #SET{id_trad,#ID_ARTICLE}
+		[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
+        <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+        	<BOUCLE_test2(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{fusion id_article}{date_fin>#ENV{date}}>
+        	[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui)
+			<li class="item"><i class="icon-chevron-right"></i> 
+				<a href="#URL_ARTICLE"[(#ID_ARTICLE|=={#ENV{id_article}}|oui) class="on"]>#TITRE</a>
+			</li> 
+			]               
+           </BOUCLE_test2>
+        </BOUCLE_test>
                     <li class="item"><i class="icon-chevron-right"></i> <a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li> 
                <//B_test>              
-            </BOUCLE_articles_rubrique>
+   </BOUCLE_articles_rubrique>
         </ul>
     </nav>
 </B_articles_rubrique>
