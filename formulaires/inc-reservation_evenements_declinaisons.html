@@ -46,24 +46,25 @@
         </BOUCLE_rubs_lies>
         #SET{so,non}
         <//B_rubs_lies>
+        #SET{evenements_source,#ARRAY}
        <B_art_or>
        <fieldset>
        [<legend><a href="#GET{url}">(#GET{titre}|unique)</a></legend>]
        <ul>          
         <li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
             [<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_objet_prix})</div>]
-        <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}{id_evenement_source=0}>
+        <BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
         #SET{t,''}
         [(#GET{titre}|!={#TITRE}|oui)#SET{t,#TITRE}]
         [(#REM)Les détails de la réservation]
         #SET{langue,#LANG**}
-        
-        [(#REM) pas sur si utile désactivé 15/03/27
-	        [(#GET{langue}|non)
-	            #SET{langue,#ID_ARTICLE|generer_info_entite{article,lang}}
-	        ]
+        [(#ID_EVENEMENT_SOURCE|=={0}|oui)
+          <INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
         ]
-		<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env}/>
+        [(#ID_EVENEMENT_SOURCE|!={0}|oui|et{#ID_EVENEMENT_SOURCE|in_array{#GET{evenements_source}}|non})
+          <INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement=#ID_EVENEMENT_SOURCE,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
+        ]
+        [(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT_SOURCE}})]
         </BOUCLE_art_or>
         </li>
    [(#ENV{id_evenement}|oui)
