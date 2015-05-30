@@ -3,12 +3,18 @@
 	    #SET{langue,#VAL{'['}|concat{#ENV{langue}}|concat{#VAL{']'}}
         [(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
             <strong>[(#TITRE)]</strong>
-        ]   	    
+        ] 
+	    [(#ID_EVENEMENT_SOURCE|=={0}|?{
+	      #SET{date_debut,#DATE_DEBUT}   
+	      ,
+	      #SET{date_debut,#INFO_DATE_DEBUT{evenement,#ID_EVENEMENT_SOURCE}}
+	      })]
 	    #SET{date_fin,#DATE_FIN}
 	    <BOUCLE_ev_lies(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{!par date_debut}{0,1}>
 	    #SET{date_fin,#DATE_FIN}
 	    </BOUCLE_ev_lies>
-	    <div>[(#DATE_DEBUT|affdate) ][(#DATE_DEBUT|affdate{Y-m-d}|<{#GET{date_fin}|affdate{Y-m-d}}|oui) - [ (#GET{date_fin}|affdate), ] [(#DATE_DEBUT|nom_jour) ]][(#DATE_DEBUT|affdate{G:i})][(#DATE_DEBUT|affdate{G:i}|!={[(#GET{date_fin}|affdate{G:i})]}|oui)[ - (#GET{date_fin}|affdate{G:i})]][ (#MULTILINGUE|=={on}|?{
+	    <div>
+	      [(#GET{date_debut}|affdate_debut_fin{#GET{date_fin},#HORAIRE})][ (#MULTILINGUE|=={on}|?{
 	    		[(#ID_ARTICLE|article_langues{#LISTE{<strong>&#91;,&#93;</strong>}})]
 	    		,
 	    		[<strong>(#GET{langue})</strong>]
