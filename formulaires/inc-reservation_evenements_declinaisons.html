@@ -60,6 +60,7 @@
           #SET{langue,#LANG**}
           [(#ID_EVENEMENT_SOURCE|=={0}|oui)
             <INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,id_evenement_source,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
+            [(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT}})]
           ]
           [(#ID_EVENEMENT_SOURCE|!={0}|oui|et{#ID_EVENEMENT_SOURCE|in_array{#GET{evenements_source}}|non})
             <INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement=#ID_EVENEMENT_SOURCE,id_evenement_source,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
