@@ -49,7 +49,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     ',       
     'merci_de_votre_reservation_attente_paiement'=>'<p>Thank you for your interest in Larut\'s sewing workshops.</p>
 
-<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account: IBAN  - BE88 6116 3573 5141 (SWIFT/BIC: DEUTBEBEXXX). Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
+<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account: La Transformathèque asbl IBAN  - BE04 3631 4999 0231 (SWIFT/BIC: BBRU BE BB). Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
 
 <p>For more information please visit the <a href="@url_cg@">Terms ans Conditions</a>.</p>
 
@@ -74,7 +74,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'sujet_email_amies'=>'@nom@ wants to share this with you',
     
     //T
-    'texte_statut_bancaire'=>'Je vous invite à réaliser le virement dans le compte BE02611635735040  (SWIFT/BIC: DEUTBEBEXXX) avec la référence : chèque cadeau et votre nom.',       
+       
     'texte_statut_merci'=>'Merci de votre commande d\'un chèque cadeau de Larut.',  
     'texte_statut_reception'=>'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',       
     'texte_statut_archive'=>'archivé',
