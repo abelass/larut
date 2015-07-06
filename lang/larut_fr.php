@@ -52,7 +52,7 @@ Bruxelles en pièce jointe.</p>
     ',       
     'merci_de_votre_reservation_attente_paiement'=>'<p>Merci de votre intérêt pour nos ateliers de couture.</p>
 
-<p>Votre inscription est bien enregistrée dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire BE88 6116 3573 5141 (swift/bic : DEUTBEBE) avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
+<p>Votre inscription est bien enregistrée dans notre système mais elle ne sera confirmée qu’après réception du paiement sur le compte bancaire de la La Transformathèque asbl BE04 3631 4999 0231 (swift/bic : BBRU BE BB) avec la référence : @reference@. Lors de la réception du paiement un e-mail de confirmation vous sera envoyé avec les détails pour le premier cours.</p>
 
 <p>Pour plus de détails, veuillez consulter nos  <a href="@url_cg@">conditions générales</a>.</p>
 
@@ -80,7 +80,7 @@ Bruxelles en pièce jointe.</p>
     'sujet_email_amies'=>'Partage d\'infos de @nom@',
     
     // T
-    'texte_statut_bancaire'=>'Je vous invite à réaliser le virement dans le compte BE02611635735040 (swift/bic: DEUTBEBE) avec la référence : chèque cadeau et votre nom.',       
+    'texte_statut_bancaire'=>'Je vous invite à réaliser le virement dans le compte de La Transformathèque asbl BE04 3631 4999 0231 (swift/bic: BBRU BE BB) avec la référence : chèque cadeau et votre nom.',       
     'texte_statut_merci'=>'Merci de votre commande d\'un chèque cadeau de Larut.',  
     'texte_statut_reception'=>'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',       
     'texte_statut_archive'=>'archivé',
