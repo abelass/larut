@@ -5,13 +5,13 @@
         <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
         <ul class="liste-items">
     <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre} {par num titre, titre}>
-        #SET{id_trad,#ID_ARTICLE} #SET{titre,#TITRE}
+        #SET{id_trad,#ID_ARTICLE} #SET{titre,#TITRE} #SET{url,#URL_ARTICLE} #SET{id_article,#ID_ARTICLE}
 		[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
         <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
         	<BOUCLE_test2(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{fusion id_article}{date_fin>#ENV{date}}>
         	[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui)
 			<li class="item"><i class="icon-chevron-right"></i> 
-				<a href="#URL_ARTICLE"[(#ID_ARTICLE|=={#ENV{id_article}}|oui) class="on"]>#GET{titre}</a>
+				<a href="#GET{url}"[(#GET{id_article}|=={#ENV{id_article}}|oui) class="on"]>#GET{titre}</a>
 			</li> 
 			]               
            </BOUCLE_test2>
