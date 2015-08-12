@@ -13,7 +13,6 @@
       <BOUCLE_evenement_source(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}{si #ID_EVENEMENT_SOURCE|in_array{#GET{id_evenement_source}}|non}{par date_debut}>
         #INCLURE{fond=inclure/details_cours_article_details,id_article,id_evenement,horaire=#GET{horaire},date_debut,date_fin,places,statut=#GET{statuts_complet},env}
       </BOUCLE_evenement_source>
-    </B_evenement_source>
         #SET{id_evenement_source,#GET{id_evenement_source}|push{#ID_EVENEMENT_SOURCE}}
   </BOUCLE_test_langue>
 </BOUCLE_evenement>
