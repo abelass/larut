@@ -1,19 +1,19 @@
 #SET{statuts_complet,#VAL|statuts_complet}
 #SET{id_evenement_source,#ARRAY}
-<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>#DATE}{par date_debut}>
-	<BOUCLE_test_langue(CONDITION){si #LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui}>
-		<BOUCLE_test_source(CONDITION)	{si #ID_EVENEMENT_SOURCE|=={0}}>
-			#SET{id_evenement_source,#GET{id_evenement_source}|push{#ID_EVENEMENT}}
-			[(#REM) Si le cours n'a pas encore commencé]
-			#SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
-			<INCLURE{fond=inclure/details_cours_article_details,id_article,date_debut,date_fin,id_evenement,horaire=#GET{horaire},places,statut=#GET{statuts_complet},env}/>
-		</BOUCLE_test_source>
-			[(#REM) Si le cours n'a déjà commencé]
-			<BOUCLE_evenement_source(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}{si #ID_EVENEMENT_SOURCE|in_array{#GET{id_evenement_source}}|non}{par date_debut}>
-				#INCLURE{fond=inclure/details_cours_article_details,id_article,id_evenement,horaire=#GET{horaire},date_debut,date_fin,places,statut=#GET{statuts_complet},env}
-			</BOUCLE_evenement_source>
-			</B_evenement_source>
-			#SET{id_evenement_source,#GET{id_evenement_source}|push{#ID_EVENEMENT_SOURCE}}
-				<//B_test_test_source>
-	</BOUCLE_test_langue>
+<BOUCLE_evenement(EVENEMENTS){id_article}{inscription=1}{date_fin>
+  #DATE}{par date_debut}>
+  <BOUCLE_test_langue(CONDITION){si #LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui}>
+    <BOUCLE_test_source(CONDITION)	{si #ID_EVENEMENT_SOURCE|=={0}}>
+      #SET{id_evenement_source,#GET{id_evenement_source}|push{#ID_EVENEMENT}}
+      [(#REM) Si le cours n'a pas encore commencé]
+      #SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
+      <INCLURE{fond=inclure/details_cours_article_details,id_article,date_debut,date_fin,id_evenement,horaire=#GET{horaire},places,statut=#GET{statuts_complet},env}/>
+    </BOUCLE_test_source>
+      [(#REM) Si le cours n'a déjà commencé]
+      <BOUCLE_evenement_source(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}{si #ID_EVENEMENT_SOURCE|in_array{#GET{id_evenement_source}}|non}{par date_debut}>
+        #INCLURE{fond=inclure/details_cours_article_details,id_article,id_evenement,horaire=#GET{horaire},date_debut,date_fin,places,statut=#GET{statuts_complet},env}
+      </BOUCLE_evenement_source>
+    </B_evenement_source>
+        #SET{id_evenement_source,#GET{id_evenement_source}|push{#ID_EVENEMENT_SOURCE}}
+  </BOUCLE_test_langue>
 </BOUCLE_evenement>
