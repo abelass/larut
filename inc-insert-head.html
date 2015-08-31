@@ -2,3 +2,7 @@
     <script src="#CHEMIN{scripts/html5-ie.js}"></script>
     [<link rel="stylesheet" href="(#CSS{css/styles_ie.css})" type="text/css" />]
 <![endif]-->
+[(#ID_SECTEUR_COURANT|in_array{#LISTE{45,46}}|oui)
+<!-- Stylesheet subdomain-->
+  [<link rel="stylesheet" href="(#CSS{css/courscouture.css})" type="text/css" />]
+]

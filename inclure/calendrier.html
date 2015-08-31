@@ -4,7 +4,7 @@
 		<li[(#ENV{id_mot}|non) class="active"]>
 			<a href="[(#SELF|parametre_url{id_mot,''})]" class="ajax"><:larut:ateliers_tous:></a>
 		</li[(#ENV{id_mot}|non)>
-	<BOUCLE_type_cours(MOTS){id_groupe=6}{si #COMPOSITION|=={ateliers}|oui}>
+	<BOUCLE_type_cours(MOTS){id_groupe=6}{si #COMPOSITION|in_array{#LISTE{ateliers,ateliers_sous_domaine}}|oui}>
 		<li[(#ENV{id_mot}|=={#ID_MOT}|oui) class="active"]>
 			<a href="[(#SELF|parametre_url{id_mot,#ID_MOT})]" class="ajax">#TITRE</a>
 		</li>
