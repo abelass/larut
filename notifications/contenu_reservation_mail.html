@@ -27,16 +27,16 @@
 	[<p>(#VAL{larut:merci_de_votre_reservation_#ENV{statut}}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}})</p>]
 	
 	]#SET{id_evenement,#ARRAY} #SET{statut_reservation,#STATUT}#SET{erreurs_statuts,#ARRAY}
-	 <BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}{si #ENV{statut}|=={accepte}|et{#ENV{qui}|=={client}}|oui}>
+	 <BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}{si #ENV{statut}|in_array{#LISTE{accepte_part,accepte}}|et{#ENV{qui}|=={client}}|oui}>
 	    #SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
-	    [(#STATUT|!={#GET{statut_reservation}}|oui)
+	    [(#STATUT|!={accepte}|oui)
 	        [(#SET{erreurs_statuts,#GET{erreurs_statuts}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ARRAY{titre,#DESCRIPTIF*,statut,#STATUT}}}})]
 	        ]
 	 </BOUCLE_details>
 	[(#ID_RESERVATION|spip_log{teste})]
 	 <B_erreurs_statut>
 	    <h3><:larut:probleme_confirmation:></h3>
-	    <ul></ul>
+	    <ul>
 	    <BOUCLE_erreurs_statut(DATA){source tableau, #GET{erreurs_statuts}}>
 	        <li>#VALEUR{titre} : [<b>(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)</b>]</li>
 	    </BOUCLE_erreurs_statut>
@@ -54,7 +54,7 @@
 	        </BOUCLE_art_org>  
 	    </BOUCLE_article>
 	
-	[(#ENV{qui}|=={client}|et{#ENV{statut}|=={accepte}}|oui)
+	[(#ENV{qui}|=={client}|et{#ENV{statut}|in_array{#LISTE{accepte}}}|oui)
 	<p style="clear:both"><:larut:merci_de_votre_reservation_accepte_2:></p>
 	]
 	
