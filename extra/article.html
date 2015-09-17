@@ -8,7 +8,7 @@
           #SET{id_trad,#ID_ARTICLE} #SET{titre,#TITRE} #SET{url,#URL_ARTICLE} #SET{id_article,#ID_ARTICLE}
           [(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
           <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-            <BOUCLE_test2(EVENEMENTS){id_article = #GET{id_trad}}{fusion id_article}{date_fin>
+            <BOUCLE_test2(EVENEMENTS){id_article IN #GET{id_trad},#ID_ARTICLE}{fusion id_article}{date_fin>
               #ENV{date}}>
               [(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
               <li class="item">
