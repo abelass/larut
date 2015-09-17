@@ -1,0 +1,5 @@
+<p class="colophon"> 
+[(#SESSION{id_auteur}|oui)<a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter:></a>][
+(#SESSION{id_auteur}|non)<a href="[(#URL_PAGE{login}|parametre_url{url,#SELF|parametre_url{url,''}})]" rel="nofollow" class='login_modal'><:lien_connecter:></a>][<span class="sep">
+(#AUTORISER{ecrire})| </span><a href="#EVAL{_DIR_RESTREINT_ABS}"><:espace_prive:></a>] | <a href="http://www.spip.net/" title="<:site_realise_avec_spip:>"><:site_realise_avec_spip:></a>  <:par_auteur:> <a href="http://websimple.be/">Web Simple</a>
+</p>

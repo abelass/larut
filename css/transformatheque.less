@@ -1,0 +1,151 @@
+/*Titraille*/
+
+h3, .h3{font-size:1.5em}
+
+/*Blocks principales*/
+.span8 {
+ float: none;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+	background-repeat:no-repeat center top;
+	background-position:center top;	
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    position:relative;
+}
+
+#content section .main{
+	box-sizing: border-box;
+	width:57%; 
+	max-width: 700px; 
+	min-height: 600px;
+	margin:0 auto; 
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 1em 1.5em;
+	}
+	
+.row #content section {
+    position: static;
+}
+
+.publication .vcard{background-color:transparent}
+
+.adresse{text-align: center; padding:0; margin:2em 0 0 0}
+
+.footer {text-align:center;margin-top:2em} 
+ 
+/*Header*/
+
+h1#logo_site_spip{display:none}
+
+.accueil{text-align:center;width:100%;}
+
+.accueil .spip_logos{float:none;margin:0}
+
+.header .span3{display:none}
+
+.span9{margin:0}
+
+/*outils*/
+
+.main #outils {
+    background-color: #ffffff;
+    margin: 0;
+    opacity: 0.78;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+
+/*
+ * Forms
+ */
+
+/*Newsletter*/
+.newsletter{
+    position: relative;
+    right: 0;
+    top: 100px;
+    width: 21.5%;
+    margin:0;
+    z-index: 200;
+    background-color: rgba(255, 255, 255, 0.8);
+	.formulaire_spip{
+    	padding:0;
+    	background-color:inherit;
+    	input,label{font-size:0.8em;}
+    }
+    .boutons {
+    	background-color:inherit;
+    	margin:0;
+    	padding:0;
+    	input{width: 100%;}
+    }
+	.email.text {
+    width: calc(100% - 12px);
+}
+}
+
+/*Listes*/
+
+.liste-items .item {
+    border-top: 1px solid #4d4d4d;}
+
+/*Homepage*/
+.sites .short .entry > *:not(.entry-title) {
+    display: block;
+}
+
+.rubrique_home .sites h2 {display:none}
+
+   
+/*Socialtags*/
+/*div.socialtags {
+    clear:none;
+    ul{float:left;}
+}*/
+   
+/*Divers*/
+img.left{margin: 0 0.5em 0.5em 0} 
+
+
+@media (max-width: 767px) {
+	body{padding:0}
+	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 100%;
+	}
+	#content section:first-child{
+	width:70%; 
+	}
+	.footer .colophon {
+    padding-right: 0.5em;
+     padding-left: 0.5em;   
+	}
+.main #outils {
+    right: 0;
+    top: 0;
+	}
+}
+@media (max-width: 480px){
+	
+	
+	#content section .main{
+		width:85%
+	}
+	.main #outils {
+	position:static;
+	}
+	
+	.newsletter{
+    width: 85%;
+    float: none !important;
+    margin: 0 auto;
+    top: 0;
+    .formulaire_spip{
+    	padding:0 1em 1em
+    }
+   }
+}

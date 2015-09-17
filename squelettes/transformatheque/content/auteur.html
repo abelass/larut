@@ -1,0 +1,27 @@
+<BOUCLE_content(AUTEURS){id_auteur}{tout}>
+<section class="vcard" itemscope itemtype="http://schema.org/Person"> [(#REM) microformat vcard]
+	<header class="cartouche">
+		<h1 class="#EDIT{qui} fn" itemprop="name">[(#LOGO_AUTEUR|image_reduire|inserer_attribut{itemprop,image})]#NOM</h1>
+	</header>
+
+	<div class="main">
+    	[(#REM) Boite à outils]
+	    [(#INCLURE{fond=inclure/outils,env})] 		
+		[<div class="#EDIT{bio} chapo bio">(#BIO|adaptive_images)</div>]
+		[<div class="#EDIT{mobile} mobile"><:lavitrine_transformatek:label_mobile:> (#MOBILE)</div>]
+		<BOUCLE_site(SITES){id_auteur}>
+			<div class="#EDIT{url_site} url_site"><a href="#URL_SITE">#URL_SITE</a></div>
+		</BOUCLE_site>
+	</div>
+
+	<aside>
+		<INCLURE{fond=liste/articles-auteur,id_auteur,env,ajax} />
+
+		#FORMULAIRE_ECRIRE_AUTEUR
+	</aside>
+
+	<footer>
+		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	</footer>
+</section>
+</BOUCLE_content>
