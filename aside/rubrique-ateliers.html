@@ -1,12 +1,12 @@
 #SET{id_article,#ARRAY}
 <BOUCLE_art(ARTICLES) {id_rubrique}{par num titre,titre}>
-	#SET{id_trad,#ID_ARTICLE}
-	[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
-	<BOUCLE_ev(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{date_fin>#ENV{date}}{fusion id_article}>	
-		[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
-			#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}} 	
-		]
-	</BOUCLE_ev>
+#SET{id_trad,#ID_ARTICLE}
+[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
+  <BOUCLE_ev(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{date_fin>#ENV{date}}{fusion id_article}>	
+    [(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
+      #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+    ]
+  </BOUCLE_ev>
 </BOUCLE_art>
 <section class="art_rub">
     <INCLURE{fond=inclure/galerie_coup_de_coeur,id_rubrique='',logo=oui,id_article=#GET{id_article},width=120,height=120,pagination=1000,limit=1000,par=titre,inverse=0,mode=document} />
