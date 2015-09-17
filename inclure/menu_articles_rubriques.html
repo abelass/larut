@@ -10,7 +10,7 @@
         <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
             <BOUCLE_test2(EVENEMENTS){id_article = #GET{id_trad}}{fusion id_article}{date_fin>
               #ENV{date}}>
-              [(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui)
+              [(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
               <li class="item">
                 <i class="icon-chevron-right"></i>
                 <a href="#GET{url}"[(#GET{id_article}|=={#ENV{id_article}}|oui) class="on"]>#GET{titre}</a>

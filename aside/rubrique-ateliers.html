@@ -3,7 +3,7 @@
 	#SET{id_trad,#ID_ARTICLE}
 	[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
 	<BOUCLE_ev(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{date_fin>#ENV{date}}{fusion id_article}>	
-		[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE}|oui)
+		[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
 			#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}} 	
 		]
 	</BOUCLE_ev>
