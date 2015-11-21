@@ -1,33 +1,32 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
-    <BOUCLE_articles(ARTICLES) {!par date}{lang} {0,1}> 
-        #SET{resume,#RESUME}    
-        #SET{date,#DATE}
-        #SET{url,#URL_ARTICLE}
-        #SET{url_more,#GET{url}}  
-        #SET{titre,#TITRE}                    
-        #SET{logo,#LOGO_ARTICLE}  
-        #SET{introduction,#INTRODUCTION}                
-   </BOUCLE_articles>
-   
-    <BOUCLE_sites(SITES) {!par date}{0,1}{date >#GET{date}}> 
-        #SET{resume,#RESUME}          
-        #SET{date,#DATE}
-        #SET{url,#URL_SITE}  
-        #SET{titre,#NOM_SITE}                    
-        #SET{logo,#LOGO_SITE}  
-        #SET{introduction,''}
-        <BOUCLE_rub(RUBRIQUES){id_trad=#ID_RUBRIQUE}{lang}{tout}>
-               #SET{url_more,#URL_RUBRIQUE} 
-               #SET{titre_rubrique,#TITRE}                
-        </BOUCLE_rub> 
-        #SET{site,oui}             
-   </BOUCLE_sites>
-
+  <BOUCLE_articles(ARTICLES) {!par date}{lang} {0,1}> 
+    #SET{resume,#RESUME}
+    #SET{date,#DATE}
+    #SET{url,#URL_ARTICLE}
+    #SET{url_more,#GET{url}}
+    #SET{titre,#TITRE}
+    #SET{logo,#LOGO_ARTICLE}
+    #SET{introduction,#INTRODUCTION}
+ </BOUCLE_articles>
+ 
+  <BOUCLE_sites(SITES) {!par date}{0,1}{date >#GET{date}}> 
+    #SET{resume,#RESUME}
+    #SET{date,#DATE}
+    #SET{url,#URL_SITE}
+    #SET{titre,#NOM_SITE}
+    #SET{logo,#LOGO_SITE}  
+    #SET{introduction,''}
+    <BOUCLE_rub(RUBRIQUES){id_trad=#ID_RUBRIQUE}{lang}{tout}>
+       #SET{url_more,#URL_RUBRIQUE}
+       #SET{titre_rubrique,#TITRE}
+    </BOUCLE_rub>
+    #SET{site,oui}
+  </BOUCLE_sites>
 
 <div class="contenu-principal">
-	[(#REM) Boite à outils]
-		[(#INCLURE{fond=inclure/outils,env})]
-	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+  [(#REM) Boite à outils]
+    [(#INCLURE{fond=inclure/outils,env})]
+  [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 </div>
 
 
@@ -35,38 +34,34 @@
 
         <h2 class="h2 articles_recents"><:news:></h2>
  <ul class="liste-items">
-            <li class="item hentry">
-                [<section>
-                    <div class="resume">(#GET{resume})</div>
-                </section>]
-                <article>
-                    <h3 class="h3 entry-title"><a href="#GET{url}" rel="bookmark">#GET{titre}</a></h3>
-                    <a href="#GET{url}" rel="bookmark">
-                        [(#GET{logo}
-                        |image_passe_partout{#ENV{width,50},#ENV{height,50}}
-                        |image_recadre{#ENV{width,50},#ENV{height,50}}
-                        |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]   
-                    </a>
-                    <div class="info-publi">
-                        [<abbr class="published" title="[(#GET{date}|date_iso)]">(#GET{date}|affdate{d/m/Y})</abbr>]
-                    </div>
-                    [<div class="introduction entry-content">(#GET{introduction}|propre|couper{100})</div>]
-                    <div class="meta-publi">
-                        <a class="lire-la-suite" href="#GET{url_more}">
-                            [(#GET{site}|?{
-                             [<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]   
-                                ,
-                              [<:lire_la_suite:> <span class="lire-la-suite-titre"><em>(#GET{titre})</em></span>]
-                            })]
-                             
-                            
-                        </a>
-                    </div>
-                </article>
-            </li>
+  <li class="item hentry">
+    [<section>
+      <div class="resume">(#GET{resume})</div>
+    </section>]
+    <article>
+      <h3 class="h3 entry-title"><a href="#GET{url}" rel="bookmark">#GET{titre}</a></h3>
+      <a href="#GET{url}" rel="bookmark">
+        [(#GET{logo}
+        |image_passe_partout{#ENV{width,50},#ENV{height,50}}
+        |image_recadre{#ENV{width,50},#ENV{height,50}}
+        |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]   
+      </a>
+      <div class="info-publi">
+          [<abbr class="published" title="[(#GET{date}|date_iso)]">(#GET{date}|affdate{d/m/Y})</abbr>]
+      </div>
+      [<div class="introduction entry-content">(#GET{introduction}|propre|couper{100})</div>]
+      <div class="meta-publi">
+        <a class="lire-la-suite" href="#GET{url_more}">
+          [(#GET{site}|?{
+           [<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]   
+              ,
+            [<:lire_la_suite:> <span class="lire-la-suite-titre"><em>(#GET{titre})</em></span>]
+          })]
+        </a>
+      </div>
+    </article>
+  </li>
 
     </ul>
 </section>
-
-
 </BOUCLE_contenu_rubrique>
