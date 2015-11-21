@@ -1,0 +1,7 @@
+[(#ENV{contexte}|?{
+  #SET{contexte,#ENV*{contexte}},
+  #SET{contexte,#ARRAY{id_rubrique,49,type-page,rubrique}},
+})
+]
+[(#ENV**{head}|seo_insere_remplace_metas{#GET{contexte}}|replace{'\s+<(meta|script|link|style)','
+<$1'})]
