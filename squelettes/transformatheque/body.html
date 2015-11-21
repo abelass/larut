@@ -1,33 +1,33 @@
 <BOUCLE_background(DATA){source tableau, #LISTE{background5.jpg,background4.jpg}}{par hasard}{0,1}>
-	#SET{background,#VALEUR}
+  #SET{background,#VALEUR}
 </BOUCLE_background>
 <body>
-	<div class="page[ (#ENV{home}|oui)home]">
-		<div class="container">
-			<div class="header" id="header">
-				
-				<INCLURE{fond=header/#ENV{type-page},env} />
-			</div>
-			[<div class="navbar navbar-inverse navbar-responsive" id="nav">
-				(#INCLURE{fond=inclure/nav,env}|navbar_responsive)
-			</div>]
+  <div class="page[ (#ENV{home}|oui)home]">
+    <div class="container">
+      <div class="header" id="header">
+        
+        <INCLURE{fond=header/#ENV{type-page},env} />
+      </div>
+      [<div class="navbar navbar-inverse navbar-responsive" id="nav">
+        (#INCLURE{fond=inclure/nav,env}|navbar_responsive)
+      </div>]
 
-			<div class="row">
-				<div class="content span8 " id="content" style="background-image: url(#CHEMIN{squelettes/transformatheque/images/#GET{background}})">
-					<INCLURE{fond=content/#ENV{type-page},env} />
-				</div>
-				[(#REM) deactivated
-				<div class="aside secondary col span3 offset1" id="aside">
-					<INCLURE{fond=aside/#ENV{type-page},env} />
-					<INCLURE{fond=extra/#ENV{type-page},env} />
-				</div>]
-			</div>
-			<div class="adresse"> [(#REM) microformat vcard]
-				#NOM_SITE_SPIP - Rue du Fort 7, 1060 Saint-Gilles, [(#VAL{<a href="mailto:[(#EMAIL_WEBMASTER)]">[(#EMAIL_WEBMASTER)]</a>}|mailcrypt)], GSM +32 495 10 28 18<br />
-			</div>
-			<div class="footer" id="footer">
-				<INCLURE{fond=footer/#ENV{type-page},env} />
-			</div>
-		</div>
-	</div>
+      <div class="row">
+        <div class="content span8 " id="content" style="background-image: url(#CHEMIN{squelettes/transformatheque/images/#GET{background}})">
+          <INCLURE{fond=content/#ENV{type-page},env} />
+        </div>
+        [(#REM) deactivated
+        <div class="aside secondary col span3 offset1" id="aside">
+          <INCLURE{fond=aside/#ENV{type-page},env} />
+          <INCLURE{fond=extra/#ENV{type-page},env} />
+        </div>]
+      </div>
+      <div class="adresse"> [(#REM) microformat vcard]
+        #NOM_SITE_SPIP - Rue du Fort 7, 1060 Saint-Gilles, [(#VAL{<a href="mailto:[(#EMAIL_WEBMASTER)]">[(#EMAIL_WEBMASTER)]</a>}|mailcrypt)], GSM +32 495 10 28 18<br />
+      </div>
+      <div class="footer" id="footer">
+        <INCLURE{fond=footer/#ENV{type-page},env} />
+      </div>
+    </div>
+  </div>
 </body>
