@@ -1,9 +1,13 @@
 <BOUCLE_principale_rubrique(RUBRIQUES){id_rubrique}{tout}>
-        <BOUCLE_atelier(CONDITION){si #COMPOSITION|=={ateliers}|et{#STATUT|=={0}}|oui}>
-                <BOUCLE_parent(RUBRIQUES){id_parent=#ID_PARENT}{composition=galerie}{tout}>
-                      <INCLURE{fond=structure,env,id_rubrique=#ID_RUBRIQUE,id_secteur=#ID_SECTEUR,type-page=rubrique,composition=#COMPOSITION,id_trad,id_rub=#ENV{id_rubrique}}/>  
-                </BOUCLE_parent>
-          </BOUCLE_atelier>    
-	   <INCLURE{fond=structure,env,id_secteur=#ID_SECTEUR,type-page=rubrique,id_trad,composition=#COMPOSITION} />
-	 <//B_atelier>
+	[(#REM) l'url www.larut/ateliers doit rediriger vers www.larut/fr/ateliers]
+	[(#ID_RUBRIQUE|=={45}|oui)
+		[(#URL_RUBRIQUE{7}|redirige_par_entete{'',301})]
+	]
+	<BOUCLE_atelier(CONDITION){si #COMPOSITION|=={ateliers}|et{#STATUT|=={0}}|oui}>
+		<BOUCLE_parent(RUBRIQUES){id_parent=#ID_PARENT}{composition=galerie}{tout}>
+			<INCLUR {fond=structure, env, id_rubrique=#ID_RUBRIQUE, id_secteur=#ID_SECTEUR, type-page=rubrique, composition=#COMPOSITION, id_trad, id_rub=#ENV{id_rubrique}}/>
+		</BOUCLE_parent>
+	</BOUCLE_atelier>
+		<INCLURE{fond=structure, env, id_secteur=#ID_SECTEUR, type-page=rubrique, id_trad, composition=#COMPOSITION} />
+	<//B_atelier>
 </BOUCLE_principale_rubrique>
