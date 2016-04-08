@@ -44,7 +44,6 @@
 	<necessite nom="chosen" compatibilite="[1.0.6;]" />
 	<necessite nom="newsletters_notifications" compatibilite="[1.0.1;]" />
 	<necessite nom="multidomaines" compatibilite="[2.3.2;]" />
-	<necessite nom="reservations_credits" compatibilite="[1.0.1;]" />
 
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
