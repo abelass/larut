@@ -4,7 +4,7 @@
 
 <B_rub_ateliers>
 <li class="fieldset">
-<BOUCLE_rub_ateliers (RUBRIQUES){id_tradIN 7}>
+<BOUCLE_rub_ateliers (RUBRIQUES){id_trad IN 7}>
 	<BOUCLE_articles_ateliers(ARTICLES){id_rubrique}{origine_traduction}>
 		[(#REM)Les variables de l'article d'origine]
 		#SET{id_article_base,#ID_ARTICLE} #SET{id_article_origine,#ID_ARTICLE}
@@ -46,7 +46,6 @@
 		#SET{so,non}
 		<//B_rubs_lies>
 		#SET{evenements_source,#ARRAY}
-	<B_art_or>
 	<fieldset>
 		[<legend>
 			<a href="#GET{url}">(#GET{titre}|unique)</a>
@@ -107,5 +106,6 @@
 	</fieldset>
 	</B_art_or>
 	</BOUCLE_articles_ateliers>
-</BOUCLE_rub_ateliers></li>
+</BOUCLE_rub_ateliers>
+</li>
 </B_rub_ateliers>
