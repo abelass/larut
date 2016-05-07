@@ -1,111 +1,84 @@
-<BOUCLE_rub_res (RUBRIQUES){lang}{composition=reservation}{0,1}{tout}{si#ENV{id_evenement}|oui}>
+<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}{si #ENV{id_evenement}|oui}>
 	#SET{url_reservation,#URL_RUBRIQUE}
 </BOUCLE_rub_res>
 
 <B_rub_ateliers>
 <li class="fieldset">
-<BOUCLE_rub_ateliers (RUBRIQUES){id_trad IN 7}>
-	<BOUCLE_articles_ateliers(ARTICLES){id_rubrique}{origine_traduction}>
-		[(#REM)Les variables de l'article d'origine]
-		#SET{id_article_base,#ID_ARTICLE} #SET{id_article_origine,#ID_ARTICLE}
-		#SET{id_article,#LISTE{#ID_ARTICLE}} #SET{titre,#TITRE}
-		#SET{url,#URL_ARTICLE} [(#REM)Les variables de la traductions de
-		l'article correpondant à la langue del environnement] 
-		<BOUCLE_article_base(ARTICLES){traduction}{!origine_traduction}>
-			[(#LANG|=={#ENV{lang}}|oui)
+	<BOUCLE_rub_ateliers(RUBRIQUES){id_trad IN 7}>
+		<BOUCLE_articles_ateliers(ARTICLES){id_rubrique}{origine_traduction}>
+			[(#REM)Les variables de l'article d'origine]
 				#SET{id_article_base,#ID_ARTICLE}
-				#SET{titre,#TITRE} #SET{url,#URL_ARTICLE} 
-			]
-			#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
-		</BOUCLE_article_base>
-		[(#REM)Les infos
-		du points GIS de la traductions de l'article correpondant à la langue
-		del environnement]
-		<BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
-			#SET{lieu,#TITRE|concat{', '#ADRESSE}
-				|concat{','#CODE_POSTAL}
-				|concat{' '#VILLE}} #SET{id_gis,#ID_GIS}
-		</BOUCLE_gis_art> 
-			<BOUCLE_gis_art_or(GIS){id_article=#GET{id_article_origine}}>
+				#SET{id_article_origine,#ID_ARTICLE}
+				#SET{id_article,#LISTE{#ID_ARTICLE}}
+				#SET{titre,#TITRE}
+			#SET{url,#URL_ARTICLE}
+			[(#REM)Les variables de la traductions de l'article correpondant à la langue del environnement]
+			<BOUCLE_article_base(ARTICLES){traduction}{!origine_traduction}>
+				[(#LANG|=={#ENV{lang}}|oui)
+					#SET{id_article_base,#ID_ARTICLE}
+					#SET{titre,#TITRE}   
+					#SET{url,#URL_ARTICLE}
+				]
+				#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}                        
+			</BOUCLE_article_base>
+			[(#REM)Les infos du points GIS de la traductions de l'article correpondant à la langue del environnement]
+			<BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
 				#SET{lieu,#TITRE
-				|concat{', '#ADRESSE}
-				|concat{','#CODE_POSTAL}
-				|concat{' '#VILLE}}
+					|concat{', '#ADRESSE}
+					|concat{', '#CODE_POSTAL}
+					|concat{' '#VILLE}}
 				#SET{id_gis,#ID_GIS}
-			</BOUCLE_gis_art_or>
-		<//B_gis_art>
-		#SET{so,''} 
-		<BOUCLE_rubs_lies (SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
-			<BOUCLE_articles (ARTICLES){id_rubrique=#ID_OBJET}>
-			[(#ID_TRAD|>{0}?{
-				#SET{id_article,#GET{id_article}|push{#ID_TRAD}} ,
-				#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
-				})] 
-			</BOUCLE_articles>
-		</BOUCLE_rubs_lies>
-		#SET{so,non}
-		<//B_rubs_lies>
-		#SET{evenements_source,#ARRAY}
-	<fieldset>
-		[<legend>
-			<a href="#GET{url}">(#GET{titre}|unique)</a>
-		</legend>]
-		<ul>
-			<li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
-			[<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_objet_prix})</div>]
-				<BOUCLE_art_or (EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
-				#SET{t,''}
-				[(#GET{titre}|!={#TITRE}|oui)#SET{t,#TITRE}]
-				[(#REM)Les détails de la réservation] #SET{langue,#LANG**}
-				[(#ID_EVENEMENT_SOURCE|=={0}|oui)
-					<INCLURE{fond=formulaires/inc-reservation_evenement_details,
-						id_article_base=#ID_ARTICLE,
-						titre=#GET{t},
-						so=#GET{so},
-						date_debut,
-						date_fin,
-						id_evenement,
-						id_evenement_source,
-						lieu=#GET{lieu},
-						places,
-						langue=#GET{langue},
-						id_gis=#GET{id_gis},
-						multilingue,
-						id_article,
-						env}/>
-					[(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT}})]
-				]
-				[(#ID_EVENEMENT_SOURCE|!={0}|oui|et{#ID_EVENEMENT_SOURCE|in_array{#GET{evenements_source}}|non})
-					<INCLURE{fond=formulaires/inc-reservation_evenement_details,
-						id_article_base=#ID_ARTICLE,
-						titre=#GET{t},
-						so=#GET{so},
-						date_debut,
-						date_fin,
-						id_evenement=#ID_EVENEMENT_SOURCE,
-						id_evenement_source,
-						lieu=#GET{lieu},
-						places,
-						langue=#GET{langue},
-						id_gis=#GET{id_gis},
-						multilingue,
-						id_article,env}/> 
-				]
-				[(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT_SOURCE}})]
-				</BOUCLE_art_or>
-			</li>
-			[(#ENV{id_evenement}|oui)
-				<li>
-					<a class="btn btn-primary plusieurs" href="#GET{url_reservation}">
-						<i class="icon-arrow-right icon-white"> </i>
-						<:larut:voir_inscriptions_tous:>
-					</a>
-				</li>
-			]
-		</ul>
-	</fieldset>
-	</B_art_or>
-	</BOUCLE_articles_ateliers>
-</BOUCLE_rub_ateliers>
+			</BOUCLE_gis_art>
+				<BOUCLE_gis_art_or(GIS){id_article=#GET{id_article_origine}}>
+					#SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
+						#SET{id_gis,#ID_GIS}
+				</BOUCLE_gis_art_or>          
+			<//B_gis_art>
+			#SET{so,''}
+			<BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
+				<BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
+					[(#ID_TRAD|>{0}?{
+						#SET{id_article,#GET{id_article}|push{#ID_TRAD}}
+						,
+						 #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+					})]
+				</BOUCLE_articles>
+			</BOUCLE_rubs_lies>
+				#SET{so,non}
+			<//B_rubs_lies>
+			#SET{evenements_source,#ARRAY}
+			<B_art_or>
+			<fieldset>
+				[<legend><a href="#GET{url}">(#GET{titre}|unique)</a></legend>]
+				<ul>
+					<li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
+						[<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_objet_prix})</div>]
+					<BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
+						#SET{t,''}
+						[(#GET{titre}|!={#TITRE}|oui)#SET{t,#TITRE}]
+						[(#REM)Les détails de la réservation]
+						#SET{langue,#LANG**}
+						[(#ID_EVENEMENT_SOURCE|=={0}|oui)
+							<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement,id_evenement_source,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
+							[(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT}})]
+						]
+						[(#ID_EVENEMENT_SOURCE|!={0}|oui|et{#ID_EVENEMENT_SOURCE|in_array{#GET{evenements_source}}|non})
+							<INCLURE{fond=formulaires/inc-reservation_evenement_details,id_article_base=#ID_ARTICLE,titre=#GET{t},so=#GET{so},date_debut,date_fin,id_evenement=#ID_EVENEMENT_SOURCE,id_evenement_source,lieu=#GET{lieu},places,langue=#GET{langue},id_gis=#GET{id_gis},multilingue,id_article,env} />
+						]
+						[(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT_SOURCE}})]
+					</BOUCLE_art_or>
+					</li>
+					[(#ENV{id_evenement}|oui)
+					<li>
+						<a  class="btn btn-primary plusieurs"  href="#GET{url_reservation}">
+							<i class="icon-arrow-right icon-white"> </i>
+							<:larut:voir_inscriptions_tous:>
+						</a>
+						</li>]
+				</ul>
+			</fieldset>
+			</B_art_or>
+		</BOUCLE_articles_ateliers>
+	</BOUCLE_rub_ateliers>
 </li>
 </B_rub_ateliers>
