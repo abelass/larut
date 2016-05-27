@@ -1,12 +1,12 @@
 <BOUCLE_gis(GIS){id_gis?}>
-    <article class="content-principal" style="">
-        <header class="cartouche">
-            <h1 class="h1 #EDIT{titre}">#TITRE</h1>
-        </header>
-        <p>
-            [(#ADRESSE|textebrut)]<br />
-            [(#CODE_POSTAL) ]#VILLE
-        </p>
-	  [(#INCLURE{fond=modeles/carte_gis, autocenterandzoom=non,centrer_auto = non,id_gis,zoom=20})]
-    </article>
+	<article class="content-principal" style="">
+		<header class="cartouche">
+			<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+		</header>
+		<p>
+			[(#ADRESSE|textebrut)]<br />
+			[(#CODE_POSTAL) ]#VILLE
+		</p>
+		[(#INCLURE{fond=modeles/carte_gis, autocenterandzoom=oui,centrer_auto = non,id_gis,zoom=17})]
+	</article>
 </BOUCLE_gis>
