@@ -23,10 +23,7 @@
 			</BOUCLE_article_base>
 			[(#REM)Les infos du points GIS de la traductions de l'article correpondant à la langue del environnement]
 			<BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
-				#SET{lieu,#TITRE
-					|concat{', '#ADRESSE}
-					|concat{', '#CODE_POSTAL}
-					|concat{' '#VILLE}}
+				#SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
 				#SET{id_gis,#ID_GIS}
 			</BOUCLE_gis_art>
 				<BOUCLE_gis_art_or(GIS){id_article=#GET{id_article_origine}}>
