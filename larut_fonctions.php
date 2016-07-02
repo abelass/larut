@@ -39,7 +39,7 @@ function notifications_reservation_client($quoi, $id_reservation, $options) {
   while ($data = sql_fetch($sql))
     $id_article[] = $data['id_article'];
 
-  //Les documents attachés à ces articles quin on un mot clés attaché correpondant au statut de la réservation
+  //Les documents attachés à ces articles qui ont un mot clés attaché correpondant au statut de la réservation
   if (count($id_article) > 0) {
     $sql = sql_select('*', 'spip_mots LEFT JOIN spip_mots_liens USING(id_mot)
 			 LEFT JOIN spip_documents ON spip_mots_liens.id_objet=spip_documents.id_document
