@@ -46,7 +46,7 @@
 		<ul>
 		<BOUCLE_erreurs_statut(DATA){source tableau, #GET{erreurs_statuts}}>
 			<li>#VALEUR{titre} : <b>[(#VALEUR{statut}|=={accepte_part}|oui)<:larut:acompte_paye{montant=#VALEUR{montant_paye}}:>]
-	[(#VALEUR{statut}|=={accepte_part}|non)[(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]</b></li>
+	[(#VALEUR{statut}|=={accepte_part}|non)[(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]]</b></li>
 		</BOUCLE_erreurs_statut>
 		</ul>
 	</B_erreurs_statut>
