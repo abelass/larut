@@ -6,14 +6,14 @@
 	[(#STATUT|in_array{#GET{envoi_differe}}|oui)#SET{statut,#STATUT}]
 ]
 <BOUCLE_art(RESERVATIONS){id_reservation}{tout}>
-#SET{nom_client,#NOM}
-#SET{extras,#DONNEES_AUTEUR|unserialize}
-#SET{email,#EMAIL}
-	<BOUCLE_contact(AUTEURS){id_auteur=#ID_AUTEUR}{si #ID_AUTEUR|!={0}|oui}{tout}>
 	#SET{nom_client,#NOM}
-	#SET{valeurs_extras,#ARRAY}
+	#SET{extras,#DONNEES_AUTEUR|unserialize}
 	#SET{email,#EMAIL}
-	#SET{extras,#VAL|champs_extras_reservation}
+	<BOUCLE_contact(AUTEURS){id_auteur=#ID_AUTEUR}{si #ID_AUTEUR|!={0}|oui}{tout}>
+		#SET{nom_client,#NOM}
+		#SET{valeurs_extras,#ARRAY}
+		#SET{email,#EMAIL}
+		#SET{extras,#VAL|champs_extras_reservation}
 		<BOUCLE_extras(DATA){source tableau, #GET{extras}}>
 		#SET{valeurs_extras,#GET{valeurs_extras}|array_merge{#ARRAY{#VALEUR{options/label},#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}}}
 		</BOUCLE_extras>
