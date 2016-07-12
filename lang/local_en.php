@@ -1,21 +1,21 @@
 <?php
 // This is a SPIP language file -- Ceci est un fichier langue de SPIP
 $GLOBALS [$GLOBALS ['idx_lang']] = array(
-	
+
 	// G
 	'galerie_photos' => 'Picture Gallery',
 	'une_photo' => 'A Picture',
-	
+
 	// I
 	'inscription_newsletters' => 'When registering for a sewing workshop you are automatically added to my general mailinglist (You can unscrubscribe at any moment). You can also choose to receive information in French about:',
-	
+
 	// L
 	'label_a_lire_sur' => 'To read on',
 	'label_enregistrer' => 'I want the system to remember me',
 	'label_inscrit_newsletter' => 'You are registered to receive the newsletter from',
 	'lire_la_suite' => 'Read more',
 	'label_publie' => 'Published on:',
-	
+
 	// M
 	'message_evenement_cloture' => '<p>Thank you for having participated in one of Larut\'s sewing workshops. If you liked sewing with Larut, don\'t hesitate to circulate the information about my activities around! Together we can create a Brussels community of sewing lovers :-) </p>
 
@@ -29,21 +29,23 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 <p>Happy sewing ! :-)</p>
 ',
-	
+
 	// N
 	'news' => 'New on this site',
-	
+
 	// R
 	'reservation_enregistre' => 'Your registration has been recorded. <br/> You are going to receive a confimation email with the payment details. Please check you spam folder, if you don\'t receive any email. Don\'t hesitate to send me an email if you encounter any problems <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Thank you',
-	
+
 	// S
 	'somme_produit' => 'Total',
 	'sujet_une_reservation_accepte' => 'Confirmed participant @ @nom@',
+	'sujet_une_reservation_accepte_part' => 'Confirmation down payment @ @nom@',
 	'sujet_votre_reservation_accepte' => '@nom@: participation confirmed',
+	'sujet_votre_reservation_accepte_part' => '@nom@ : Confirmation down payment',
 	'sujet_votre_reservation_cloture' => '@nom@: workshop closure',
-	
+
 	// V
-	'voir_plus' => 'See more' 
+	'voir_plus' => 'See more'
 );
 
 ?>

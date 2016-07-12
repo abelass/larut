@@ -61,6 +61,8 @@ function notifications_reservation_client($quoi, $id_reservation, $options) {
       );
     }
   }
+	spip_log($subject,'teste');
+  spip_log($o,'teste');
   $envoyer_mail($options['email'], $subject, $o);
 
   if ($archiver = charger_fonction('archiver_notification', 'inc', true)) {

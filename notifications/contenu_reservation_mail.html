@@ -1,104 +1,98 @@
-#HTTP_HEADER{Content-Type:text/html} #INCLURE{fond=emails/inc-haut}
+#HTTP_HEADER{Content-Type:text/html}
+#INCLURE{fond=emails/inc-haut}
 #SET{config,#CONFIG{reservation_evenement}}
 [(#SET{envoi_differe,#GET{config}|table_valeur{envoi_differe}})]
 [(#GET{envoi_differe}|is_array|oui)
-[(#STATUT|in_array{#GET{envoi_differe}}|oui)#SET{statut,#STATUT}] ]
+	[(#STATUT|in_array{#GET{envoi_differe}}|oui)#SET{statut,#STATUT}]
+]
 <BOUCLE_art(RESERVATIONS){id_reservation}{tout}>
-#SET{nom_client,#NOM} #SET{extras,#DONNEES_AUTEUR|unserialize}
-#SET{email,#EMAIL} <BOUCLE_contact (AUTEURS){id_auteur=#ID_AUTEUR}{si
-	#ID_AUTEUR|!={0}|oui}{tout}> #SET{nom_client,#NOM}
-#SET{valeurs_extras,#ARRAY} #SET{email,#EMAIL}
-#SET{extras,#VAL|champs_extras_reservation} <BOUCLE_extras (DATA){sourcetableau, #GET{extras}}>
-#SET{valeurs_extras,#GET{valeurs_extras}|array_merge{#ARRAY{#VALEUR{options/label},#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}}}
-</BOUCLE_extras> </BOUCLE_contact> #SET{extras,#GET{valeurs_extras}} </B_contact> <BOUCLE_test_statut
-	(CONDITION) {si #ENV{statut}|!={cloture}|oui}>
-[(#ENV{qui}|=={client}|oui)
-<p>
-	<:reservation:bonjour:> #GET{nom_client}
-</p>
-[
-<p>(#VAL{larut:merci_de_votre_reservation_#ENV{statut}}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}})</p>
-] ]#SET{id_evenement,#ARRAY}
-#SET{statut_reservation,#STATUT}#SET{erreurs_statuts,#ARRAY} <BOUCLE_details
-	(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}{si #ENV{statut}|in_array{#LISTE{accepte_part,accepte}}|et{#ENV{qui}|=={client}}|oui}>
-#SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
-[(#STATUT|!={accepte}|oui) [(#SET{erreurs_statuts,#GET{erreurs_statuts}
-|array_merge{#ARRAY{ #COMPTEUR_BOUCLE,#ARRAY{ titre,#DESCRIPTIF*,
-statut,#STATUT, montant_paye,#MONTANT_PAYE} } } })] ] </BOUCLE_details>
-[(#ID_RESERVATION|spip_log{teste})] <B_erreurs_statut>
-<h3>
-	<:larut:probleme_confirmation:>
-</h3>
-<ul>
-	<BOUCLE_erreurs_statut (DATA){sourcetableau, #GET{erreurs_statuts}}>
-	<li>#VALEUR{titre} : [<b>(#VALEUR{statut}|=={accepte_part}|?{
-			<:larut:acompte_paye{montant=#VALEUR{montant_paye}}:>,
-			[(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]
-			})
-	</b>] 
-	</li>
-	</BOUCLE_erreurs_statut>
-</ul>
-</B_erreurs_statut> <BOUCLE_article (EVENEMENTS){id_evenement IN #GET{id_evenement}}{par
-	numtitre,titre}> <BOUCLE_art_org(ARTICLES){id_article}>
-[
-<div style="border-bottom: #888888 1px solid; clear: both;">
-	(#TEXTE_EMAIL|image_reduire{200}) <br style="clear: both;" />
-</div>
-] </BOUCLE_art_org> </BOUCLE_article>
+#SET{nom_client,#NOM}
+#SET{extras,#DONNEES_AUTEUR|unserialize}
+#SET{email,#EMAIL}
+	<BOUCLE_contact(AUTEURS){id_auteur=#ID_AUTEUR}{si #ID_AUTEUR|!={0}|oui}{tout}>
+	#SET{nom_client,#NOM}
+	#SET{valeurs_extras,#ARRAY}
+	#SET{email,#EMAIL}
+	#SET{extras,#VAL|champs_extras_reservation}
+		<BOUCLE_extras(DATA){source tableau, #GET{extras}}>
+		#SET{valeurs_extras,#GET{valeurs_extras}|array_merge{#ARRAY{#VALEUR{options/label},#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}}}
+		</BOUCLE_extras>
+	</BOUCLE_contact>
+	#SET{extras,#GET{valeurs_extras}}
+	</B_contact>
+<BOUCLE_test_statut(CONDITION) {si #ENV{statut}|!={cloture}|oui}>
+	[(#ENV{qui}|=={client}|oui)
+	<p><:reservation:bonjour:> #GET{nom_client}</p>
+	[<p>(#VAL{larut:merci_de_votre_reservation_#ENV{statut}}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}})</p>]
+	
+	]#SET{id_evenement,#ARRAY} #SET{statut_reservation,#STATUT}#SET{erreurs_statuts,#ARRAY}
+	<BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}{si #ENV{statut}|in_array{#LISTE{accepte_part,accepte}}|et{#ENV{qui}|=={client}}|oui}>
+		#SET{id_evenement,#GET{id_evenement}|push{#ID_EVENEMENT}}
+		[(#STATUT|!={accepte}|oui)
+			[(#SET{erreurs_statuts,#GET{erreurs_statuts}
+				|array_merge{#ARRAY{
+					#COMPTEUR_BOUCLE,#ARRAY{
+						titre,#DESCRIPTIF*,
+						statut,#STATUT,
+						montant_paye,#MONTANT_PAYE}
+					}
+				}
+			})]
+		]
+	</BOUCLE_details>
+	[(#ID_RESERVATION|spip_log{teste})]
+	<B_erreurs_statut>
+		<h3><:larut:probleme_confirmation:></h3>
+		<ul>
+		<BOUCLE_erreurs_statut(DATA){source tableau, #GET{erreurs_statuts}}>
+			<li>#VALEUR{titre} : <b>[(#VALEUR{statut}|=={accepte_part}|oui)<:larut:acompte_paye{montant=#VALEUR{montant_paye}}:>]
+	[(#VALEUR{statut}|=={accepte_part}|non)[(#VAL{reservation:texte_statut[_(#VALEUR{statut}|trim)]}|_T)]</b></li>
+		</BOUCLE_erreurs_statut>
+		</ul>
+	</B_erreurs_statut>
 
-[(#ENV{qui}|=={client}|et{#ENV{statut}|in_array{#LISTE{accepte}}}|oui)
-<p style="clear: both">
-	<:larut:merci_de_votre_reservation_accepte_2:>
-</p>
-] [(#ENV{qui}|=={client}|non)
-<p>
-	<:reservation:une_reservation_de:>
-	#GET{nom_client}
-</p>
-]
-
-<h3>
-	<:reservation:recapitulatif:>
-</h3>
-
-<p>
-	<:reservation:reservation_numero:>#REFERENCE
-</p>
-<p>
-	<:reservation:reservation_date:>#DATE
-</p>
-<p>
-	<:reservation:label_email:> #GET{email}
-</p>
-<BOUCLE_champs_extras (DATA){sourcetableau, #GET{extras}}>
-<p>[(#CLE|chercher_label|extraire_multi)] : #VALEUR</p>
-</BOUCLE_champs_extras> [(#CLE|chercher_label|extraire_multi)]
-
-<p>
-	<:reservation:details_reservation:>
-</p>
-<INCLURE
-	{fond=inclure/reservation,id_reservation,format_envoi=#ENV{format_envoi},statut=#ENV{statut},id_reservations_detail=#ENV{id_reservations_detail}} />
-
-<p>
-	<:larut:remerciement:>
-</p>
-</BOUCLE_test_statut> <BOUCLE_detail (RESERVATIONS_DETAILSevenements){id_reservations_detail}>
-[(#ENV{qui}|=={client}|oui)
-<p>
-	<:reservation:bonjour:> #GET{nom_client}
-</p>
-]
-<p>
-	<:reservation:message_evenement_cloture {titre=#TITRE}:>
-</p>
-</BOUCLE_detail> <//B_test_statut>
+	<BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
+		<BOUCLE_art_org(ARTICLES){id_article}>
+			[<div style="border-bottom: #888888 1px solid;clear:both;">
+				(#TEXTE_EMAIL|image_reduire{200})
+			<br style="clear:both;"/>
+			</div>]
+		</BOUCLE_art_org>  
+	</BOUCLE_article>
+	
+	[(#ENV{qui}|=={client}|et{#ENV{statut}|in_array{#LISTE{accepte}}}|oui)
+	<p style="clear:both"><:larut:merci_de_votre_reservation_accepte_2:></p>
+	]
+	
+	[(#ENV{qui}|=={client}|non)<p><:reservation:une_reservation_de:> #GET{nom_client}</p>]
+	
+	<h3><:reservation:recapitulatif:></h3>
+	
+	<p><:reservation:reservation_numero:>#REFERENCE</p>
+	<p><:reservation:reservation_date:>#DATE</p>
+	<p><:reservation:label_email:> #GET{email}</p>
+	<BOUCLE_champs_extras(DATA){source tableau, #GET{extras}}>
+	<p>[(#CLE|chercher_label|extraire_multi)] : #VALEUR</p>    
+	</BOUCLE_champs_extras>
+	
+	[(#CLE|chercher_label|extraire_multi)]
+	
+	<p><:reservation:details_reservation:></p>
+	<INCLURE{fond=inclure/reservation,id_reservation,format_envoi=#ENV{format_envoi},statut=#ENV{statut},id_reservations_detail=#ENV{id_reservations_detail}}/>
+	
+	<p><:larut:remerciement:></p>
+</BOUCLE_test_statut>
+	<BOUCLE_detail(RESERVATIONS_DETAILS evenements){id_reservations_detail}>
+	[(#ENV{qui}|=={client}|oui)
+		<p><:reservation:bonjour:> #GET{nom_client}</p>
+		]
+		<p><:reservation:message_evenement_cloture{titre=#TITRE}:></p>
+	</BOUCLE_detail>
+<//B_test_statut>
 <p>Ruth</p>
 
 <hr />
-<p>
-	<a href="#URL_SITE_SPIP">#URL_SITE_SPIP</a>
-</p>
+<p><a href="#URL_SITE_SPIP">#URL_SITE_SPIP</a></p>
 </BOUCLE_art>
-#FILTRE{filtrer_entites|url_absolue|trim} #INCLURE{fond=emails/inc-bas}
+#FILTRE{filtrer_entites|url_absolue|trim}
+#INCLURE{fond=emails/inc-bas}
