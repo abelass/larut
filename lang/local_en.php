@@ -44,6 +44,9 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'sujet_votre_reservation_accepte_part' => '@nom@ : Confirmation down payment',
 	'sujet_votre_reservation_cloture' => '@nom@: workshop closure',
 
+	//T
+	'texte_statut_accepte_part' => ' download payment',
+
 	// V
 	'voir_plus' => 'See more'
 );

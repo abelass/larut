@@ -51,6 +51,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// T
 	'telephone' => 'Téléphone',
+	'texte_statut_accepte_part' => ' acompte payé',
 
 	// V
 	'voir_plus' => 'Voir d\'autres'
