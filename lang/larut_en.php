@@ -1,87 +1,87 @@
 <?php
-// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// This is a SPIP language file -- Ceci est un fichier langue de SPIP
+if (! defined ( '_ECRIRE_INC_VERSION' ))
+	return;
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+$GLOBALS [$GLOBALS ['idx_lang']] = array(
+	// A
+	'acompte_paye' => 'down payment €@montant@',
+	'ateliers_tous' => 'All workshops',
 
-$GLOBALS[$GLOBALS['idx_lang']] = array(
-	//A
-		'ateliers_tous'=>'All workshops', 
+	// C
+	'cordialement' => 'Sincerely yours',
+	'commentaire' => 'Comment',
+	'complet' => 'Full',
+	'cours' => 'lesson',
 
-    //C
-    'cordialement'=>'Sincerely yours',  
-    'commentaire'=>'Comment',    
-    'complet'=>'Full', 
-    'cours'=>'lesson',      
-    
-    //G
-    'galerie'=>'Image Gallery',
-    'galeries'=>'Image Galleries',    
+	// G
+	'galerie' => 'Image Gallery',
+	'galeries' => 'Image Galleries',
 
-    //E
-    'explication_label_email_amies'=>'email addresses seperated by a comma',
-    
-    //F
-    'fermer'=>'close',
-    
-    //I
-    'inscription'=>'Registration',
-    'inscription_newsletter'=>'Newsletter subscription',     
-    'inscrire_liste_attente'=>'Choose another workshop or register for the waiting list',
-  
-    
+	// E
+	'explication_label_email_amies' => 'email addresses seperated by a comma',
+
+	// F
+	'fermer' => 'close',
+
+	// I
+	'inscription' => 'Registration',
+	'inscription_newsletter' => 'Newsletter subscription',
+	'inscrire_liste_attente' => 'Choose another workshop or register for the waiting list',
+
 	// L
-    'label_email_amies' => 'I want to share this information with friends',  
-    'label_horaire' => 'Timetable:', 
-    'label_prix' => 'Price:',    
+	'label_email_amies' => 'I want to share this information with friends',
+	'label_horaire' => 'Timetable:',
+	'label_prix' => 'Price:',
 	'larut_titre' => 'Larut',
-	'liens' => 'Links',	
+	'liens' => 'Links',
 
-     //M
-    'merci_de_votre_reservation_accepte'=>'<p>Your payment has been validated and we are happy to confirm your registration for one of Larut\'s workshops.</p>', 
-       
-    'merci_de_votre_reservation_accepte_2'=>'
+	// M
+	'merci_de_votre_reservation_accepte' => '<p>Your payment has been validated and we are happy to confirm your registration for one of Larut\'s workshops.</p>',
+
+	'merci_de_votre_reservation_accepte_2' => '
     <p>Don\'t hesitate to contact me if you have any questions.</p>
     <ul>
         <li>Mobile 0495/102818</li>
         <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
     </ul>
     <p>Please find attached a list of places where you can buy your fabric in Brussels,</p>
-    ',       
-    'merci_de_votre_reservation_attente_paiement'=>'<p>Thank you for your interest in Larut\'s sewing workshops.</p>
+    ',
+	'merci_de_votre_reservation_attente_paiement' => '<p>Thank you for your interest in Larut\'s sewing workshops.</p>
 
-<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account: La Transformathèque asbl IBAN  - BE04 3631 4999 0231 (SWIFT/BIC: BBRU BE BB). Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
+<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account:  BE84377452749759 (swift/bic : BBRUBEBB). Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
 
 <p>For more information please visit the <a href="@url_cg@">Terms ans Conditions</a>.</p>
 
-<p>I look forward to meeting you soon and to share the magic of sewing with you!</p>', 
-    'message_partager_information'=>'@nom@ wants to share with you the information about the workshop in which she/he will participate:',  
-    'message_partager_informations'=>'@nom@ wants to share with you the information about the workshops in which she/he will participate:',
-    'modele_cours'=>'Work shops',
-    'modele_label_afficher_texte'=>'Display the text',     
-	
-    //P
-   'pas_cours_programmee'=>'This workshop is not scheduled for the time being. <br/> Please clik on the Registration button to view the current offer.',
-    'places'=>'Spots:',       
-    'places_disponibles'=>'Remaining Spots:',
-    'probleme_confirmation'=>'However there is a problem with the following workshop:',
+<p>I look forward to meeting you soon and to share the magic of sewing with you!</p>',
+	'message_partager_information' => '@nom@ wants to share with you the information about the workshop in which she/he will participate:',
+	'message_partager_informations' => '@nom@ wants to share with you the information about the workshops in which she/he will participate:',
+	'modele_cours' => 'Work shops',
+	'modele_label_afficher_texte' => 'Display the text',
 
-    //R
-    'remerciement'=>'Cheers,',
-    
-     // S
-    'seance'=>'Session',       
-    'soutien'=>'In collaboration with',     
-    'sujet_email_amies'=>'@nom@ wants to share this with you',
-    
-    //T
-       
-    'texte_statut_merci'=>'Merci de votre commande d\'un chèque cadeau de Larut.',  
-    'texte_statut_reception'=>'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',       
-    'texte_statut_archive'=>'archivé',
-    
-    // V
-    'voir_inscriptions_tous'=>'Register for several workshops',
-    'voir_tous_cours'=>'See all available workshops',       
+	// P
+	'pas_cours_programmee' => 'This workshop is not scheduled for the time being. <br/> Please clik on the Registration button to view the current offer.',
+	'places' => 'Spots:',
+	'places_disponibles' => 'Remaining Spots:',
+	'probleme_confirmation' => 'However there is a problem with the following workshop:',
+
+	// R
+	'remerciement' => 'Cheers,',
+
+	// S
+	'seance' => 'Session',
+	'soutien' => 'In collaboration with',
+	'sujet_email_amies' => '@nom@ wants to share this with you',
+
+	// T
+
+	'texte_statut_merci' => 'Merci de votre commande d\'un chèque cadeau de Larut.',
+	'texte_statut_reception' => 'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',
+	'texte_statut_archive' => 'archivé',
+
+	// V
+	'voir_inscriptions_tous' => 'Register for several workshops',
+	'voir_tous_cours' => 'See all available workshops'
 );
 
 ?>
