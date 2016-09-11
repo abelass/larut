@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="1.25.6"
+	version="1.25.7"
 	etat="stable"
 	compatibilite="[3.0.13;3.1.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -31,7 +31,6 @@
 	<necessite nom="gis" compatibilite="[4.9.0;]" />
 	<necessite nom="declinaisons" compatibilite="[1.0.3;]" />
 	<necessite nom="partenaires" compatibilite="[1.5.0;]" />
-	<necessite nom="reservations_mailsubscribers" compatibilite="[1.2.4;]" />
 	<necessite nom="notifications_archive" compatibilite="[1.0.1;]" />
 	<necessite nom="formidable" compatibilite="[1.9.0;]" />
 	<necessite nom="reservation_evenement" compatibilite="[1.21.0;]" />
@@ -40,6 +39,7 @@
 	<necessite nom="reservations_credits" compatibilite="[1.1.0;]" />
 	<necessite nom="reservation_bank" compatibilite="[1.0.1;]" />
 	<necessite nom="promotions" compatibilite="[1.0.1;]" />
+	<necessite nom="reservations_mailsubscribers" compatibilite="[1.2.4;]" />
 	<necessite nom="piwik" compatibilite="[0.6.2;]" />
 	<necessite nom="chosen" compatibilite="[1.0.6;]" />
 	<necessite nom="newsletters_notifications" compatibilite="[1.0.1;]" />
