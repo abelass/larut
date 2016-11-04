@@ -25,9 +25,9 @@ function larut_declarer_tables_objets_sql($tables) {
             'refuse'=>'puce-refuser-8.png',
             'poubelle'=>'puce-supprimer-8.png',
             'archive'=>'puce-article-archive-8.png'
-        );  
+        );
 
-    
+
     $tables['spip_articles']['statut']= array(
                     array(
                         'champ' => 'statut',
@@ -38,7 +38,7 @@ function larut_declarer_tables_objets_sql($tables) {
                     )
                );
 
-    
+
     return $tables;
 }
 
@@ -51,13 +51,13 @@ function larut_declarer_champs_extras($champs = array()) {
 					'nom' => 'lang',
 					'label' => _T('reservation:label_lang'),
 					'sql' => "varchar(30) NOT NULL DEFAULT ''",
-					'defaut' => '',// Valeur par défaut
+					'defaut' => '',// Valeur par d��faut
 					'id_evenement'=>_request('id_evenement'),
-					'id_article'=>_request('id_article'),					
+					'id_article'=>_request('id_article'),
 					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
 							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
 				),
-				
+
 		);
 		$champs['spip_evenements']['multilingue'] = array(
 			'saisie' => 'radio',//Type du champ (voir plugin Saisies)
@@ -66,14 +66,14 @@ function larut_declarer_champs_extras($champs = array()) {
 					'label' => _T('larut:label_multilingue'),
 					'sql' => "varchar(3) NOT NULL DEFAULT ''",
 					'datas'=>array('on'=>_T('item_oui'),'off'=>_T('item_non')),
-					'defaut' => '',// Valeur par défaut				
+					'defaut' => '',// Valeur par d��faut
 					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
 							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
 				),
-				
-			
+
+
 		);
-		
+
 	$champs['spip_articles']['multilingue']=array(
 			'saisie' => 'radio',//Type du champ (voir plugin Saisies)
 			'options' => array(
@@ -81,11 +81,11 @@ function larut_declarer_champs_extras($champs = array()) {
 					'label' => _T('larut:label_multilingue'),
 					'sql' => "varchar(3) NOT NULL DEFAULT ''",
 					'datas'=>array('on'=>_T('item_oui'),'off'=>_T('item_non')),
-					'defaut' => '',// Valeur par défaut				
+					'defaut' => '',// Valeur par d��faut
 					'restrictions'=>array('voir' => array('auteur' => ''),//Tout le monde peut voir
 							'modifier' => array('auteur' => 'webmestre')),//Seuls les webmestres peuvent modifier
-				),	
-		
+				),
+
 		);
 
 	return $champs;
