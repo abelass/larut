@@ -7,6 +7,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'une_photo' => 'Une Photo',
 
 	// I
+	'inscrire_liste_attente' => 'Choissisez un autre cours ou inscrivez vous dans la liste d’attente.',
 	'inscription_newsletters' => 'avec l’inscription à un/plusieurs ateliers de Larut vous êtes automatiquement inscrit(e) à la liste d’envoi générale de Larut (Désinscription possible à tout moment). Mais vous pouvez choisir aussi de vous inscrire à :',
 
 	// L
