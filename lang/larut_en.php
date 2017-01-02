@@ -49,7 +49,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
     ',
 	'merci_de_votre_reservation_attente_paiement' => '<p>Thank you for your interest in Larut\'s sewing workshops.</p>
 
-<p>Your registration has been processed but it will only be confirmed after your payment on the following bank account:  BE84377452749759 (swift/bic : BBRUBEBB). Please indicate the following reference when making the payment: @reference@. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
+<p>Your registration has been processed but it will only be confirmed after your payment. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>
 
 <p>For more information please visit the <a href="@url_cg@">Terms ans Conditions</a>.</p>
 
