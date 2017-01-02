@@ -33,6 +33,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_email_amies' => 'I want to share this information with friends',
 	'label_horaire' => 'Timetable:',
 	'label_prix' => 'Price:',
+	'label_telephone' => 'Phone:',
 	'larut_titre' => 'Larut',
 	'liens' => 'Links',
 

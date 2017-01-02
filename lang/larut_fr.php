@@ -35,6 +35,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_horaire' => 'Horaire :',
 	'label_multilingue' => 'Cours multilingue :',
 	'label_prix' => 'Prix :',
+	'label_telephone' => 'Téléphone :',
 	'larut_titre' => 'Larut',
 	'liens' => 'Liens',
 
