@@ -12,6 +12,7 @@ function larut_recuperer_fond($flux) {
 
 	return $flux;
 }
+
 function larut_formulaire_charger($flux) {
 	$form = $flux['args']['form'];
 	// Formulaire reservations
@@ -41,6 +42,7 @@ function larut_formulaire_charger($flux) {
 
 	return $flux;
 }
+
 function larut_formulaire_traiter($flux) {
 	$form = $flux['args']['form'];
 	if ($form == 'reservation') {
