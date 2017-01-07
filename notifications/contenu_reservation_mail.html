@@ -78,7 +78,12 @@
 	[(#CLE|chercher_label|extraire_multi)]
 
 	<p><:reservation:details_reservation:></p>
-	<INCLURE{fond=inclure/reservation,id_reservation,format_envoi=#ENV{format_envoi},statut=#ENV{statut},id_reservations_detail=#ENV{id_reservations_detail},qui}/>
+	<INCLURE{fond=inclure/reservation,
+		id_reservation,
+		format_envoi=#ENV{format_envoi},
+		statut=#ENV{statut},
+		id_reservations_detail=#ENV{id_reservations_detail},
+		qui}/>
 
 	<p><:larut:remerciement:></p>
 </BOUCLE_test_statut>
