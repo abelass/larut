@@ -15,10 +15,10 @@
 
 	<licence>GNU/GPL</licence>
 
-	<necessite nom="wsps_html5" compatibilite="[1.1.14;]" />
+	<necessite nom="wsps_html5" compatibilite="[1.2.3;]" />
 	<necessite nom="wsp_ml" compatibilite="[0.2.2;]" />
 	<necessite nom="selection_objet" compatibilite="[1.9.2;]" />
-	<necessite nom="facteur" compatibilite="[2.3.1;]" />
+	<necessite nom="facteur" compatibilite="[3.4.7;]" />
 	<necessite nom="seo" compatibilite="[2.1.0;]" />
 	<necessite nom="mailcrypt" compatibilite="[2.4.0;]" />
 	<necessite nom="cextras" compatibilite="[3.2.5;[" />
@@ -33,11 +33,11 @@
 	<necessite nom="partenaires" compatibilite="[1.5.0;]" />
 	<necessite nom="notifications_archive" compatibilite="[1.0.1;]" />
 	<necessite nom="formidable" compatibilite="[1.9.0;]" />
-	<necessite nom="reservation_evenement" compatibilite="[1.21.0;]" />
+	<necessite nom="reservation_evenement" compatibilite="[1.23.1;]" />
 	<necessite nom="reservations_multiples" compatibilite="[1.3.0;]" />
 	<necessite nom="reservation_communication" compatibilite="[1.0.0;]" />
 	<necessite nom="reservations_credits" compatibilite="[1.1.1;]" />
-	<necessite nom="reservation_bank" compatibilite="[1.1.1;]" />
+	<necessite nom="reservation_bank" compatibilite="[1.1.4;]" />
 	<necessite nom="promotions" compatibilite="[1.0.1;]" />
 	<necessite nom="reservations_mailsubscribers" compatibilite="[1.2.4;]" />
 	<necessite nom="piwik" compatibilite="[0.6.2;]" />
