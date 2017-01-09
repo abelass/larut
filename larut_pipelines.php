@@ -10,6 +10,48 @@ function larut_recuperer_fond($flux) {
 		$flux['data']['texte'] .= $champs_amis;
 	}
 
+	// Ajoute le message de paiement à la notification de réservation.
+	if ($fond == 'inclure/commande'
+			and $id_commande = $flux['data']['contexte']['id_commande']
+			and $statut = sql_getfetsel('statut', 'spip_commandes', 'id_commande=' . $id_commande)
+			and ($statut == 'attente')
+			and $transaction = sql_fetsel('mode, id_transaction, transaction_hash, message',
+						'spip_transactions',
+						'id_commande=' . $id_commande,
+						'',
+						'date_transaction DESC'
+						)) {
+				$qui = $flux['data']['contexte']['qui'];
+				$mode = $transaction['mode'];
+				$id_transaction = $transaction['id_transaction'];
+				if ($qui == 'client') {
+					if ($statut == 'attente') {
+						$pattern = array('|<p class="titre h4">|','|</p>|');
+						$replace = array('<h3>','</h3>');
+						$texte = preg_replace($pattern, $replace, bank_afficher_attente_reglement(
+								$mode,
+								$id_transaction,
+								$transaction['transaction_hash'],
+								'')
+								);
+					}
+					else{
+						$texte = '<p>' . $transaction['message'] . '</p>';
+					}
+				}
+				else {
+					$url = generer_url_ecrire('transaction', 'id_transaction=' . $id_transaction);
+					$texte = '<h2>' . _T('reservation_bank:titre_paiement_vendeur') . '</h2>';
+					$texte .= '<p>' . _T('reservation_bank:message_paiement_vendeur', array(
+						'mode' => $mode,
+						'url' => $url,
+					)
+							) . '</p>';
+				}
+				$flux['data']['texte'] .= $texte;
+
+			}
+
 	return $flux;
 }
 
@@ -65,9 +107,8 @@ function larut_formulaire_traiter($flux) {
 
 		// Insérer le téléphone dans la bd
 		sql_updateq('spip_auteurs', array (
-			'telephone',
-			_request('telephone')
-		), 'id_auteur =' . $id_auteur);
+			'telephone' =>_request('telephone')
+		), 'id_auteur=' . $id_auteur);
 	}
 
 	return $flux;
