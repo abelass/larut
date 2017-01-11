@@ -75,7 +75,7 @@
 							</td>
 						[(#GET{statut}|=={accepte}|non) <td class="prix" style="padding:0 5px">[(#GET{prix}|prix_formater)]</td>]
 						<td class="statut" style="padding:0 5px">
-								[(#VAL{reservation}|re_statut_titre{#STATUT})]
+								[(#VAL{reservation}|re_statut_titre{#VALEUR{statut}})]
 						</td>
 					</tr>
 					[(#SET{total,[(#GET{total}|plus{[(#GET{prix})]})]})]
