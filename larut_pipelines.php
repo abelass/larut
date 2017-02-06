@@ -78,7 +78,11 @@ function larut_formulaire_charger($flux) {
 	// Formulaire commande cheque.
 	if ($form == 'commande_cheque') {
 		// Déclarer la variable téléphone
-		$telephone = session_get('telephone') > 0 ? session_get('telephone') : '';
+		$telephone = '';
+		if ($id_auteur = session_get('id_auteur')) {
+			$telephone =  sql_getfetsel('telephone', 'spip_auteurs', 'id_auteur=' .$id_auteur );
+		}
+
 		$flux['data']['telephone'] = _request('telephone') ? _request('telephone') : $telephone;
 	}
 
@@ -106,9 +110,9 @@ function larut_formulaire_traiter($flux) {
 		$id_auteur = session_get('id_auteur') > 0 ? session_get('id_auteur') : 0;
 
 		// Insérer le téléphone dans la bd
-		sql_updateq('spip_auteurs', array (
-			'telephone' =>_request('telephone')
-		), 'id_auteur=' . $id_auteur);
+		if ($telephone = _request('telephone')) {
+			sql_updateq('spip_auteurs', array ('telephone' => $telephone), 'id_auteur=' . $id_auteur);
+		}
 	}
 
 	return $flux;
