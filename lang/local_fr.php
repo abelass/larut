@@ -1,6 +1,9 @@
 <?php
 // This is a SPIP language file -- Ceci est un fichier langue de SPIP
 $GLOBALS [$GLOBALS ['idx_lang']] = array(
+	// C
+	'cheque_offert_par' => '@nom@ vous a offert un chèque cadeau (Référence : @reference@) au montant de @montant@ à utiliser sur @site@ - valable un cours de couture au choix.',
+
 
 	// G
 	'galerie_photos' => 'Galerie photos',

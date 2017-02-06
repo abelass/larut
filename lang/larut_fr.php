@@ -12,6 +12,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'cordialement' => 'Cordialement',
 	'commentaire' => 'Commentaire',
 	'complet' => 'Complet',
+	'confirmation_email_envoye' => 'Un email de confirmation vient de vous être envoyé.',
 	'cours' => 'cours',
 
 	// G
