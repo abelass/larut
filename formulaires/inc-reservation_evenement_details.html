@@ -5,7 +5,7 @@
 		<strong>[(#TITRE)]</strong>
 	]
 	[(#ID_EVENEMENT_SOURCE|=={0}|?{
-		#SET{date_debut,#DATE_DEBUT}   
+		#SET{date_debut,#DATE_DEBUT}
 		,
 		#SET{date_debut,#INFO_DATE_DEBUT{evenement,#ID_EVENEMENT_SOURCE}}
 		})]
@@ -23,16 +23,16 @@
 	</div>
 	<BOUCLE_gis_ev(GIS){id_evenement}>
 		<i class=" icon-hand-right"> </i>
-		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content" 
-			onclick="window.open(this.href, 
+		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content"
+			onclick="window.open(this.href,
 					'gis',
-					'height=400,width=450,top=100,left=100,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=no'); 
+					'height=400,width=450,top=100,left=100,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=no');
 				return false;">
 			#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE
 		</a>
 	</BOUCLE_gis_ev>
 		[<i class=" icon-hand-right"> </i>
-		<a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#ENV{id_gis}})]#content" 
+		<a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#ENV{id_gis}})]#content"
 			onclick="window.open(this.href,
 					'gis',
 					'height=400,width=450,top=100,left=100,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=no');
@@ -42,7 +42,7 @@
 	<//B_gis_ev>
 	[(#PLACES|>{0}|oui)
 		<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,
-		id_evenement,places,statut=#VAL|statuts_complet}/>]  
+		id_evenement,places,statut=#VAL|statuts_complet}/>]
 
  <BOUCLE_prix(PRIX_OBJETS){id_objet=#ENV{id_article_base}}{objet=article}>
 	#SET{prix,#PRIX}
@@ -58,7 +58,7 @@
 	</label>
 		</div>
 	</BOUCLE_decl>
-	<input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/> 
+	<input type="checkbox" name="id_objet_prix[#ID_EVENEMENT]" class="checkbox" id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ID_EVENEMENT}}|oui) checked="checked"]/>
 	<label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
 		[ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
 	</label>

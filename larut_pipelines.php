@@ -60,8 +60,13 @@ function larut_formulaire_charger($flux) {
 	// Formulaire reservations
 	if ($form == 'reservation') {
 		$flux['data']['email_amies'] = "";
-		if (!isset($flux['data']['evenements']) or (isset($flux['data']['evenements']) and count($flux['data']['evenements'] == 0)) and $id_evenement = $flux['data']['id_evenement']) {
-			$evenement = sql_fetsel('*', 'spip_evenements', 'id_evenement_source IN (' . implode(',', $id_evenement) . ') AND date_fin>NOW()', '', 'date_fin DESC');
+		if (!isset($flux['data']['evenements'])or
+				(isset($flux['data']['evenements']) and count($flux['data']['evenements'] == 0)) and
+				$id_evenement = $flux['data']['id_evenement']) {
+				if (is_array($id_evenement)) {
+					$id_evenement = implode(',', $id_evenement);
+				}
+			$evenement = sql_fetsel('*', 'spip_evenements', 'id_evenement_source IN (' . $id_evenement . ') AND date_fin>NOW()', '', 'date_fin DESC');
 			$flux['data']['evenements'][$evenement['id_evenement_source']] = $evenement;
 		}
 	}
