@@ -1,6 +1,9 @@
 <?php
 // This is a SPIP language file -- Ceci est un fichier langue de SPIP
 $GLOBALS [$GLOBALS ['idx_lang']] = array(
+	// C
+	'cheque_offert_par' => '@nom@ vous a offert un chèque cadeau (Référence : @reference@) au montant de @montant@ à utiliser sur @site@ - valable un cours de couture au choix.',
+
 
 	// G
 	'galerie_photos' => 'Galerie photos',
@@ -18,7 +21,10 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_publie' => 'Publié le :',
 
 	// M
-	'message_evenement_cloture' => '<p>Merci d’avoir participé aux ateliers de couture de Larut. Ça a été un plaisir de vous accompagner dans la découverte de la magie de la couture ! J’aimerai vous animer à coudre régulièrement de votre côté pour ne pas oublier tout ça que vous venez d’apprendre et/ou a participer aux autres ateliers de couture programmés. Si l’expérience vous a plu je vous invite à en parler autour de vous ;-)</p>
+	'message_evenement_cloture' => '<p>Merci d’avoir participé aux ateliers de couture de Larut. Ça a été un plaisir de vous accompagner dans la découverte de la magie de la couture ! J’aimerai vous animer à coudre régulièrement de votre côté pour ne pas oublier tout ça que vous venez d’apprendre et/ou a participer aux autres ateliers de couture programmés.</p>
+	<p>En pièce jointe les trois fiches techniques qui reprennent les apprentissages et tutoriels du module.</p>
+	<p>Afin de continuer à ameliorer cette experience je vous invite à répondre <a href="https://www.larut.eu/article/evaluation-cours-de-couture">au questionnaire d\'évaluation</a>. Ceci est très important pour moi ! Merci. </p>
+	<p>Si l’expérience vous a plu je vous invite à en parler autour de vous ;-) Voici quelques idées : </p>
 
 <p>Si vous êtes sur Facebook :</p>
 
@@ -31,7 +37,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 <p>Si vous voulez continuer à coudre je vous invite à découvrir www.Pinterest.com. Une quantité illimité des idées et chouettes tutoriels ! Moi même j’ai crée plusieurs murs plein d’astuces couture : <a href="http://www.pinterest.com/larutbxl">http://www.pinterest.com/larutbxl</a></p>
 
-<p>Un anniversaire ou cadeau en vue ? Offrez ou faites-vous offrir un chèque cadeau pour coudre chez Larut.</p>
+<p>Un anniversaire ou cadeau en vue ? Offrez ou faites-vous offrir un <a href="https://www.larut.eu/fr/ateliers/cheque-cadeau/">chèque cadeau</a> pour coudre chez Larut.</p>
 
 <p>Bonne couture ! :-)</p>
 ',
