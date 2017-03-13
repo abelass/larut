@@ -4,10 +4,10 @@
 	[(#ENV{langue}|!={#ENV{lang}}|ou{#ENV{titre}}|oui)
 		<strong>[(#TITRE)]</strong>
 	]
-	[(#ENV{id_evenement}_SOURCE|=={0}|?{
+	[(#ENV{id_evenement_source}|=={0}|?{
 		#SET{date_debut,#DATE_DEBUT}
 		,
-		#SET{date_debut,#INFO_DATE_DEBUT{evenement,#ENV{id_evenement}_SOURCE}}
+		#SET{date_debut,#INFO_DATE_DEBUT{evenement,#ENV{id_evenement_source}}}
 		})]
 	#SET{date_fin,#DATE_FIN}
 	<BOUCLE_ev_lies(EVENEMENTS){id_evenement_source=#ENV{id_evenement}}{!par date_debut}{0,1}>
@@ -58,9 +58,7 @@
 	</label>
 		</div>
 	</BOUCLE_decl>
-	<input type="checkbox" name="id_objet_prix[#ENV{id_evenement}]" class="checkbox" id="id_objet_prix[_(#ENV{id_evenement})][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ENV{id_evenement}}}|oui) checked="checked"]/>
-	<label for="id_objet_prix[_(#ENV{id_evenement})][_(#ID_PRIX_OBJET)]">
-		[ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
+	<input type="checkbox" name="id_objet_prix[#ENV{id_evenement}]" class="checkbox" id="id_objet_prix[_(#ENV{id_evenement})][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ENV{id_evenement}}}|oui) checked="checked"]/>		[ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
 	</label>
 	<//B_decl>
 </BOUCLE_prix>
