@@ -16,10 +16,10 @@
 			<BOUCLE_article_base(ARTICLES){traduction}{!origine_traduction}>
 				[(#LANG|=={#ENV{lang}}|oui)
 					#SET{id_article_base,#ID_ARTICLE}
-					#SET{titre,#TITRE}   
+					#SET{titre,#TITRE}
 					#SET{url,#URL_ARTICLE}
 				]
-				#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}                        
+				#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
 			</BOUCLE_article_base>
 			[(#REM)Les infos du points GIS de la traductions de l'article correpondant à la langue del environnement]
 			<BOUCLE_gis_art(GIS){id_article=#GET{id_article_base}}>
@@ -29,7 +29,7 @@
 				<BOUCLE_gis_art_or(GIS){id_article=#GET{id_article_origine}}>
 					#SET{lieu,#TITRE|concat{', '#ADRESSE}|concat{', '#CODE_POSTAL}|concat{' '#VILLE}}
 						#SET{id_gis,#ID_GIS}
-				</BOUCLE_gis_art_or>          
+				</BOUCLE_gis_art_or>
 			<//B_gis_art>
 			#SET{so,''}
 			<BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
