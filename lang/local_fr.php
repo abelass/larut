@@ -22,8 +22,8 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// M
 	'message_evenement_cloture' => '<p>Merci d’avoir participé aux ateliers de couture de Larut. Ça a été un plaisir de vous accompagner dans la découverte de la magie de la couture ! J’aimerai vous animer à coudre régulièrement de votre côté pour ne pas oublier tout ça que vous venez d’apprendre et/ou a participer aux autres ateliers de couture programmés.</p>
-	<p>En pièce jointe les trois fiches techniques qui reprennent les apprentissages et tutoriels du module.</p>
 	<p>Afin de continuer à ameliorer cette experience je vous invite à répondre <a href="https://www.larut.eu/article/evaluation-cours-de-couture">au questionnaire d\'évaluation</a>. Ceci est très important pour moi ! Merci. </p>
+	<p>Cette page vous permetra également de télécharger les documents de référence pour ce module.</p>
 	<p>Si l’expérience vous a plu je vous invite à en parler autour de vous ;-) Voici quelques idées : </p>
 
 <p>Si vous êtes sur Facebook :</p>
