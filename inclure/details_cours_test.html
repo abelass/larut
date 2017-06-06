@@ -1,37 +1,40 @@
 [(#REM) Si details_cours contient des info, on l'affiche]
+[(#ENV{pk_campaign}|oui)
+	#SET{pk_kwd,inscription}
+]
 <BOUCLE_test(CONDITION){si #DETAILS_COURS|oui}>
 <aside class="details_cours">
-    <div class="infos_cour">[(#DETAILS_COURS|propre)]</div>
+		<div class="infos_cour">[(#DETAILS_COURS|propre)]</div>
 </aside>
 </BOUCLE_test>
 	[(#REM) Sinon in cherche les infos des événements courants]
-    <BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
-        #SET{url_reservation,#URL_RUBRIQUE}
-    </BOUCLE_rub_res>
-        <BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
-            #SET{url_reservation,#URL_RUBRIQUE}
-        </BOUCLE_rub_res_def>
-    <//B_rub_res> 
+		<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
+				#SET{url_reservation,#URL_RUBRIQUE|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,#GET{pk_kwd}}}
+		</BOUCLE_rub_res>
+				<BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
+						#SET{url_reservation,#URL_RUBRIQUE|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,#GET{pk_kwd}}}
+				</BOUCLE_rub_res_def>
+		<//B_rub_res>
 	<script type="text/javascript">
-	    $(document).ready(function(){
-	        $('ul.multi').click(function(){
-	            $(this).toggleClass('open').attr('title',$(this).attr('title') == '<:larut:fermer:>' ? '<:larut:voir_tous_cours:>' : '<:larut:fermer:>');                        
-	        });  
-	    });
+			$(document).ready(function(){
+					$('ul.multi').click(function(){
+							$(this).toggleClass('open').attr('title',$(this).attr('title') == '<:larut:fermer:>' ? '<:larut:voir_tous_cours:>' : '<:larut:fermer:>');
+					});
+			});
 	</script>
 	<aside class="details_cours">
-      [(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation}}
-      |sinon{
-        #INCLURE{fond=inclure/details_cours_article,id_article=#ENV{id_trad},url_reservation=#GET{url_reservation}}
-        }
-        |sinon{
-                <div class="infos_cour">
-                    <div class="cours_non"><:larut:pas_cours_programmee:></div>
-                    <a class="btn btn-primary" href="[(#GET{url_reservation})]">
-                        <i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
-                    </a>
-                </div>
-            }
-        )] 
-     </aside>
- <//B_test> 
+			[(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation}}
+			|sinon{
+				#INCLURE{fond=inclure/details_cours_article,id_article=#ENV{id_trad},url_reservation=#GET{url_reservation}}
+				}
+				|sinon{
+								<div class="infos_cour">
+										<div class="cours_non"><:larut:pas_cours_programmee:></div>
+										<a class="btn btn-primary" href="[(#GET{url_reservation})]">
+												<i class="icon-arrow-right icon-white"></i> <:larut:inscription:>
+										</a>
+								</div>
+						}
+				)]
+		</aside>
+<//B_test>
