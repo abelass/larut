@@ -9,7 +9,7 @@
 </BOUCLE_test>
 	[(#REM) Sinon in cherche les infos des événements courants]
 		<BOUCLE_rub_res(RUBRIQUES){lang}{composition=reservation}{0,1}{tout}>
-				#SET{url_reservation,#URL_RUBRIQUE|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,#GET{pk_kwd}}}
+				#SET{url_reservation,#URL_RUBRIQUE|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_medium,#ENV{pk_medium}}|parametre_url{pk_kwd,#GET{pk_kwd}}}
 		</BOUCLE_rub_res>
 				<BOUCLE_rub_res_def(RUBRIQUES){composition=reservation}{0,1}{tout}>
 						#SET{url_reservation,#URL_RUBRIQUE|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,#GET{pk_kwd}}}
@@ -22,10 +22,11 @@
 					});
 			});
 	</script>
+
 	<aside class="details_cours">
-			[(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation}}
+			[(#INCLURE{fond=inclure/details_cours_article,id_article,url_reservation=#GET{url_reservation},pk_kwd=inscription,env}
 			|sinon{
-				#INCLURE{fond=inclure/details_cours_article,id_article=#ENV{id_trad},url_reservation=#GET{url_reservation}}
+				#INCLURE{fond=inclure/details_cours_article,id_article=#ENV{id_trad},url_reservation=#GET{url_reservation},pk_kwd=inscription,env}
 				}
 				|sinon{
 								<div class="infos_cour">

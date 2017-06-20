@@ -1,47 +1,51 @@
-<B_lieu_resultat> 
+[(#ENV{pk_campaign}|oui)
+	#SET{pk_kwd,inscription}
+]
+
+<B_lieu_resultat>
 	<tr>
 		<td class="label"><:agenda:info_lieu:></td>
 		<td>
 		<BOUCLE_lieu_resultat(GIS){id_evenement}{0,1}>
 		<div class="item">
 			<div class="adresse">
-				<a 
-					class="lieu" 
-					target="_blank" 
-					rel="nofollow" 
-					href="[(#URL_GIS)]#content" 
-					onclick="window.open(this.href, 
-						'gis', 
+				<a
+					class="lieu"
+					target="_blank"
+					rel="nofollow"
+					href="[(#URL_GIS|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,adresse}|parametre_url{pk_medium,#ENV{pk_medium}})]#content"
+					onclick="window.open(this.href,
+						'gis',
 						'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">
 					#TITRE
 					[<br /> (#ADRESSE|extraire_multi|textebrut)][<br /> (#CODE_POSTAL) ]#VILLE</a>
 			</div>
 			</div>
-			</BOUCLE_lieu_resultat> 
-		  </td>
+			</BOUCLE_lieu_resultat>
+			</td>
 		</tr>
 		</B_lieu_resultat>
-			<B_lieu_resultat_article> 
+			<B_lieu_resultat_article>
 			<tr>
 				<td class="label"><:agenda:info_lieu:></td>
 				<td>
 				<BOUCLE_lieu_resultat_article(GIS){id_article}{0,1}>
 				<div class="item">
 					<div class="adresse">
-						<a 
-							class="lieu" 
-							target="_blank" 
-							rel="nofollow" 
-							href="[(#URL_GIS)]#content" 
-							onclick="window.open(this.href, 
-								'gis', 
+						<a
+							class="lieu"
+							target="_blank"
+							rel="nofollow"
+							href="[(#URL_GIS|parametre_url{pk_campaign,#ENV{pk_campaign}}|parametre_url{pk_kwd,adresse}|parametre_url{pk_medium,#ENV{pk_medium}})]#content"
+							onclick="window.open(this.href,
+								'gis',
 								'height=400, width=450, top=100, left=100, toolbar=no, menubar=no, location=no, resizable=yes, scrollbars=no, status=no'); return false;">
 				#TITRE
 					[<br /> (#ADRESSE|extraire_multi|textebrut)][<br /> (#CODE_POSTAL) ]#VILLE</a>
 			</div>
-		 </div>
-		</BOUCLE_lieu_resultat_article> 
-		</td> 
+		</div>
+		</BOUCLE_lieu_resultat_article>
+		</td>
 	</tr>
 	</B_lieu_resultat_article>
 <//B_lieu_resultat>

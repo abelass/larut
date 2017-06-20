@@ -121,7 +121,7 @@
 								<h1 style="margin:0;padding-bottom:6px;">
 										<a
 											style="color:#888;font-size:22px;font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:normal;text-decoration:none;"
-											href="[(#URL_SITE_SPIP|parametre_url{pk_campaign,#GET{pk_campaign}}|parametre_url{pk_kwd,logo})]" title="#URL_SITE_SPIP">
+											href="[(#URL_SITE_SPIP|parametre_url{pk_campaign,#GET{pk_campaign}}|parametre_url{pk_kwd,logo}|parametre_url{pk_medium,email})]" title="#URL_SITE_SPIP">
 												[(#LOGO_SITE_SPIP|image_reduire{200,400}
 													|inserer_attribut{id,feedimage}
 													|inserer_attribut{style,float:right;padding:0 0 10px 3px;border:0;})]
@@ -142,7 +142,7 @@
 						<td style="margin-bottom:0;line-height:1.4em;">
 								<h1 style="margin:1em 0 3px 0;">
 										<a name="1" style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:18px;"
-											href=[(#URL_NEWSLETTER|parametre_url{pk_campaign,#GET{pk_campaign}}|parametre_url{pk_kwd,titre-newsletter})]">#TITRE</a>
+											href=[(#URL_NEWSLETTER|parametre_url{pk_campaign,#GET{pk_campaign}}|parametre_url{pk_kwd,titre-newsletter}|parametre_url{pk_medium,email})]">#TITRE</a>
 								</h1>
 								<div
 										style="margin:0;font-family:Georgia,Helvetica,Arial,Sans-Serif;line-height:140%;font-size:14px;color:#000000;">
@@ -179,9 +179,7 @@
 
 								<h3 style="margin:1em 0 3px 0;">
 										<a style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:16px;"
-											href="[(#URL_ARTICLE
-												|parametre_url{pk_campaign,#GET{pk_campaign}}
-												|parametre_url{pk_kwd,titre-article})]" class="#EDIT{titre}">
+											href="[(#URL_ARTICLE|parametre_url{pk_campaign,#GET{pk_campaign}}|parametre_url{pk_kwd,titre-article}|parametre_url{pk_medium,email})]" class="#EDIT{titre}">
 												[(#LOGO_ARTICLE|image_reduire{100,200}
 												|inserer_attribut{alt,''}
 												|inserer_attribut{border,'0'}
@@ -193,7 +191,12 @@
 								<div class='chapo' style="margin-bottom: 2em;">(#CHAPO)</div>
 								]
 								[(#COMPOSITION|=={ateliers}|oui)
-										<INCLURE{fond=inclure/details_cours_test,id_article,id_trad=#GET{id_trad},env,details_cours} />
+										<INCLURE{fond=inclure/details_cours_test,
+											id_article,
+											id_trad=#GET{id_trad},env,
+											details_cours,
+											pk_campaign=#GET{pk_campaign},
+											pk_medium=email} />
 										]
 								[
 								<div class='texte' style="margin-bottom: 2em;">(#TEXTE)</div>
@@ -231,7 +234,6 @@
 						</td>
 				</tr>
 				</BOUCLE_sites>
-		</BOUCLE_rub>
 		</table>
 		<table style="border-top:1px solid #999;padding-top:4px;margin-top:1.5em;width:100%" id="footer">
 				<tr>
