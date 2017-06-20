@@ -1,12 +1,12 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="2.0.3"
+	version="2.0.4"
 	etat="stable"
 	compatibilite="[3.0.13;3.1.*]"
 	logo="prive/themes/spip/images/larut-64.png"
 	documentation=""
-	schema="1.1.1"
+	schema="1.2.0"
 >
 
 	<nom>Larut</nom>

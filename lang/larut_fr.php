@@ -22,6 +22,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	// E
 	'explication_label_email_amies' => 'adresse(s) email, séparées par virgule(s)',
 	'explication_mailinglists' => 'Vous seriez automatiquement inscrit à la mailinglist interne mais vous pouvez vous inscrire à d\'autres listes',
+	'explication_pk_campaign' => 'si vide, prend le titre de la newsletter',
 
 	// F
 	'fermer' => 'fermer',
@@ -35,6 +36,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_email_amies' => 'J\'aimerai partager cette information avec mes amies',
 	'label_horaire' => 'Horaire :',
 	'label_multilingue' => 'Cours multilingue :',
+	'label_pk_campaign' => 'Nom de campagne piwik (pk_campaign) :',
 	'label_prix' => 'Prix :',
 	'label_telephone' => 'Téléphone :',
 	'larut_titre' => 'Larut',
@@ -44,14 +46,14 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'merci_de_votre_reservation_accepte' => '<p>Votre paiement a bien été reçu et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>',
 	'merci_de_votre_reservation_accepte_part' => '<p>Votre paiement a bien été reçu et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>',
 	'merci_de_votre_reservation_accepte_2' => '
-    <p>N’hésitez pas à me contacter si vous avez des questions.</p>
-    <ul>
-        <li>GSM 0495/102818</li>
-        <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
-    </ul>
-    <p>Je vous envoie une liste d\'endroits ou vous pouvez acheter vos tissus à
+		<p>N’hésitez pas à me contacter si vous avez des questions.</p>
+		<ul>
+				<li>GSM 0495/102818</li>
+				<li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
+		</ul>
+		<p>Je vous envoie une liste d\'endroits ou vous pouvez acheter vos tissus à
 Bruxelles en pièce jointe.</p>
-    ',
+		',
 	'merci_de_votre_reservation_attente_paiement' => '<p>Merci de votre intérêt pour nos ateliers de couture.</p>
 
 <p>Votre inscription est bien enregistrée dans notre système mais elle ne sera confirmée qu’après réception du paiement.
