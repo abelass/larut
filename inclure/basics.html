@@ -2,7 +2,7 @@
 #SET{date,#DATE}
 #SET{date_redac,#DATE_REDAC}
 #SET{nouveautes,''}
-#SET{pk_campaign,#VAL{email-}|concat{#TITRE|urlencode}}
+#SET{pk_campaign,#PK_CAMPAIGN|sinon{#VAL{newsletter-}|concat{#TITRE|urlencode}}}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
