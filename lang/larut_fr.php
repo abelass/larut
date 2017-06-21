@@ -81,7 +81,7 @@ Bruxelles en pièce jointe.</p>
 
 	// S
 	'seance' => 'Séance',
-	'soutien' => 'Avec le soutien de',
+	'soutien' => 'En partenariat avec',
 	'sujet_email_amies' => 'Partage d\'infos de @nom@',
 
 	// T
