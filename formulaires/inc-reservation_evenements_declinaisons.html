@@ -3,7 +3,7 @@
 </BOUCLE_rub_res>
 
 <B_rub_ateliers>
-<li class="fieldset">
+<div class="fieldset">
 	<BOUCLE_rub_ateliers(RUBRIQUES){id_trad IN 7}>
 		<BOUCLE_articles_ateliers(ARTICLES){id_rubrique}{origine_traduction}>
 			[(#REM)Les variables de l'article d'origine]
@@ -37,7 +37,7 @@
 					[(#ID_TRAD|>{0}?{
 						#SET{id_article,#GET{id_article}|push{#ID_TRAD}}
 						,
-						 #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+						#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
 					})]
 				</BOUCLE_articles>
 			</BOUCLE_rubs_lies>
@@ -47,8 +47,8 @@
 			<B_art_or>
 			<fieldset>
 				[<legend><a href="#GET{url}">(#GET{titre}|unique)</a></legend>]
-				<ul>
-					<li class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
+				<div class="editer-groupe">
+					<div class='editer editer_id_evenement[ (#ENV**{erreurs}|table_valeur{id_objet_prix}|oui)erreur]'>
 						[<div class='erreur_message'>(#ENV**{erreurs}|table_valeur{id_objet_prix})</div>]
 					<BOUCLE_art_or(EVENEMENTS){id_article IN #GET{id_article}}{id_evenement IN #ENV{evenements}|array_keys}>
 						#SET{t,''}
@@ -64,18 +64,18 @@
 						]
 						[(#SET{evenements_source,#GET{evenements_source}|push{#ID_EVENEMENT_SOURCE}})]
 					</BOUCLE_art_or>
-					</li>
+					</div>
 					[(#ENV{id_evenement}|oui)
-					<li>
+					<div>
 						<a  class="btn btn-primary plusieurs"  href="#GET{url_reservation}">
 							<i class="icon-arrow-right icon-white"> </i>
 							<:larut:voir_inscriptions_tous:>
 						</a>
-						</li>]
-				</ul>
+					</div>]
+				</div>
 			</fieldset>
 			</B_art_or>
 		</BOUCLE_articles_ateliers>
 	</BOUCLE_rub_ateliers>
-</li>
+</div>
 </B_rub_ateliers>
