@@ -91,7 +91,12 @@
 	[(#ENV{qui}|=={client}|oui)
 		<p><:reservation:bonjour:> #GET{nom_client}</p>
 		]
-		<p><:reservation:message_evenement_cloture{titre=#TITRE}:></p>
+		<BOUCLE_art_ev(ARTICLES){id_article}>
+			[<div style="border-bottom: #888888 1px solid;clear:both;">
+				(#EMAIL_CLOTURE|image_reduire{200}|sinon{<:reservation:message_evenement_cloture{titre=#TITRE}:>})
+			<br style="clear:both;"/>
+			</div>]
+		</BOUCLE_art_ev>
 	</BOUCLE_detail>
 <//B_test_statut>
 <p>Ruth</p>
