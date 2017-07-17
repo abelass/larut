@@ -23,7 +23,7 @@
 <BOUCLE_test_statut(CONDITION) {si #ENV{statut}|!={cloture}|oui}>
 	[(#ENV{qui}|=={client}|oui)
 	<p><:reservation:bonjour:> #GET{nom_client}</p>
-	[<p>(#VAL{larut:merci_de_votre_reservation_#ENV{statut}}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}}|url_absolue)</p>]
+	[<p>(#VAL{larut:merci_de_votre_reservation_#ENV{statut}}|_T{#ARRAY{reference,#REFERENCE,url_cg,#URL_ARTICLE{41}}})</p>]
 
 	]#SET{id_evenement,#ARRAY} #SET{statut_reservation,#STATUT}#SET{erreurs_statuts,#ARRAY}
 	<BOUCLE_details(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}{si #ENV{statut}|in_array{#LISTE{accepte_part,accepte}}|et{#ENV{qui}|=={client}}|oui}>
