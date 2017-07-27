@@ -4,7 +4,7 @@
 	#SET{statut, #ENV{statut}
 	#SET{details, #ARRAY}
 
-	<BOUCLE_reservation_details(RESERVATIONS_DETAILS prix_objets){id_reservation}{id_reservations_detail ?}{tout}>
+	<BOUCLE_reservation_details(RESERVATIONS_DETAILS){id_reservation}{id_reservations_detail ?}{tout}>
 	[(#SET_PUSH{details, [(#ARRAY{
 		descriptif, [[(#QUANTITE|>{1}|oui)<strong>#QUANTITE &times;</strong> ](#DESCRIPTIF*|supprimer_numero)],
 		quantite, #QUANTITE,
@@ -39,26 +39,26 @@
 	</BOUCLE_test_format_texte>
 		#SET{declinaison,#ARRAY}
 		<table class="reservation" cellspacing="0">
-			 <thead>
+			<thead>
 					<tr>
-						 <th class="description"><:reservation:designation:></th>
-						 [(#GET{statut}|=={accepte}|non)<th class="montant"><:reservation:montant:></th>]
-						 <th class="statut"><:reservation:label_statut:></th>
+						<th class="description"><:reservation:designation:></th>
+						[(#GET{statut}|=={accepte}|non)<th class="montant"><:reservation:montant:></th>]
+						<th class="statut"><:reservation:label_statut:></th>
 					</tr>
-			 </thead>
+			</thead>
 
-			 <tbody>
+			<tbody>
 					#SET{total,0}
-					 #SET{montant_paye,0}
+					#SET{montant_paye,0}
 					<BOUCLE_details(POUR){tableau #GET{reservation}|table_valeur{details}}>
 					#SET{id_reservations_detail,(#VAL{id_}|concat{#VALEUR{id_reservations_detail}}|trim)}
 					#SET{prix,#VALEUR{prix}}
 					[(#SET{montant_paye,[(#GET{montant_paye}|plus{[(#VALEUR|table_valeur{montant_paye})]})]})]
 					<tr class="detail [(#VALEUR|table_valeur{quantite}|>{0}|?{avec_quantite,sans_quantite})]">
-						 <td class="description" style="padding:0 5px">
-							 [<strong>(#VALEUR|table_valeur{descriptif})</strong>]
-							 <B_evenement>
-								 <ul style="list-style: square; padding-left:20px">
+						<td class="description" style="padding:0 5px">
+							[<strong>(#VALEUR|table_valeur{descriptif})</strong>]
+							<B_evenement>
+								<ul style="list-style: square; padding-left:20px">
 					<BOUCLE_evenement(EVENEMENTS){id_evenement=#VALEUR|table_valeur{id_evenement}}>
 					#SET{date_debut,#DATE_DEBUT|affdate{d/m/Y}}
 					<li>[ (#GET{date_debut})]
@@ -80,8 +80,8 @@
 					</tr>
 					[(#SET{total,[(#GET{total}|plus{[(#GET{prix})]})]})]
 					</BOUCLE_details>
-			 </tbody>
-			 [(#GET{statut}|=={accepte}|non) <tfoot>
+			</tbody>
+			[(#GET{statut}|=={accepte}|non) <tfoot>
 					<tr class="total_ttc">
 						<td class="descriptif"><:prix:label_total_ttc:></td>
 						<td class="montant">[(#GET{total}|replace{.01,.00}|prix_formater)] </td>
@@ -92,7 +92,7 @@
 						<td class="montant">[(#GET{montant_paye}|prix_formater)]</td>
 						<td> </td>
 					</tr>
-			 </tfoot>]
+			</tfoot>]
 		</table>
 	<//B_test_format_texte>
 </BOUCLE_test>
