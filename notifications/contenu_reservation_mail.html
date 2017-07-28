@@ -6,6 +6,7 @@
 	[(#STATUT|in_array{#GET{envoi_differe}}|oui)#SET{statut,#STATUT}]
 ]
 <BOUCLE_art(RESERVATIONS){id_reservation}{tout}>
+[(#GET{statut}|non) #SET{statut,#STATUT}]
 	#SET{nom_client,#NOM}
 	#SET{extras,#DONNEES_AUTEUR|unserialize}
 	#SET{email,#EMAIL}
@@ -81,9 +82,9 @@
 	<INCLURE{fond=inclure/reservation,
 		id_reservation,
 		format_envoi=#ENV{format_envoi},
-		statut=#ENV{statut},
 		id_reservations_detail=#ENV{id_reservations_detail},
-		qui}/>
+		statut = #GET{statut}
+		}/>
 
 	<p><:larut:remerciement:></p>
 </BOUCLE_test_statut>
