@@ -1,78 +1,78 @@
 <BOUCLE_extra_article(RUBRIQUES){id_rubrique}{tout}>
-  [(#REM) Articles dans la meme rubrique ]
-  <B_articles_rubrique>
-    <nav class="menu menu_articles">
-      <h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
-      <ul class="liste-items">
-    <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre,titre}>
-          #SET{id_trad,#ID_ARTICLE} #SET{titre,#TITRE} #SET{url,#URL_ARTICLE} #SET{id_article,#ID_ARTICLE}
-          [(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
-        <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-            <BOUCLE_test2(EVENEMENTS){id_article IN #GET{id_trad},#ID_ARTICLE}{fusion id_article}{date_fin>
-              #ENV{date}}>
-              [(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
-              <li class="item">
-                <i class="icon-chevron-right"></i>
-                <a href="#GET{url}"[(#GET{id_article}|=={#ENV{id_article}}|oui) class="on"]>#GET{titre}</a>
-              </li>
-              ]
-            </BOUCLE_test2>
-        </BOUCLE_test>
-          <li class="item">
-            <i class="icon-chevron-right"></i><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a>
-          </li>
-          <//B_test>
-    </BOUCLE_articles_rubrique>
-      </ul>
-    </nav>
-  </B_articles_rubrique>
-  [(#REM) Sinon les sousrubriques]
-  <B_rubriques>
-    <nav class="menu menu_articles">
-      <ul class="liste-items">
-        <BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}{par num titre,titre}>
-          <BOUCLE_test4(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-            <BOUCLE_test3(CONDITION){si #STATUT|=={publie}|oui}>
-              <li class="item">
-                <i class="icon-chevron-right"></i>
-                <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
-              </li>
-            </BOUCLE_test3>
-          </BOUCLE_test4>
-              <li class="item">
-                <i class="icon-chevron-right"></i>
-                <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
-              </li>
-            <//B_test4>
-        </BOUCLE_rubriques>
-      </ul>
-    </nav>
-  </B_rubriques>
-  [(#REM) Sinon, si on n'est pas au premier niveau, les rubriques soeurs]
-  <BOUCLE_exclure(RUBRIQUES){id_rubrique=#ID_PARENT}{tout}{id_parent=0}{par num titre,titre}>
-    </BOUCLE_exclure>
-    <B_rubriques_soeurs>
-      <nav class="menu menu_articles">
-        <ul class="liste-items">
-          <BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}{par num titre,titre}>
-            <BOUCLE_test2_2(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-              <BOUCLE_test22(CONDITION){si #STATUT|=={publie}|oui}>
-                <li class="item">
-                  <i class="icon-chevron-right"></i>
-                  <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
-                </li>
-              </BOUCLE_test22>
-            </BOUCLE_test2_2>
-                <li class="item">
-                  <i class="icon-chevron-right"></i>
-                  <a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
-                </li>
-              <//B_test2_2>
-           </BOUCLE_rubriques_soeurs>
-        </ul>
-      </nav>
-    </B_rubriques_soeurs>
-      <//B_exclure>
-    <//B_rubriques>
-  <//B_articles_rubrique>
+	[(#REM) Articles dans la meme rubrique ]
+	<B_articles_rubrique>
+		<nav class="menu menu_articles">
+			<h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+			<ul class="liste-items">
+		<BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{id_mot ?}{par num titre,titre}>
+					#SET{id_trad,#ID_ARTICLE} #SET{titre,#TITRE} #SET{url,#URL_ARTICLE} #SET{id_article,#ID_ARTICLE}
+					[(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
+				<BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+						<BOUCLE_test2(EVENEMENTS){id_article IN #GET{id_trad},#ID_ARTICLE}{fusion id_article}{date_fin>
+							#ENV{date}}>
+							[(#LANG|=={#ENV{lang}}|ou{#MULTILINGUE|=={on}}|oui)
+							<li class="item">
+								<i class="icon-chevron-right"></i>
+								<a href="#GET{url}"[(#GET{id_article}|=={#ENV{id_article}}|oui) class="on"]>#GET{titre}</a>
+							</li>
+							]
+						</BOUCLE_test2>
+				</BOUCLE_test>
+					<li class="item">
+						<i class="icon-chevron-right"></i><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a>
+					</li>
+					<//B_test>
+		</BOUCLE_articles_rubrique>
+			</ul>
+		</nav>
+	</B_articles_rubrique>
+	[(#REM) Sinon les sousrubriques]
+	<B_rubriques>
+		<nav class="menu menu_articles">
+			<ul class="liste-items">
+				<BOUCLE_rubriques(RUBRIQUES){id_parent}{tout}{par num titre,titre}>
+					<BOUCLE_test4(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+						<BOUCLE_test3(CONDITION){si #STATUT|=={publie}|oui}>
+							<li class="item">
+								<i class="icon-chevron-right"></i>
+								<a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+							</li>
+						</BOUCLE_test3>
+					</BOUCLE_test4>
+							<li class="item">
+								<i class="icon-chevron-right"></i>
+								<a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+							</li>
+						<//B_test4>
+				</BOUCLE_rubriques>
+			</ul>
+		</nav>
+	</B_rubriques>
+	[(#REM) Sinon, si on n'est pas au premier niveau, les rubriques soeurs]
+	<BOUCLE_exclure(RUBRIQUES){id_rubrique=#ID_PARENT}{tout}{id_parent=0}{par num titre,titre}>
+		</BOUCLE_exclure>
+		<B_rubriques_soeurs>
+			<nav class="menu menu_articles">
+				<ul class="liste-items">
+					<BOUCLE_rubriques_soeurs(RUBRIQUES){id_parent=#ID_PARENT}{tout}{par num titre,titre}>
+						<BOUCLE_test2_2(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+							<BOUCLE_test22(CONDITION){si #STATUT|=={publie}|oui}>
+								<li class="item">
+									<i class="icon-chevron-right"></i>
+									<a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+								</li>
+							</BOUCLE_test22>
+						</BOUCLE_test2_2>
+								<li class="item">
+									<i class="icon-chevron-right"></i>
+									<a href="#URL_RUBRIQUE"[ class="(#ENV{id_rubrique}|=={#ID_RUBRIQUE}|oui)on"]>#TITRE</a>
+								</li>
+							<//B_test2_2>
+					 </BOUCLE_rubriques_soeurs>
+				</ul>
+			</nav>
+		</B_rubriques_soeurs>
+			<//B_exclure>
+		<//B_rubriques>
+	<//B_articles_rubrique>
 </BOUCLE_extra_article>
