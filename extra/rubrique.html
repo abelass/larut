@@ -1,9 +1,9 @@
 [(#ENV{composition}|=={inspirations}|ou{#COMPOSITION|=={inspirations_sr}}|oui)
-    <INCLURE{fond=inclure/menu_mots,env,ajax=menu_mots}/>
-    ]
+		<INCLURE{fond=inclure/menu_mots,env,ajax=menu_mots}/>
+		]
 [(#REM)Le menu contextuel articles ou rubriques]
 #SET{exclus,#LISTE{creations,home}}
 [(#COMPOSITION|in_array{#GET{exclus}}|non)
-    <INCLURE{fond=inclure/menu_articles_rubriques,env}/>
-    ]
-    
+		<INCLURE{fond=inclure/menu_articles_rubriques,env,ajax=menu_articles_rubriques}/>
+		]
+
