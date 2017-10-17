@@ -1,14 +1,11 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
 <section>
-
 	[(#ID_RUBRIQUE|=={1}|oui)#SET{home,oui}]
-
-	<article class="contenu-principal">
-		[<header class="cartouche">
+		<div class="main">
+				[<header class="cartouche">
 				(#ID_TRAD|in_array{#LISTE{8,7,9}}|non)
 			<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 		</header>]
-		<div class="main">
 
 			[(#REM) Boite à outils]
 			[(#INCLURE{fond=inclure/outils,env})]
@@ -20,7 +17,7 @@
 							<ul class="liste-items">
 											<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
 											<li class="item">
-												 <strong><a href="#URL_SITE">#NOM_SITE</a></strong>
+												<strong><a href="#URL_SITE">#NOM_SITE</a></strong>
 															<B_syndic>
 															<ul>
 																			<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
@@ -31,7 +28,7 @@
 											</li>
 											</BOUCLE_sites>
 							</ul>
-			</article>
+
 			</B_sites>
 		</div>
 [<footer class="notes">
