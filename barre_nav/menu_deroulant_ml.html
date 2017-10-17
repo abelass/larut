@@ -1,35 +1,36 @@
 <BOUCLE_nav(RUBRIQUES) {id_trad=2} {par num titre, titre}{!par date}{tout}{lang}>
 <B_rubriques>
-		<div class="menu-conteneur menu menu-container navbar-inner">
+	<div class="menu-conteneur menu menu-container navbar-inner">
 		<ul class="menuder menu-liste  menu-items nav">
-						<BOUCLE_rubriques(RUBRIQUES){id_parent} {par num titre, titre}{tout}{id_trad!=32}>
-						<li class="item menu-entree[ (#EXPOSE)][(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]">
-								<a href="#URL_RUBRIQUE" class="intitule">[(#TITRE|supprimer_numero|couper{80})]</a>
-								#SET{statut,#LISTE{0,publie}}
-
-								<B_sous_rubriques>
-								<ul>
-
-										<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}{statut IN #GET{statut}}{id_trad !IN 32,38}>
-
-
-											 <BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
-													<BOUCLE_test2(CONDITION){si #STATUT|=={publie}|oui}>
-															<li class="item menu-entree[(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]"><a href="#URL_RUBRIQUE" <BOUCLE_test_sousrub(RUBRIQUES){id_parent}{0,1}>class="daddy"</BOUCLE_test_sousrub>>[(#TITRE|supprimer_numero|couper{80})]</a></li>
-													</BOUCLE_test2>
-											 </BOUCLE_test>
-														<li class="item menu-entree[(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]"><a href="#URL_RUBRIQUE" <BOUCLE_test_sousrub2(RUBRIQUES){id_parent}{0,1}>class="daddy"</BOUCLE_test_sousrub2>>[(#TITRE|supprimer_numero|couper{80})]</a></li>
-										 <//B_test>
-
-
-										</BOUCLE_sous_rubriques>
-								</ul>
-								</B_sous_rubriques>
-
-						</li>
-						</BOUCLE_rubriques>
+		<BOUCLE_rubriques(RUBRIQUES){id_parent} {par num titre, titre}{tout}{id_trad!=32}>
+			<li class="item menu-entree[ (#EXPOSE)][(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]">
+				<a href="#URL_RUBRIQUE" class="intitule">
+					[(#TITRE|supprimer_numero|couper{80})]
+				</a>
+				#SET{statut,#LISTE{0,publie}}
+				<B_sous_rubriques>
+				<ul>
+					<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}{statut IN #GET{statut}}{id_trad !IN 32,38}>
+						<BOUCLE_test(CONDITION){si #COMPOSITION|=={ateliers}|oui}>
+							<BOUCLE_test2(CONDITION){si #STATUT|=={publie}|oui}>
+								<li class="item menu-entree[(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]">
+									<a href="#URL_RUBRIQUE" <BOUCLE_test_sousrub(RUBRIQUES){id_parent}{0,1}>class="daddy"</BOUCLE_test_sousrub>>
+										[(#TITRE|supprimer_numero|couper{80})]
+									</a>
+								</li>
+							</BOUCLE_test2>
+						</BOUCLE_test>
+					<li class="item menu-entree[(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]">
+						<a href="#URL_RUBRIQUE" <BOUCLE_test_sousrub2(RUBRIQUES){id_parent}{0,1}>class="daddy"</BOUCLE_test_sousrub2>>
+							[(#TITRE|supprimer_numero|couper{80})]</a>
+					</li>
+					<//B_test>
+					</BOUCLE_sous_rubriques>
 				</ul>
-				</div>
+				</B_sous_rubriques>
+			</li>
+		</BOUCLE_rubriques>
+		</ul>
+	</div>
 </B_rubriques>
 </BOUCLE_nav>
-
