@@ -1,0 +1,81 @@
+[(#REM)<!-- # OwlCarousel - Portfolio Articles
+
+Gallerie portfolio avec Owl Carousel
+Insertion du modele <articleX|owl>
+
+@param : id_article
+@param : id-carousel : id unique du carousel
+@param : caption : oui : Affiche la description de l'image.
+@param : docs : 1,2,3 : selectionne individuellement les documents
+@param : dots : true par defaut : affiche les points de navigation
+@param : navigation : true par defaut : affiche les boutons précédents suivants
+@param : caption_css : ajouter des css sur la description (par exemple : invisible).
+@param : autoplay : true (false par défaut) : le carousel démarre automatiquement.
+@param : autoplayHoverPause : true (false par défaut) : pause sur le rollHover en mode autoplay
+@param : lazyLoad : true (false par défaut) : ne charge que les images visibles pour optimiser le chargement.
+
+-->]
+<style>
+[#(#ENV{id-carousel,demo})] .owl-slide > .caption{
+	margin-top:10px;
+	}
+[#(#ENV{id-carousel,demo})] .owl-slide > h3{
+	margin-top:10px;
+	}
+</style>
+#SET{statuts_complet,#VAL|statuts_complet}
+
+[(#REM) <!-- Diaporama -->]
+<div id="#ENV{id-carousel,demo}" class="owl-carousel owl-theme[ (#ENV{items}|=={1}|oui)owl-single]">
+	<BOUCLE_evenements(EVENEMENTS articles){par date_debut}{id_evenement_source=0}{evenement_a_venir #ENV{date}}>
+	#SET{logo,#LOGO_ARTICLE{#ID_ARTICLE}|extraire_attribut{src}} #SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
+	<div class="owl-slide infos_cour" data-hash="#ENV{id-carousel,demo}#ID_ARTICLE">
+			<a href="#URL_ARTICLE{#ID_ARTICLE}">
+				<img [(#ENV{lazyLoad}|=={true}|oui)class="owl-lazy" data-]src="[(#GET{logo}
+					|image_passe_partout{#ENV{width,300},#ENV{height,200}}
+					|image_recadre{#ENV{width,300},#ENV{height,200}}
+					|extraire_attribut{src})]" alt="[(#TITRE|textebrut)]">
+			</a>
+			[<h3 class="title">			<a href="#URL_ARTICLE{#ID_ARTICLE}">(#TITRE)</a></h3>]
+			<INCLURE{fond=inclure/details_cours_article_details,id_article,date_debut,date_fin,id_evenement,horaire=#GET{horaire},places,statut=#GET{statuts_complet},env}/>
+
+			[(#ENV{caption,oui}|=={oui}|oui)
+				<div class="caption[ (#ENV{caption_css})]">[
+					<p class="hidden-phone">(#INTRODUCTION|couper{100}|textebrut)</p>]</div>]
+	</div>
+	</BOUCLE_evenements>
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+	$("[#(#ENV{id-carousel,demo})]").owlCarousel({
+			[loop: (#ENV{loop, true}),][
+			items: (#ENV{items, 1}),][
+			margin:(#ENV{margin}),][
+			dots:(#ENV{dots, true}),][
+			nav:(#ENV{navigation, false}),][
+			autoplay: (#ENV{autoplay}),][
+			autoplayHoverPause: (#ENV{autoplayHoverPause}),][
+			lazyLoad: (#ENV{lazyLoad}),][
+			autoplayTimeout: (#ENV{autoplayTimeout}),][
+			autoHeight: (#ENV{autoHeight}),][
+			center: (#ENV{center}),]
+			responsive:false,
+			URLhashListener:true,
+			startPosition: 'URLHash',
+responsive:{
+	0:{
+	items:1
+	}[,
+	640:{
+	items:(#ENV{items})
+	}]
+}
+	});
+
+	// Gallerie Colorbox
+	$("a.js-colorbox").colorbox({
+			rel:'diaporama#ENV{id-carousel,demo}',
+	});
+});
+</script>

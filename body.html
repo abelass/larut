@@ -7,15 +7,16 @@
 			(#INCLURE{fond=inclure/nav,env}|navbar_responsive)
 		</nav>]
 			<section class="container" id="container" role="main">
-			<section class="content span8 " id="content">
+			<section class="[(#COMPOSITION|!={home}|?{content span8,''})] " id="content">
 				<INCLURE{fond=content/#ENV{type-page},env} />
 			</section>
+			[(#COMPOSITION|!={home}|oui)
 			<aside id="extra1" class="extra1 col">
 				<INCLURE{fond=aside/#ENV{type-page},env,ajax=aside} />
 			</aside>
 			<aside id="extra2" class="extra2 col">
 				<INCLURE{fond=extra/#ENV{type-page},env} />
-			</aside>
+			</aside>]
 			</section>
 		<footer class="footer" id="footer">
 			<INCLURE{fond=footer/#ENV{type-page},env} />

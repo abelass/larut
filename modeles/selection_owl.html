@@ -1,0 +1,85 @@
+[(#REM)<!-- # OwlCarousel - Portfolio Articles
+
+Gallerie portfolio avec Owl Carousel
+Insertion du modele <articleX|owl>
+
+@param : id_article
+@param : id-carousel : id unique du carousel
+@param : caption : oui : Affiche la description de l'image.
+@param : docs : 1,2,3 : selectionne individuellement les documents
+@param : dots : true par defaut : affiche les points de navigation
+@param : navigation : true par defaut : affiche les boutons précédents suivants
+@param : caption_css : ajouter des css sur la description (par exemple : invisible).
+@param : autoplay : true (false par défaut) : le carousel démarre automatiquement.
+@param : autoplayHoverPause : true (false par défaut) : pause sur le rollHover en mode autoplay
+@param : lazyLoad : true (false par défaut) : ne charge que les images visibles pour optimiser le chargement.
+
+-->]
+
+
+<style>
+[#(#ENV{id-carousel,demo})] .owl-slide > .caption{
+	margin-top:10px;
+	}
+</style>
+
+
+[(#REM) <!-- Diaporama -->]
+<div id="#ENV{id-carousel,demo}" class="owl-carousel owl-theme[ (#ENV{items}|=={1}|oui)owl-single]">
+	<BOUCLE_selections(SELECTIONS){identifiant?}{id_rubrique?}>
+		<BOUCLE_actualites_contenus(SELECTIONS_CONTENUS){id_selection?}{par rang}>
+		#SET{logo,#LOGO_SELECTIONS_CONTENU|extraire_attribut{src}}
+		<div class="owl-slide" data-hash="#ENV{id-carousel,demo}#ID_SELECTIONS_CONTENU">
+			<a href="#URL">
+					<img [(#ENV{lazyLoad}|=={true}|oui)class="owl-lazy" data-]src="[(#GET{logo}
+						|image_passe_partout{#ENV{width,1440},#ENV{height,599}}
+						|image_recadre{#ENV{width,1440},#ENV{height,599}}
+						|extraire_attribut{src})]" alt="[(#TITRE|textebrut)]">
+				</a>
+
+			<div class="caption[ (#ENV{caption_css})]">
+				[<p class="hidden-phone">(#DESCRIPTIF|couper{150,'…'})</p>]
+				<p>
+					<a class="btn c-theme-btn c-btn-uppercase c-btn-bold c-btn-border-1x" href="#URL_ARTICLE">
+						<:cnde:lire_suite:> <span class="glyphicon glyphicon-arrow-right"> </span>
+					</a>
+				</p>
+			</div>
+		</div>
+		</BOUCLE_actualites_contenus>
+	</BOUCLE_selections>
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+	$("[#(#ENV{id-carousel,demo})]").owlCarousel({
+			[loop: (#ENV{loop, true}),][
+			items: (#ENV{items, 1}),][
+			margin:(#ENV{margin}),][
+			dots:(#ENV{dots, true}),][
+			nav:(#ENV{navigation, false}),][
+			autoplay: (#ENV{autoplay}),][
+			autoplayHoverPause: (#ENV{autoplayHoverPause}),][
+			lazyLoad: (#ENV{lazyLoad}),][
+			autoplayTimeout: (#ENV{autoplayTimeout}),][
+			autoHeight: (#ENV{autoHeight}),][
+			center: (#ENV{center}),]
+			responsive:false,
+			URLhashListener:true,
+			startPosition: 'URLHash',
+responsive:{
+	0:{
+	items:1
+	}[,
+	640:{
+	items:(#ENV{items})
+	}]
+}
+	});
+
+	// Gallerie Colorbox
+	$("a.js-colorbox").colorbox({
+			rel:'diaporama#ENV{id-carousel,demo}',
+	});
+});
+</script>
