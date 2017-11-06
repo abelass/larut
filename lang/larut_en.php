@@ -36,18 +36,19 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_telephone' => 'Phone:',
 	'larut_titre' => 'Larut',
 	'liens' => 'Links',
+	'lire_suite' => 'Read more',
 
 	// M
 	'merci_de_votre_reservation_accepte' => '<p>Your payment has been validated and we are happy to confirm your registration for one of Larut\'s workshops.</p>',
 
 	'merci_de_votre_reservation_accepte_2' => '
-    <p>Don\'t hesitate to contact me if you have any questions.</p>
-    <ul>
-        <li>Mobile 0495/102818</li>
-        <li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
-    </ul>
-    <p>Please find attached a list of places where you can buy your fabric in Brussels,</p>
-    ',
+		<p>Don\'t hesitate to contact me if you have any questions.</p>
+		<ul>
+				<li>Mobile 0495/102818</li>
+				<li><a href="mailto.contact @ larut.eu">contact @ larut.eu</a></li>
+		</ul>
+		<p>Please find attached a list of places where you can buy your fabric in Brussels,</p>
+		',
 	'merci_de_votre_reservation_attente_paiement' => '<p>Thank you for your interest in Larut\'s sewing workshops.</p>
 
 <p>Your registration has been processed but it will only be confirmed after your payment. You will receive a confirmation email including the details about what to bring for your workshop once your payment has been processed.</p>

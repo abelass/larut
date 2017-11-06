@@ -3,13 +3,13 @@
 <BOUCLE_selections(SELECTIONS){identifiant?}{id_rubrique?}>
 	<BOUCLE_actualites_contenus(SELECTIONS_CONTENUS){id_selection?}{par rang}>
 	#SET{logo,#LOGO_SELECTIONS_CONTENU|extraire_attribut{src}}
-	<div class="#ENV{class_item,span4}">
+	<div class="#ENV{class_item,entry contenu hentry}">
 		<div class="btn btn-large">
 			<h3>#TITRE</h3>
 			[<p class="descriptif">(#DESCRIPTIF|couper{150,'…'})</p>]
 			<p>
 				<a class="#ENV{class_bouton,btn c-theme-btn c-btn-uppercase c-btn-bold c-btn-border-1x}" href="#URL_ARTICLE">
-					<:cnde:lire_suite:> <span class="glyphicon glyphicon-arrow-right"> </span>
+					<:larut:lire_suite:> <span class="glyphicon glyphicon-arrow-right"> </span>
 				</a>
 			</p>
 		</div>

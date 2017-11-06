@@ -41,6 +41,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'label_telephone' => 'Téléphone :',
 	'larut_titre' => 'Larut',
 	'liens' => 'Liens',
+	'lire_suite' => 'Lire la suite',
 
 	// M
 	'merci_de_votre_reservation_accepte' => '<p>Votre paiement a bien été reçu et nous pouvons donc confirmer votre inscription à un atelier de couture avec Larut.</p>',
