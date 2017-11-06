@@ -4,7 +4,7 @@
 	<BOUCLE_actualites_contenus(SELECTIONS_CONTENUS){id_selection?}{par rang}>
 	#SET{logo,#LOGO_SELECTIONS_CONTENU|extraire_attribut{src}}
 	<div class="#ENV{class_item,span4}">
-		<div class="[btn (#GET{couleurs}|table_valeur{#COMPTEUR_BOUCLE})]">
+		<div class="btn btn-large">
 			<h3>#TITRE</h3>
 			[<p class="descriptif">(#DESCRIPTIF|couper{150,'…'})</p>]
 			<p>

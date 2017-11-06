@@ -7,15 +7,15 @@
 
 	<div class="highlights section">
 		<div class="container">
-			<h2>titre à définir</h2>
 			<INCLURE{fond=inclure/highlights,
-				identifiant=highlights,
+				identifiant=highlights_#LANG,
+				id_rubrique,
+				class_row=row-fluid,
 				class_item=highlight span4,
-				class_bouton=btn c-btn-uppercase c-btn-white c-btn-bold c-btn-border-1x} />
+				class_bouton=btn btn-primary} />
 		</div>
 	</div>
-	[(#REM) Boite à outils]
-		[(#INCLURE{fond=inclure/outils,env})]
+
 	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 
 
