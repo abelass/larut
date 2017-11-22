@@ -1,6 +1,6 @@
 #SET{reservations,''}
 [(#REM)Toutes les résérvations]
-#SET{total,#INCLURE{fond=inclure/compteur_reservations,env,id_article='',id_rubrique=''}}
+#SET{total,#INCLURE{fond=inclure/compteur_reservations,id_evenement,statut}}
 [(#REM)Les disponibilités]
 #SET{disponibles,#PLACES|moins{#GET{total}}}
 <tr>
