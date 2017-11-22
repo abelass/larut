@@ -1,21 +1,20 @@
 #SET{reservations,''}
 [(#REM)Toutes les résérvations]
-#SET{total,#INCLURE{fond=inclure/compteur_reservations,env}}
-
+#SET{total,#INCLURE{fond=inclure/compteur_reservations,env,id_article='',id_rubrique=''}}
 [(#REM)Les disponibilités]
 #SET{disponibles,#PLACES|moins{#GET{total}}}
 <tr>
-    <td class="label"> <:larut:places:></td>
-    <td>
-        <div class="disponibles[ (#GET{disponibles}|=={1}|oui)imminent][ (#GET{disponibles}|<={0}|oui)complet]">   
-        	[(#GET{disponibles}|>{0}|?{
-            	[ (#GET{disponibles})],
-                <:larut:complet:>
-                	[ : (#GET{disponibles}|<{0}|?{
-                		[(#GET{disponibles}|replace{-,''})] <:reservation:texte_statut_attente:>,
-                		<:larut:inscrire_liste_attente:>
-            		})]
-            })]      
-        </div>
-     </td>
-</tr>   
+		<td class="label"> <:larut:places:></td>
+		<td>
+				<div class="disponibles[ (#GET{disponibles}|=={1}|oui)imminent][ (#GET{disponibles}|<={0}|oui)complet]">
+					[(#GET{disponibles}|>{0}|?{
+							[ (#GET{disponibles})],
+								<:larut:complet:>
+									[ : (#GET{disponibles}|<{0}|?{
+										[(#GET{disponibles}|replace{-,''})] <:reservation:texte_statut_attente:>,
+										<:larut:inscrire_liste_attente:>
+								})]
+						})]
+				</div>
+		</td>
+</tr>
