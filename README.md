@@ -1,3 +1,3 @@
 larut
 =====
-squelette de larut.eu
+squelette de www.larut.eu
