@@ -8,7 +8,7 @@
 			#SET{horaire,#DATE_DEBUT|affdate{H:i}|concat{-#DATE_FIN|affdate{H:i}}}
 			<INCLURE{fond=inclure/details_cours_article_details,id_article,date_debut,date_fin,id_evenement,horaire=#GET{horaire},places,statut=#GET{statuts_complet},env}/>
 		</BOUCLE_test_source>
-			[(#REM) Si le cours n'a déjà commencé]
+			[(#REM) Si le cours a déjà commencé]
 			<BOUCLE_evenement_source(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}{si #ID_EVENEMENT_SOURCE|in_array{#GET{id_evenement_source}}|non}{par date_debut}>
 				#INCLURE{fond=inclure/details_cours_article_details,id_article,id_evenement,horaire=#GET{horaire},date_debut,date_fin,places,statut=#GET{statuts_complet},env}
 			</BOUCLE_evenement_source>
