@@ -1,10 +1,11 @@
 <B_evt_source_oui>
 
 [(#TOTAL_BOUCLE>{2}|oui)
-	#SET{cacher,'invisible'}
+  #SET{cacher,'invisible'}
 ]
+[<strong>(#DATE_DEBUT|nom_jour)</strong>]
 <ul[(#GET{cacher}|oui) class="multi" title="<:larut:voir_tous_cours:>"]>
-	<li class="date">[(#DATE_DEBUT|affdate_jourcourt)]</li>
+  <li class="date">[(#DATE_DEBUT|affdate_jourcourt)]</li>
 <BOUCLE_evt_source_oui(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{par date_debut}>
 #SET{separateur,''}
 
@@ -13,7 +14,7 @@
 [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)#SET{cacher,''}#SET{separateur,'<span>-</span>'}]
 ]
 
-	<li class="date[ (#GET{cacher})]">#GET{separateur}[(#DATE_DEBUT|affdate_jourcourt)][(#GET{separateur}|oui) <span class="total_cours">([(#TOTAL_BOUCLE|plus{1})] <:larut:cours:>)</span>]</li>
+  <li class="date[ (#GET{cacher})]">#GET{separateur}[(#DATE_DEBUT|affdate_jourcourt)][(#GET{separateur}|oui) <span class="total_cours">([(#TOTAL_BOUCLE|plus{1})] <:larut:cours:>)</span>]</li>
 </BOUCLE_evt_source_oui>
 </ul>
 </B_evt_source_oui>
