@@ -89,6 +89,7 @@ Bruxelles en pièce jointe.</p>
 	'texte_statut_merci' => 'Merci de votre commande d\'un chèque cadeau de Larut.',
 	'texte_statut_reception' => 'Lors de la réception du paiement (comptez une moyenne de 3 jours pour les paiement depuis la Belgique) vous recevrez un mail avec le chèque cadeau (électronique).  N’hésitez pas à me contacter si vous souhaitez une autre modalité de livraison pour le chèque.',
 	'texte_statut_archive' => 'archivé',
+	'titre_message_accepte' => 'Resérvation accepté/partiellement accepté',
 
 	// V
 	'voir_inscriptions_tous' => 'S\'inscrire pour plusieurs cours',
