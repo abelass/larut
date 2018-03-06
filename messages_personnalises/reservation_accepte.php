@@ -3,14 +3,15 @@
  * Définitions pour la personnalisation du message pour le plugin
  * Message personnalisé https://github.com/abelass/message_personnalise.
  *
- * @plugin     Réservation suivi
- * @copyright  2018
- * @author     Rainer
+ * @plugin     Larut
+ * @copyright  2013 - 2018
+ * @author     Rainer Müller
  * @licence    GNU/GPL
- * @package    SPIP\Reservation_suivi\Mp_messages
+ * @package    SPIP\Larut\Messages_personalises
  */
 
 /**
+ * Définitions pour la personnalisation du message reservation accepté.
  *
  * @param array $args
  *        	Variables du contexte.
@@ -22,7 +23,7 @@ function messages_personnalises_reservation_accepte_dist($args) {
 	$reservations = lister_tables_objets_sql('spip_reservations');
 	$statuts = array();
 	foreach ($reservations['statut_textes_instituer'] as $statut => $chaine) {
-		if (in_array($statut, array('accepte', 'accepte_part', 'accepte'))) {
+		if (in_array($statut, array('accepte', 'accepte_part'))) {
 			$statuts[$statut] = _T($chaine);
 		}
 	}
@@ -98,12 +99,6 @@ function messages_personnalises_reservation_accepte_dist($args) {
 			'champs' => array(
 				'disponibles' => $champs_disponibles,
 				'lies' => $champs_lies,
-			),
-			'inclures' => array(
-				'reservations' => array(
-					'fond' => 'inclure/reservation',
-					'titre' => _T('reservation:mp_titre_reservation_details'),
-				),
 			),
 		),
 	);
