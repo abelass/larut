@@ -3,7 +3,7 @@
  * Fichier gérant l'installation et désinstallation du plugin Réservation Événements
  *
  * @plugin     Larut
- * @copyright  2013
+ * @copyright  2013 -2018
  * @author     Rainer Müller
  * @licence    GNU/GPL
  * @package    SPIP\Larut\Installation
