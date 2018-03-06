@@ -27,7 +27,6 @@
 		</BOUCLE_extras>
 	</BOUCLE_contact>
 	#SET{extras,#GET{valeurs_extras}}
-	[(#GET{valeurs_extras}|var_dump)]
 	</B_contact>
 <BOUCLE_test_statut(CONDITION) {si #ENV{statut}|!={cloture}|oui}>
 	[(#ENV{qui}|=={client}|oui)
@@ -62,6 +61,7 @@
 	#SET{message,''}
 	<BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
 
+
 		<BOUCLE_art_org(ARTICLES){id_article}>#SET{message,#TEXTE_EMAIL|image_reduire{200}} </BOUCLE_art_org>
 		[<div style="border-bottom: #888888 1px solid;clear:both;">
 			(#MESSAGE_PERSONNALISE{
@@ -75,8 +75,6 @@
 		</div>]
 
 	</BOUCLE_article>
-
-
 
 	[(#ENV{qui}|=={client}|et{#ENV{statut}|in_array{#LISTE{accepte}}}|oui)
 	<p style="clear:both"><:larut:merci_de_votre_reservation_accepte_2:></p>
@@ -111,11 +109,20 @@
 		<p><:reservation:bonjour:> #GET{nom_client}</p>
 		]
 		<BOUCLE_art_ev(ARTICLES){id_article}>
+			#SET{messages, #EMAIL_CLOTURE|image_reduire{200}|sinon{#VAL{reservation:message_evenement_cloture{titre=#TITRE}|_T}}}
+		</BOUCLE_art_ev>
 			[<div style="border-bottom: #888888 1px solid;clear:both;">
-				(#EMAIL_CLOTURE|image_reduire{200}|sinon{<:reservation:message_evenement_cloture{titre=#TITRE}:>})
+				(#MESSAGE_PERSONNALISE{
+					reservation_cloture,
+					#GET{message},
+					'',
+					#ARRAY{statut,#ENV{statut},qui,#QUI},
+					#ARRAY{objet, article,id_objet,#ID_ARTICLE}
+				})
 			<br style="clear:both;"/>
 			</div>]
-		</BOUCLE_art_ev>
+
+
 	</BOUCLE_detail>
 <//B_test_statut>
 <p>Ruth</p>
