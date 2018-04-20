@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="2.2.0"
+	version="2.2.1"
 	etat="stable"
 	compatibilite="[3.0.13;3.2.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -38,7 +38,7 @@
 	<necessite nom="reservation_communication" compatibilite="[1.0.0;]" />
 	<necessite nom="reservations_credits" compatibilite="[1.1.1;]" />
 	<necessite nom="reservation_bank" compatibilite="[1.1.4;]" />
-	<necessite nom="promotions" compatibilite="[1.0.1;]" />
+	<necessite nom="promotions_reservations" compatibilite="[1.0.0;]" />
 	<necessite nom="reservations_mailsubscribers" compatibilite="[1.2.4;]" />
 	<necessite nom="piwik" compatibilite="[0.6.2;]" />
 	<necessite nom="chosen" compatibilite="[1.0.6;]" />
