@@ -3,6 +3,7 @@
 [(#TOTAL_BOUCLE>{2}|oui)
 	#SET{cacher,'invisible'}
 ]
+[<strong>(#DATE_DEBUT|nom_jour)</strong>]
 <ul[(#GET{cacher}|oui) class="multi" title="<:larut:voir_tous_cours:>"]>
 	<li class="date">[(#DATE_DEBUT|affdate_jourcourt)]</li>
 <BOUCLE_evt_source_oui(EVENEMENTS){id_evenement_source=#ID_EVENEMENT}{par date_debut}>

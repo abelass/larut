@@ -15,8 +15,15 @@
 		#SET{valeurs_extras,#ARRAY}
 		#SET{email,#EMAIL}
 		#SET{extras,#VAL|champs_extras_reservation}
-		<BOUCLE_extras(DATA){source tableau, #GET{extras}}>
-		#SET{valeurs_extras,#GET{valeurs_extras}|array_merge{#ARRAY{#VALEUR{options/label},#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}}}
+		<BOUCLE_extras(DATA){source tableau, #GET{extras}|table_valeur{auteur}}>
+		#SET{valeurs_extras,
+			#GET{valeurs_extras}
+				|array_merge{
+					#ARRAY{
+						#VALEUR{options/label},
+						#ID_AUTEUR|generer_info_entite{auteur,#VALEUR{options/nom}}}
+						}
+					}
 		</BOUCLE_extras>
 	</BOUCLE_contact>
 	#SET{extras,#GET{valeurs_extras}}
@@ -51,14 +58,22 @@
 		</BOUCLE_erreurs_statut>
 		</ul>
 	</B_erreurs_statut>
-
+	#SET{message,''}
 	<BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
-		<BOUCLE_art_org(ARTICLES){id_article}>
-			[<div style="border-bottom: #888888 1px solid;clear:both;">
-				(#TEXTE_EMAIL|image_reduire{200})
+
+
+		<BOUCLE_art_org(ARTICLES){id_article}>#SET{message,#TEXTE_EMAIL|image_reduire{200}} </BOUCLE_art_org>
+		[<div style="border-bottom: #888888 1px solid;clear:both;">
+			(#MESSAGE_PERSONNALISE{
+				reservation_accepte,
+				#GET{message},
+				'',
+				#ARRAY{statut,#ENV{statut},qui,#QUI},
+				#ARRAY{objet,reservation,id_objet, #ID_RESERVATION}
+			})
 			<br style="clear:both;"/>
-			</div>]
-		</BOUCLE_art_org>
+		</div>]
+
 	</BOUCLE_article>
 
 	[(#ENV{qui}|=={client}|et{#ENV{statut}|in_array{#LISTE{accepte}}}|oui)
@@ -94,11 +109,20 @@
 		<p><:reservation:bonjour:> #GET{nom_client}</p>
 		]
 		<BOUCLE_art_ev(ARTICLES){id_article}>
+			#SET{messages, #EMAIL_CLOTURE|image_reduire{200}|sinon{#VAL{reservation:message_evenement_cloture{titre=#TITRE}|_T}}}
+		</BOUCLE_art_ev>
 			[<div style="border-bottom: #888888 1px solid;clear:both;">
-				(#EMAIL_CLOTURE|image_reduire{200}|sinon{<:reservation:message_evenement_cloture{titre=#TITRE}:>})
+				(#MESSAGE_PERSONNALISE{
+					reservation_cloture,
+					#GET{message},
+					'',
+					#ARRAY{statut,#ENV{statut},qui,#QUI},
+					#ARRAY{objet, article,id_objet,#ID_ARTICLE}
+				})
 			<br style="clear:both;"/>
 			</div>]
-		</BOUCLE_art_ev>
+
+
 	</BOUCLE_detail>
 <//B_test_statut>
 <p>Ruth</p>

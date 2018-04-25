@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="2.2.0"
+	version="2.2.1"
 	etat="stable"
 	compatibilite="[3.0.13;3.2.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -38,7 +38,7 @@
 	<necessite nom="reservation_communication" compatibilite="[1.0.0;]" />
 	<necessite nom="reservations_credits" compatibilite="[1.1.1;]" />
 	<necessite nom="reservation_bank" compatibilite="[1.1.4;]" />
-	<necessite nom="promotions" compatibilite="[1.0.1;]" />
+	<necessite nom="promotions_reservations" compatibilite="[1.0.0;]" />
 	<necessite nom="reservations_mailsubscribers" compatibilite="[1.2.4;]" />
 	<necessite nom="piwik" compatibilite="[0.6.2;]" />
 	<necessite nom="chosen" compatibilite="[1.0.6;]" />
@@ -46,9 +46,8 @@
 	<necessite nom="multidomaines" compatibilite="[2.3.2;]" />
 	<necessite nom="cheques_cadeau" compatibilite="[1.0.2;]" />
 	<necessite nom="comptes_bancaires" compatibilite="[1.0.0;]" />
-	<necessite nom="owlcarousel" compatibilite="[1.1.0;]" />
-	<necessite nom="selections_editoriales" compatibilite="[1.7.5;]" />
-	<necessite nom="selecteurgenerique" compatibilite="[1.1.8;]" />
+	<necessite nom="message_personnalise" compatibilite="[1.0.0;]" />
+
 
 	<utilise nom="bootstrap" compatibilite="[1.5.3;]" />
 	<utilise nom="spipr_dist" compatibilite="[0.4.3;]" />
@@ -64,6 +63,5 @@
 
 	<pipeline nom="declarer_champs_extras" inclure="base/larut.php" />
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/larut.php" />
-
 
 </paquet>

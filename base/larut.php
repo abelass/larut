@@ -11,7 +11,6 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
-
 /**
 		Nouveau statut archive pour les articles
  */
@@ -104,4 +103,3 @@ function larut_declarer_champs_extras($champs = array()) {
 	return $champs;
 
 }
-?>
