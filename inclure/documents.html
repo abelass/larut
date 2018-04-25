@@ -6,14 +6,14 @@
 <section class="documents documents_portfolio" id="documents_portfolio">
 	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?}{id_produit?}{mode?}{extension IN png,jpg,gif} {!par date}{vu=non}{0,#ENV{limite,100}} {pagination #ENV{pagination,100}}>[
 	<a href="(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})"
-		 type="#MIME_TYPE"
-		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
+		type="#MIME_TYPE"
+		rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
 	[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>[(#FICHIER
-        |image_reduire{*,200}
+				|image_reduire{*,200}
 		|inserer_attribut{class,spip_logos}
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
 	]</BOUCLE_documents_portfolio>
-	[<p class="pagination">(#PAGINATION)</p>] 
+	[<p class="pagination">(#PAGINATION)</p>]
 </section>
 </B_documents_portfolio>
 

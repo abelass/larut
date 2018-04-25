@@ -17,8 +17,8 @@
 		#SET{logo,#LOGO_SITE}
 		#SET{introduction,''}
 		<BOUCLE_rub(RUBRIQUES){id_trad=#ID_RUBRIQUE}{lang}{tout}>
-			 #SET{url_more,#URL_RUBRIQUE}
-			 #SET{titre_rubrique,#TITRE}
+			#SET{url_more,#URL_RUBRIQUE}
+			#SET{titre_rubrique,#TITRE}
 		</BOUCLE_rub>
 		#SET{site,oui}
 	</BOUCLE_sites>
@@ -32,7 +32,7 @@
 
 <section class="liste articles sommaire">
 
-				<h2 class="h2 articles_recents"><:news:></h2>
+<h2 class="h2 articles_recents"><:news:></h2>
 <ul class="liste-items">
 	<li class="item hentry">
 		[<section>
@@ -53,7 +53,7 @@
 			<div class="meta-publi">
 				<a class="lire-la-suite" href="#GET{url_more}">
 					[(#GET{site}|?{
-					 [<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]
+					[<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]
 							,
 						[<:lire_la_suite:> <span class="lire-la-suite-titre"><em>(#GET{titre})</em></span>]
 					})]
