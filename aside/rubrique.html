@@ -15,7 +15,7 @@
 
 	[(#REM)Affichage des objets séléctionnées]
 	<BOUCLE_selection_teste(LIAISON_OBJETS){par ordre,lang}{lang ?}{statut ?}{id_objet_dest=#ENV{id_rubrique}}{objet_dest=rubrique}{0,1}>
-	<INCLURE{fond=inclure/liaison_objets,env,id_objet_dest=#ENV{id_rubrique},objet_dest=rubrique,logo=oui,type=#TYPE_LIEN,env}/>
+	<INCLURE{fond=inclure/liaisons_objets,env,id_objet_dest=#ENV{id_rubrique},objet_dest=rubrique,logo=oui,type=#TYPE_LIEN,env}/>
 	</BOUCLE_selection_teste>
 		[(#REM)Sinon, si on se trouve dans la section création, on affiche les thumbs des articles des sousrubriques]
 		[(#COMPOSITION|=={creations}|oui)
