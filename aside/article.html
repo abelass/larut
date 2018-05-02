@@ -6,9 +6,9 @@
 		#SET{id_trad,#ENV{id_article}}
 	})]
 	<BOUCLE_documents_tableau(DOCUMENTS) {id_article}{extension IN png,jpg,gif} {0,#ENV{limite,100}}{!par date}{tout}>
-		<BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{statut ?}{id_objet_dest=#ID_DOCUMENT}{objet_dest=document}{0,1}>
+		<BOUCLE_selection_teste(LIAISON_OBJETS){par ordre,lang}{statut ?}{id_objet_dest=#ID_DOCUMENT}{objet_dest=document}{0,1}>
 			[(#LARGEUR|>{#HAUTEUR}|oui)#SET{affichage,large}]
-			<INCLURE{fond=inclure/selection_objets,
+			<INCLURE{fond=inclure/liaisons_objets,
 				env,
 				id_objet,
 				dest,

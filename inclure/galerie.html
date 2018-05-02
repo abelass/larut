@@ -8,7 +8,7 @@
 	<ul>
 		<BOUCLE_documents_portfolio2(DOCUMENTS) {id_article} {mode ?}{extension IN png,jpg,gif} {!par date}{doublons}{tout}{si #GET{logo}|non}>
 		<li>
-			<BOUCLE_selection_teste(SELECTION_OBJETS){par ordre,lang}{id_objet=#ID_DOCUMENT}{objet_dest=document}{0,1}>
+			<BOUCLE_selection_teste(LIAISON_OBJETS){par ordre,lang}{id_objet=#ID_DOCUMENT}{objet_dest=document}{0,1}>
 				<BOUCLE_documents_pr(DOCUMENTS) {id_document=#ID_OBJET_DEST} {tout}>
 				<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]" [ title="(#GET{titre}|attribut_html|couper{80})"]>
 				[(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
@@ -25,10 +25,10 @@
 				[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
 				[(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
 				[(#FICHIER
-				|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-				|image_recadre{#ENV{width,160},#ENV{height,160}}
-				|inserer_attribut{class,spip_logos}
-				|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+					|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+					|image_recadre{#ENV{width,160},#ENV{height,160}}
+					|inserer_attribut{class,spip_logos}
+					|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
 				</a>
 			<//B_selection_teste>
 		</li>
@@ -51,10 +51,10 @@
 							[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
 							[(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
 							[(#FICHIER
-							|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-							|image_recadre{#ENV{width,160},#ENV{height,160}}
-							|inserer_attribut{class,spip_logos}
-							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+								|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+								|image_recadre{#ENV{width,160},#ENV{height,160}}
+								|inserer_attribut{class,spip_logos}
+								|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
 							</a>
 						</li>
 					</BOUCLE_docs>

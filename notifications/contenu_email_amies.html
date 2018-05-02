@@ -6,26 +6,26 @@
 #SET{count,#ENV{evenements}|count}
 
 <p>
-    [(#GET{count}|>{1}|non)<:larut:message_partager_information{nom=#NOM}:>]
-    [(#GET{count}|>{1}|oui)<:larut:message_partager_informations{nom=#NOM}:>]    
+	[(#GET{count}|>{1}|non)<:larut:message_partager_information{nom=#NOM}:>]
+	[(#GET{count}|>{1}|oui)<:larut:message_partager_informations{nom=#NOM}:>]
 </p>
 
 [(#REM) récuperer les articles pertinents des évenements]
 #SET{id_article,#ARRAY}
 <BOUCLE_ev_art(EVENEMENTS articles){id_evenement IN #ENV{evenements}}>
-       <BOUCLE_(SELECTION_OBJETS){id_objet=#ID_RUBRIQUE}{objet=rubrique}>
-        #SET{id_article,#GET{id_article}|push{#ID_OBJET_DEST}}
-       </BOUCLE_>
-        #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
-     <//B_>
+	<BOUCLE_(LIAISON_OBJETS){id_objet=#ID_RUBRIQUE}{objet=rubrique}>
+		#SET{id_article,#GET{id_article}|push{#ID_OBJET_DEST}}
+	</BOUCLE_>
+		#SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
+	<//B_>
 </BOUCLE_ev_art>
 
 <B_articles>
-    <ul>
-   <BOUCLE_articles(ARTICLES){id_article IN #GET{id_article}}>
-        <li><a href="#URL_ARTICLE">#TITRE</a></li>
-   </BOUCLE_articles>
-    </ul>
+<ul>
+	<BOUCLE_articles(ARTICLES){id_article IN #GET{id_article}}>
+	<li><a href="#URL_ARTICLE">#TITRE</a></li>
+	</BOUCLE_articles>
+</ul>
 </B_articles>
 
 

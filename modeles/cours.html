@@ -16,7 +16,7 @@
     </BOUCLE_rub_res_def>
 <//B_rub_res>
 
-<BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#GET{id_article_or}}{objet_dest=article}{objet=rubrique}>
+<BOUCLE_rubs_lies(LIAISON_OBJETS){id_objet_dest=#GET{id_article_or}}{objet_dest=article}{objet=rubrique}>
    <BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
         #SET{id_article,#GET{id_article}|push{#ID_ARTICLE}}
    </BOUCLE_articles>

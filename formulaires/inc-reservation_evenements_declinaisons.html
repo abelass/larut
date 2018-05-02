@@ -32,7 +32,7 @@
 				</BOUCLE_gis_art_or>
 			<//B_gis_art>
 			#SET{so,''}
-			<BOUCLE_rubs_lies(SELECTION_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
+			<BOUCLE_rubs_lies(LIAISON_OBJETS){id_objet_dest=#ID_ARTICLE}{objet_dest=article}{objet=rubrique}>
 				<BOUCLE_articles(ARTICLES){id_rubrique=#ID_OBJET}>
 					[(#ID_TRAD|>{0}?{
 						#SET{id_article,#GET{id_article}|push{#ID_TRAD}}
