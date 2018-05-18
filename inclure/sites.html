@@ -1,25 +1,23 @@
 <B_sites>
 <div class="liste liste_sites">
-    <h1><:larut:liens:></h1>
-    [<div class="pagination">(#PAGINATION)</div>]
-        <ul class="liste-items">
-                <BOUCLE_sites(SITES) {!par date}{id_mot}{pagination 5}>
-                <li class="item">
-                   <strong><a href="#URL_SITE">#NOM_SITE</a></strong>
-                        <B_syndic>
-                        <ul>
-                                <BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
-                                <li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
-                                </BOUCLE_syndic>
-                        </ul>
-                        </B_syndic>
-                </li>
-                </BOUCLE_sites>
-        </ul>
-</article>
+	<h1><:larut:liens:></h1>
+	[<div class="pagination">(#PAGINATION)</div>]
+	<ul class="liste-items">
+	<BOUCLE_sites(SITES) {!par date}{id_mot}{pagination 5}>
+		<li class="item">
+			<strong><a href="#URL_SITE">#NOM_SITE</a></strong>
+			<B_syndic>
+			<ul>
+			<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+				<li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
+			</BOUCLE_syndic>
+			</ul>
+			</B_syndic>
+		</li>
+	</BOUCLE_sites>
+	</ul>
+</div>
 </B_sites>
-    <br/>
+		<br/>
 <//B_sites>
-
-
 

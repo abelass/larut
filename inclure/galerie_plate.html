@@ -1,32 +1,34 @@
 [(#REM) Portfolio : album d'images ]
 #SET{id_rubrique,#LISTE{7,16}}
-   <BOUCLE_rub(RUBRIQUES){id_parent IN #GET{id_rubrique}}{tout}>
-        <BOUCLE_trad(RUBRIQUES){traduction}{tout}>
-               #SET{id_rubrique,#GET{id_rubrique}|push{#ID_RUBRIQUE}}
-        </BOUCLE_trad>
-   </BOUCLE_rub>
+<BOUCLE_rub(RUBRIQUES){id_parent IN #GET{id_rubrique}}{tout}>
+	<BOUCLE_trad(RUBRIQUES){traduction}{tout}>
+		#SET{id_rubrique,#GET{id_rubrique}|push{#ID_RUBRIQUE}}
+	</BOUCLE_trad>
+</BOUCLE_rub>
 
 <B_articles>
-    <aside class="bloc clearfix documents_album_cdc" id="documents_portfolio">
-    <ul>
-    <BOUCLE_articles(ARTICLES){id_rubrique IN #GET{id_rubrique}}{id_article ?}{pagination #ENV{pagination,1000}}{0,#ENV{limit,1000}}{!par date}{statut=archive}>#SET{titre,#TITRE}
-
-        <B_documents_portfolio2>
-            <BOUCLE_documents_portfolio2(DOCUMENTS) {id_article} {mode ?}{tout}{extension IN png,jpg,gif} {!par date}{doublons}>
-            <li>        
-                <a href="#URL_DOCUMENT" type="#MIME_TYPE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
-                [(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
-                [(#FICHIER
-                |image_passe_partout{#ENV{width,160},#ENV{height,160}}
-                |image_recadre{#ENV{width,160},#ENV{height,160}}
-                |inserer_attribut{class,spip_logos}
-                |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]        
-                </a>
-            </li>
-            </BOUCLE_documents_portfolio2>
-        </B_documents_portfolio2>
-    </BOUCLE_articles>
-    </ul>
-    [<p class="pagination">(#PAGINATION)</p>]
+<aside class="bloc clearfix documents_album_cdc" id="documents_portfolio">
+	<ul>
+	<BOUCLE_articles(ARTICLES)
+		{id_rubrique IN #GET{id_rubrique}}
+		{id_article ?}
+		{pagination #ENV{pagination,1000}}
+		{0,#ENV{limit,1000}}{!par date}
+		{statut=archive}>#SET{titre,#TITRE}
+		<BOUCLE_documents_portfolio2(DOCUMENTS) {id_article} {mode ?}{tout}{extension IN png,jpg,gif} {!par date}{doublons}>
+		<li>
+				<a href="#URL_DOCUMENT" type="#MIME_TYPE" [ title="(#GET{titre}|attribut_html|couper{80})"]>
+				[(#ENV{afficher_titre}|oui)[<h3>(#GET{titre})</h3>]]
+				[(#FICHIER
+				|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+				|image_recadre{#ENV{width,160},#ENV{height,160}}
+				|inserer_attribut{class,spip_logos}
+				|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+				</a>
+		</li>
+		</BOUCLE_documents_portfolio2>
+	</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
 </aside><!--#documents_album-->
 </B_articles>

@@ -17,8 +17,8 @@
 		#SET{logo,#LOGO_SITE}
 		#SET{introduction,''}
 		<BOUCLE_rub(RUBRIQUES){id_trad=#ID_RUBRIQUE}{lang}{tout}>
-			 #SET{url_more,#URL_RUBRIQUE}
-			 #SET{titre_rubrique,#TITRE}
+			#SET{url_more,#URL_RUBRIQUE}
+			#SET{titre_rubrique,#TITRE}
 		</BOUCLE_rub>
 		#SET{site,oui}
 	</BOUCLE_sites>
@@ -32,6 +32,7 @@
 
 <section class="liste articles sommaire">
 
+<<<<<<< HEAD
 				<h2 class="h2 articles_recents"><:news:></h2>
 <ul class="liste-items">
 	<li class="item hentry">
@@ -53,7 +54,31 @@
 			<div class="meta-publi">
 				<a class="lire-la-suite" href="#GET{url_more}">
 					[(#GET{site}|?{
-					 [<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]
+					[<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]
+=======
+<h2 class="h2 articles_recents"><:news:></h2>
+<ul class="liste-items">
+	<li class="item hentry">
+		[<section>
+			<div class="resume">(#GET{resume})</div>
+		</section>]
+		<article>
+			<h3 class="h3 entry-title"><a href="#GET{url}" rel="bookmark">#GET{titre}</a></h3>
+			<a href="#GET{url}" rel="bookmark">
+				[(#GET{logo}
+				|image_passe_partout{#ENV{width,50},#ENV{height,50}}
+				|image_recadre{#ENV{width,50},#ENV{height,50}}
+				|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+			</a>
+			<div class="info-publi">
+					[<abbr class="published" title="[(#GET{date}|date_iso)]">(#GET{date}|affdate{d/m/Y})</abbr>]
+			</div>
+			[<div class="introduction entry-content">(#GET{introduction}|propre|couper{100})</div>]
+			<div class="meta-publi">
+				<a class="lire-la-suite" href="#GET{url_more}">
+					[(#GET{site}|?{
+					[<:voir_plus:> <span class="lire-la-suite-titre"><em>(#GET{titre_rubrique})</em></span>]
+>>>>>>> refs/remotes/origin/master
 							,
 						[<:lire_la_suite:> <span class="lire-la-suite-titre"><em>(#GET{titre})</em></span>]
 					})]

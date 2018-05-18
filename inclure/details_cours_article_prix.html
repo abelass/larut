@@ -1,33 +1,33 @@
 <B_prix>
 <tr>
-    <td class="label"><:larut:label_prix:></td>
-    <td>
-<BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}>
-        <div>#PRIX
-            <B_decl>
-            -
-            <BOUCLE_decl(DECLINAISONS){id_declinaison}>
-            #TITRE
-            </BOUCLE_decl>                    
-        </div>
-	    </BOUCLE_prix>
-     </td>
-</tr>        
+	<td class="label"><:larut:label_prix:></td>
+	<td>
+	<BOUCLE_prix(PRIX_OBJETS){id_objet=#ID_EVENEMENT}{objet=evenement}>
+		<div>#PRIX
+			<B_decl>
+			-
+			<BOUCLE_decl(DECLINAISONS){id_declinaison}>
+			#TITRE
+			</BOUCLE_decl>
+		</div>
+	</BOUCLE_prix>
+	</td>
+</tr>
 </B_prix>
 	<B_prix_article>
 	<tr>
-	    <td class="label"><:larut:label_prix:></td>
-	    <td>
+		<td class="label"><:larut:label_prix:></td>
+		<td>
 	<BOUCLE_prix_article(PRIX_OBJETS){id_objet=#ID_ARTICLE}{objet=article}>
-	        <div>#PRIX
-	            <B_decl_article>
-	            -
-	            <BOUCLE_decl_article(DECLINAISONS){id_declinaison}>
-	            #TITRE
-	            </BOUCLE_decl_article>                    
-	        </div>
-		    </BOUCLE_prix_article>
-	     </td>
-	</tr>        
+			<div>#PRIX
+				<B_decl_article>
+				-
+				<BOUCLE_decl_article(DECLINAISONS){id_declinaison}>
+				#TITRE
+				</BOUCLE_decl_article>
+			</div>
+			</BOUCLE_prix_article>
+		</td>
+	</tr>
 	</B_prix_article>
 <//B_prix>

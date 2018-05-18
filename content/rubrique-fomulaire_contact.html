@@ -1,16 +1,13 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
-[(#REM) Fil d'Ariane ]
+	[(#REM) Fil d'Ariane ]
 
-<INCLURE{fond=inclure/file_ariane,id_rubrique,titre=#TITRE,id_trad,imprimer}/>
+	<INCLURE{fond=inclure/file_ariane,id_rubrique,titre=#TITRE,id_trad,imprimer}/>
 
-<div class="contenu-principal">
+	<div class="contenu-principal">
 
-	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
-</div>
-<BOUCLE_auteur(AUTEURS){statut=0minirezo}{tout}{1,1}>
-	#FORMULAIRE_ECRIRE_AUTEUR
-</BOUCLE_auteur>
-
+		[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+	</div>
+	<BOUCLE_auteur(AUTEURS){statut=0minirezo}{tout}{1,1}>
+		#FORMULAIRE_ECRIRE_AUTEUR
+	</BOUCLE_auteur>
 </BOUCLE_contenu_rubrique>
-
-
