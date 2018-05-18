@@ -44,20 +44,18 @@
 		<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,
 		id_evenement,places,statut=#VAL|statuts_complet}/>]
 
- <BOUCLE_prix(PRIX_OBJETS){id_objet=#ENV{id_article_base}}{objet=article}>
-	#SET{prix,#PRIX}
-	<BOUCLE_decl(DECLINAISONS){id_declinaison}{tout}{par num titre,titre}>
-		<div>
+<BOUCLE_prix(PRIX_OBJETS){id_objet=#ENV{id_article_base}}{objet=article}{extension=declinaison}>
+<div>
 	<input type="checkbox"
 		name="id_objet_prix[#ENV{id_evenement}]"
 		class="checkbox declinaison"
 		id="id_objet_prix[_(#ENV{id_evenement})][_(#ID_PRIX_OBJET)]"
 		value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ENV{id_evenement}}}|oui) checked="checked"]/>
 	<label for="id_objet_prix[_(#ENV{ID_EVENEMENT})][_(#ID_PRIX_OBJET)]">
-		#TITRE[ : <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
+		#TITRE[ : <strong data-prix="#ID_PRIX_OBJET">(#PRIX)</strong>]
 	</label>
-		</div>
-	</BOUCLE_decl>
+</div>
+
 	<input type="checkbox" name="id_objet_prix[#ENV{id_evenement}]" class="checkbox" id="id_objet_prix[_(#ENV{id_evenement})][_(#ID_PRIX_OBJET)]" value="#ID_PRIX_OBJET"[(#ID_PRIX_OBJET|=={#ENV{id_objet_prix}|table_valeur{#ENV{id_evenement}}}|oui) checked="checked"]/>		[ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
 	</label>
 	<//B_decl>
