@@ -11,7 +11,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// I
 	'inscrire_liste_attente' => 'Choissisez un autre cours ou inscrivez vous dans la liste d’attente.',
-	'inscription_newsletters' => 'J\'aimerai m\'inscrire aux newsletters suivants:',
+	'inscription_newsletters' => 'J\'aimerai m\'inscrire aux newsletters suivants :',
 
 	// L
 	'label_a_lire_sur' => 'A lire sur',
