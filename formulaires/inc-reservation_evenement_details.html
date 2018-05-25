@@ -22,7 +22,9 @@
 	)]
 	</div>
 	<BOUCLE_gis_ev(GIS){id_evenement}>
+		<div class="location">
 		<i class=" icon-hand-right"> </i>
+
 		<a class="lieu" target="_blank" rel="nofollow" href="[(#URL_GIS)]#content"
 			onclick="window.open(this.href,
 					'gis',
@@ -30,15 +32,18 @@
 				return false;">
 			#TITRE[, (#ADRESSE|textebrut)][, (#CODE_POSTAL) ]#VILLE
 		</a>
+		</div>
 	</BOUCLE_gis_ev>
-		[<i class=" icon-hand-right"> </i>
-		<a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#ENV{id_gis}})]#content"
-			onclick="window.open(this.href,
-					'gis',
-					'height=400,width=450,top=100,left=100,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=no');
-				return false;">
-			(#ENV**{lieu}|textebrut)
-		</a>]
+		[<div class="location">
+			<i class=" icon-hand-right"> </i>
+			<a class="lieu"  target="_blank" rel="nofollow" href="[(#URL_GIS{#ENV{id_gis}})]#content"
+				onclick="window.open(this.href,
+						'gis',
+						'height=400,width=450,top=100,left=100,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=no');
+					return false;">
+				(#ENV**{lieu}|textebrut)
+			</a>
+		</div>]
 	<//B_gis_ev>
 	[(#PLACES|>{0}|oui)
 		<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,
