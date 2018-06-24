@@ -50,6 +50,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// S
 	'somme_produit' => 'Suma',
+	'subscribe_texte_email_2' => 'Nous vous remercions de l’intérêt que vous portez aux activités de couture de Larut à la <a href="https://www.transformatheque.be/">Transformathèque</a>',
 	'sujet_une_reservation_accepte' => 'Confirmation de participation @ @nom@',
 	'sujet_une_reservation_accepte_part' => 'Confirmation acompte reçu @ @nom@',
 	'sujet_votre_reservation_accepte' => '@nom@ : confirmation de votre participation',
@@ -59,6 +60,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	// T
 	'telephone' => 'Téléphone',
 	'texte_statut_accepte_part' => ' acompte payé',
+
 
 	// V
 	'voir_plus' => 'Voir d\'autres'
