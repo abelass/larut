@@ -2,7 +2,8 @@
 
 <B_documents_portfolio2>
 	<aside class="bloc clearfix documents_album_cdc" id="documents_album_#ENV{id_article}">
-	<ul>
+	#ANCRE_PAGINATION
+	<ul class="galerie">
 		<BOUCLE_documents_portfolio2(DOCUMENTS)
 			{id_article ?}
 
@@ -26,7 +27,7 @@
 		</li>
 		</BOUCLE_documents_portfolio2>
 	</ul>
-	<p class="pagination">#PAGINATION</p>
+	<div class="pagination">#PAGINATION</div>
 </aside><!--#documents_album-->
 </B_documents_portfolio2>
 <br class="nettoyeur"/>
