@@ -1,0 +1,32 @@
+[(#REM) Portfolio : album d'images ]
+
+<B_documents_portfolio2>
+	<aside class="bloc clearfix documents_album_cdc" id="documents_album_#ENV{id_article}">
+	<ul>
+		<BOUCLE_documents_portfolio2(DOCUMENTS)
+			{id_article ?}
+
+			{mode ?}
+			{extension IN png,jpg,gif}
+			{!par date}
+			{tout}
+			{pagination #ENV{pagination,9}}>
+		<li>
+			<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
+			type="#MIME_TYPE"
+			rel="documents_portfolio[-a(#ID_ARTICLE)]"
+			[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
+			[(#ENV{afficher_titre}|oui)[<h3>(#TITRE)</h3>]]
+			[(#FICHIER
+				|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+				|image_recadre{#ENV{width,160},#ENV{height,160}}
+				|inserer_attribut{class,spip_logos}
+				|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+			</a>
+		</li>
+		</BOUCLE_documents_portfolio2>
+	</ul>
+	<p class="pagination">#PAGINATION</p>
+</aside><!--#documents_album-->
+</B_documents_portfolio2>
+<br class="nettoyeur"/>
