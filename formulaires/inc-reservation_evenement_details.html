@@ -51,7 +51,7 @@
 
 <BOUCLE_prix(PRIX_OBJETS){id_prix_objet_source=0}{id_objet=#ENV{id_article_base}}{objet=article}>
 	#SET{prix,#PRIX}
-	<BOUCLE_decl(PRIX_OBJETS){id_prix_objet_source=#ID_PRIX_OBJET}{extension=declinaison}{par num titre,titre}>
+	<BOUCLE_decl(PRIX_OBJETS){id_prix_objet_source=#ID_PRIX_OBJET}{extension=declinaison}{par rang_lien,num titre,titre}>
 		<div>
 	<input type="checkbox"
 		name="id_objet_prix[#ENV{id_evenement}]"

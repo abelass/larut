@@ -59,7 +59,7 @@
 		</ul>
 	</B_erreurs_statut>
 	#SET{message,''}
-	<BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par num titre,titre}>
+	<BOUCLE_article(EVENEMENTS){id_evenement IN #GET{id_evenement}}{par rang,num titre,titre}>
 
 
 		<BOUCLE_art_org(ARTICLES){id_article}>#SET{message,#TEXTE_EMAIL|image_reduire{200}} </BOUCLE_art_org>

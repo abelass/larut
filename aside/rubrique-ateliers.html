@@ -1,5 +1,5 @@
 #SET{id_article,#ARRAY}
-<BOUCLE_art(ARTICLES) {id_rubrique}{id_mot ?}{par num titre,titre}>
+<BOUCLE_art(ARTICLES) {id_rubrique}{id_mot ?}{par rang,num titre,titre}>
 #SET{id_trad,#ID_ARTICLE}
 [(#ID_TRAD|>{0}|oui)#SET{id_trad,#ID_TRAD}]
 	<BOUCLE_ev(EVENEMENTS){id_article IN #ID_ARTICLE,#GET{id_trad}}{date_fin>#ENV{date}}{fusion id_article}>
