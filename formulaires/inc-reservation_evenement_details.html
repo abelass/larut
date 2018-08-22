@@ -49,9 +49,9 @@
 		<INCLURE{fond=formulaires/inc-reservation_evenements_places_dispos,
 		id_evenement,places,statut=#VAL|statuts_complet}/>]
 
-<BOUCLE_prix(PRIX_OBJETS){id_prix_objet_source=0}{id_objet=#ENV{id_article_base}}{objet=article}>
+<BOUCLE_prix(PRIX_OBJETS){id_prix_objet_source=0}{id_objet=#ENV{id_article_base}}{objet=article}{par rang_lien,id_prix_objet}>
 	#SET{prix,#PRIX}
-	<BOUCLE_decl(PRIX_OBJETS){id_prix_objet_source=#ID_PRIX_OBJET}{extension=declinaison}{par rang_lien,num titre,titre}>
+	<BOUCLE_decl(PRIX_OBJETS){id_prix_objet_source=#ID_PRIX_OBJET}{extension=declinaison}>
 		<div>
 	<input type="checkbox"
 		name="id_objet_prix[#ENV{id_evenement}]"
