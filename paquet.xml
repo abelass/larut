@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="2.3.15"
+	version="2.3.16"
 	etat="stable"
 	compatibilite="[3.0.13;3.2.*]"
 	logo="prive/themes/spip/images/larut-64.png"
