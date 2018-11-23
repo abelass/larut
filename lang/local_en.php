@@ -39,11 +39,11 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	// S
 	'somme_produit' => 'Total',
 	'subscribe_texte_email_2' => 'Thank you for the interest you have shown in the sewing activities of Larut at <a href="https://www.transformatheque.be/">Transformathèque</a>.',
-	'sujet_une_reservation_accepte' => 'Confirmed participant @ @nom@',
-	'sujet_une_reservation_accepte_part' => 'Confirmation down payment @ @nom@',
-	'sujet_votre_reservation_accepte' => '@nom@: participation confirmed',
-	'sujet_votre_reservation_accepte_part' => '@nom@ : Confirmation down payment',
-	'sujet_votre_reservation_cloture' => '@nom@: workshop closure',
+	'sujet_une_reservation_accepte' => 'Confirmed participant @ Larut/Transformathèque',
+	'sujet_une_reservation_accepte_part' => 'Confirmation down payment @ Larut/Transformathèque',
+	'sujet_votre_reservation_accepte' => 'Larut/Transformathèque: participation confirmed',
+	'sujet_votre_reservation_accepte_part' => 'Larut/Transformathèque : Confirmation down payment',
+	'sujet_votre_reservation_cloture' => 'Larut/Transformathèque: workshop closure',
 
 	//T
 	'texte_statut_accepte_part' => ' download payment',

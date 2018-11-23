@@ -47,15 +47,16 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// R
 	'reservation_enregistre' => 'Votre Inscription a bien été enregistré.<br/> Vous recevrez un email de confirmation avec les détails du paiement. Si aucun mail ne vous est parvenu, verifiez dans votre dossier spam. En cas de problème, envoyez moi un email <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Merci',
+	'votre_reservation_sur' => 'Larut : Transformathèque : votre réservation',
 
 	// S
 	'somme_produit' => 'Suma',
 	'subscribe_texte_email_2' => 'Nous vous remercions de l’intérêt que vous portez aux activités de couture de Larut à la <a href="https://www.transformatheque.be/">Transformathèque</a>',
-	'sujet_une_reservation_accepte' => 'Confirmation de participation @ @nom@',
-	'sujet_une_reservation_accepte_part' => 'Confirmation acompte reçu @ @nom@',
-	'sujet_votre_reservation_accepte' => '@nom@ : confirmation de votre participation',
-	'sujet_votre_reservation_accepte_part' => '@nom@ : Confirmation acompte reçu',
-	'sujet_votre_reservation_cloture' => '@nom@ : clôture du cours',
+	'sujet_une_reservation_accepte' => 'Confirmation de participation @ Larut/Transformathèque',
+	'sujet_une_reservation_accepte_part' => 'Confirmation acompte reçu @ Larut/Transformathèque',
+	'sujet_votre_reservation_accepte' => 'Larut/Transformathèque : confirmation de votre participation',
+	'sujet_votre_reservation_accepte_part' => 'Larut/Transformathèque : Confirmation acompte reçu',
+	'sujet_votre_reservation_cloture' => 'Larut/Transformathèque : clôture du cours',
 
 	// T
 	'telephone' => 'Téléphone',
