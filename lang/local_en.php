@@ -39,6 +39,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	// S
 	'somme_produit' => 'Total',
 	'subscribe_texte_email_2' => 'Thank you for the interest you have shown in the sewing activities of Larut at <a href="https://www.transformatheque.be/">Transformathèque</a>.',
+	'subscribe_sujet_email' => '[Larut/Transformathèque] Subscribe to our Newsletter',
 	'sujet_une_reservation_accepte' => 'Confirmed participant @ Larut/Transformathèque',
 	'sujet_une_reservation_accepte_part' => 'Confirmation down payment @ Larut/Transformathèque',
 	'sujet_votre_reservation_accepte' => 'Larut/Transformathèque: participation confirmed',
