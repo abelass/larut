@@ -47,7 +47,6 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 	// R
 	'reservation_enregistre' => 'Votre Inscription a bien été enregistré.<br/> Vous recevrez un email de confirmation avec les détails du paiement. Si aucun mail ne vous est parvenu, verifiez dans votre dossier spam. En cas de problème, envoyez moi un email <a href="mailto:contact@larut.eu">contact@larut.eu</a>, <br/> Merci',
-	'votre_reservation_sur' => 'Larut : Transformathèque : votre réservation',
 
 	// S
 	'somme_produit' => 'Suma',
@@ -64,7 +63,8 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 
 
 	// V
-	'voir_plus' => 'Voir d\'autres'
+	'voir_plus' => 'Voir d\'autres',
+	'votre_reservation_sur' => 'Larut/Transformathèque : votre réservation',
 );
 
 ?>

@@ -49,7 +49,8 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'texte_statut_accepte_part' => ' download payment',
 
 	// V
-	'voir_plus' => 'See more'
+	'voir_plus' => 'See more',
+	'votre_reservation_sur' => 'Larut/Transformathèque : your booking',
 );
 
 ?>
