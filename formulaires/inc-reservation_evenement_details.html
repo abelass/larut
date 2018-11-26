@@ -64,13 +64,13 @@
 			</label>
 		</div>
 	</BOUCLE_decl>
-	<input type="checkbox" name="id_objet_prix[#ID_EVENEMENT][\[(#ID_PRIX_OBJET_SOURCE)\]]"
+	<input type="checkbox" name="id_objet_prix[#ID_EVENEMENT][\[(#ID_PRIX_OBJET)\]]"
 		class="checkbox evenement declinaison"
-		id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET_SOURCE)]"
-		value="#ID_PRIX_OBJET_SOURCE"
+		id="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]"
+		value="#ID_PRIX_OBJET"
 		[(#ID_PRIX_OBJET_SOURCE|in_array{#ENV{id_objet_prix}}|oui) checked="checked" ]/>
-	<label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET_SOURCE)]">
-		[ <strong data-prix="#ID_PRIX_OBJET_SOURCE">(#GET{prix})</strong>]
+	<label for="id_objet_prix[_(#ID_EVENEMENT)][_(#ID_PRIX_OBJET)]">
+		[ <strong data-prix="#ID_PRIX_OBJET">(#GET{prix})</strong>]
 	</label>
 	<//B_decl>
 </BOUCLE_prix>
