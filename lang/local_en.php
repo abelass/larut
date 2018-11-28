@@ -43,7 +43,7 @@ $GLOBALS [$GLOBALS ['idx_lang']] = array(
 	'sujet_une_reservation_accepte' => 'Confirmed participant @ Larut/Transformathèque',
 	'sujet_une_reservation_accepte_part' => 'Confirmation down payment @ Larut/Transformathèque',
 	'sujet_votre_reservation_accepte' => 'Larut/Transformathèque: participation confirmed',
-	'sujet_votre_reservation_accepte_part' => 'Larut/Transformathèque : Confirmation down payment',
+	'sujet_votre_reservation_accepte_part' => 'Larut/Transformathèque: Confirmation down payment',
 	'sujet_votre_reservation_cloture' => 'Larut/Transformathèque: workshop closure',
 
 	//T
