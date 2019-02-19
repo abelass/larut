@@ -36,7 +36,7 @@
 	jQuery(document).ready(function() {
 		$('#agenda').fullCalendar({
 			editable: false,
-			events: "[(#URL_PAGE{agenda.json}|parametre_url{date_fin,#DATE,&}|parametre_url{id_article,[(#GET{id_article})],&})]",
+			events: "[(#URL_PAGE{agenda.json}|parametre_url{lang,#ENV{lang}}|parametre_url{date_fin,#DATE,&}|parametre_url{id_article,[(#GET{id_article})],&})]",
 			header: {
 				left: 'prevYear,prev,next,nextYear today',
 				center: 'title',
