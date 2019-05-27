@@ -1,7 +1,7 @@
 <paquet
 	prefix="larut"
 	categorie="squelette"
-	version="2.3.19"
+	version="3.0.0"
 	etat="stable"
 	compatibilite="[3.0.13;3.2.*]"
 	logo="prive/themes/spip/images/larut-64.png"
@@ -43,7 +43,6 @@
 	<necessite nom="piwik" compatibilite="[0.6.2;]" />
 	<necessite nom="chosen" compatibilite="[1.0.6;]" />
 	<necessite nom="newsletters_notifications" compatibilite="[1.0.1;]" />
-	<necessite nom="multidomaines" compatibilite="[2.3.2;]" />
 	<necessite nom="cheques_cadeau" compatibilite="[1.0.2;]" />
 	<necessite nom="comptes_bancaires" compatibilite="[1.0.0;]" />
 	<necessite nom="message_personnalise" compatibilite="[1.0.0;]" />
