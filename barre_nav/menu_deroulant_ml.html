@@ -2,7 +2,7 @@
 <B_rubriques>
 	<div class="menu-conteneur menu menu-container navbar-inner">
 		<ul class="menuder menu-liste  menu-items nav">
-		<BOUCLE_rubriques(RUBRIQUES){id_parent} {par num titre, titre}{tout}{id_trad!=32}>
+		<BOUCLE_rubriques(RUBRIQUES){id_parent} {par num titre, titre}{tout}{id_trad !IN 32,7}>
 			<li class="item menu-entree[ (#EXPOSE)][(#COMPTEUR_BOUCLE|=={1}|oui) first][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) last]">
 				<a href="#URL_RUBRIQUE" class="intitule">
 					[(#TITRE|supprimer_numero|couper{80})]
