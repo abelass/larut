@@ -5,9 +5,7 @@
 </div>
 [(#CONFIG{multilingue/menu_langue}|oui)#SET{select,_select}]
 <aside class="tools">
-   <INCLURE{fond=inclure/menu_langues#GET{select},env}/>
-   [(#REM)<div class="shop"><a href="#">Shop</a></div>]
-   <div class="lien_newsletter"><a rel="nofollow" href="[(#URL_PAGE{abonnement}|parametre_url{lang,#LANG})]"><i class="icon-envelope"></i> <:larut:inscription_newsletter:></a></div>
+	<INCLURE{fond=inclure/menu_langues#GET{select},env}/>
 </aside>
 
 
